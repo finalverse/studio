@@ -4,11 +4,19 @@ import json
 from pathlib import Path
 import plistlib
 import unittest
+import xml.etree.ElementTree as ET
 
 ROOT=Path(__file__).parents[2]
 
 
 class ProductContract(unittest.TestCase):
+    def test_native_icons_use_upstream_glyph_canvas(self):
+        for name in ['blender.svg', 'blender_logo_large.svg']:
+            svg = ET.parse(ROOT/'release/datafiles/icons_svg'/name).getroot()
+            self.assertEqual(float(svg.attrib['width']), 1600)
+            self.assertEqual(float(svg.attrib['height']), 1600)
+            self.assertEqual(svg.attrib['viewBox'], '0 0 128 128')
+
     def test_macos_bundle_and_executable_agree(self):
         p=json.loads((ROOT/'finalverse/product.json').read_text())
         with (ROOT/'release/darwin/Blender.app/Contents/Info.plist').open('rb') as f:

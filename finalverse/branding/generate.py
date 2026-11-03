@@ -10,7 +10,9 @@ root = Path(__file__).resolve().parent
 svg = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round"><path d="M96 92A44 44 0 1 1 104 43"/><path d="M49 91V38h34M49 62h27"/><path d="m94 20 16 17-22 4"/></g></svg>'''
 (root/'mark.svg').write_text(svg)
 for p in ['release/datafiles/icons_svg/blender.svg','release/datafiles/icons_svg/blender_logo_large.svg']:
-    (root.parents[1]/p).write_text(svg)
+    # Blender's native icon rasterizer uses a fixed 1600-unit glyph canvas.
+    glyph_svg = svg.replace('viewBox=', 'width="1600" height="1600" viewBox=')
+    (root.parents[1]/p).write_text(glyph_svg.replace('currentColor', '#fff'))
 
 
 def mark(draw, x, y, size, color, width):

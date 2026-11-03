@@ -77,6 +77,18 @@
     {
       "path": "source/creator/creator_args.cc",
       "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "source/blender/editors/space_file/file_banner.cc",
+      "purpose": "Guard first-draw banner layout invalidation before the Asset Browser layout exists; preserve normal initialization and subsequent invalidation"
+    },
+    {
+      "path": "source/blender/editors/render/render_view.cc",
+      "purpose": "Use Finalverse Studio identity for the temporary render window"
+    },
+    {
+      "path": "source/blender/windowmanager/intern/wm_event_system.cc",
+      "purpose": "Use Finalverse Studio identity for the temporary file browser"
     }
   ]
 }
