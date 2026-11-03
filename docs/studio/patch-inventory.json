@@ -89,6 +89,10 @@
     {
       "path": "source/blender/windowmanager/intern/wm_event_system.cc",
       "purpose": "Use Finalverse Studio identity for the temporary file browser"
+    },
+    {
+      "path": "source/blender/editors/interface/interface.cc",
+      "purpose": "Search-only menu blocks have no region in some contexts; skip reading region callbacks that are never invoked for search-only blocks, preventing F3 Asset Browser crash."
     }
   ]
 }

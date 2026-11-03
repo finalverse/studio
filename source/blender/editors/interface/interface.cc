@@ -2157,10 +2157,12 @@ bool button_context_poll_operator(bContext *C, wmOperatorType *ot, const Button 
 void block_post_layout_callbacks_exec(const bContext *C, ARegion *region, Block *block)
 {
   BLI_assert(block->active);
-  for (const std::function<void(const bContext &C, ui::Block &block)> &callback :
-       region->runtime->post_block_layout_fns)
-  {
-    if (!block_is_search_only(block)) {
+  /* Search-only blocks can be built without a region. They must not read the
+   * region's callback collection, even when no callbacks would be invoked. */
+  if (!block_is_search_only(block)) {
+    for (const std::function<void(const bContext &C, ui::Block &block)> &callback :
+         region->runtime->post_block_layout_fns)
+    {
       callback(*C, *block);
     }
   }
