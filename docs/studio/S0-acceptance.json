@@ -1,0 +1,28 @@
+{
+  "schema_version": "finalverse.studio-s0-acceptance/v1",
+  "status": "implemented_functionally_verified_visual_pending",
+  "accepted": false,
+  "date": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "gates": {
+    "source_build_install": "PASS",
+    "brand_and_bundle_metadata": "PASS",
+    "upstream_attribution": "PASS",
+    "built_engine_mesh_render_save_reopen_glb": "PASS",
+    "startup_workspace_and_operator_registration": "PASS",
+    "candidate_negative_checks": "PASS",
+    "core_regression_and_clippy": "PASS",
+    "supervised_studio_generation": "PASS",
+    "wrong_pin_refused_before_worker": "PASS",
+    "visible_desktop_workspace_icon_splash_menu": "BLOCKED_MAC_LOCKED"
+  },
+  "studio_tests": 8,
+  "core_tests": 333,
+  "core_ignored": 1,
+  "final_genesis_tests": 25,
+  "gui_blocker": "Computer-use tool reports Mac locked; user requested to unlock. No bypass attempted.",
+  "s1_started": false,
+  "pushed": false,
+  "merged": false,
+  "deployed": false
+}
