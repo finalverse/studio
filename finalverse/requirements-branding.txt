@@ -1,0 +1,2 @@
+# Regeneration only; the built editor has no Pillow runtime dependency.
+Pillow==12.1.1

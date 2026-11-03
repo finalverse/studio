@@ -1,0 +1,82 @@
+{
+  "schema_version": "finalverse.studio-patches/v1",
+  "upstream_commit": "0f5a1ae067d9785d2c106a887c94a0c96c3239a4",
+  "patches": [
+    {
+      "path": ".gitattributes",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "README.md",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "build_files/cmake/packaging.cmake",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "intern/ghost/intern/GHOST_SystemCocoa.mm",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "intern/ghost/intern/GHOST_SystemPathsCocoa.mm",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "release/darwin/Blender.app/Contents/Info.plist",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "release/datafiles/icons_svg/blender.svg",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "release/datafiles/icons_svg/blender_logo_large.svg",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "release/datafiles/splash.png",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "release/freedesktop/blender.desktop",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "release/freedesktop/icons/scalable/apps/blender.svg",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "release/freedesktop/icons/symbolic/apps/blender-symbolic.svg",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "scripts/startup/bl_ui/__init__.py",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "scripts/startup/bl_ui/space_topbar.py",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "source/blender/blenkernel/BKE_blender_version.h",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "source/blender/windowmanager/intern/wm_splash_screen.cc",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "source/blender/windowmanager/intern/wm_window.cc",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "source/creator/CMakeLists.txt",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    },
+    {
+      "path": "source/creator/creator_args.cc",
+      "purpose": "Product identity, independent configuration, original artwork or one startup module; Blender technical contracts retained"
+    }
+  ]
+}

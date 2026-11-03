@@ -111,3 +111,6 @@
 *.rgb filter=lfs diff=lfs merge=lfs -text
 *.btx filter=lfs diff=lfs merge=lfs -text
 scripts/modules/_bpy_internal/assets/remote_library/*_openapi.py linguist-generated=true
+
+# Fork-owned splash is original artwork, not an upstream LFS object.
+release/datafiles/splash.png -filter -diff -merge

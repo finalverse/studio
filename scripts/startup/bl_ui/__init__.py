@@ -12,6 +12,7 @@ if "bpy" in locals():
 
 _modules = [
     "anim",
+    "finalverse_studio",
     "asset_shelf",
     "node_add_menu",
     "node_add_menu_compositor",
@@ -126,6 +127,7 @@ def register():
 
     space_filebrowser.register_props()
     properties_paint_common.register()
+    finalverse_studio.register_workspace()
 
     from bpy.props import (
         EnumProperty,
@@ -181,6 +183,7 @@ def register():
 
 
 def unregister():
+    finalverse_studio.unregister_workspace()
     from bpy.utils import unregister_class
 
     properties_paint_common.unregister()

@@ -1,0 +1,13 @@
+{
+  "schema_version": "finalverse.studio-product/v1",
+  "display_name": "Finalverse Studio",
+  "positioning": "AI-Native 3D Creation, Animation, and World Authoring Environment",
+  "bundle_id": "org.finalverse.studio",
+  "workspace": "Finalverse AI Studio",
+  "upstream": "Blender",
+  "upstream_commit": "0f5a1ae067d9785d2c106a887c94a0c96c3239a4",
+  "upstream_version": "5.4.0 alpha",
+  "license": "GPL-2.0-or-later",
+  "stage": "S0 development",
+  "authority": "Studio exports candidates; Genesis validates and policy authorizes publication."
+}
