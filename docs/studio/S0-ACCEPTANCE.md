@@ -36,7 +36,7 @@ room job took 7,557.32 ms and produced GWIR
 `79416251fb588b0c4e34bf6ad75e62b1b5ff0ee026665e0e4c2add23d6da3480`.
 The candidate remains AwaitingAuthorization: successful creation supplies no
 independent publication grant. The transport-integrity checker likewise explicitly
-reports geometry_validation=false and publication_authorized=false.
+reports genesis_geometry_validated=false and publication_authorized=false.
 
 [Built-engine smoke](evidence/fork-smoke.json), [preview](evidence/preview.png),
 [Genesis proof](evidence/genesis-proof.json), [version](evidence/version.txt),
