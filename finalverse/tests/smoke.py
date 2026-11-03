@@ -34,9 +34,13 @@ bevel=obj.modifiers.new('Editable bevel','BEVEL');bevel.width=.14;bevel.segments
 bpy.ops.object.modifier_apply(modifier=bevel.name)
 assert len(obj.data.vertices)>8
 mat=bpy.data.materials.new('Studio teal');mat.diffuse_color=(.04,.52,.55,1)
+mat.use_nodes=True
+mat.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value=(.04,.52,.55,1)
+mat.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value=.35
 obj.data.materials.append(mat)
 bpy.ops.object.camera_add(location=(4,-6,4))
 cam=bpy.context.object;cam.rotation_euler=(Vector((0,0,1.0))-cam.location).to_track_quat('-Z','Y').to_euler()
+bpy.context.view_layer.update()
 matrix = cam.matrix_world.copy();cam.parent=obj;cam.matrix_world=matrix
 scene=bpy.context.scene;scene.camera=cam
 bpy.ops.object.light_add(type='AREA',location=(1,-3,6));bpy.context.object.data.energy=700
@@ -48,6 +52,10 @@ identity=obj['finalverse.object_id']
 index=studio.inspect_scene(scene)
 assert next(v for v in index['objects'] if v['name']==cam.name)['parent']==identity
 scene.render.filepath=str(root/'preview.png');bpy.ops.render.render(write_still=True)
+preview=bpy.data.images.load(str(root/'preview.png'),check_existing=False)
+pixels=list(preview.pixels)
+visible=sum(1 for i in range(0,len(pixels),4) if pixels[i+1]>pixels[i]*1.35 and pixels[i+1]-pixels[i]>.08)
+assert visible>1000, f'Render did not show the teal subject: {visible} pixels'
 project=root/'roundtrip.blend';bpy.ops.wm.save_as_mainfile(filepath=str(project))
 bpy.ops.wm.open_mainfile(filepath=str(project))
 assert bpy.data.objects['Studio authoring sample']['finalverse.object_id']==identity
@@ -61,6 +69,6 @@ record={'schema_version':'finalverse.studio-smoke/v1','engine_executable':bpy.ap
         'upstream_version':bpy.app.version_string,'built_in_startup_module':native_registration,'product':studio.PRODUCT,'workspace':studio.WORKSPACE,
         'checks':{'python_api':True,'workspace':True,'mesh_edit':True,'render':True,'save_reopen_identity':True,
                   'glb_export':True,'source_export':True,'refuse_overwrite':True},
-        'duration_ms':(time.monotonic()-start)*1000,'candidate':str(root/'sample.fvasset')}
+        'visible_subject_pixels':visible,'duration_ms':(time.monotonic()-start)*1000,'candidate':str(root/'sample.fvasset')}
 (root/'smoke.json').write_text(json.dumps(record,indent=2))
 print('FINALVERSE_SMOKE',json.dumps(record))

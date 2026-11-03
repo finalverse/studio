@@ -1,0 +1,16 @@
+{
+  "schema_version": "finalverse.studio-genesis-smoke/v1",
+  "backend": {
+    "schema_version": "finalverse.studio-backend/v1",
+    "app": "/Users/wenyan/Finalverse/dev/studio-s0-20261104/install/Finalverse Studio.app",
+    "executable_sha256": "7a0841514ce9d4995a3fc7f6da5d755ecdbf1e2ccce761487f7d1b7f7be2c056"
+  },
+  "job_id": "a5c77d14-486b-444e-bc38-c0e9c1192c3d",
+  "gwir": "79416251fb588b0c4e34bf6ad75e62b1b5ff0ee026665e0e4c2add23d6da3480",
+  "state": "AwaitingAuthorization",
+  "attempts": 1,
+  "duration_ms": 7557.321207998029,
+  "published": false,
+  "world_effects": 0,
+  "wrong_pin_refused_before_worker": true
+}

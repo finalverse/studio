@@ -1,0 +1,40 @@
+{
+  "schema_version": "finalverse.studio-evidence/v1",
+  "files": [
+    {
+      "path": "cleanup-summary.json",
+      "bytes": 623,
+      "sha256": "55c09745aeb7f5c508722c1278b66b09eb5e310a80b836d09977e3c6527d673f"
+    },
+    {
+      "path": "corrections.json",
+      "bytes": 1837,
+      "sha256": "ee38f4a632a6646ed559684f05038fad37a438ba3e56e4607994560c7c4eec01"
+    },
+    {
+      "path": "fork-smoke.json",
+      "bytes": 723,
+      "sha256": "aa8147f01f2a6898949ca9e5e0040677739fe422f0635151105602c912be3ab6"
+    },
+    {
+      "path": "genesis-proof.json",
+      "bytes": 624,
+      "sha256": "ad3d3a3ae2508c262f960bea25b2a4517b8bc11ef85db35a7d28f5d2fca217ae"
+    },
+    {
+      "path": "preview.png",
+      "bytes": 183151,
+      "sha256": "ee5b7da6bc87a0638f14f8d4747a9e11eb0af045d8731b3475a3e4a5ca4d24c6"
+    },
+    {
+      "path": "studio-unit-tests.log",
+      "bytes": 715,
+      "sha256": "63ce23628cbbe737f7c7150d75e738957a388f7aeb4991a8bcdbbcb2a88e204d"
+    },
+    {
+      "path": "version.txt",
+      "bytes": 1356,
+      "sha256": "b6cb1dadd906e13f19a79f38c816a1b3c6a6845c6947347f46fb902ccd41091a"
+    }
+  ]
+}

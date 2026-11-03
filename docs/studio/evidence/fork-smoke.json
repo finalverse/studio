@@ -1,0 +1,21 @@
+{
+  "schema_version": "finalverse.studio-smoke/v1",
+  "engine_executable": "/Users/wenyan/Finalverse/dev/studio-s0-20261104/install/Finalverse Studio.app/Contents/MacOS/Finalverse Studio",
+  "upstream_version": "5.4.0 Alpha",
+  "built_in_startup_module": true,
+  "product": "Finalverse Studio",
+  "workspace": "Finalverse AI Studio",
+  "checks": {
+    "python_api": true,
+    "workspace": true,
+    "mesh_edit": true,
+    "render": true,
+    "save_reopen_identity": true,
+    "glb_export": true,
+    "source_export": true,
+    "refuse_overwrite": true
+  },
+  "visible_subject_pixels": 42798,
+  "duration_ms": 1671.546124998713,
+  "candidate": "/Users/wenyan/Finalverse/dev/studio-s0-20261104/fork-verified/sample.fvasset"
+}

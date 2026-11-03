@@ -1,0 +1,10 @@
+{
+  "schema_version": "finalverse.cleanup/v1",
+  "removed_merged_worktrees": 66,
+  "github_reachability_receipt": "cleanup-inventory.json",
+  "worktree_receipt": "worktree-cleanup.json",
+  "cache_receipt": "cache-cleanup.json",
+  "repaired_submodule_metadata": "submodule-link-repairs.json",
+  "source_preservation": "E1 source heads and clean status independently verified; no remaining broken submodule links",
+  "notes": "Only verified remote-main ancestors removed. Local branches remain. Dirty/unmerged work, Alpha, active fixture checkouts, accepted private worlds/evidence and retained executables were preserved."
+}

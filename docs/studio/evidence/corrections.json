@@ -1,0 +1,37 @@
+{
+  "schema_version": "finalverse.studio-corrections/v1",
+  "retained_failures": [
+    {
+      "issue": "Incomplete initial clone/index and missing runtime LFS assets",
+      "resolution": "Rebuilt index without touching source; restored missing paths; fetched runtime assets by official upstream LFS pin after GitHub LFS 404."
+    },
+    {
+      "issue": "Old shared submodule administration links affected during merged-checkout cleanup",
+      "resolution": "Rebuilt missing metadata from retained exact source pins; all remaining submodule links validated; no checked-out source bytes changed."
+    },
+    {
+      "issue": "Legacy uiItemL call is not available in the pinned 5.4 API",
+      "resolution": "Used supported uiItemL_ex; full source build passed.",
+      "evidence": "build-first-failure.log"
+    },
+    {
+      "issue": "COPYING points to full GPL text; initial unit assertion expected full text in the pointer file",
+      "resolution": "Verify the actual doc/license/GPL-license.txt; COPY/Authors remain byte-identical to upstream."
+    },
+    {
+      "issue": "First smoke image was empty because fixture parented the camera before updating its matrix",
+      "resolution": "Update dependency graph before preserving the camera world matrix; add an independent visible-subject pixel assertion.",
+      "evidence": "fork-smoke"
+    },
+    {
+      "issue": "Viewport diffuse color did not set the rendered Principled material",
+      "resolution": "Set actual Principled BSDF base color explicitly; retain failed visible-color assertion.",
+      "evidence": "fork-smoke-final"
+    },
+    {
+      "issue": "Visible native app inspection is blocked by locked Mac",
+      "resolution": "User asked to unlock; no unlock bypass or alternate desktop-capture method attempted."
+    }
+  ],
+  "current_free_bytes": 32526733312
+}
