@@ -37,6 +37,7 @@ class CreationLoop:
         safe = ''.join(c if c.isalnum() else '-' for c in name.lower()).strip('-')[:40] or 'asset'
         self.package_path = package_path or f'{safe}.fvpkg'
         self.stage = 'intent'; self.job = None; self.subject = None; self.clips = {}; self.render = None
+        self.bounds = None
         self.ledger = []; self.reports = []; self.finished = False; self.result = None
         self.initial_plan = initial_plan
         self.record('intent', intent=intent, archetype=archetype, name=name, provider=provider, model=model,
@@ -96,6 +97,31 @@ class CreationLoop:
                                                 'summary and operations, following the example format.'})
         self.record('replan', revision=self.revisions, reason=reason[:200])
 
+    def hints(self, failures):
+        """Deterministic, check-specific guidance; the model still writes the plan."""
+        b = self.bounds or {}
+        h = b.get('size', [1, 1, 1])[2]; c = b.get('centre', [0, 0, h/2])
+        out = []
+        for f in failures:
+            fid = f['id']
+            if fid.endswith('.loop_continuity'):
+                clip = fid.split('.', 1)[1].rsplit('.', 1)[0]
+                out.append(f"Re-create clip {clip!r} with action.create using the same name (it replaces the old clip); "
+                           "its last key must repeat its first key exactly.")
+            elif fid == 'preview.viewpoint':
+                out.append(f"Add camera.configure in front of the subject (front is -Y), roughly level: location "
+                           f"[{c[0]:.2f}, {c[1]-max(3, h*3.5):.2f}, {c[2]+h*.15:.2f}], look_at [{c[0]:.2f}, {c[1]:.2f}, {c[2]:.2f}].")
+            elif fid.endswith('.coverage') or fid.endswith('.framing'):
+                out.append(f"Move the camera so the whole subject (about {h:.2f} m tall, centre {[round(x, 2) for x in c]}) "
+                           "fills 10–60% of the frame without touching the edges.")
+            elif fid.endswith('.exposure'):
+                out.append("Adjust light.rig energy or the material emission so the subject is neither black nor white.")
+            elif fid.startswith('clip.') and fid.endswith('.displacement'):
+                out.append("Keep that clip's keys within 0.3 m of the rest position (2 m for locomotion clips).")
+            elif fid == 'plan.valid':
+                out.append('Return ONE JSON object with exactly the keys schema_version, summary and operations.')
+        return out[:12]
+
     def revise(self, failures, reason):
         if self.revisions >= self.max_revisions:
             return self.finish('failed', reason=f'revision budget ({self.max_revisions}) exhausted: {reason}',
@@ -104,7 +130,13 @@ class CreationLoop:
             return self.finish('failed', reason='wall budget exhausted', failures=failures)
         self.revisions += 1; self.stage = 'revise'
         context = {'stage': 'revise', 'archetype': self.archetype, 'revision': self.revisions,
-                   'subject': self.subject, 'clips': self.clips, 'failed_checks': failures[:24], 'reason': reason[:400],
+                   'subject': self.subject, 'subject_bounds': self.bounds, 'clips': self.clips,
+                   'failed_checks': failures[:24], 'reason': reason[:400], 'how_to_fix': self.hints(failures),
+                   'format_example': {'schema_version': SCHEMA_V2, 'summary': 'Fix the preview camera', 'operations': [
+                       {'op': 'camera.configure', 'ref': '@front_cam', 'name': 'Front Camera', 'location': [0, -4, 0.8],
+                        'look_at': [0, 0, 0.6], 'lens': 50},
+                       {'op': 'preview.render', 'path': 'revised-front.png', 'width': 384, 'height': 384,
+                        'samples': 16, 'frame': 1}]},
                    'instruction': 'Return a small finalverse.creation/v2 plan that fixes only the failed checks. '
                                   'Modify existing objects by UUID; do not recreate the subject. If a camera '
                                   'must change, use object.transform on its UUID or add a new camera.configure. '
@@ -145,6 +177,10 @@ class CreationLoop:
                 pass
         previews = sorted(self.host.store.directory(job['id']).glob('previews/step-*/*.png'))
         report = ev.evaluate(scene, subject, self.archetype, clips, previews)
+        size = next((c['measured'] for c in report['checks'] if c['id'] == 'geometry.bounds'), None)
+        if size:
+            loc = list(subject.matrix_world.translation)
+            self.bounds = {'size': size, 'centre': [round(loc[0], 3), round(loc[1], 3), round(loc[2] + size[2]/2, 3)]}
         index = len(self.reports); (self.dir/f'evaluation-{index:02d}.json').write_text(json.dumps(report, indent=2))
         self.reports.append(report['digest'])
         failed = [c for c in report['checks'] if c['gating'] and not c['passed']]

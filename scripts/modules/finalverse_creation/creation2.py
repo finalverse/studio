@@ -399,10 +399,21 @@ def _restore(block, state):
         b = block.pose.bones[name]; b.location, b.rotation_euler, b.scale = values
 
 
-def _stash(block, action, item_like):
-    """Each clip is its own NLA track, so several clips coexist and export separately."""
+def _stash(block, action, item_like, name=None):
+    """Each clip is its own NLA track, so several clips coexist and export separately.
+    A clip name is unique per target: re-creating it replaces the previous clip."""
     ad = block.animation_data
-    track = ad.nla_tracks.new(); track.name = action.name
+    name = name or action.name
+    for old in [t for t in ad.nla_tracks if t.name == name]:
+        stale = [s.action for s in old.strips if s.action]
+        ad.nla_tracks.remove(old)
+        for a in stale:
+            if a is not action:
+                a.use_fake_user = False
+                if a.users == 0:
+                    bpy.data.actions.remove(a)
+    action.name = name
+    track = ad.nla_tracks.new(); track.name = name
     strip = track.strips.new(action.name, int(action.frame_range[0]), action)
     strip.mute = False; track.mute = True
     ad.action = None
@@ -433,7 +444,7 @@ def action_create(scene, item, aliases, rest=None):
     _restore(block, state)
     action[ACTION_ID] = str(uuid.uuid4()); aliases[item['ref']] = action[ACTION_ID]
     _stash(block, action, {'kind': item['kind'], 'locomotion': item['locomotion'], 'loop': item['loop'],
-                           'target': block[OBJECT_ID]})
+                           'target': block[OBJECT_ID]}, item['name'])
     return action, block
 
 
@@ -471,7 +482,7 @@ def action_retarget(scene, item, aliases):
     action[ACTION_ID] = str(uuid.uuid4()); aliases[item['ref']] = action[ACTION_ID]
     meta = {k: source_action.get('finalverse.' + k) for k in ('kind', 'locomotion', 'loop')}
     _stash(target, action, {**meta, 'target': target[OBJECT_ID], 'retargeted_from': source_action[ACTION_ID],
-                            'length_ratio': ratio})
+                            'length_ratio': ratio}, item['name'])
     return action, target, copied
 
 
