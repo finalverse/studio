@@ -1,0 +1,8 @@
+{
+  "cancel_stops_remaining_steps": true,
+  "restart_interrupted_no_duplicate_and_checkpoint_reopened": true,
+  "concurrent_edit_aborts_remaining_steps": true,
+  "stale_approval_refused": true,
+  "provider_child_cancelled": true,
+  "pending_provider_tick_max_seconds": 0.00014474999625235796
+}

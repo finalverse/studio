@@ -24,12 +24,26 @@ not remote attestation against their owner. Do not share a writable workspace wi
 untrusted accounts or treat a `.blend`/add-on as an independently safe executable.
 
 Inference runs in a fixed shipped helper without `bpy`. It receives an environment
-cleared of unrelated credentials and only the selected provider token, if any.
-It has CPU/file/wall limits, HTTP response bounds and no redirect/proxy handling.
-Only loopback may use HTTP; remote inference requires HTTPS plus a referenced
-credential. No credential belongs in a plan, command-line URL or receipt. Prompt
-and scene summaries are sent to the selected provider, so provider selection is a
-data-disclosure choice. No external provider was enabled in this local run.
+cleared of unrelated credentials and, for a provider that uses a key, only that
+provider's key in `FINALVERSE_PROVIDER_SECRET`. It has CPU/file/wall limits, HTTP
+response bounds and no redirect/proxy handling. Only loopback may use HTTP; remote
+inference requires verified HTTPS (TLS 1.2+, hostname checks, bundled certifi CA
+file because the bundled OpenSSL ships no trust store) plus a Keychain credential.
+Prompt and scene summaries are sent to the selected provider, so provider selection
+is a data-disclosure choice. Local Gemma is the default; Maple and every custom
+provider must be switched on by the artist inside Studio.
+
+**Credentials.** API keys live only in the macOS login Keychain as generic
+passwords (service `org.finalverse.studio.provider`, account = provider ID). Studio
+writes and reads them through Security.framework (`SecItemAdd/Update/CopyMatching/
+Delete` via ctypes), so a key never appears in argv, `providers.json`, `.blend`
+data, job inputs/outputs, receipts or logs. `providers.json` may only say
+`"credential": "keychain"`; any other value, including a literal key, is refused.
+Password fields in the Studio dialogs are `SKIP_SAVE`, cleared after use and not
+registered for redo. The Keychain item's access list belongs to the app binary
+that created it, so an unsigned rebuild may ask macOS once before reading an older
+item. Failures record a stable code plus a body-free detail (for example
+`provider_auth_failed (HTTP 401)`); response bodies are never kept.
 
 Preview rendering uses a fixed shipped script and `--disable-autoexec`, two Blender
 threads, a 60-second wall/CPU limit, 1 GiB aggregate process RSS limit, 128 MiB

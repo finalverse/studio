@@ -21,17 +21,56 @@ This follows upstream's [Python threading warning](../../doc/python_api/rst/info
 
 ## Providers
 
-The trusted workspace `providers.json` has schema `finalverse.providers/v1`:
+The trusted workspace `providers.json` has schema `finalverse.providers/v2`
+(S1 v1 files are migrated in place; they never held secrets). Fresh workspaces get:
 
 ```json
 {
-  "schema_version": "finalverse.providers/v1",
-  "providers": [{
-    "id": "local", "kind": "ollama", "base_url": "http://127.0.0.1:11434",
-    "token_env": null, "timeout_seconds": 120, "enabled": true
-  }]
+  "schema_version": "finalverse.providers/v2",
+  "providers": [
+    {"id": "local", "label": "Local Gemma (Ollama)", "preset": "local", "kind": "ollama",
+     "base_url": "http://127.0.0.1:11434", "model": "gemma4:e4b", "credential": null,
+     "timeout_seconds": 120, "enabled": true},
+    {"id": "maple", "label": "Maple (studio.finalverse.com)", "preset": "maple", "kind": "ollama",
+     "base_url": "https://studio.finalverse.com", "model": null, "credential": "keychain",
+     "timeout_seconds": 60, "enabled": false}
+  ]
 }
 ```
+
+`kind` is `ollama`, `openai_compatible` or `anthropic`. `credential` is `null`
+(loopback only) or `"keychain"`; the key itself is in the macOS Keychain (see
+[security](S1-SECURITY.md)). At most eight profiles; `local` cannot be removed or
+turned off; the Maple preset's URL is fixed to `https://studio.finalverse.com`.
+
+### Switching providers in Studio
+
+The Finalverse sidebar lists every profile (disabled ones are marked `· off`).
+For the selected profile it shows On/Off, kind and URL, Keychain key status, and
+**Turn On / Turn Off**, **Set Key**, delete-key, and for custom profiles **Edit** and
+**Remove**. **Add Custom AI Provider…** asks for name, API type, base URL, model,
+timeout and API key. Remote URLs must be HTTPS and need a key; loopback servers may
+omit one. A disabled provider, or one whose key is missing, is refused before any
+network request.
+
+### One path for every provider
+
+Every provider goes through the same isolated helper, the same strict JSON parse
+and closed-schema validation, the same Proposed → exact-approval → bounded
+execution path and the same receipts (now with `provider_kind`, `provider_preset`,
+`endpoint_host` and `admission`). The same memory admission rule runs before
+every generation: a loopback endpoint loads weights on this Mac, so it must report
+the model's size and stay within 65% of physical memory, otherwise it is refused
+(`provider_admission_refused`). A remote endpoint is admitted with the recorded
+basis "no model weights loaded on this Mac". As a result, a loopback
+OpenAI-compatible server that does not report sizes, such as Ollama's `/v1`, can
+list models but cannot plan. Use the Ollama kind for local Ollama.
+
+Failure codes: `provider_disabled`, `provider_credential_missing`,
+`provider_unreachable` (DNS, refused, other socket errors), `provider_timeout`,
+`provider_tls_failed`, `provider_auth_failed` (HTTP 401/403),
+`provider_endpoint_not_found`, `provider_rate_limited`, `provider_http_error`,
+`provider_bad_response`, `provider_admission_refused`, `provider_failure`.
 
 The default is local Ollama. `/api/tags` inventories real model names and sizes;
 loopback Ollama requests reject missing size metadata or weights exceeding 65% of
@@ -51,11 +90,19 @@ generation bounds, not a guarantee of deterministic inference or valid semantics
 See official [chat API](https://docs.ollama.com/api/chat) and
 [structured outputs](https://docs.ollama.com/capabilities/structured-outputs).
 
-An authenticated Maple Ollama gateway uses the same `ollama` adapter. Add a profile
-such as `id=maple`, HTTPS `base_url`, and `token_env=FINALVERSE_MAPLE_TOKEN`.
-Remote HTTP, embedded credentials, missing credential references and redirects
-are rejected. The helper receives only that selected credential. The user selected
-**local models for now**; no Maple endpoint or remote gateway was contacted.
+Maple is configured as an authenticated Ollama-protocol gateway at
+`https://studio.finalverse.com` (Bearer key from the Keychain). It ships **off**.
+On 2026-11-04 `studio.finalverse.com` did not resolve (NXDOMAIN), so only its
+error path was exercised: off → refused locally; on without key → refused
+locally; on with key → `provider_unreachable` (DNS) in about 0.13 s, with no fallback
+and no job created. If Maple turns out to serve the OpenAI-compatible protocol,
+change its kind in the registry; the URL stays fixed. Remote HTTP, embedded
+credentials, literal keys and redirects are rejected.
+
+`anthropic` uses `<base_url>/v1/models` and `/v1/messages` with `x-api-key` and
+`anthropic-version: 2023-06-01`, temperature 0 and 2,304 max tokens. It relies on
+the prompt plus local schema validation, not a provider-side schema feature.
+Fenced or non-JSON replies are rejected, not repaired.
 
 `openai_compatible` uses `<base_url>/models` and `/chat/completions` with
 `response_format.type=json_schema`. Include the endpoint's `/v1` in its configured
