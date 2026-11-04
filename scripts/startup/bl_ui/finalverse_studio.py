@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2026 Finalverse Authors
 # SPDX-License-Identifier: GPL-2.0-or-later
-"""S0 authoring UI. Human-operated local tools; no inference or world authority."""
+"""Studio authoring UI; model proposals share the S1 validated creation bridge."""
 import hashlib
 import json
 import os
@@ -12,6 +12,7 @@ from bpy.app.handlers import persistent
 from bpy.props import StringProperty
 from bpy.types import Operator, Panel
 from bpy_extras.io_utils import ExportHelper
+from finalverse_creation import ui as creation_ui
 
 PRODUCT = "Finalverse Studio"
 WORKSPACE = "Finalverse AI Studio"
@@ -113,7 +114,7 @@ class FINALVERSE_PT_studio(Panel):
     def draw(self, context):
         layout = self.layout
         layout.label(text="Create. Animate. Author worlds.")
-        layout.label(text="Based on Blender · S0 development", icon='INFO')
+        layout.label(text="Based on Blender · S1 development", icon='INFO')
         layout.separator()
         layout.operator("finalverse.inspect_scene", icon='VIEWZOOM')
         layout.label(text=f"Scene: {len(context.scene.objects)} objects")
@@ -121,11 +122,7 @@ class FINALVERSE_PT_studio(Panel):
         layout.operator("wm.save_as_mainfile", text="Save Project…", icon='FILE_TICK')
         layout.operator("finalverse.export_candidate", icon='EXPORT')
         layout.separator()
-        future = layout.column()
-        future.enabled = False
-        future.label(text="AI assistant · S1")
-        future.label(text="Provider / model selection · S1")
-        future.label(text="MCP agent connection · S1")
+        creation_ui.draw(layout, context)
         layout.label(text="Publication: candidate export only", icon='LOCKED')
         entries = json.loads(context.scene.get("finalverse.creation_history", "[]"))
         layout.label(text=f"Creation history: {len(entries)} local receipts")
@@ -151,13 +148,15 @@ def _load_workspace(_dummy):
 
 
 def register_workspace():
+    creation_ui.register()
     if _load_workspace not in bpy.app.handlers.load_post:
         bpy.app.handlers.load_post.append(_load_workspace)
 
 
 def unregister_workspace():
+    creation_ui.unregister()
     if _load_workspace in bpy.app.handlers.load_post:
         bpy.app.handlers.load_post.remove(_load_workspace)
 
 
-classes = (FINALVERSE_OT_inspect, FINALVERSE_OT_export, FINALVERSE_PT_studio)
+classes = (FINALVERSE_OT_inspect, FINALVERSE_OT_export, FINALVERSE_PT_studio, *creation_ui.classes)

@@ -2,6 +2,7 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 """Studio identity derived from the user's approved white Finalverse emblem."""
 from pathlib import Path
+import json
 import subprocess
 from PIL import Image, ImageDraw, ImageFont
 
@@ -80,5 +81,6 @@ d.text((110,182),'Finalverse',font=ImageFont.truetype(bold,108),fill='#ffffff')
 tracking(d,(117,324),'STUDIO',66,24,'#ffffff')
 d.line([(117,450),(445,450)],fill='#ad98ed',width=5)
 d.text((117,500),'Create. Animate. Author worlds.',font=ImageFont.truetype(font,31),fill='#c0bfd5')
-d.text((117,690),'Based on Blender  ·  Open source  ·  S0 development',font=ImageFont.truetype(font,22),fill='#9b9bb4')
+stage=json.loads((root.parent/'product.json').read_text())['stage']
+d.text((117,690),'Based on Blender  ·  Open source  ·  '+stage,font=ImageFont.truetype(font,22),fill='#9b9bb4')
 im.save(root/'splash.png');im.save(root.parents[1]/'release/datafiles/splash.png')

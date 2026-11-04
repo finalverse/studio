@@ -1,0 +1,2 @@
+# External MCP host only; the Studio application needs no pip dependencies.
+mcp==1.23.3
