@@ -118,3 +118,6 @@ release/datafiles/splash.png -filter -diff -merge
 # Local acceptance screenshots must be readable without a private LFS upload.
 docs/studio/evidence/*.png -filter -diff -merge
 docs/studio/evidence/s1/*.png -filter -diff -merge
+
+# Fork-owned screenshots are ordinary Git blobs, including nested evidence.
+docs/studio/evidence/**/*.png -filter -diff -merge
