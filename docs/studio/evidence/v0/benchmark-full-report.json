@@ -1,0 +1,684 @@
+{
+  "all_visible": true,
+  "animation_ms": {
+    "max": 81.351917,
+    "p50": 5.479917,
+    "p95": 5.861833000000001
+  },
+  "bodies": true,
+  "experience": "Finalverse E1 — The Gathering of the Founding Beings",
+  "flat_body_material": false,
+  "focus": null,
+  "frame_wall_ms": {
+    "max": 114.596458,
+    "p50": 23.999125,
+    "p95": 26.150875
+  },
+  "frames": 600,
+  "gpu_ms": {
+    "max": 5.151041,
+    "p50": 2.526958,
+    "p95": 4.683458
+  },
+  "hardware": {
+    "backend": "Metal",
+    "name": "Apple M1"
+  },
+  "identity_count": 7,
+  "limitations": "Recorded authoritative scene playback; bounded CPU anatomy posing; procedural clips, no baked Blender animation; caption/chime events, no audible voice; shader cost estimated by paired GPU controls; sampled RSS and requested assets do not include all driver allocations",
+  "measurement_wall_ms": 14476.378833,
+  "model_calls": 0,
+  "particle_prepare_ms": {
+    "max": 0.071542,
+    "p50": 0.005125,
+    "p95": 0.008542000000000001
+  },
+  "particles": true,
+  "peak_draw_calls": 159,
+  "peak_particles": 28,
+  "peak_requested_gpu_asset_bytes": 8177744,
+  "peak_triangles": 28548,
+  "projection_playback_sha256": "0e99fab32f1e4b8be694670f1ce959751d54dd9bc5ec2839e1088044290559a0",
+  "publication_manifest_sha256": "89c09a2cbd9efcc4f9b1470f190b2ef233c593f67e85a7078c96796772b2fa7a",
+  "render_cpu_ms": {
+    "max": 42.464166999999996,
+    "p50": 17.102084,
+    "p95": 18.011625
+  },
+  "sampled_peak_rss_bytes": 71860224,
+  "samples": [
+    {
+      "actors": [
+        {
+          "body": "f1abee2f5715a1e0c39b966c7997fc40f4d6fd1f22ae8acb6346e2169d954b7e",
+          "entity": "1966be87-ef1c-8e78-8e39-96405407060a",
+          "expression": "greet",
+          "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+          "lod": 0,
+          "pose_geometry_sha256": "d6fde6066d138ee0bcb1a696cf99d08993d625b63e8264eb7a74e51529afd0f5",
+          "position_eus_m": [
+            6.0,
+            0.8229375000000001,
+            9.0
+          ]
+        },
+        {
+          "body": "25f3afa6284222a8de9c76e3f6fb224c2725f2936d4ca655097dbb6bc41f24c8",
+          "entity": "2a6b902b-653f-8142-a8b5-3dcedc56cae4",
+          "expression": "greet",
+          "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+          "lod": 0,
+          "pose_geometry_sha256": "f2036727151dd84da1d46e08a85d7edeeef9072b5a95fc23469c7b1f46c1af87",
+          "position_eus_m": [
+            1.1999999999999886,
+            2.1914375000000006,
+            9.0
+          ]
+        },
+        {
+          "body": "7081a95655c5cebe48990654c40280b60c66b8004786ea2ba4ac7c3e0150c00e",
+          "entity": "97c39d97-b430-8b03-9914-6a412a9d9afd",
+          "expression": "greet",
+          "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+          "lod": 0,
+          "pose_geometry_sha256": "f5eba239ca9a657208633c28471d2c821004075593e818f9058ea97c0772c04c",
+          "position_eus_m": [
+            -5.349999999999994,
+            2.7160625,
+            9.0
+          ]
+        },
+        {
+          "body": "412d8c8da4a561e14fa953285d5a46a1a9d8ced9302c10bf1f5f18d4c69d4b65",
+          "entity": "9af7e6e5-6505-879b-9274-941e07a34467",
+          "expression": "greet",
+          "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+          "lod": 0,
+          "pose_geometry_sha256": "fa206fe9048aba8311d1ad9ada88ec009523013bb6c25637e6877434b52f25bc",
+          "position_eus_m": [
+            -6.0,
+            1.1960625,
+            9.0
+          ]
+        },
+        {
+          "body": "335e359862e4f85667bfd946a6e256d9f77e59fc3f89b23017a71001b2d224a1",
+          "entity": "b67b77b0-aab5-85f5-8a32-a3c749bad5d7",
+          "expression": "greet",
+          "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+          "lod": 0,
+          "pose_geometry_sha256": "9b72397aae4cd45f81465f0c40b28c9a33b8226de033055d63eb5769f09d48f3",
+          "position_eus_m": [
+            3.6000000000000227,
+            0.9721874999999985,
+            9.0
+          ]
+        },
+        {
+          "body": "b10a5ba709e0b694d0f0964b85f6734f5594d277ad23ad9e5d358a10efc7bfb6",
+          "entity": "ccb73aa7-798b-85c4-9712-03287c548dea",
+          "expression": "greet",
+          "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+          "lod": 0,
+          "pose_geometry_sha256": "19815446da39fccfe301609c30597265d3e0c9fb2f349cc5cb882a87aff9f84f",
+          "position_eus_m": [
+            -1.1999999999999886,
+            1.1960625,
+            9.0
+          ]
+        },
+        {
+          "body": "95279396de51946b2a830afe224b7877f42bab63ceb6305e371e2cbba11823ee",
+          "entity": "8d86ae8f-9778-8225-b0a3-95b7596e394c",
+          "expression": "greet",
+          "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+          "lod": 0,
+          "pose_geometry_sha256": "3a9678d1b6b2161166acc359dab00fe11bcf9aae01ff4cbb29575738723b627d",
+          "position_eus_m": [
+            -3.5999999999999943,
+            1.1960625,
+            9.0
+          ]
+        }
+      ],
+      "iteration": 120,
+      "visible": [
+        {
+          "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+          "pixels": 3543
+        },
+        {
+          "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+          "pixels": 1173
+        },
+        {
+          "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+          "pixels": 90
+        },
+        {
+          "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+          "pixels": 2118
+        },
+        {
+          "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+          "pixels": 9272
+        },
+        {
+          "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+          "pixels": 1984
+        },
+        {
+          "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+          "pixels": 1979
+        }
+      ]
+    },
+    {
+      "actors": [
+        {
+          "body": "f1abee2f5715a1e0c39b966c7997fc40f4d6fd1f22ae8acb6346e2169d954b7e",
+          "entity": "1966be87-ef1c-8e78-8e39-96405407060a",
+          "expression": "observe",
+          "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+          "lod": 0,
+          "pose_geometry_sha256": "d6fde6066d138ee0bcb1a696cf99d08993d625b63e8264eb7a74e51529afd0f5",
+          "position_eus_m": [
+            6.0,
+            0.8229375000000001,
+            9.0
+          ]
+        },
+        {
+          "body": "25f3afa6284222a8de9c76e3f6fb224c2725f2936d4ca655097dbb6bc41f24c8",
+          "entity": "2a6b902b-653f-8142-a8b5-3dcedc56cae4",
+          "expression": "observe",
+          "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+          "lod": 0,
+          "pose_geometry_sha256": "18de3bc6feaee9e2da31154de8aa72ff997773a3a4cf3495a3767476e9e51b86",
+          "position_eus_m": [
+            1.1999999999999886,
+            2.1914375000000006,
+            9.0
+          ]
+        },
+        {
+          "body": "7081a95655c5cebe48990654c40280b60c66b8004786ea2ba4ac7c3e0150c00e",
+          "entity": "97c39d97-b430-8b03-9914-6a412a9d9afd",
+          "expression": "observe",
+          "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+          "lod": 0,
+          "pose_geometry_sha256": "f5eba239ca9a657208633c28471d2c821004075593e818f9058ea97c0772c04c",
+          "position_eus_m": [
+            -5.349999999999994,
+            2.7160625,
+            9.0
+          ]
+        },
+        {
+          "body": "412d8c8da4a561e14fa953285d5a46a1a9d8ced9302c10bf1f5f18d4c69d4b65",
+          "entity": "9af7e6e5-6505-879b-9274-941e07a34467",
+          "expression": "observe",
+          "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+          "lod": 0,
+          "pose_geometry_sha256": "fa206fe9048aba8311d1ad9ada88ec009523013bb6c25637e6877434b52f25bc",
+          "position_eus_m": [
+            -6.0,
+            1.1960625,
+            9.0
+          ]
+        },
+        {
+          "body": "335e359862e4f85667bfd946a6e256d9f77e59fc3f89b23017a71001b2d224a1",
+          "entity": "b67b77b0-aab5-85f5-8a32-a3c749bad5d7",
+          "expression": "observe",
+          "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+          "lod": 0,
+          "pose_geometry_sha256": "262d2cf1c5b7b84b4e6d99b53615b84f7c4500e66c867cb455d84afd7b1acd3f",
+          "position_eus_m": [
+            3.6000000000000227,
+            0.9721874999999985,
+            9.0
+          ]
+        },
+        {
+          "body": "b10a5ba709e0b694d0f0964b85f6734f5594d277ad23ad9e5d358a10efc7bfb6",
+          "entity": "ccb73aa7-798b-85c4-9712-03287c548dea",
+          "expression": "observe",
+          "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+          "lod": 0,
+          "pose_geometry_sha256": "19815446da39fccfe301609c30597265d3e0c9fb2f349cc5cb882a87aff9f84f",
+          "position_eus_m": [
+            -1.1999999999999886,
+            1.1960625,
+            9.0
+          ]
+        },
+        {
+          "body": "95279396de51946b2a830afe224b7877f42bab63ceb6305e371e2cbba11823ee",
+          "entity": "8d86ae8f-9778-8225-b0a3-95b7596e394c",
+          "expression": "observe",
+          "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+          "lod": 0,
+          "pose_geometry_sha256": "3a9678d1b6b2161166acc359dab00fe11bcf9aae01ff4cbb29575738723b627d",
+          "position_eus_m": [
+            -3.5999999999999943,
+            1.1960625,
+            9.0
+          ]
+        }
+      ],
+      "iteration": 240,
+      "visible": [
+        {
+          "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+          "pixels": 3834
+        },
+        {
+          "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+          "pixels": 1186
+        },
+        {
+          "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+          "pixels": 93
+        },
+        {
+          "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+          "pixels": 2221
+        },
+        {
+          "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+          "pixels": 9569
+        },
+        {
+          "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+          "pixels": 2063
+        },
+        {
+          "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+          "pixels": 2112
+        }
+      ]
+    },
+    {
+      "actors": [
+        {
+          "body": "f1abee2f5715a1e0c39b966c7997fc40f4d6fd1f22ae8acb6346e2169d954b7e",
+          "entity": "1966be87-ef1c-8e78-8e39-96405407060a",
+          "expression": "locomote",
+          "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+          "lod": 0,
+          "pose_geometry_sha256": "d6fde6066d138ee0bcb1a696cf99d08993d625b63e8264eb7a74e51529afd0f5",
+          "position_eus_m": [
+            6.199999999999989,
+            0.8229375000000001,
+            9.0
+          ]
+        },
+        {
+          "body": "25f3afa6284222a8de9c76e3f6fb224c2725f2936d4ca655097dbb6bc41f24c8",
+          "entity": "2a6b902b-653f-8142-a8b5-3dcedc56cae4",
+          "expression": "observe",
+          "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+          "lod": 0,
+          "pose_geometry_sha256": "2c1928c5dead98c4aff0e513d9b4e65b0add5cbe5ff9769a9d2f40d3b8eb0b4f",
+          "position_eus_m": [
+            1.1999999999999886,
+            2.1914375000000006,
+            9.0
+          ]
+        },
+        {
+          "body": "7081a95655c5cebe48990654c40280b60c66b8004786ea2ba4ac7c3e0150c00e",
+          "entity": "97c39d97-b430-8b03-9914-6a412a9d9afd",
+          "expression": "locomote",
+          "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+          "lod": 0,
+          "pose_geometry_sha256": "f5eba239ca9a657208633c28471d2c821004075593e818f9058ea97c0772c04c",
+          "position_eus_m": [
+            -5.150000000000006,
+            2.7160625,
+            9.0
+          ]
+        },
+        {
+          "body": "412d8c8da4a561e14fa953285d5a46a1a9d8ced9302c10bf1f5f18d4c69d4b65",
+          "entity": "9af7e6e5-6505-879b-9274-941e07a34467",
+          "expression": "locomote",
+          "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+          "lod": 0,
+          "pose_geometry_sha256": "fa206fe9048aba8311d1ad9ada88ec009523013bb6c25637e6877434b52f25bc",
+          "position_eus_m": [
+            -5.800000000000011,
+            1.1960625,
+            9.0
+          ]
+        },
+        {
+          "body": "335e359862e4f85667bfd946a6e256d9f77e59fc3f89b23017a71001b2d224a1",
+          "entity": "b67b77b0-aab5-85f5-8a32-a3c749bad5d7",
+          "expression": "locomote",
+          "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+          "lod": 0,
+          "pose_geometry_sha256": "0824892d5dc02951b7c773e5d90a522c619f57da6120156080e37915c8d87dcc",
+          "position_eus_m": [
+            3.6200000000000045,
+            0.9721874999999985,
+            9.0
+          ]
+        },
+        {
+          "body": "b10a5ba709e0b694d0f0964b85f6734f5594d277ad23ad9e5d358a10efc7bfb6",
+          "entity": "ccb73aa7-798b-85c4-9712-03287c548dea",
+          "expression": "locomote",
+          "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+          "lod": 0,
+          "pose_geometry_sha256": "19815446da39fccfe301609c30597265d3e0c9fb2f349cc5cb882a87aff9f84f",
+          "position_eus_m": [
+            -1.0,
+            1.1960625,
+            9.0
+          ]
+        },
+        {
+          "body": "95279396de51946b2a830afe224b7877f42bab63ceb6305e371e2cbba11823ee",
+          "entity": "8d86ae8f-9778-8225-b0a3-95b7596e394c",
+          "expression": "locomote",
+          "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+          "lod": 0,
+          "pose_geometry_sha256": "3a9678d1b6b2161166acc359dab00fe11bcf9aae01ff4cbb29575738723b627d",
+          "position_eus_m": [
+            -3.4000000000000057,
+            1.1960625,
+            9.0
+          ]
+        }
+      ],
+      "iteration": 360,
+      "visible": [
+        {
+          "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+          "pixels": 3586
+        },
+        {
+          "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+          "pixels": 1168
+        },
+        {
+          "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+          "pixels": 97
+        },
+        {
+          "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+          "pixels": 2223
+        },
+        {
+          "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+          "pixels": 9315
+        },
+        {
+          "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+          "pixels": 2011
+        },
+        {
+          "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+          "pixels": 2083
+        }
+      ]
+    },
+    {
+      "actors": [
+        {
+          "body": "f1abee2f5715a1e0c39b966c7997fc40f4d6fd1f22ae8acb6346e2169d954b7e",
+          "entity": "1966be87-ef1c-8e78-8e39-96405407060a",
+          "expression": "locomote",
+          "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+          "lod": 0,
+          "pose_geometry_sha256": "d6fde6066d138ee0bcb1a696cf99d08993d625b63e8264eb7a74e51529afd0f5",
+          "position_eus_m": [
+            6.199999999999989,
+            0.8229375000000001,
+            9.0
+          ]
+        },
+        {
+          "body": "25f3afa6284222a8de9c76e3f6fb224c2725f2936d4ca655097dbb6bc41f24c8",
+          "entity": "2a6b902b-653f-8142-a8b5-3dcedc56cae4",
+          "expression": "locomote",
+          "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+          "lod": 0,
+          "pose_geometry_sha256": "f65eb65e63853b79fd99e39f5d698d0430353cc7fc4a4bf4ed8ae1776c00c3b1",
+          "position_eus_m": [
+            1.1999999999999886,
+            2.6914375000000006,
+            9.0
+          ]
+        },
+        {
+          "body": "7081a95655c5cebe48990654c40280b60c66b8004786ea2ba4ac7c3e0150c00e",
+          "entity": "97c39d97-b430-8b03-9914-6a412a9d9afd",
+          "expression": "locomote",
+          "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+          "lod": 0,
+          "pose_geometry_sha256": "f5eba239ca9a657208633c28471d2c821004075593e818f9058ea97c0772c04c",
+          "position_eus_m": [
+            -5.150000000000006,
+            2.7160625,
+            9.0
+          ]
+        },
+        {
+          "body": "412d8c8da4a561e14fa953285d5a46a1a9d8ced9302c10bf1f5f18d4c69d4b65",
+          "entity": "9af7e6e5-6505-879b-9274-941e07a34467",
+          "expression": "locomote",
+          "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+          "lod": 0,
+          "pose_geometry_sha256": "fa206fe9048aba8311d1ad9ada88ec009523013bb6c25637e6877434b52f25bc",
+          "position_eus_m": [
+            -5.800000000000011,
+            1.1960625,
+            9.0
+          ]
+        },
+        {
+          "body": "335e359862e4f85667bfd946a6e256d9f77e59fc3f89b23017a71001b2d224a1",
+          "entity": "b67b77b0-aab5-85f5-8a32-a3c749bad5d7",
+          "expression": "locomote",
+          "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+          "lod": 0,
+          "pose_geometry_sha256": "99f778f9a12c835d3bcb7070c0ea2068d0ac32ee9e415abd41c4c286e8d6b326",
+          "position_eus_m": [
+            3.6200000000000045,
+            0.9721874999999985,
+            9.0
+          ]
+        },
+        {
+          "body": "b10a5ba709e0b694d0f0964b85f6734f5594d277ad23ad9e5d358a10efc7bfb6",
+          "entity": "ccb73aa7-798b-85c4-9712-03287c548dea",
+          "expression": "locomote",
+          "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+          "lod": 0,
+          "pose_geometry_sha256": "19815446da39fccfe301609c30597265d3e0c9fb2f349cc5cb882a87aff9f84f",
+          "position_eus_m": [
+            -1.0,
+            1.1960625,
+            9.0
+          ]
+        },
+        {
+          "body": "95279396de51946b2a830afe224b7877f42bab63ceb6305e371e2cbba11823ee",
+          "entity": "8d86ae8f-9778-8225-b0a3-95b7596e394c",
+          "expression": "locomote",
+          "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+          "lod": 0,
+          "pose_geometry_sha256": "3a9678d1b6b2161166acc359dab00fe11bcf9aae01ff4cbb29575738723b627d",
+          "position_eus_m": [
+            -3.4000000000000057,
+            1.1960625,
+            9.0
+          ]
+        }
+      ],
+      "iteration": 480,
+      "visible": [
+        {
+          "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+          "pixels": 3970
+        },
+        {
+          "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+          "pixels": 1202
+        },
+        {
+          "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+          "pixels": 90
+        },
+        {
+          "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+          "pixels": 2139
+        },
+        {
+          "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+          "pixels": 9335
+        },
+        {
+          "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+          "pixels": 2036
+        },
+        {
+          "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+          "pixels": 2064
+        }
+      ]
+    },
+    {
+      "actors": [
+        {
+          "body": "f1abee2f5715a1e0c39b966c7997fc40f4d6fd1f22ae8acb6346e2169d954b7e",
+          "entity": "1966be87-ef1c-8e78-8e39-96405407060a",
+          "expression": "idle",
+          "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+          "lod": 0,
+          "pose_geometry_sha256": "d6fde6066d138ee0bcb1a696cf99d08993d625b63e8264eb7a74e51529afd0f5",
+          "position_eus_m": [
+            6.0,
+            0.8229375000000001,
+            9.0
+          ]
+        },
+        {
+          "body": "25f3afa6284222a8de9c76e3f6fb224c2725f2936d4ca655097dbb6bc41f24c8",
+          "entity": "2a6b902b-653f-8142-a8b5-3dcedc56cae4",
+          "expression": "idle",
+          "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+          "lod": 0,
+          "pose_geometry_sha256": "34b920f460f103a0c376b1c6abbf429c6f73ab265ff1dd291eaa9ff3918b010d",
+          "position_eus_m": [
+            1.1999999999999886,
+            2.1914375000000006,
+            9.0
+          ]
+        },
+        {
+          "body": "7081a95655c5cebe48990654c40280b60c66b8004786ea2ba4ac7c3e0150c00e",
+          "entity": "97c39d97-b430-8b03-9914-6a412a9d9afd",
+          "expression": "idle",
+          "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+          "lod": 0,
+          "pose_geometry_sha256": "f5eba239ca9a657208633c28471d2c821004075593e818f9058ea97c0772c04c",
+          "position_eus_m": [
+            -5.349999999999994,
+            2.7160625,
+            9.0
+          ]
+        },
+        {
+          "body": "412d8c8da4a561e14fa953285d5a46a1a9d8ced9302c10bf1f5f18d4c69d4b65",
+          "entity": "9af7e6e5-6505-879b-9274-941e07a34467",
+          "expression": "idle",
+          "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+          "lod": 0,
+          "pose_geometry_sha256": "fa206fe9048aba8311d1ad9ada88ec009523013bb6c25637e6877434b52f25bc",
+          "position_eus_m": [
+            -6.0,
+            1.1960625,
+            9.0
+          ]
+        },
+        {
+          "body": "335e359862e4f85667bfd946a6e256d9f77e59fc3f89b23017a71001b2d224a1",
+          "entity": "b67b77b0-aab5-85f5-8a32-a3c749bad5d7",
+          "expression": "idle",
+          "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+          "lod": 0,
+          "pose_geometry_sha256": "7d6f1ecd56ded191c3cb06a08d8cdab591a9f3eeec2115a77525af734cb56eb6",
+          "position_eus_m": [
+            3.6000000000000227,
+            0.9721874999999985,
+            9.0
+          ]
+        },
+        {
+          "body": "b10a5ba709e0b694d0f0964b85f6734f5594d277ad23ad9e5d358a10efc7bfb6",
+          "entity": "ccb73aa7-798b-85c4-9712-03287c548dea",
+          "expression": "idle",
+          "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+          "lod": 0,
+          "pose_geometry_sha256": "19815446da39fccfe301609c30597265d3e0c9fb2f349cc5cb882a87aff9f84f",
+          "position_eus_m": [
+            -1.1999999999999886,
+            1.1960625,
+            9.0
+          ]
+        },
+        {
+          "body": "95279396de51946b2a830afe224b7877f42bab63ceb6305e371e2cbba11823ee",
+          "entity": "8d86ae8f-9778-8225-b0a3-95b7596e394c",
+          "expression": "idle",
+          "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+          "lod": 0,
+          "pose_geometry_sha256": "3a9678d1b6b2161166acc359dab00fe11bcf9aae01ff4cbb29575738723b627d",
+          "position_eus_m": [
+            -3.5999999999999943,
+            1.1960625,
+            9.0
+          ]
+        }
+      ],
+      "iteration": 600,
+      "visible": [
+        {
+          "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+          "pixels": 3864
+        },
+        {
+          "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+          "pixels": 1181
+        },
+        {
+          "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+          "pixels": 93
+        },
+        {
+          "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+          "pixels": 2224
+        },
+        {
+          "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+          "pixels": 9342
+        },
+        {
+          "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+          "pixels": 2062
+        },
+        {
+          "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+          "pixels": 2117
+        }
+      ]
+    }
+  ],
+  "schema_version": "finalverse.e1-native/v1",
+  "warmup_frames": 100,
+  "within_budget_p95": true
+}
