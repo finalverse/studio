@@ -16,6 +16,6 @@ def timeout(_signal, _frame):
 
 
 signal.signal(signal.SIGALRM, timeout)
-signal.alarm(120)
+signal.alarm(305)
 from finalverse_creation.providers import main
 main()

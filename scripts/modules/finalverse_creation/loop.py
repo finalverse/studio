@@ -83,6 +83,19 @@ class CreationLoop:
                         context={'stage': 'plan', 'archetype': self.archetype, 'loop': self.id})
         self.record('plan', request='initial')
 
+    def replan(self, failures, reason):
+        """Nothing has executed yet: retry the original intent with the rejection reason (counts as a revision)."""
+        if self.revisions >= self.max_revisions:
+            return self.finish('failed', reason=f'revision budget ({self.max_revisions}) exhausted: {reason}',
+                               failures=failures)
+        self.revisions += 1; self.stage = 'plan'
+        self.host.infer(self.provider, 'plan', self.model, self.plan_prompt(), language='v2',
+                        context={'stage': 'plan', 'archetype': self.archetype, 'loop': self.id, 'attempt': self.revisions + 1,
+                                 'previous_attempt_rejected': reason[:400],
+                                 'instruction': 'Return one complete JSON object with exactly the keys schema_version, '
+                                                'summary and operations, following the example format.'})
+        self.record('replan', revision=self.revisions, reason=reason[:200])
+
     def revise(self, failures, reason):
         if self.revisions >= self.max_revisions:
             return self.finish('failed', reason=f'revision budget ({self.max_revisions}) exhausted: {reason}',
@@ -168,8 +181,11 @@ class CreationLoop:
             else:
                 error = result.get('error') or 'no plan'
                 self.record('plan_failed', error=error, detail=result.get('detail'))
-                self.revise([{'id': 'plan.valid', 'measured': str(error)[:300], 'limit': 'valid v2 plan'}],
-                            'previous plan was rejected: ' + str(error)[:300])
+                failure = [{'id': 'plan.valid', 'measured': str(error)[:300], 'limit': 'valid v2 plan'}]
+                if self.subject is None:
+                    self.replan(failure, 'previous plan was rejected: ' + str(error)[:300])
+                else:
+                    self.revise(failure, 'previous plan was rejected: ' + str(error)[:300])
             return
         if self.stage in ('proposed', 'export_proposed', 'executing', 'exporting'):
             job = host.store.get(self.job)

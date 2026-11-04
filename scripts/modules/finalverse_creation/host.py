@@ -221,7 +221,7 @@ class Host:
     def _tick(self):
         if self.inference:
             pending = self.inference; process = pending['process']
-            if time.monotonic()-pending['started'] > 122:
+            if time.monotonic()-pending['started'] > 308:
                 stop(process); self.inference = None; self.message = 'Provider timed out; no fallback used'
             elif process.poll() is not None:
                 self.inference = None

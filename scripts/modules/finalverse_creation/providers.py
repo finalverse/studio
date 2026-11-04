@@ -43,7 +43,7 @@ def defaults():
     return {'schema_version': 'finalverse.providers/v2', 'providers': [
         {'id': 'local', 'label': 'Local Gemma (Ollama)', 'preset': 'local', 'kind': 'ollama',
          'base_url': 'http://127.0.0.1:11434', 'model': 'gemma4:e4b', 'credential': None,
-         'timeout_seconds': 120, 'enabled': True},
+         'timeout_seconds': 300, 'enabled': True},
         {'id': 'maple', 'label': 'Maple (studio.finalverse.com)', 'preset': 'maple', 'kind': 'ollama',
          'base_url': MAPLE_URL, 'model': None, 'credential': 'keychain',
          'timeout_seconds': 60, 'enabled': False}]}
@@ -76,8 +76,8 @@ def profile(value):
         raise CreationError("The local preset must use a loopback address")
     if value['preset'] == 'maple' and value['base_url'].rstrip('/') != MAPLE_URL:
         raise CreationError("The Maple preset is fixed to " + MAPLE_URL)
-    if type(value['timeout_seconds']) not in (int, float) or not 2 <= value['timeout_seconds'] <= 120:
-        raise CreationError("Provider timeout must be 2–120 seconds")
+    if type(value['timeout_seconds']) not in (int, float) or not 2 <= value['timeout_seconds'] <= 300:
+        raise CreationError("Provider timeout must be 2–300 seconds")
     return value
 
 
@@ -328,6 +328,8 @@ Floating spirits and sprites have no skeleton, no legs and never walk: animate t
 with hover/drift/fly clips. Humanoids use character.humanoid + armature.create + armature.skin and
 bone keys. For a preview: camera.configure looking at the subject, light.rig, render.configure with
 transparent true, then preview.render. Do not include asset.package; export is a separate step.
+Vectors: material color has 4 numbers (RGBA); emission, light color and world_color have 3 (RGB).
+Keep plans compact: 3–5 keys per clip, one camera, one light.rig.
 Operations:
 """
 
@@ -393,7 +395,7 @@ def plan(p, model, prompt, snapshot, language='v1', context=None):
         # JSON mode avoids backend-specific union-schema grammar limitations.
         # The full closed schema remains in context and is enforced locally.
         payload = {'model': model, 'messages': messages, 'stream': False, 'format': 'json',
-                   'options': {'temperature': 0, 'seed': 41, 'num_predict': budget, 'num_ctx': 12288 if language == 'v2' else 8192},
+                   'options': {'temperature': 0, 'seed': 41, 'num_predict': budget, 'num_ctx': 8192},
                    'keep_alive': '2m'}
         if False in caps.get('thinking', {}).get('values', []):
             payload['think'] = False
@@ -427,8 +429,9 @@ def plan(p, model, prompt, snapshot, language='v1', context=None):
         result = parse(content)
         validate(result)
     except (CreationError, ValueError) as error:
+        # Inert diagnostic copy of what the model returned; never executed or repaired.
         return {'ok': False, 'error': 'Invalid creation plan: ' + str(error), 'receipt': receipt,
-                'rejected_plan': result}
+                'rejected_plan': result, 'rejected_text': content[:32768] if result is None else None}
     return {'plan': result, 'receipt': receipt}
 
 

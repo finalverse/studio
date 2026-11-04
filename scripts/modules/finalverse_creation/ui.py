@@ -271,7 +271,7 @@ class STUDIO_OT_provider_custom(Operator):
     kind: EnumProperty(name='API type', items=KIND_ITEMS, options={'SKIP_SAVE'})
     base_url: StringProperty(name='Base URL', maxlen=256, default='https://', options={'SKIP_SAVE'})
     model: StringProperty(name='Model', maxlen=200, options={'SKIP_SAVE'})
-    timeout: FloatProperty(name='Timeout (s)', min=2, max=120, default=60, options={'SKIP_SAVE'})
+    timeout: FloatProperty(name='Timeout (s)', min=2, max=300, default=60, options={'SKIP_SAVE'})
     api_key: StringProperty(name='API key', subtype='PASSWORD', maxlen=4096, options={'SKIP_SAVE', 'HIDDEN'})
 
     def invoke(self, context, event):
