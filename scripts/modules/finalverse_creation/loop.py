@@ -108,7 +108,10 @@ class CreationLoop:
                    'instruction': 'Return a small finalverse.creation/v2 plan that fixes only the failed checks. '
                                   'Modify existing objects by UUID; do not recreate the subject. If a camera '
                                   'must change, use object.transform on its UUID or add a new camera.configure. '
-                                  'End with a new preview.render that uses a new file name.'}
+                                  'End with a new preview.render that uses a new file name'
+                                  + (f" and the same size/samples as before ({self.render['width']}x{self.render['height']}, "
+                                     f"{self.render['samples']} samples)" if self.render else ' (384x384, 16 samples)')
+                                  + '; previews are limited to 60 s.'}
         self.host.infer(self.provider, 'plan', self.model,
                         f'Revise {self.name} so the failed evaluation checks pass.', language='v2', context=context)
         self.record('revise', revision=self.revisions, failures=[f['id'] for f in failures][:24], reason=reason[:200])

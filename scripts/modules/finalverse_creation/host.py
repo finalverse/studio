@@ -270,7 +270,7 @@ class Host:
                 self.render = None
                 directory = self.render_directory(job)
                 if process.returncode != 0 or not (directory/'render-result.json').exists():
-                    raise CreationError('Render worker failed; inspect its local log')
+                    raise CreationError(self._render_failure(directory, job))
                 result = parse((directory/'render-result.json').read_text())
                 if result['path'] != job['plan']['operations'][job['step']]['path']:
                     raise CreationError('Render result does not match the approved output')
@@ -306,6 +306,23 @@ class Host:
             if current['state'] not in TERMINAL:
                 self.store.update(job['id'], {current['state']}, state='Failed', error=str(error), approval=None)
             self.message = str(error); self.active = None
+
+    def _render_failure(self, directory, job):
+        """A specific, body-free reason from the supervisor's own metrics."""
+        item = job['plan']['operations'][job['step']]
+        size = f"{item.get('width')}x{item.get('height')} at {item.get('samples')} samples"
+        try:
+            m = parse((directory/'render-metrics.json').read_text())
+        except Exception:
+            return f'Render worker failed before reporting metrics ({size}); inspect its local log'
+        if m.get('wall_seconds', 0) > m.get('wall_limit_seconds', 60):
+            return (f"Render exceeded the {m['wall_limit_seconds']} s preview wall limit ({size}); "
+                    'use a smaller preview or fewer samples')
+        if m.get('peak_rss_bytes', 0) > m.get('memory_limit_bytes', 1 << 30):
+            return f'Render exceeded the 1 GiB worker memory limit ({size})'
+        if m.get('graphics_cache_growth_bytes', 0) > m.get('graphics_cache_growth_limit_bytes', 1 << 27):
+            return 'Render exceeded the graphics cache growth limit'
+        return f'Render worker failed ({size}); inspect its local log'
 
     def render_directory(self, job):
         return self.store.directory(job['id'])/'previews'/f"step-{job['step']:03d}"
