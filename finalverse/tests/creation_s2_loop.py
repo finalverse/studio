@@ -31,7 +31,7 @@ INTENT = ('Create Lumi, the floating spirit companion: a soft, rounded, luminous
           'a gentle glowing material and the eyes a dark glossy material. Add an idle hover loop, a slow drift loop and '
           'a short greet expression. Frame Lumi from the front in a 384x384 preview.')
 spec = dict(provider='local', model=model, intent=INTENT, archetype='floating_spirit', name='Lumi',
-            identity=F.LUMI_IDENTITY, max_revisions=2)
+            identity=F.LUMI_IDENTITY, max_revisions=3)
 if mode == 'seeded':
     spec['initial_plan'] = F.plan('Artist draft: Lumi with the preview camera aimed away (seeded defect)',
                                   F.lumi_scene(camera=([0, -4.2, 1.0], [0, -9, 1.0])))

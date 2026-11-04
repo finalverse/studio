@@ -330,6 +330,9 @@ bone keys. For a preview: camera.configure looking at the subject, light.rig, re
 transparent true, then preview.render. Do not include asset.package; export is a separate step.
 Vectors: material color has 4 numbers (RGBA); emission, light color and world_color have 3 (RGB).
 Keep plans compact: 3–5 keys per clip, one camera, one light.rig.
+In action.create, kind is the expression (idle|greet|observe|interact|speak|locomote) and locomotion
+is the movement (hover|drift|...). Every ref is a NEW @name; existing objects are named by UUID only
+in target-like fields.
 Operations:
 """
 

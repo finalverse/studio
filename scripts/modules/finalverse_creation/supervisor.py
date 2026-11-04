@@ -16,7 +16,7 @@ engine = str(Path(app)/'Contents/MacOS/Finalverse Studio')
 worker = str(Path(app)/'Contents/Resources/5.4/scripts/modules/finalverse_creation/render_worker.py')
 parent = os.getppid()
 bundle = plistlib.loads((Path(app)/'Contents/Info.plist').read_bytes())['CFBundleIdentifier']
-if bundle not in {'org.finalverse.studio', 'org.finalverse.studio.s1'}:
+if bundle not in {'org.finalverse.studio', 'org.finalverse.studio.s1', 'org.finalverse.studio.s2'}:
     raise ValueError('Unknown Studio development bundle identity')
 cache = Path(subprocess.check_output(['/usr/bin/getconf', 'DARWIN_USER_CACHE_DIR'], text=True).strip()).resolve()/bundle
 graphics_caches = [cache/'com.apple.metalfe', cache/'com.apple.gpuarchiver']
