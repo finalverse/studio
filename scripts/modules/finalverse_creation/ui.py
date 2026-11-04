@@ -7,7 +7,7 @@ from pathlib import Path
 
 import bpy
 from bpy.app.handlers import persistent
-from bpy.props import EnumProperty, PointerProperty, StringProperty
+from bpy.props import EnumProperty, FloatProperty, PointerProperty, StringProperty
 from bpy.types import Operator, PropertyGroup
 
 from .host import Host
@@ -15,8 +15,11 @@ from .protocol import canonical
 from .store import TERMINAL
 
 _host = None
-_provider_items = [('local', 'Local Ollama', 'Configured loopback provider')]
+_provider_items = [('local', 'Local Gemma (Ollama)', 'Default local provider')]
 _model_items = [('unselected', 'Test connection first', '')]
+KIND_ITEMS = [('ollama', 'Ollama', 'Ollama /api/tags and /api/chat'),
+              ('openai_compatible', 'OpenAI-compatible', '<base>/models and <base>/chat/completions; include /v1 in the base URL'),
+              ('anthropic', 'Anthropic', '<base>/v1/models and <base>/v1/messages')]
 
 
 def provider_items(_self, _context):
@@ -27,8 +30,24 @@ def model_items(_self, _context):
     return _model_items
 
 
+def refresh_provider_items():
+    global _provider_items
+    if _host is None:
+        return
+    # Every configured provider is listed; disabled ones are marked and cannot connect.
+    _provider_items = [(p['id'], p['label'] + ('' if p['enabled'] else ' · off'),
+                        f"{p['kind']} · {p['base_url']}") for p in _host.providers.values()]
+
+
+def provider_changed(self, _context):
+    global _model_items
+    _model_items = [('unselected', 'Test connection first', '')]
+    if _host is not None:
+        _host.model_names = []
+
+
 class StudioSettings(PropertyGroup):
-    provider: EnumProperty(name='Provider', items=provider_items)
+    provider: EnumProperty(name='Provider', items=provider_items, update=provider_changed)
     model: EnumProperty(name='Model', items=model_items)
     prompt: StringProperty(name='Intent', maxlen=4096, default='Create a teal beveled cube, animate a turn, add a camera and light, render a preview, export and save.')
 
@@ -39,11 +58,10 @@ def _root():
 
 
 def current():
-    global _host, _provider_items
+    global _host
     if _host is None:
         _host = Host(_root())
-        _provider_items = [(p['id'], p['id'] + ' · ' + p['kind'], p['base_url'])
-                           for p in _host.providers.values() if p['enabled']]
+        refresh_provider_items()
         if not bpy.app.timers.is_registered(pump):
             bpy.app.timers.register(pump, first_interval=.2)
     return _host
@@ -58,7 +76,7 @@ def pump():
         names = _host.model_names
         if names and [i[0] for i in _model_items] != names:
             _model_items = [(name, name, 'Discovered from the selected provider') for name in names]
-            bpy.context.window_manager.finalverse_creation.model = names[0]
+            bpy.context.window_manager.finalverse_creation.model = names[0]  # profile default first
         for job in _host.store.jobs()[:3]:
             text_name = 'Finalverse Plan ' + job['id'][:8]
             if bpy.data.texts.get(text_name) is None:
@@ -163,6 +181,144 @@ class STUDIO_OT_recover(Operator):
             self.report({'ERROR'}, str(error)); return {'CANCELLED'}
 
 
+def _selected(context):
+    host = current()
+    pid = context.window_manager.finalverse_creation.provider
+    return host, host.providers[pid]
+
+
+class STUDIO_OT_provider_toggle(Operator):
+    bl_idname = 'finalverse.ai_provider_toggle'
+    bl_label = 'Turn Provider On/Off'
+    bl_description = 'Switch the selected provider on or off. Local Gemma stays on as the default'
+    bl_options = {'INTERNAL'}
+
+    def execute(self, context):
+        try:
+            host, p = _selected(context)
+            host.set_enabled(p['id'], not p['enabled']); refresh_provider_items()
+            self.report({'INFO'}, host.message); return {'FINISHED'}
+        except Exception as error:
+            self.report({'ERROR'}, str(error)); return {'CANCELLED'}
+
+
+class STUDIO_OT_provider_key(Operator):
+    bl_idname = 'finalverse.ai_provider_key'
+    bl_label = 'Set API Key (Keychain)'
+    bl_description = 'Store the API key for the selected provider in the macOS Keychain'
+    bl_options = {'INTERNAL'}
+    api_key: StringProperty(name='API key', subtype='PASSWORD', maxlen=4096, options={'SKIP_SAVE', 'HIDDEN'})
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_props_dialog(self, width=420)
+
+    def draw(self, context):
+        p = current().providers[context.window_manager.finalverse_creation.provider]
+        self.layout.label(text='Provider: ' + p['label'])
+        self.layout.prop(self, 'api_key')
+        self.layout.label(text='Stored only in the macOS Keychain, never in files or .blend data.', icon='LOCKED')
+
+    def execute(self, context):
+        secret, self.api_key = self.api_key, ''
+        try:
+            host, p = _selected(context)
+            if p['credential'] != 'keychain':
+                raise ValueError(p['label'] + ' does not use an API key')
+            if not secret:
+                raise ValueError('Enter an API key')
+            host.configure_provider(p, secret)
+            self.report({'INFO'}, host.message); return {'FINISHED'}
+        except Exception as error:
+            self.report({'ERROR'}, str(error)); return {'CANCELLED'}
+
+
+class STUDIO_OT_provider_forget(Operator):
+    bl_idname = 'finalverse.ai_provider_forget'
+    bl_label = 'Delete Stored Key'
+    bl_options = {'INTERNAL'}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_confirm(self, event)
+
+    def execute(self, context):
+        try:
+            host, p = _selected(context); host.forget_key(p['id'])
+            self.report({'INFO'}, host.message); return {'FINISHED'}
+        except Exception as error:
+            self.report({'ERROR'}, str(error)); return {'CANCELLED'}
+
+
+class STUDIO_OT_provider_custom(Operator):
+    bl_idname = 'finalverse.ai_provider_custom'
+    bl_label = 'Custom AI Provider'
+    bl_description = 'Add or edit a custom provider: base URL, API type, model and API key'
+    bl_options = {'INTERNAL'}
+    edit: StringProperty(options={'SKIP_SAVE', 'HIDDEN'})
+    label: StringProperty(name='Name', maxlen=64, default='Custom provider', options={'SKIP_SAVE'})
+    kind: EnumProperty(name='API type', items=KIND_ITEMS, options={'SKIP_SAVE'})
+    base_url: StringProperty(name='Base URL', maxlen=256, default='https://', options={'SKIP_SAVE'})
+    model: StringProperty(name='Model', maxlen=200, options={'SKIP_SAVE'})
+    timeout: FloatProperty(name='Timeout (s)', min=2, max=120, default=60, options={'SKIP_SAVE'})
+    api_key: StringProperty(name='API key', subtype='PASSWORD', maxlen=4096, options={'SKIP_SAVE', 'HIDDEN'})
+
+    def invoke(self, context, event):
+        host = current()
+        if self.edit:
+            p = host.providers[self.edit]
+            self.label, self.kind, self.base_url = p['label'], p['kind'], p['base_url']
+            self.model, self.timeout = p['model'] or '', p['timeout_seconds']
+        return context.window_manager.invoke_props_dialog(self, width=520)
+
+    def draw(self, _context):
+        col = self.layout.column()
+        for name in ('label', 'kind', 'base_url', 'model', 'timeout', 'api_key'):
+            col.prop(self, name)
+        col.label(text='Remote URLs must use HTTPS and an API key. Loopback servers may omit the key.', icon='INFO')
+        col.label(text='The key goes to the macOS Keychain; leave it empty to keep a stored key.', icon='LOCKED')
+
+    def execute(self, context):
+        secret, self.api_key = self.api_key, ''
+        try:
+            from .providers import loopback
+            host = current()
+            if self.edit:
+                pid = self.edit
+            else:
+                used = set(host.providers); n = 1
+                while f'custom-{n}' in used: n += 1
+                pid = f'custom-{n}'
+            remote = not loopback(self.base_url)
+            had_key = host.key_status.get(pid, False)
+            value = {'id': pid, 'label': self.label.strip(), 'preset': 'custom', 'kind': self.kind,
+                     'base_url': self.base_url.strip().rstrip('/'), 'model': self.model.strip() or None,
+                     'credential': 'keychain' if (remote or secret or had_key) else None,
+                     'timeout_seconds': float(self.timeout), 'enabled': True}
+            if remote and not (secret or had_key):
+                raise ValueError('A remote provider needs an API key')
+            host.configure_provider(value, secret or None); refresh_provider_items()
+            context.window_manager.finalverse_creation.provider = pid
+            self.report({'INFO'}, host.message); return {'FINISHED'}
+        except Exception as error:
+            self.report({'ERROR'}, str(error)); return {'CANCELLED'}
+
+
+class STUDIO_OT_provider_remove(Operator):
+    bl_idname = 'finalverse.ai_provider_remove'
+    bl_label = 'Remove Custom Provider'
+    bl_options = {'INTERNAL'}
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_confirm(self, event)
+
+    def execute(self, context):
+        try:
+            host, p = _selected(context); host.remove_provider(p['id']); refresh_provider_items()
+            context.window_manager.finalverse_creation.provider = 'local'
+            self.report({'INFO'}, host.message); return {'FINISHED'}
+        except Exception as error:
+            self.report({'ERROR'}, str(error)); return {'CANCELLED'}
+
+
 class STUDIO_OT_mcp_config(Operator):
     bl_idname = 'finalverse.ai_mcp_config'
     bl_label = 'Write MCP Client Configuration'
@@ -184,8 +340,31 @@ class STUDIO_OT_mcp_config(Operator):
 def draw(layout, context):
     settings = context.window_manager.finalverse_creation
     box = layout.box(); box.label(text='AI Creation · S1', icon='LIGHT')
-    box.prop(settings, 'provider'); box.prop(settings, 'model')
-    controls = box.column(); controls.enabled = _host is None or not (_host.inference or _host.active)
+    box.prop(settings, 'provider')
+    busy = _host is not None and bool(_host.inference or _host.active)
+    if _host is not None and settings.provider in _host.providers:
+        p = _host.providers[settings.provider]
+        info = box.column(align=True); info.enabled = not busy
+        row = info.row(align=True)
+        row.label(text=('On' if p['enabled'] else 'Off') + ' · ' + p['kind'] + ' · ' + p['base_url'][:40],
+                  icon='CHECKBOX_HLT' if p['enabled'] else 'CHECKBOX_DEHLT')
+        if p['id'] != 'local':
+            row.operator('finalverse.ai_provider_toggle', text='Turn Off' if p['enabled'] else 'Turn On')
+        if p['credential'] == 'keychain':
+            row = info.row(align=True)
+            stored = _host.key_status.get(p['id'])
+            row.label(text='Key: in Keychain' if stored else 'Key: not set', icon='LOCKED' if stored else 'UNLOCKED')
+            row.operator('finalverse.ai_provider_key', text='Set Key')
+            if stored:
+                row.operator('finalverse.ai_provider_forget', text='', icon='TRASH')
+        if p['preset'] == 'custom':
+            row = info.row(align=True)
+            op = row.operator('finalverse.ai_provider_custom', text='Edit', icon='PREFERENCES'); op.edit = p['id']
+            row.operator('finalverse.ai_provider_remove', text='Remove', icon='X')
+    add = box.row(); add.enabled = not busy
+    add.operator('finalverse.ai_provider_custom', text='Add Custom AI Provider…', icon='ADD')
+    box.prop(settings, 'model')
+    controls = box.column(); controls.enabled = not busy
     controls.operator('finalverse.ai_connect', icon='FILE_REFRESH')
     controls.prop(settings, 'prompt')
     controls.operator('finalverse.ai_plan', icon='PLAY')
@@ -236,5 +415,6 @@ def unregister():
     del bpy.types.WindowManager.finalverse_creation
 
 
-classes = (StudioSettings, STUDIO_OT_connect, STUDIO_OT_plan, STUDIO_OT_approve, STUDIO_OT_review,
+classes = (StudioSettings, STUDIO_OT_provider_toggle, STUDIO_OT_provider_key, STUDIO_OT_provider_forget,
+           STUDIO_OT_provider_custom, STUDIO_OT_provider_remove, STUDIO_OT_connect, STUDIO_OT_plan, STUDIO_OT_approve, STUDIO_OT_review,
            STUDIO_OT_cancel, STUDIO_OT_recover, STUDIO_OT_mcp_config)

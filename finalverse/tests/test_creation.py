@@ -48,13 +48,16 @@ class ProtocolTests(unittest.TestCase):
         with self.assertRaises(CreationError): validate(p)
 
     def test_remote_transport_requires_https_and_auth(self):
-        p = {'id': 'maple', 'kind': 'ollama', 'base_url': 'http://maple.example',
-             'token_env': None, 'timeout_seconds': 30, 'enabled': True}
+        p = {'id': 'remote', 'label': 'Remote', 'preset': 'custom', 'kind': 'ollama',
+             'base_url': 'http://maple.example', 'model': None, 'credential': None,
+             'timeout_seconds': 30, 'enabled': True}
         with self.assertRaises(CreationError): profile(p)
         p['base_url'] = 'https://maple.example'
         with self.assertRaises(CreationError): profile(p)
-        p['token_env'] = 'FINALVERSE_MAPLE_TOKEN'; profile(p)
-        p['base_url'] = 'https://secret@maple.example'
+        p['credential'] = 'keychain'; profile(p)
+        p['credential'] = 'sk-literal-secret'
+        with self.assertRaises(CreationError): profile(p)
+        p['credential'] = 'keychain'; p['base_url'] = 'https://secret@maple.example'
         with self.assertRaises(CreationError): profile(p)
 
 

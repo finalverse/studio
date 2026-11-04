@@ -13,7 +13,8 @@ import bpy
 
 from . import engine
 from .protocol import CreationError, canonical, parse
-from .providers import default_registry, registry
+from . import keychain
+from .providers import SECRET_ENV, default_registry, load, profile, registry, save
 from .store import HostAuthority, Store, TERMINAL
 
 
@@ -46,10 +47,11 @@ class Host:
         self.authority = HostAuthority(self.store)
         self.config = self.store.root/'providers.json'; default_registry(self.config)
         self.providers = registry(self.config)
+        self.key_status = {}; self.refresh_keys()
         self.inference = None; self.render = None; self.active = None
         self.expected_revision = None; self.last_snapshot = 0
         self.message = 'Session ready; proposals require approval'
-        self.model_names = []; self.model_result = None
+        self.model_names = []; self.model_result = None; self.selected_provider = 'local'
         self.refresh()
 
     def refresh(self):
@@ -61,21 +63,84 @@ class Host:
         if self.inference or self.active:
             raise CreationError('Finish or cancel the active task first')
         self.providers = registry(self.config)
+        if provider_id not in self.providers:
+            raise CreationError('Unknown provider')
         p = self.providers[provider_id]
+        if not p['enabled']:
+            raise CreationError(p['label'] + ' is off. Turn it on before connecting.')
+        secret = None
+        if p['credential'] == 'keychain':
+            secret = keychain.read(p['id'])
+            if secret is None:
+                raise CreationError('No API key stored in the Keychain for ' + p['label'])
         work = self.store.root/'inference'/str(uuid.uuid4()); work.mkdir(parents=True, mode=0o700)
         snapshot = self.refresh()
         request = {'provider': provider_id, 'mode': mode, 'model': model, 'prompt': prompt, 'snapshot': snapshot}
         (work/'input.json').write_text(canonical(request))
         env = clean_env(work)
-        if p['token_env'] and p['token_env'] in os.environ:
-            env[p['token_env']] = os.environ[p['token_env']]
+        if secret is not None:
+            # Private child environment only; never written to input/output/log files.
+            env[SECRET_ENV] = secret
         log = (work/'helper.log').open('w')
         process = subprocess.Popen([str(python_path()), '-I', str(Path(__file__).with_name('provider_entry.py')),
             str(self.config), str(work/'input.json'), str(work/'output.json')],
             env=env, stdout=log, stderr=log, start_new_session=True)
         log.close()
         self.inference = {'process': process, 'work': work, 'request': request, 'started': time.monotonic()}
-        self.message = 'Testing provider…' if mode == 'models' else 'Planning… Studio remains responsive'
+        self.message = (f"Testing {p['label']}…" if mode == 'models'
+                        else f"Planning with {p['label']}… Studio remains responsive")
+        self.selected_provider = provider_id
+
+    # Provider registry edits come only from the artist's own Studio operators.
+    def refresh_keys(self):
+        self.key_status = {}
+        for p in self.providers.values():
+            if p['credential'] == 'keychain':
+                try:
+                    self.key_status[p['id']] = keychain.exists(p['id'])
+                except keychain.KeychainError:
+                    self.key_status[p['id']] = False
+
+    def configure_provider(self, value, secret=None):
+        if self.inference or self.active:
+            raise CreationError('Finish or cancel the active task first')
+        value = profile(dict(value))
+        current = load(self.config)['providers']
+        existing = next((p for p in current if p['id'] == value['id']), None)
+        if existing and existing['preset'] != value['preset']:
+            raise CreationError('A provider preset cannot be changed')
+        providers = [value if p['id'] == value['id'] else p for p in current]
+        if existing is None:
+            if value['preset'] != 'custom':
+                raise CreationError('Only custom providers can be added')
+            providers.append(value)
+        if value['id'] == 'local' and not value['enabled']:
+            raise CreationError('Local Gemma is the default and stays on')
+        save(self.config, providers)  # validates all profiles before replacing the file
+        if secret:
+            keychain.store(value['id'], secret)
+        self.providers = registry(self.config); self.refresh_keys()
+        self.message = 'Saved provider ' + value['label'] + ('; key stored in Keychain' if secret else '')
+
+    def set_enabled(self, provider_id, enabled):
+        p = dict(self.providers[provider_id]); p['enabled'] = bool(enabled)
+        self.configure_provider(p)
+        self.message = p['label'] + (' is on' if enabled else ' is off')
+
+    def remove_provider(self, provider_id):
+        if self.inference or self.active:
+            raise CreationError('Finish or cancel the active task first')
+        p = self.providers[provider_id]
+        if p['preset'] != 'custom':
+            raise CreationError('Built-in providers cannot be removed; turn them off instead')
+        save(self.config, [q for q in load(self.config)['providers'] if q['id'] != provider_id])
+        keychain.delete(provider_id)
+        self.providers = registry(self.config); self.refresh_keys()
+        self.message = 'Removed ' + p['label'] + ' and its Keychain key'
+
+    def forget_key(self, provider_id):
+        keychain.delete(provider_id); self.refresh_keys()
+        self.message = 'Deleted the Keychain key for ' + self.providers[provider_id]['label']
 
     def approve(self, job_id):
         if self.active or self.inference:
@@ -153,7 +218,9 @@ class Host:
                                             source='model', model_receipt=result['receipt'])
                     self.message = 'Plan ready for review: ' + job['id']; self.refresh()
                 else:
-                    self.message = 'Inference failed: ' + result.get('error', 'unknown') + '; no fallback used'
+                    detail = result.get('detail')
+                    self.message = ('Failed: ' + result.get('error', 'unknown') + (f' ({detail})' if detail else '')
+                                    + '; no fallback used')
             return
         if not self.active:
             for job in reversed(self.store.jobs()):

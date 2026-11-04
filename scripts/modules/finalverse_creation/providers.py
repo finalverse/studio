@@ -8,6 +8,8 @@ import json
 import os
 from pathlib import Path
 import re
+import socket
+import ssl
 import time
 import urllib.error
 import urllib.parse
@@ -21,41 +23,101 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
         raise CreationError("Provider redirects are refused")
 
 
+MAPLE_URL = 'https://studio.finalverse.com'
+KINDS = ('ollama', 'openai_compatible', 'anthropic')
+PRESETS = ('local', 'maple', 'custom')
+V2_FIELDS = {'id', 'label', 'preset', 'kind', 'base_url', 'model', 'credential', 'timeout_seconds', 'enabled'}
+SECRET_ENV = 'FINALVERSE_PROVIDER_SECRET'
+
+
+def loopback(base_url):
+    hostname = urllib.parse.urlsplit(base_url).hostname
+    try:
+        return ipaddress.ip_address(hostname).is_loopback
+    except ValueError:
+        return hostname == 'localhost'
+
+
+def defaults():
+    """Local Gemma is the default; Maple is present but off until the artist enables it."""
+    return {'schema_version': 'finalverse.providers/v2', 'providers': [
+        {'id': 'local', 'label': 'Local Gemma (Ollama)', 'preset': 'local', 'kind': 'ollama',
+         'base_url': 'http://127.0.0.1:11434', 'model': 'gemma4:e4b', 'credential': None,
+         'timeout_seconds': 120, 'enabled': True},
+        {'id': 'maple', 'label': 'Maple (studio.finalverse.com)', 'preset': 'maple', 'kind': 'ollama',
+         'base_url': MAPLE_URL, 'model': None, 'credential': 'keychain',
+         'timeout_seconds': 60, 'enabled': False}]}
+
+
 def profile(value):
-    fields = {'id', 'kind', 'base_url', 'token_env', 'timeout_seconds', 'enabled'}
-    if not isinstance(value, dict) or set(value) != fields:
+    if not isinstance(value, dict) or set(value) != V2_FIELDS:
         raise CreationError("Invalid provider configuration")
-    if not re.fullmatch(r'[a-z][a-z0-9_-]{0,31}', value['id']):
+    if not isinstance(value['id'], str) or not re.fullmatch(r'[a-z][a-z0-9_-]{0,31}', value['id']):
         raise CreationError("Invalid provider ID")
-    if value['kind'] not in {'ollama', 'openai_compatible'} or type(value['enabled']) is not bool:
+    if not isinstance(value['label'], str) or not re.fullmatch(r'[^\x00-\x1f\x7f]{1,64}', value['label']):
+        raise CreationError("Provider label must be 1–64 printable characters")
+    if value['kind'] not in KINDS or value['preset'] not in PRESETS or type(value['enabled']) is not bool:
         raise CreationError("Unsupported provider type")
+    if not isinstance(value['base_url'], str) or len(value['base_url']) > 256:
+        raise CreationError("Invalid provider URL")
     url = urllib.parse.urlsplit(value['base_url'])
     if not url.hostname or url.username or url.password or url.query or url.fragment:
         raise CreationError("Provider URL must not embed credentials or query parameters")
-    try:
-        loopback = ipaddress.ip_address(url.hostname).is_loopback
-    except ValueError:
-        loopback = url.hostname == 'localhost'
-    if url.scheme not in {'http', 'https'} or (not loopback and url.scheme != 'https'):
-        raise CreationError("Remote providers require an authenticated HTTPS gateway")
-    token = value['token_env']
-    if token is not None and (not isinstance(token, str) or not re.fullmatch(r'[A-Z][A-Z0-9_]{1,79}', token)):
-        raise CreationError("Invalid credential environment reference")
-    if not loopback and token is None:
-        raise CreationError("Remote providers require a credential environment reference")
+    local = loopback(value['base_url'])
+    if url.scheme not in {'http', 'https'} or (not local and url.scheme != 'https'):
+        raise CreationError("Remote providers require HTTPS")
+    if value['credential'] not in (None, 'keychain'):
+        raise CreationError("Credentials may only be referenced in the macOS Keychain")
+    if not local and value['credential'] is None:
+        raise CreationError("Remote providers require a Keychain credential")
+    if value['model'] is not None and (not isinstance(value['model'], str) or not 0 < len(value['model']) <= 200):
+        raise CreationError("Invalid default model name")
+    if value['preset'] == 'local' and not local:
+        raise CreationError("The local preset must use a loopback address")
+    if value['preset'] == 'maple' and value['base_url'].rstrip('/') != MAPLE_URL:
+        raise CreationError("The Maple preset is fixed to " + MAPLE_URL)
     if type(value['timeout_seconds']) not in (int, float) or not 2 <= value['timeout_seconds'] <= 120:
         raise CreationError("Provider timeout must be 2–120 seconds")
     return value
 
 
-def registry(path):
+def migrate(data):
+    """Upgrade an S1 v1 registry in memory. Environment credential references are
+    replaced by Keychain references; no secret value ever lived in the file."""
+    result = {'schema_version': 'finalverse.providers/v2', 'providers': []}
+    for item in data['providers']:
+        if not isinstance(item, dict) or set(item) != {'id', 'kind', 'base_url', 'token_env', 'timeout_seconds', 'enabled'}:
+            raise CreationError("Invalid v1 provider configuration")
+        local = item['id'] == 'local'
+        result['providers'].append({'id': item['id'], 'label': 'Local Gemma (Ollama)' if local else item['id'],
+            'preset': 'local' if local else 'custom', 'kind': item['kind'], 'base_url': item['base_url'],
+            'model': 'gemma4:e4b' if local else None,
+            'credential': 'keychain' if item['token_env'] else None,
+            'timeout_seconds': item['timeout_seconds'], 'enabled': item['enabled']})
+    ids = {p['id'] for p in result['providers']}
+    for preset in defaults()['providers']:
+        if preset['id'] not in ids:
+            result['providers'].append(preset)
+    return result
+
+
+def load(path):
     path = Path(path)
     if path.is_symlink() or path.stat().st_size > 16384:
         raise CreationError("Invalid provider registry file")
     data = parse(path.read_text())
-    if set(data) != {'schema_version', 'providers'} or data['schema_version'] != 'finalverse.providers/v1':
+    if set(data) != {'schema_version', 'providers'} or not isinstance(data['providers'], list):
         raise CreationError("Incorrect provider registry version")
-    if not isinstance(data['providers'], list) or not 1 <= len(data['providers']) <= 8:
+    if data['schema_version'] == 'finalverse.providers/v1':
+        data = migrate(data)
+    elif data['schema_version'] != 'finalverse.providers/v2':
+        raise CreationError("Incorrect provider registry version")
+    return data
+
+
+def registry(path):
+    data = load(path)
+    if not 1 <= len(data['providers']) <= 8:
         raise CreationError("Provider registry limit is eight")
     result = {}
     for item in data['providers']:
@@ -63,32 +125,85 @@ def registry(path):
         if p['id'] in result:
             raise CreationError("Duplicate provider ID")
         result[p['id']] = p
+    if 'local' not in result:
+        raise CreationError("The local default provider must remain configured")
     return result
+
+
+def save(path, providers):
+    """Validate the whole registry, then replace it atomically (0600, no secrets)."""
+    path = Path(path)
+    data = {'schema_version': 'finalverse.providers/v2', 'providers': list(providers)}
+    if not 1 <= len(data['providers']) <= 8:
+        raise CreationError("Provider registry limit is eight")
+    seen = set()
+    for item in data['providers']:
+        profile(item)
+        if item['id'] in seen:
+            raise CreationError("Duplicate provider ID")
+        seen.add(item['id'])
+    if 'local' not in seen:
+        raise CreationError("The local default provider must remain configured")
+    text = json.dumps(data, indent=2)
+    if len(text) > 16384:
+        raise CreationError("Provider registry exceeds 16 KiB")
+    temporary = path.with_name(path.name + '.tmp')
+    temporary.unlink(missing_ok=True)
+    fd = os.open(temporary, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    with os.fdopen(fd, 'w') as f:
+        f.write(text)
+    os.replace(temporary, path)
 
 
 def default_registry(path):
     path = Path(path)
     if not path.exists():
-        data = {'schema_version': 'finalverse.providers/v1', 'providers': [
-            {'id': 'local', 'kind': 'ollama', 'base_url': 'http://127.0.0.1:11434',
-             'token_env': None, 'timeout_seconds': 120, 'enabled': True}]}
-        with path.open('x') as f:
-            f.write(json.dumps(data, indent=2))
-        os.chmod(path, 0o600)
+        save(path, defaults()['providers'])
+    elif parse(path.read_text()).get('schema_version') == 'finalverse.providers/v1':
+        save(path, migrate(parse(path.read_text()))['providers'])
+
+
+def tls_context():
+    """Verified TLS for remote providers.
+
+    Studio's bundled OpenSSL has no default trust store (its compiled CA path is
+    /dev/null), so the bundled certifi bundle is used, then the macOS system
+    bundle. Verification and hostname checks always stay on."""
+    candidates = []
+    try:
+        import certifi
+        candidates.append(certifi.where())
+    except ImportError:
+        pass
+    candidates.append('/etc/ssl/cert.pem')
+    for path in candidates:
+        if os.path.isfile(path):
+            context = ssl.create_default_context(cafile=path)
+            context.minimum_version = ssl.TLSVersion.TLSv1_2
+            return context, path
+    raise CreationError("No trusted CA bundle is available for HTTPS providers")
 
 
 def request(p, route, payload=None):
     if not p['enabled']:
         raise CreationError("Provider is disabled")
     headers = {'Content-Type': 'application/json', 'Accept': 'application/json'}
-    if p['token_env']:
-        token = os.environ.get(p['token_env'])
+    if p['credential']:
+        token = os.environ.get(SECRET_ENV)
         if not token or '\n' in token or '\r' in token:
-            raise CreationError("Configured provider credential is unavailable")
-        headers['Authorization'] = 'Bearer ' + token
+            raise CreationError("No API key is stored in the Keychain for this provider")
+        if p['kind'] == 'anthropic':
+            headers['x-api-key'] = token
+        else:
+            headers['Authorization'] = 'Bearer ' + token
+    if p['kind'] == 'anthropic':
+        headers['anthropic-version'] = '2023-06-01'
     req = urllib.request.Request(p['base_url'].rstrip('/') + route,
                                  canonical(payload).encode() if payload is not None else None, headers)
-    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), NoRedirect())
+    handlers = [urllib.request.ProxyHandler({}), NoRedirect()]
+    if p['base_url'].startswith('https:'):
+        handlers.append(urllib.request.HTTPSHandler(context=tls_context()[0]))
+    opener = urllib.request.build_opener(*handlers)
     with opener.open(req, timeout=p['timeout_seconds']) as response:
         data = response.read(1024 * 1024 + 1)
     if len(data) > 1024 * 1024:
@@ -101,30 +216,41 @@ def inventory(p):
     if p['kind'] == 'ollama':
         result = request(p, '/api/tags')
         records = result.get('models', [])
-        names = [m['name'] for m in records]
+        names = [m.get('name') for m in records]
     else:
-        result = request(p, '/models')
+        result = request(p, '/v1/models' if p['kind'] == 'anthropic' else '/models')
         records = result.get('data', [])
-        names = [m['id'] for m in records]
+        names = [m.get('id') for m in records]
     if len(names) > 256 or any(not isinstance(n, str) or not 0 < len(n) <= 200 for n in names):
         raise CreationError("Invalid model inventory")
     return dict(zip(names, records))
 
 
 def models(p):
-    return sorted(inventory(p), key=lambda n: (not any(s in n.lower() for s in ['gemma', 'qwen']), n))
+    names = sorted(inventory(p), key=lambda n: (not any(s in n.lower() for s in ['gemma', 'qwen']), n))
+    if p['model'] in names:
+        names.remove(p['model']); names.insert(0, p['model'])
+    return names
 
 
-def admit_local(p, record):
-    hostname = urllib.parse.urlsplit(p['base_url']).hostname
-    try: loopback = ipaddress.ip_address(hostname).is_loopback
-    except ValueError: loopback = hostname == 'localhost'
-    if p['kind'] != 'ollama' or not loopback:
-        return
+def admit(p, record):
+    """One memory admission rule for every provider, applied before generation.
+
+    Loopback servers load weights into this Mac's memory, so they must report the
+    model's size and stay within 65% of physical memory. Remote providers do not
+    load weights here; the decision and its basis are recorded in the receipt."""
     physical = os.sysconf('SC_PHYS_PAGES') * os.sysconf('SC_PAGE_SIZE')
-    size = record.get('size')
+    if not loopback(p['base_url']):
+        return {'decision': 'admitted', 'basis': 'remote endpoint; no model weights loaded on this Mac',
+                'physical_memory_bytes': physical}
+    size = record.get('size') if isinstance(record, dict) else None
     if type(size) is not int or size <= 0 or size > physical*.65:
         raise CreationError('Local model weights exceed the 65% physical-memory admission budget or have no size; choose a smaller model or configured remote provider')
+    return {'decision': 'admitted', 'basis': 'local weights within 65% of physical memory',
+            'weights_bytes': size, 'physical_memory_bytes': physical}
+
+
+admit_local = admit  # S1 name retained for existing harnesses
 
 
 SYSTEM = """You are Finalverse Studio's planner. Return only strict JSON matching the supplied
@@ -170,7 +296,7 @@ def plan(p, model, prompt, snapshot):
     available = inventory(p)
     if model not in available:
         raise CreationError("Model is not in this provider's actual inventory")
-    admit_local(p, available[model])
+    admission = admit(p, available[model])
     fields = ('id', 'name', 'type', 'parent', 'location', 'rotation', 'scale', 'vertices', 'materials', 'description')
     visible = {'scene_id': snapshot['scene_id'], 'revision': snapshot['revision'],
                'objects': [{k: o[k] for k in fields if k in o} for o in snapshot['objects'][:32]],
@@ -196,6 +322,13 @@ def plan(p, model, prompt, snapshot):
         response = request(p, '/api/chat', payload)
         content = response.get('message', {}).get('content', '')
         usage = {'input_tokens': response.get('prompt_eval_count'), 'output_tokens': response.get('eval_count')}
+    elif p['kind'] == 'anthropic':
+        payload = {'model': model, 'system': messages[0]['content'], 'messages': messages[1:],
+                   'max_tokens': 2304, 'temperature': 0}
+        response = request(p, '/v1/messages', payload)
+        blocks = response.get('content') or [{}]
+        content = ''.join(b.get('text', '') for b in blocks if isinstance(b, dict) and b.get('type') == 'text')
+        usage = response.get('usage', {})
     else:
         payload = {'model': model, 'messages': messages, 'temperature': 0, 'max_tokens': 2304,
                    'response_format': {'type': 'json_schema', 'json_schema': {
@@ -203,7 +336,8 @@ def plan(p, model, prompt, snapshot):
         response = request(p, '/chat/completions', payload)
         content = response.get('choices', [{}])[0].get('message', {}).get('content', '')
         usage = response.get('usage', {})
-    receipt = {'provider': p['id'], 'model': model,
+    receipt = {'provider': p['id'], 'provider_kind': p['kind'], 'provider_preset': p['preset'],
+        'endpoint_host': urllib.parse.urlsplit(p['base_url']).hostname, 'admission': admission, 'model': model,
         'served_model': response.get('model'), 'latency_ms': (time.monotonic()-begin)*1000,
         'input_digest': digest(messages), 'response_digest': hashlib.sha256(content.encode()).hexdigest(),
         'usage': usage, 'real_inference': True, 'fallback_used': False,
@@ -216,6 +350,37 @@ def plan(p, model, prompt, snapshot):
         return {'ok': False, 'error': 'Invalid creation plan: ' + str(error), 'receipt': receipt,
                 'rejected_plan': result}
     return {'plan': result, 'receipt': receipt}
+
+
+def classify(error):
+    """Map a failure to a stable code and a body-free detail."""
+    if isinstance(error, urllib.error.HTTPError):
+        code = {401: 'provider_auth_failed', 403: 'provider_auth_failed', 404: 'provider_endpoint_not_found',
+                429: 'provider_rate_limited'}.get(error.code, 'provider_http_error')
+        return code, f'HTTP {error.code}'
+    reason = getattr(error, 'reason', error)
+    if isinstance(reason, (TimeoutError, socket.timeout)) or isinstance(error, TimeoutError):
+        return 'provider_timeout', 'no response within the provider timeout'
+    if isinstance(reason, socket.gaierror):
+        return 'provider_unreachable', 'DNS resolution failed for the provider host'
+    if isinstance(reason, ConnectionRefusedError):
+        return 'provider_unreachable', 'connection refused'
+    if isinstance(reason, ssl.SSLError):
+        return 'provider_tls_failed', 'TLS handshake failed: ' + type(reason).__name__
+    if isinstance(reason, OSError):
+        return 'provider_unreachable', type(reason).__name__
+    if isinstance(error, CreationError):
+        text = str(error)
+        if 'disabled' in text:
+            return 'provider_disabled', text
+        if 'Keychain' in text:
+            return 'provider_credential_missing', text
+        if 'admission' in text:
+            return 'provider_admission_refused', text
+        return 'provider_failure', text
+    if isinstance(error, json.JSONDecodeError):
+        return 'provider_bad_response', 'response was not JSON'
+    return 'provider_failure', type(error).__name__
 
 
 def main():
@@ -235,9 +400,8 @@ def main():
         result = {'ok': True, **result}
     except Exception as error:
         # Never retain response bodies, credential values or remote stack traces.
-        code = 'provider_timeout' if isinstance(error, TimeoutError) else 'provider_failure'
-        result = {'ok': False, 'error': code, 'detail': str(error) if isinstance(error, CreationError) else type(error).__name__,
-                  'fallback_used': False}
+        code, detail = classify(error)
+        result = {'ok': False, 'error': code, 'detail': detail, 'fallback_used': False}
     result['total_latency_ms'] = (time.monotonic()-started)*1000
     path = Path(args.output); temporary = path.with_suffix('.tmp')
     with temporary.open('x') as f:
