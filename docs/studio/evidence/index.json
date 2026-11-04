@@ -53,8 +53,8 @@
     },
     {
       "path": "gui-splash.png",
-      "bytes": 579641,
-      "sha256": "7f58ebe89b3b1ca9bcee9c5834381a51cc2c3972cb7e5743ba48cbfabebccc87"
+      "bytes": 577265,
+      "sha256": "ca2408dfe099b1a93b9aac3bd6b424bfcffd73e67dc9771266238f88600907ad"
     },
     {
       "path": "gui-verification.json",
