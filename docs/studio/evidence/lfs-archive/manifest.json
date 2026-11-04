@@ -1,0 +1,65 @@
+{
+  "schema_version": "finalverse.evidence-lfs-archive/v1",
+  "objects": [
+    {
+      "sha256": "6be0e3d7e1d66a3f22ec90cb19ebdf08d8d28731050fa6e82ae49fe3d410d365",
+      "bytes": 919197,
+      "original_path": "docs/studio/evidence/s1/desktop-visual/02-proposed-panel-full-plan-control.png",
+      "archive_file": "6be0e3d7e1d66a3f22ec90cb19ebdf08d8d28731050fa6e82ae49fe3d410d365.png"
+    },
+    {
+      "sha256": "5bfff701d9a4a190f14a6499f232b43324d87ef2f7250521252c6d37c649ed89",
+      "bytes": 370695,
+      "original_path": "docs/studio/evidence/s1/desktop-visual/03-full-plan-review-text-editor.png",
+      "archive_file": "5bfff701d9a4a190f14a6499f232b43324d87ef2f7250521252c6d37c649ed89.png"
+    },
+    {
+      "sha256": "d9516ef4ce23b4d2b4cc917de2363403d6c3a88b2dbb56fac8a09bb6e0309d4a",
+      "bytes": 945314,
+      "original_path": "docs/studio/evidence/s1/desktop-visual/05-cancelled-panel.png",
+      "archive_file": "d9516ef4ce23b4d2b4cc917de2363403d6c3a88b2dbb56fac8a09bb6e0309d4a.png"
+    },
+    {
+      "sha256": "3bc2f0b0f013f1e2fb2c6097e5efef8ee639d9821f0758e5cdf34dc9b3195e12",
+      "bytes": 917119,
+      "original_path": "docs/studio/evidence/s1/providers/p01-maple-listed-off.png",
+      "archive_file": "3bc2f0b0f013f1e2fb2c6097e5efef8ee639d9821f0758e5cdf34dc9b3195e12.png"
+    },
+    {
+      "sha256": "001398c14b74161c35acac4f3d156a90da59d9b1e00c5491d624e044cc234836",
+      "bytes": 917054,
+      "original_path": "docs/studio/evidence/s1/providers/p02-maple-on-key-in-keychain.png",
+      "archive_file": "001398c14b74161c35acac4f3d156a90da59d9b1e00c5491d624e044cc234836.png"
+    },
+    {
+      "sha256": "9e8a73978847ac9ec40d52f48a8bd6fd5c0df42e98ad5220c4f66971d4233f52",
+      "bytes": 918531,
+      "original_path": "docs/studio/evidence/s1/providers/p03-maple-unreachable-error.png",
+      "archive_file": "9e8a73978847ac9ec40d52f48a8bd6fd5c0df42e98ad5220c4f66971d4233f52.png"
+    },
+    {
+      "sha256": "930ad6a9e7c14785f3110f857685bc5200ceeacc0f95fb152fb51661e04e4ff8",
+      "bytes": 906621,
+      "original_path": "docs/studio/evidence/s1/providers/p04-custom-provider-proposal.png",
+      "archive_file": "930ad6a9e7c14785f3110f857685bc5200ceeacc0f95fb152fb51661e04e4ff8.png"
+    },
+    {
+      "sha256": "41ae08e0050f77aedd747fa5f6874a91fd4edde0df5cc9c7f808117a611a97fa",
+      "bytes": 957124,
+      "original_path": "docs/studio/evidence/s1/providers/p05-custom-provider-completed.png",
+      "archive_file": "41ae08e0050f77aedd747fa5f6874a91fd4edde0df5cc9c7f808117a611a97fa.png"
+    },
+    {
+      "sha256": "ed09b5f28929953fb2bea923cff8e0daee1c103301d762bb3bcebcf3d74dee8a",
+      "bytes": 955767,
+      "original_path": "docs/studio/evidence/s1/providers/p06-bad-credentials-error.png",
+      "archive_file": "ed09b5f28929953fb2bea923cff8e0daee1c103301d762bb3bcebcf3d74dee8a.png"
+    },
+    {
+      "sha256": "ee5b7da6bc87a0638f14f8d4747a9e11eb0af045d8731b3475a3e4a5ca4d24c6",
+      "bytes": 183151,
+      "original_path": "docs/studio/evidence/preview.png",
+      "archive_file": "ee5b7da6bc87a0638f14f8d4747a9e11eb0af045d8731b3475a3e4a5ca4d24c6.png"
+    }
+  ]
+}
