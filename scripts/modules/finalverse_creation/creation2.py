@@ -562,7 +562,11 @@ def apply(scene, item, aliases, directory, job):
                 modifier.angle = item['amount']
             else:
                 modifier.factor = item['amount']
+        before = len(block.data.vertices)
         apply_modifier(block, modifier)
+        if name == 'mesh.subdivide' and len(block.data.vertices) <= before:
+            # The S0 lite build compiles OpenSubdiv out; never report a no-op as success.
+            raise CreationError('Subdivision Surface is unavailable in this Studio build')
         return block, {'id': block[OBJECT_ID], 'vertices': len(block.data.vertices)}
     if name == 'object.parent':
         child = find(scene, item['target'], aliases); parent = find(scene, item['parent'], aliases)

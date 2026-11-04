@@ -154,3 +154,13 @@ visual-language critique; Studio previews are not Infinity rendering evidence
 and other archetypes are covered by fixtures and rules. Measurements are short
 local runs on a memory-starved 16 GB M1, not benchmarks. The app is unsigned,
 macOS only, with the reduced S0 build profile (Eevee/Metal, GLB).
+
+## Defect found in V1 (2026-11-04)
+
+The S0 build profile (Blender "lite" base) compiles out the Remesh modifier and
+OpenSubdiv. In S0–S2 builds, `mesh.subdivide` (Subdivision Surface) was
+therefore a **silent no-op**: the operation reported success but left the mesh
+unchanged. No S2 fixture or demo used it, so no S2 result above depends on it,
+but the S2 claim that the tool works was wrong. V1 adds `finalverse/studio_v1.cmake`
+(Remesh and OpenSubdiv on; OpenVDB stays off because its pinned libraries are
+unfetched LFS pointers).

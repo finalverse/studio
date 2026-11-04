@@ -17,7 +17,7 @@ import uuid
 from .protocol import SCHEMA_V2, CreationError, LOCOMOTION, canonical, digest, validate
 from .store import TERMINAL
 
-SUBJECT_OPS = ('character.spirit', 'character.humanoid', 'procedural.building', 'procedural.tree', 'mesh.primitive')
+SUBJECT_OPS = ('character.founder', 'character.spirit', 'character.humanoid', 'procedural.building', 'procedural.tree', 'mesh.primitive')
 MAX_REVISIONS = 3
 WALL_SECONDS = 1800
 
