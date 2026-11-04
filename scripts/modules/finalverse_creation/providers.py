@@ -399,7 +399,9 @@ def plan(p, model, prompt, snapshot, language='v1', context=None):
         # The full closed schema remains in context and is enforced locally.
         payload = {'model': model, 'messages': messages, 'stream': False, 'format': 'json',
                    'options': {'temperature': 0, 'seed': 41, 'num_predict': budget, 'num_ctx': 8192},
-                   'keep_alive': '2m'}
+                   # On a memory-tight Mac a resident model starves the sandboxed preview
+                   # render that follows a v2 plan, so local v2 plans unload immediately.
+                   'keep_alive': '0s' if language == 'v2' and loopback(p['base_url']) else '2m'}
         if False in caps.get('thinking', {}).get('values', []):
             payload['think'] = False
         response = request(p, '/api/chat', payload)
