@@ -1,0 +1,4 @@
+# The S3-A test fixtures are small (< 64 KiB) and must travel with a plain clone or
+# git bundle, so they are regular git blobs here rather than the repository-wide
+# Git LFS default for *.glb/*.gltf/*.bin/*.png. See docs/S3A-S2-INTEGRATION-HANDOFF.md.
+fixtures/** -filter -diff -merge -text

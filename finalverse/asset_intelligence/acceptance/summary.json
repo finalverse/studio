@@ -1,0 +1,130 @@
+{
+  "assets": [
+    {
+      "asset": "humanoid_walker.glb",
+      "asset_sha256": "0edd4a1712c0c7d02326f56baebc5e4feb0d005b94f8b94c5897733a117d69f0",
+      "embodiment": {
+        "biological_humanoid": "compatible",
+        "botanical_sprite": "incompatible",
+        "fire_elemental": "incompatible",
+        "floating_spirit": "incompatible",
+        "nature_elemental": "compatible",
+        "synthetic_humanoid": "compatible"
+      },
+      "finding_codes": [],
+      "report_digest": "sha256:882a89702ef8ebbc2b945c436ff386f059af0b2cb7431741cef73df5126990be",
+      "report_file_sha256": "842f9b1e409888ffff5d20563d17d43f9e37efc76abcf3ac9cc1658272a73728",
+      "runtime": {
+        "finalverse.ec-static-glb/v1": "incompatible",
+        "finalverse.humanoid/v1": "incompatible",
+        "infinity.entry-glb/observed": "incompatible"
+      },
+      "status": "valid",
+      "tier": "Q1"
+    },
+    {
+      "asset": "floating_wisp.glb",
+      "asset_sha256": "f7fdca3d1c213da92a21e981e9aa2779c071e896f01c308c184a21c1eb38cedc",
+      "embodiment": {
+        "biological_humanoid": "incompatible",
+        "botanical_sprite": "incompatible",
+        "fire_elemental": "incompatible",
+        "floating_spirit": "compatible",
+        "nature_elemental": "incompatible",
+        "synthetic_humanoid": "incompatible"
+      },
+      "finding_codes": [],
+      "report_digest": "sha256:4d3159a8e5d4dbaa804aa994a94cc2cca84d63c655ddab8567a8a76477a1ecc2",
+      "report_file_sha256": "90b5f1cdb10b06b82cf35d13cb7e069b1a367aaee4d023472bda1b147cc5d762",
+      "runtime": {
+        "finalverse.ec-static-glb/v1": "incompatible",
+        "finalverse.humanoid/v1": "incompatible",
+        "infinity.entry-glb/observed": "incompatible"
+      },
+      "status": "valid",
+      "tier": "Q1"
+    },
+    {
+      "asset": "defective_creature.glb",
+      "asset_sha256": "769c8feb3af8cab983692f41df3e0d78764292e607ff3aa5d78547bf0cdbfa69",
+      "embodiment": {
+        "biological_humanoid": "incompatible",
+        "botanical_sprite": "incompatible",
+        "fire_elemental": "incompatible",
+        "floating_spirit": "incompatible",
+        "nature_elemental": "incompatible",
+        "synthetic_humanoid": "incompatible"
+      },
+      "finding_codes": [
+        "FVA-ANM-001",
+        "FVA-ANM-003",
+        "FVA-CON-008",
+        "FVA-EXT-001",
+        "FVA-GEO-003",
+        "FVA-GEO-006",
+        "FVA-GEO-007",
+        "FVA-GEO-013",
+        "FVA-MAT-001",
+        "FVA-SCN-002",
+        "FVA-SEC-001",
+        "FVA-SKN-001"
+      ],
+      "report_digest": "sha256:526717ca09e60238aada49b7836fd7c467b3c2c9ab24893aa03fe867ce6ce37f",
+      "report_file_sha256": "8da9bb695a16b189d3142183aaf85f4055c096e5a64b41994faaf8f307d97233",
+      "runtime": {
+        "finalverse.ec-static-glb/v1": "incompatible",
+        "finalverse.humanoid/v1": "incompatible",
+        "infinity.entry-glb/observed": "incompatible"
+      },
+      "status": "invalid",
+      "tier": null
+    },
+    {
+      "asset": "static_prop.glb",
+      "asset_sha256": "b05b11f3e0c403cdf08b9b93ffd12c21620e274c48c65b24b43c1acf044f3c5e",
+      "embodiment": {
+        "biological_humanoid": "incompatible",
+        "botanical_sprite": "incompatible",
+        "fire_elemental": "incompatible",
+        "floating_spirit": "incompatible",
+        "nature_elemental": "incompatible",
+        "synthetic_humanoid": "incompatible"
+      },
+      "finding_codes": [],
+      "report_digest": "sha256:177751abc0ea6a930cabea76e2249b75a12683bd16643577bcb3fe6eb1f4b9a3",
+      "report_file_sha256": "9eaba2c40d4f1b5bed4cd20e740fe08008238048fd455f7c52ec22bc03646ddb",
+      "runtime": {
+        "finalverse.ec-static-glb/v1": "compatible",
+        "finalverse.humanoid/v1": "incompatible",
+        "infinity.entry-glb/observed": "unverified"
+      },
+      "status": "valid",
+      "tier": "Q1"
+    },
+    {
+      "asset": "textured_crate.gltf",
+      "asset_sha256": "70b592146081bd344ce261c6651bba8336f49425994e77cfd464deb40a703f92",
+      "embodiment": {
+        "biological_humanoid": "incompatible",
+        "botanical_sprite": "incompatible",
+        "fire_elemental": "incompatible",
+        "floating_spirit": "incompatible",
+        "nature_elemental": "incompatible",
+        "synthetic_humanoid": "incompatible"
+      },
+      "finding_codes": [
+        "FVA-DEP-002"
+      ],
+      "report_digest": "sha256:f308a6ce925aca0d38bbdba5a7f3cd6d78dc8964d0c81cd5c296b0dca68fbb81",
+      "report_file_sha256": "27833fa08990a8d9203819d7c432162305fa22b8f74ab9b71cdbd17a8e6ada84",
+      "runtime": {
+        "finalverse.ec-static-glb/v1": "incompatible",
+        "finalverse.humanoid/v1": "incompatible",
+        "infinity.entry-glb/observed": "incompatible"
+      },
+      "status": "valid",
+      "tier": "Q1"
+    }
+  ],
+  "generated_at": "2026-11-04T00:00:00Z"
+}

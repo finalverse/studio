@@ -1,0 +1,151 @@
+$ finalverse-asset validate fixtures/humanoid_walker.glb --embodiment biological_humanoid
+humanoid_walker.glb: valid  (sha256:0edd4a1712c0c7d02326f56baebc5e4feb0d005b94f8b94c5897733a117d69f0)
+[exit 0]
+
+$ finalverse-asset report fixtures/humanoid_walker.glb --embodiment biological_humanoid
+humanoid_walker.glb: valid  findings={'critical': 0, 'error': 0, 'warning': 0, 'info': 0}
+  runtime    finalverse.ec-static-glb/v1      incompatible  EC-04
+  runtime    finalverse.humanoid/v1           incompatible  E0-06
+  runtime    infinity.entry-glb/observed      incompatible  INF-07
+  embodiment biological_humanoid              compatible    unmet=[]
+  embodiment synthetic_humanoid               compatible    unmet=[]
+  embodiment floating_spirit                  incompatible  unmet=['FS-04']
+  embodiment botanical_sprite                 incompatible  unmet=[]
+  embodiment nature_elemental                 compatible    unmet=[]
+  embodiment fire_elemental                   incompatible  unmet=['FE-04']
+  quality    certified=Q1 ceiling=Q1 next=Q2 blockers=['visual evidence supplied (>= 2 verified renders)', 'visual reference alignment >= 0.6', 'artistic coherence >= 0.6']
+    geometry_integrity           1.0
+    material_completeness        1.0
+    animation_integrity          1.0
+    embodiment_compatibility     1.0
+    runtime_complexity           1.0
+    visual_reference_alignment   not_assessed
+    artistic_coherence           not_assessed
+[exit 0]
+
+$ finalverse-asset validate fixtures/floating_wisp.glb --embodiment floating_spirit
+floating_wisp.glb: valid  (sha256:f7fdca3d1c213da92a21e981e9aa2779c071e896f01c308c184a21c1eb38cedc)
+[exit 0]
+
+$ finalverse-asset report fixtures/floating_wisp.glb --embodiment floating_spirit
+floating_wisp.glb: valid  findings={'critical': 0, 'error': 0, 'warning': 0, 'info': 0}
+  runtime    finalverse.ec-static-glb/v1      incompatible  EC-04
+  runtime    finalverse.humanoid/v1           incompatible  E0-04
+  runtime    infinity.entry-glb/observed      incompatible  INF-07
+  embodiment biological_humanoid              incompatible  unmet=['BH-05', 'BH-06', 'BH-07']
+  embodiment synthetic_humanoid               incompatible  unmet=['SH-05', 'SH-06', 'SH-07']
+  embodiment floating_spirit                  compatible    unmet=[]
+  embodiment botanical_sprite                 incompatible  unmet=[]
+  embodiment nature_elemental                 incompatible  unmet=[]
+  embodiment fire_elemental                   incompatible  unmet=[]
+  quality    certified=Q1 ceiling=Q1 next=Q2 blockers=['visual evidence supplied (>= 2 verified renders)', 'visual reference alignment >= 0.6', 'artistic coherence >= 0.6']
+    geometry_integrity           1.0
+    material_completeness        1.0
+    animation_integrity          1.0
+    embodiment_compatibility     1.0
+    runtime_complexity           1.0
+    visual_reference_alignment   not_assessed
+    artistic_coherence           not_assessed
+[exit 0]
+
+$ finalverse-asset validate fixtures/defective_creature.glb
+defective_creature.glb: invalid  (sha256:769c8feb3af8cab983692f41df3e0d78764292e607ff3aa5d78547bf0cdbfa69)
+  error    FVA-ANM-001 /animations/0/channels/1/target/node: Channel targets a missing node
+  error    FVA-ANM-003 /animations/0/samplers/0/input: Keyframe times are not strictly increasing
+  error    FVA-CON-008 /: JSON contains non-finite numbers
+  error    FVA-EXT-001 /extensionsRequired/0: Required extension is not supported by any accepted Finalverse runtime profile
+  error    FVA-GEO-003 /meshes/0/primitives/0/indices: Indices reference vertices beyond the vertex count
+  error    FVA-GEO-013 /meshes/0/primitives/0/attributes: Material texture needs a missing UV set
+  error    FVA-MAT-001 /materials/0/pbrMetallicRoughness/baseColorFactor: baseColorFactor components must be in [0, 1]
+  error    FVA-SCN-002 /nodes/1/translation: Node translation is not finite
+  error    FVA-SEC-001 /images/0/uri: Remote or non-file URI refused; it was not fetched
+  error    FVA-SKN-001 /skins/0/joints: Skin joints must be a non-empty list of unique existing nodes
+  warning  FVA-GEO-006 /meshes/0/primitives/0: Primitive contains degenerate (zero-area) triangles
+  warning  FVA-GEO-007 /meshes/0/primitives/0/attributes: Primitive has no vertex normals
+[exit 1]
+
+$ finalverse-asset report fixtures/defective_creature.glb
+defective_creature.glb: invalid  findings={'critical': 0, 'error': 10, 'warning': 2, 'info': 0}
+  runtime    finalverse.ec-static-glb/v1      incompatible  EC-03
+  runtime    finalverse.humanoid/v1           incompatible  E0-03
+  runtime    infinity.entry-glb/observed      incompatible  INF-03
+  embodiment biological_humanoid              incompatible  unmet=['BH-05', 'BH-06', 'BH-07']
+  embodiment synthetic_humanoid               incompatible  unmet=['SH-05', 'SH-06', 'SH-07']
+  embodiment floating_spirit                  incompatible  unmet=['FS-04']
+  embodiment botanical_sprite                 incompatible  unmet=[]
+  embodiment nature_elemental                 incompatible  unmet=[]
+  embodiment fire_elemental                   incompatible  unmet=['FE-04']
+  quality    certified=None ceiling=None next=Q0 blockers=['glTF 2.0 valid and policy-clean']
+    geometry_integrity           0.0
+    material_completeness        0.3333
+    animation_integrity          0.0
+    embodiment_compatibility     not_assessed
+    runtime_complexity           1.0
+    visual_reference_alignment   not_assessed
+    artistic_coherence           not_assessed
+  proposal   [error] /animations/0/channels/1/target/node: Target an existing node with path translation, rotation, scale or weights.
+  proposal   [error] /animations/0/samplers/0/input: Make keyframe times strictly increasing (remove duplicate keys).
+  proposal   [error] /: Replace overflowing or NaN numbers with finite values.
+  proposal   [error] /extensionsRequired/0: Re-export without the required extension, or confirm runtime support before publication.
+  proposal   [error] /meshes/0/primitives/0/indices: Fix triangle indices so every index is below the vertex count.
+  proposal   [error] /meshes/0/primitives/0/attributes: Export the UV set referenced by the material's textures.
+  proposal   [error] /materials/0/pbrMetallicRoughness/baseColorFactor: Clamp material factors to their specified ranges.
+  proposal   [error] /nodes/1/translation: Replace non-finite node transform values.
+  proposal   [error] /images/0/uri: Embed the resource in the GLB or ship it as a reviewed local file; remote URIs are never fetched.
+  proposal   [error] /skins/0/joints: Give the skin a non-empty list of unique, existing joint nodes.
+  proposal   [warning] /meshes/0/primitives/0: Remove zero-area triangles (merge by distance / dissolve degenerate in Blender).
+  proposal   [warning] /meshes/0/primitives/0/attributes: Export vertex normals (enable Normals in the glTF exporter; set shading smooth/flat intentionally).
+[exit 0]
+
+$ finalverse-asset validate fixtures/static_prop.glb --target finalverse.ec-static-glb/v1
+static_prop.glb: valid  (sha256:b05b11f3e0c403cdf08b9b93ffd12c21620e274c48c65b24b43c1acf044f3c5e)
+[exit 0]
+
+$ finalverse-asset report fixtures/static_prop.glb --target finalverse.ec-static-glb/v1
+static_prop.glb: valid  findings={'critical': 0, 'error': 0, 'warning': 0, 'info': 0}
+  runtime    finalverse.ec-static-glb/v1      compatible
+  runtime    finalverse.humanoid/v1           incompatible  E0-05
+  runtime    infinity.entry-glb/observed      unverified
+  embodiment biological_humanoid              incompatible  unmet=['BH-05', 'BH-06', 'BH-07']
+  embodiment synthetic_humanoid               incompatible  unmet=['SH-05', 'SH-06', 'SH-07']
+  embodiment floating_spirit                  incompatible  unmet=['FS-04']
+  embodiment botanical_sprite                 incompatible  unmet=[]
+  embodiment nature_elemental                 incompatible  unmet=[]
+  embodiment fire_elemental                   incompatible  unmet=['FE-04']
+  quality    certified=Q1 ceiling=Q1 next=Q2 blockers=['visual evidence supplied (>= 2 verified renders)', 'visual reference alignment >= 0.6', 'artistic coherence >= 0.6']
+    geometry_integrity           1.0
+    material_completeness        1.0
+    animation_integrity          not_applicable
+    embodiment_compatibility     not_assessed
+    runtime_complexity           1.0
+    visual_reference_alignment   not_assessed
+    artistic_coherence           not_assessed
+[exit 0]
+
+$ finalverse-asset validate fixtures/textured_crate.gltf
+textured_crate.gltf: valid  (sha256:70b592146081bd344ce261c6651bba8336f49425994e77cfd464deb40a703f92)
+  warning  FVA-DEP-002 /buffers/0/uri: Asset depends on an external file
+  warning  FVA-DEP-002 /images/0/uri: Asset depends on an external file
+[exit 0]
+
+$ finalverse-asset report fixtures/textured_crate.gltf
+textured_crate.gltf: valid  findings={'critical': 0, 'error': 0, 'warning': 2, 'info': 0}
+  runtime    finalverse.ec-static-glb/v1      incompatible  EC-01
+  runtime    finalverse.humanoid/v1           incompatible  E0-02
+  runtime    infinity.entry-glb/observed      incompatible  INF-01
+  embodiment biological_humanoid              incompatible  unmet=['BH-05', 'BH-06', 'BH-07']
+  embodiment synthetic_humanoid               incompatible  unmet=['SH-05', 'SH-06', 'SH-07']
+  embodiment floating_spirit                  incompatible  unmet=['FS-04']
+  embodiment botanical_sprite                 incompatible  unmet=[]
+  embodiment nature_elemental                 incompatible  unmet=[]
+  embodiment fire_elemental                   incompatible  unmet=['FE-04']
+  quality    certified=Q1 ceiling=Q1 next=Q2 blockers=['visual evidence supplied (>= 2 verified renders)', 'visual reference alignment >= 0.6', 'artistic coherence >= 0.6']
+    geometry_integrity           1.0
+    material_completeness        0.9
+    animation_integrity          not_applicable
+    embodiment_compatibility     not_assessed
+    runtime_complexity           1.0
+    visual_reference_alignment   not_assessed
+    artistic_coherence           not_assessed
+  proposal   [warning] /buffers/0/uri: Embed external resources (export as self-contained GLB) for Finalverse publication.
+[exit 0]

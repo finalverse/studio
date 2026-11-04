@@ -1,0 +1,1555 @@
+{
+  "$defs": {
+    "embodiment": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_status": {
+          "type": "string"
+        },
+        "derived": {
+          "type": "object"
+        },
+        "e0_body_types": {
+          "type": "array"
+        },
+        "profile": {
+          "enum": [
+            "biological_humanoid",
+            "botanical_sprite",
+            "fire_elemental",
+            "floating_spirit",
+            "nature_elemental",
+            "synthetic_humanoid"
+          ]
+        },
+        "recommendations_unmet": {
+          "type": "array"
+        },
+        "requirements": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "basis": {
+                "type": "string"
+              },
+              "detail": {
+                "type": "string"
+              },
+              "level": {
+                "enum": [
+                  "required",
+                  "recommended"
+                ]
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unverified"
+                ]
+              },
+              "requirement": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "requirement",
+              "level",
+              "basis",
+              "text",
+              "outcome",
+              "detail"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "skeleton": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "compatible",
+            "incompatible",
+            "unverified",
+            "not_evaluated"
+          ]
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "profile",
+        "title",
+        "status",
+        "requirements"
+      ],
+      "type": "object"
+    },
+    "finding": {
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "class": {
+          "enum": [
+            "spec",
+            "security",
+            "resource",
+            "limit",
+            "compatibility",
+            "quality"
+          ]
+        },
+        "code": {
+          "enum": [
+            "FVA-ANM-001",
+            "FVA-ANM-002",
+            "FVA-ANM-003",
+            "FVA-ANM-004",
+            "FVA-ANM-005",
+            "FVA-ANM-006",
+            "FVA-ANM-007",
+            "FVA-ANM-008",
+            "FVA-ANM-009",
+            "FVA-ANM-010",
+            "FVA-BUF-001",
+            "FVA-BUF-002",
+            "FVA-BUF-003",
+            "FVA-BUF-004",
+            "FVA-BUF-005",
+            "FVA-BUF-006",
+            "FVA-BUF-007",
+            "FVA-BUF-008",
+            "FVA-BUF-009",
+            "FVA-BUF-010",
+            "FVA-BUF-011",
+            "FVA-CMP-001",
+            "FVA-CON-001",
+            "FVA-CON-002",
+            "FVA-CON-003",
+            "FVA-CON-004",
+            "FVA-CON-005",
+            "FVA-CON-006",
+            "FVA-CON-007",
+            "FVA-CON-008",
+            "FVA-CON-009",
+            "FVA-CON-010",
+            "FVA-CON-011",
+            "FVA-CPX-001",
+            "FVA-CPX-002",
+            "FVA-CPX-003",
+            "FVA-CPX-004",
+            "FVA-CPX-005",
+            "FVA-CPX-006",
+            "FVA-CPX-007",
+            "FVA-CPX-008",
+            "FVA-CPX-009",
+            "FVA-DEP-001",
+            "FVA-DEP-002",
+            "FVA-EMB-001",
+            "FVA-EMB-002",
+            "FVA-EXT-001",
+            "FVA-EXT-002",
+            "FVA-EXT-003",
+            "FVA-EXT-004",
+            "FVA-GEO-001",
+            "FVA-GEO-002",
+            "FVA-GEO-003",
+            "FVA-GEO-004",
+            "FVA-GEO-005",
+            "FVA-GEO-006",
+            "FVA-GEO-007",
+            "FVA-GEO-008",
+            "FVA-GEO-009",
+            "FVA-GEO-010",
+            "FVA-GEO-011",
+            "FVA-GEO-012",
+            "FVA-GEO-013",
+            "FVA-GEO-014",
+            "FVA-GEO-015",
+            "FVA-GEO-016",
+            "FVA-MAT-001",
+            "FVA-MAT-002",
+            "FVA-MAT-003",
+            "FVA-MAT-004",
+            "FVA-MAT-005",
+            "FVA-MAT-006",
+            "FVA-MAT-007",
+            "FVA-MAT-008",
+            "FVA-MAT-009",
+            "FVA-MAT-010",
+            "FVA-QLT-001",
+            "FVA-RES-001",
+            "FVA-RES-002",
+            "FVA-RES-003",
+            "FVA-RES-004",
+            "FVA-RES-005",
+            "FVA-SCN-001",
+            "FVA-SCN-002",
+            "FVA-SCN-003",
+            "FVA-SCN-004",
+            "FVA-SCN-005",
+            "FVA-SCN-006",
+            "FVA-SCN-007",
+            "FVA-SCN-008",
+            "FVA-SEC-001",
+            "FVA-SEC-002",
+            "FVA-SEC-003",
+            "FVA-SKN-001",
+            "FVA-SKN-002",
+            "FVA-SKN-003",
+            "FVA-SKN-004",
+            "FVA-SKN-005",
+            "FVA-SKN-006",
+            "FVA-SKN-007",
+            "FVA-SKN-008",
+            "FVA-SKN-009",
+            "FVA-SKN-010"
+          ]
+        },
+        "component": {
+          "pattern": "^/",
+          "type": "string"
+        },
+        "evidence": {
+          "type": "object"
+        },
+        "id": {
+          "pattern": "^FVA-[A-Z]{3}-\\d{3}:/",
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "severity": {
+          "enum": [
+            "critical",
+            "error",
+            "warning",
+            "info"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "code",
+        "name",
+        "category",
+        "class",
+        "severity",
+        "component",
+        "message",
+        "evidence"
+      ],
+      "type": "object"
+    },
+    "proposal": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "advisory": {
+          "const": true
+        },
+        "category": {
+          "type": "string"
+        },
+        "class": {
+          "enum": [
+            "spec",
+            "security",
+            "resource",
+            "limit",
+            "compatibility",
+            "quality"
+          ]
+        },
+        "component": {
+          "type": "string"
+        },
+        "components": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "confidence": {
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "evidence": {
+          "type": "object"
+        },
+        "expected_impact": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "finding_ids": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "id": {
+          "pattern": "^P-FVA-",
+          "type": "string"
+        },
+        "modifies_asset": {
+          "const": false
+        },
+        "required_validation": {
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "severity": {
+          "enum": [
+            "critical",
+            "error",
+            "warning",
+            "info"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "finding_ids",
+        "severity",
+        "category",
+        "class",
+        "component",
+        "components",
+        "evidence",
+        "action",
+        "expected_impact",
+        "confidence",
+        "required_validation",
+        "advisory",
+        "modifies_asset"
+      ],
+      "type": "object"
+    },
+    "runtime_profile": {
+      "additionalProperties": false,
+      "properties": {
+        "contract": {
+          "additionalProperties": false,
+          "properties": {
+            "sources": {
+              "type": "array"
+            },
+            "status": {
+              "enum": [
+                "accepted",
+                "observed",
+                "provisional",
+                "n/a"
+              ]
+            }
+          },
+          "required": [
+            "status",
+            "sources"
+          ],
+          "type": "object"
+        },
+        "id": {
+          "enum": [
+            "finalverse.ec-static-glb/v1",
+            "finalverse.humanoid/v1",
+            "infinity.entry-glb/observed"
+          ]
+        },
+        "material_feature_support": {
+          "additionalProperties": {
+            "enum": [
+              "consumed_by_entry_reader",
+              "not_consumed_by_entry_reader"
+            ]
+          },
+          "type": "object"
+        },
+        "notes": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "rules": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "detail": {
+                "type": "string"
+              },
+              "outcome": {
+                "enum": [
+                  "pass",
+                  "fail",
+                  "unverified",
+                  "not_evaluated"
+                ]
+              },
+              "requirement": {
+                "type": "string"
+              },
+              "rule": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "rule",
+              "requirement",
+              "outcome"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "compatible",
+            "incompatible",
+            "unverified",
+            "not_evaluated"
+          ]
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "status",
+        "contract",
+        "rules",
+        "notes"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://finalverse.ai/schemas/finalverse.asset-intelligence/v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Report produced by finalverse-asset-intelligence. Generated by tools/write_schema.py.",
+  "properties": {
+    "asset": {
+      "additionalProperties": false,
+      "properties": {
+        "byte_length": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "file_name": {
+          "type": "string"
+        },
+        "generator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "identity": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "media_type": {
+          "enum": [
+            "model/gltf-binary",
+            "model/gltf+json",
+            null
+          ]
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "file_name",
+        "media_type",
+        "byte_length",
+        "sha256",
+        "identity",
+        "generator"
+      ],
+      "type": "object"
+    },
+    "compatibility": {
+      "additionalProperties": false,
+      "properties": {
+        "embodiment": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "contract_status": {
+                "type": "string"
+              },
+              "derived": {
+                "type": "object"
+              },
+              "e0_body_types": {
+                "type": "array"
+              },
+              "profile": {
+                "enum": [
+                  "biological_humanoid",
+                  "botanical_sprite",
+                  "fire_elemental",
+                  "floating_spirit",
+                  "nature_elemental",
+                  "synthetic_humanoid"
+                ]
+              },
+              "recommendations_unmet": {
+                "type": "array"
+              },
+              "requirements": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "basis": {
+                      "type": "string"
+                    },
+                    "detail": {
+                      "type": "string"
+                    },
+                    "level": {
+                      "enum": [
+                        "required",
+                        "recommended"
+                      ]
+                    },
+                    "outcome": {
+                      "enum": [
+                        "pass",
+                        "fail",
+                        "unverified"
+                      ]
+                    },
+                    "requirement": {
+                      "type": "string"
+                    },
+                    "text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "requirement",
+                    "level",
+                    "basis",
+                    "text",
+                    "outcome",
+                    "detail"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "skeleton": {
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "compatible",
+                  "incompatible",
+                  "unverified",
+                  "not_evaluated"
+                ]
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "profile",
+              "title",
+              "status",
+              "requirements"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "runtime": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "contract": {
+                "additionalProperties": false,
+                "properties": {
+                  "sources": {
+                    "type": "array"
+                  },
+                  "status": {
+                    "enum": [
+                      "accepted",
+                      "observed",
+                      "provisional",
+                      "n/a"
+                    ]
+                  }
+                },
+                "required": [
+                  "status",
+                  "sources"
+                ],
+                "type": "object"
+              },
+              "id": {
+                "enum": [
+                  "finalverse.ec-static-glb/v1",
+                  "finalverse.humanoid/v1",
+                  "infinity.entry-glb/observed"
+                ]
+              },
+              "material_feature_support": {
+                "additionalProperties": {
+                  "enum": [
+                    "consumed_by_entry_reader",
+                    "not_consumed_by_entry_reader"
+                  ]
+                },
+                "type": "object"
+              },
+              "notes": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "rules": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "detail": {
+                      "type": "string"
+                    },
+                    "outcome": {
+                      "enum": [
+                        "pass",
+                        "fail",
+                        "unverified",
+                        "not_evaluated"
+                      ]
+                    },
+                    "requirement": {
+                      "type": "string"
+                    },
+                    "rule": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "rule",
+                    "requirement",
+                    "outcome"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "status": {
+                "enum": [
+                  "compatible",
+                  "incompatible",
+                  "unverified",
+                  "not_evaluated"
+                ]
+              },
+              "title": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "title",
+              "status",
+              "contract",
+              "rules",
+              "notes"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "runtime",
+        "embodiment"
+      ],
+      "type": "object"
+    },
+    "configuration": {
+      "additionalProperties": false,
+      "properties": {
+        "budget": {
+          "type": "object"
+        },
+        "embodiment_profile": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "limits": {
+          "type": "object"
+        },
+        "runtime_profiles": {
+          "type": "array"
+        },
+        "target_profile": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "limits",
+        "budget",
+        "runtime_profiles",
+        "target_profile",
+        "embodiment_profile"
+      ],
+      "type": "object"
+    },
+    "findings": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "class": {
+            "enum": [
+              "spec",
+              "security",
+              "resource",
+              "limit",
+              "compatibility",
+              "quality"
+            ]
+          },
+          "code": {
+            "enum": [
+              "FVA-ANM-001",
+              "FVA-ANM-002",
+              "FVA-ANM-003",
+              "FVA-ANM-004",
+              "FVA-ANM-005",
+              "FVA-ANM-006",
+              "FVA-ANM-007",
+              "FVA-ANM-008",
+              "FVA-ANM-009",
+              "FVA-ANM-010",
+              "FVA-BUF-001",
+              "FVA-BUF-002",
+              "FVA-BUF-003",
+              "FVA-BUF-004",
+              "FVA-BUF-005",
+              "FVA-BUF-006",
+              "FVA-BUF-007",
+              "FVA-BUF-008",
+              "FVA-BUF-009",
+              "FVA-BUF-010",
+              "FVA-BUF-011",
+              "FVA-CMP-001",
+              "FVA-CON-001",
+              "FVA-CON-002",
+              "FVA-CON-003",
+              "FVA-CON-004",
+              "FVA-CON-005",
+              "FVA-CON-006",
+              "FVA-CON-007",
+              "FVA-CON-008",
+              "FVA-CON-009",
+              "FVA-CON-010",
+              "FVA-CON-011",
+              "FVA-CPX-001",
+              "FVA-CPX-002",
+              "FVA-CPX-003",
+              "FVA-CPX-004",
+              "FVA-CPX-005",
+              "FVA-CPX-006",
+              "FVA-CPX-007",
+              "FVA-CPX-008",
+              "FVA-CPX-009",
+              "FVA-DEP-001",
+              "FVA-DEP-002",
+              "FVA-EMB-001",
+              "FVA-EMB-002",
+              "FVA-EXT-001",
+              "FVA-EXT-002",
+              "FVA-EXT-003",
+              "FVA-EXT-004",
+              "FVA-GEO-001",
+              "FVA-GEO-002",
+              "FVA-GEO-003",
+              "FVA-GEO-004",
+              "FVA-GEO-005",
+              "FVA-GEO-006",
+              "FVA-GEO-007",
+              "FVA-GEO-008",
+              "FVA-GEO-009",
+              "FVA-GEO-010",
+              "FVA-GEO-011",
+              "FVA-GEO-012",
+              "FVA-GEO-013",
+              "FVA-GEO-014",
+              "FVA-GEO-015",
+              "FVA-GEO-016",
+              "FVA-MAT-001",
+              "FVA-MAT-002",
+              "FVA-MAT-003",
+              "FVA-MAT-004",
+              "FVA-MAT-005",
+              "FVA-MAT-006",
+              "FVA-MAT-007",
+              "FVA-MAT-008",
+              "FVA-MAT-009",
+              "FVA-MAT-010",
+              "FVA-QLT-001",
+              "FVA-RES-001",
+              "FVA-RES-002",
+              "FVA-RES-003",
+              "FVA-RES-004",
+              "FVA-RES-005",
+              "FVA-SCN-001",
+              "FVA-SCN-002",
+              "FVA-SCN-003",
+              "FVA-SCN-004",
+              "FVA-SCN-005",
+              "FVA-SCN-006",
+              "FVA-SCN-007",
+              "FVA-SCN-008",
+              "FVA-SEC-001",
+              "FVA-SEC-002",
+              "FVA-SEC-003",
+              "FVA-SKN-001",
+              "FVA-SKN-002",
+              "FVA-SKN-003",
+              "FVA-SKN-004",
+              "FVA-SKN-005",
+              "FVA-SKN-006",
+              "FVA-SKN-007",
+              "FVA-SKN-008",
+              "FVA-SKN-009",
+              "FVA-SKN-010"
+            ]
+          },
+          "component": {
+            "pattern": "^/",
+            "type": "string"
+          },
+          "evidence": {
+            "type": "object"
+          },
+          "id": {
+            "pattern": "^FVA-[A-Z]{3}-\\d{3}:/",
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "critical",
+              "error",
+              "warning",
+              "info"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "name",
+          "category",
+          "class",
+          "severity",
+          "component",
+          "message",
+          "evidence"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "inspection": {
+      "type": "object"
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "proposals": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "advisory": {
+            "const": true
+          },
+          "category": {
+            "type": "string"
+          },
+          "class": {
+            "enum": [
+              "spec",
+              "security",
+              "resource",
+              "limit",
+              "compatibility",
+              "quality"
+            ]
+          },
+          "component": {
+            "type": "string"
+          },
+          "components": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "confidence": {
+            "enum": [
+              "high",
+              "medium",
+              "low"
+            ]
+          },
+          "evidence": {
+            "type": "object"
+          },
+          "expected_impact": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "finding_ids": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "id": {
+            "pattern": "^P-FVA-",
+            "type": "string"
+          },
+          "modifies_asset": {
+            "const": false
+          },
+          "required_validation": {
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "severity": {
+            "enum": [
+              "critical",
+              "error",
+              "warning",
+              "info"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "finding_ids",
+          "severity",
+          "category",
+          "class",
+          "component",
+          "components",
+          "evidence",
+          "action",
+          "expected_impact",
+          "confidence",
+          "required_validation",
+          "advisory",
+          "modifies_asset"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "provenance": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_sources": {
+          "type": "array"
+        },
+        "inputs": {
+          "type": "array"
+        },
+        "inspector": {
+          "type": "string"
+        },
+        "modifies_asset": {
+          "const": false
+        },
+        "network_access": {
+          "const": "none"
+        }
+      },
+      "required": [
+        "inspector",
+        "inputs",
+        "contract_sources",
+        "network_access",
+        "modifies_asset"
+      ],
+      "type": "object"
+    },
+    "quality": {
+      "additionalProperties": false,
+      "properties": {
+        "categories": {
+          "additionalProperties": false,
+          "properties": {
+            "animation_integrity": {
+              "additionalProperties": false,
+              "properties": {
+                "basis": {
+                  "type": "array"
+                },
+                "checklist": {
+                  "type": "object"
+                },
+                "explanation": {
+                  "type": "string"
+                },
+                "method": {
+                  "enum": [
+                    "deterministic",
+                    "evidence"
+                  ]
+                },
+                "score": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "assessed",
+                    "not_assessed",
+                    "not_applicable"
+                  ]
+                }
+              },
+              "required": [
+                "score",
+                "status",
+                "method",
+                "explanation",
+                "basis"
+              ],
+              "type": "object"
+            },
+            "artistic_coherence": {
+              "additionalProperties": false,
+              "properties": {
+                "basis": {
+                  "type": "array"
+                },
+                "checklist": {
+                  "type": "object"
+                },
+                "explanation": {
+                  "type": "string"
+                },
+                "method": {
+                  "enum": [
+                    "deterministic",
+                    "evidence"
+                  ]
+                },
+                "score": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "assessed",
+                    "not_assessed",
+                    "not_applicable"
+                  ]
+                }
+              },
+              "required": [
+                "score",
+                "status",
+                "method",
+                "explanation",
+                "basis"
+              ],
+              "type": "object"
+            },
+            "embodiment_compatibility": {
+              "additionalProperties": false,
+              "properties": {
+                "basis": {
+                  "type": "array"
+                },
+                "checklist": {
+                  "type": "object"
+                },
+                "explanation": {
+                  "type": "string"
+                },
+                "method": {
+                  "enum": [
+                    "deterministic",
+                    "evidence"
+                  ]
+                },
+                "score": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "assessed",
+                    "not_assessed",
+                    "not_applicable"
+                  ]
+                }
+              },
+              "required": [
+                "score",
+                "status",
+                "method",
+                "explanation",
+                "basis"
+              ],
+              "type": "object"
+            },
+            "geometry_integrity": {
+              "additionalProperties": false,
+              "properties": {
+                "basis": {
+                  "type": "array"
+                },
+                "checklist": {
+                  "type": "object"
+                },
+                "explanation": {
+                  "type": "string"
+                },
+                "method": {
+                  "enum": [
+                    "deterministic",
+                    "evidence"
+                  ]
+                },
+                "score": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "assessed",
+                    "not_assessed",
+                    "not_applicable"
+                  ]
+                }
+              },
+              "required": [
+                "score",
+                "status",
+                "method",
+                "explanation",
+                "basis"
+              ],
+              "type": "object"
+            },
+            "material_completeness": {
+              "additionalProperties": false,
+              "properties": {
+                "basis": {
+                  "type": "array"
+                },
+                "checklist": {
+                  "type": "object"
+                },
+                "explanation": {
+                  "type": "string"
+                },
+                "method": {
+                  "enum": [
+                    "deterministic",
+                    "evidence"
+                  ]
+                },
+                "score": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "assessed",
+                    "not_assessed",
+                    "not_applicable"
+                  ]
+                }
+              },
+              "required": [
+                "score",
+                "status",
+                "method",
+                "explanation",
+                "basis"
+              ],
+              "type": "object"
+            },
+            "runtime_complexity": {
+              "additionalProperties": false,
+              "properties": {
+                "basis": {
+                  "type": "array"
+                },
+                "checklist": {
+                  "type": "object"
+                },
+                "explanation": {
+                  "type": "string"
+                },
+                "method": {
+                  "enum": [
+                    "deterministic",
+                    "evidence"
+                  ]
+                },
+                "score": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "assessed",
+                    "not_assessed",
+                    "not_applicable"
+                  ]
+                }
+              },
+              "required": [
+                "score",
+                "status",
+                "method",
+                "explanation",
+                "basis"
+              ],
+              "type": "object"
+            },
+            "visual_reference_alignment": {
+              "additionalProperties": false,
+              "properties": {
+                "basis": {
+                  "type": "array"
+                },
+                "checklist": {
+                  "type": "object"
+                },
+                "explanation": {
+                  "type": "string"
+                },
+                "method": {
+                  "enum": [
+                    "deterministic",
+                    "evidence"
+                  ]
+                },
+                "score": {
+                  "maximum": 1,
+                  "minimum": 0,
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "status": {
+                  "enum": [
+                    "assessed",
+                    "not_assessed",
+                    "not_applicable"
+                  ]
+                }
+              },
+              "required": [
+                "score",
+                "status",
+                "method",
+                "explanation",
+                "basis"
+              ],
+              "type": "object"
+            }
+          },
+          "required": [
+            "geometry_integrity",
+            "material_completeness",
+            "animation_integrity",
+            "embodiment_compatibility",
+            "runtime_complexity",
+            "visual_reference_alignment",
+            "artistic_coherence"
+          ],
+          "type": "object"
+        },
+        "tier": {
+          "additionalProperties": false,
+          "properties": {
+            "certified": {
+              "enum": [
+                "Q0",
+                "Q1",
+                "Q2",
+                "Q3",
+                "Q4",
+                null
+              ]
+            },
+            "certified_name": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "criteria": {
+              "type": "object"
+            },
+            "deterministic_ceiling": {
+              "enum": [
+                "Q0",
+                "Q1",
+                "Q2",
+                "Q3",
+                "Q4",
+                null
+              ]
+            },
+            "next_tier": {
+              "enum": [
+                "Q0",
+                "Q1",
+                "Q2",
+                "Q3",
+                "Q4",
+                null
+              ]
+            },
+            "next_tier_blockers": {
+              "type": "array"
+            },
+            "policy": {
+              "type": "string"
+            },
+            "visual_evidence": {
+              "enum": [
+                "verified",
+                "absent"
+              ]
+            }
+          },
+          "required": [
+            "certified",
+            "certified_name",
+            "deterministic_ceiling",
+            "next_tier",
+            "next_tier_blockers",
+            "visual_evidence",
+            "criteria",
+            "policy"
+          ],
+          "type": "object"
+        },
+        "visual_evidence": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "categories",
+        "tier"
+      ],
+      "type": "object"
+    },
+    "report_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "schema": {
+      "const": "finalverse.asset-intelligence/v1"
+    },
+    "tool": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "const": "finalverse-asset-intelligence"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "version"
+      ],
+      "type": "object"
+    },
+    "validation": {
+      "additionalProperties": false,
+      "properties": {
+        "finding_counts": {
+          "additionalProperties": false,
+          "properties": {
+            "critical": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "error": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "info": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "warning": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "critical",
+            "error",
+            "warning",
+            "info"
+          ],
+          "type": "object"
+        },
+        "finding_counts_by_class": {
+          "type": "object"
+        },
+        "incomplete_reasons": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "inspection_complete": {
+          "type": "boolean"
+        },
+        "policy_clean": {
+          "type": "boolean"
+        },
+        "spec_valid": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "valid",
+            "valid_exceeds_limits",
+            "invalid",
+            "refused"
+          ]
+        },
+        "suppressed_repeats": {
+          "type": "object"
+        },
+        "target_profile_status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "within_limits": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "status",
+        "spec_valid",
+        "within_limits",
+        "policy_clean",
+        "inspection_complete",
+        "incomplete_reasons",
+        "target_profile_status",
+        "finding_counts",
+        "finding_counts_by_class",
+        "suppressed_repeats"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema",
+    "tool",
+    "generated_at",
+    "asset",
+    "configuration",
+    "validation",
+    "metrics",
+    "findings",
+    "compatibility",
+    "quality",
+    "proposals",
+    "provenance",
+    "report_digest"
+  ],
+  "title": "finalverse.asset-intelligence/v1",
+  "type": "object"
+}

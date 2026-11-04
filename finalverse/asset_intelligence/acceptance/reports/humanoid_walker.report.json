@@ -1,0 +1,1904 @@
+{
+  "asset": {
+    "byte_length": 37728,
+    "file_name": "humanoid_walker.glb",
+    "generator": "Finalverse S3-A fixture builder/1",
+    "identity": "sha256:0edd4a1712c0c7d02326f56baebc5e4feb0d005b94f8b94c5897733a117d69f0",
+    "media_type": "model/gltf-binary",
+    "sha256": "0edd4a1712c0c7d02326f56baebc5e4feb0d005b94f8b94c5897733a117d69f0"
+  },
+  "compatibility": {
+    "embodiment": [
+      {
+        "contract_status": "accepted (rig) + provisional (capabilities)",
+        "derived": {
+          "collision_capsule": {
+            "height_m": 1.79,
+            "radius_m": 0.24
+          },
+          "within_e0_definition_bounds": true
+        },
+        "e0_body_types": [
+          "human",
+          "stylized_humanoid"
+        ],
+        "profile": "biological_humanoid",
+        "recommendations_unmet": [],
+        "requirements": [
+          {
+            "basis": "accepted:finalverse.humanoid/v1",
+            "detail": "canonical 26-joint hierarchy, identity rest rotations, consistent inverse binds",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "BH-01",
+            "text": "Canonical finalverse.humanoid/v1 rig (structure, not names only)"
+          },
+          {
+            "basis": "accepted:finalverse.humanoid/v1",
+            "detail": "height 1.79 m (expected 1.4..2.1 m)",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "BH-02",
+            "text": "Standing height 1.4..2.1 m (E0 height_mm 1400..2100)"
+          },
+          {
+            "basis": "accepted:finalverse.humanoid/v1",
+            "detail": "lowest point y = -0.0 m",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "BH-03",
+            "text": "Origin under the feet (lowest point within 0.05 m of y=0)"
+          },
+          {
+            "basis": "accepted:finalverse.humanoid/v1",
+            "detail": "clips: greet, idle, speak, turn, walk",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "BH-04",
+            "text": "At least one clip; all clips canonical and rotation-only"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "has walk, turn",
+            "level": "recommended",
+            "outcome": "pass",
+            "requirement": "BH-05",
+            "text": "Locomotion capability (walk, turn)"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "has greet, speak",
+            "level": "recommended",
+            "outcome": "pass",
+            "requirement": "BH-06",
+            "text": "Social capability (greet, speak)"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "has idle",
+            "level": "recommended",
+            "outcome": "pass",
+            "requirement": "BH-07",
+            "text": "Idle capability (idle)"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "3/3 facial joints (eyes, jaw) influence vertices",
+            "level": "recommended",
+            "outcome": "pass",
+            "requirement": "BH-08",
+            "text": "Eyes and jaw influence geometry (expressive face)"
+          }
+        ],
+        "skeleton": "required: finalverse.humanoid/v1",
+        "status": "compatible",
+        "title": "Biological humanoid"
+      },
+      {
+        "contract_status": "accepted (rig) + provisional (capabilities)",
+        "derived": {
+          "collision_capsule": {
+            "height_m": 1.79,
+            "radius_m": 0.24
+          },
+          "within_e0_definition_bounds": true
+        },
+        "e0_body_types": [
+          "droid"
+        ],
+        "profile": "synthetic_humanoid",
+        "recommendations_unmet": [],
+        "requirements": [
+          {
+            "basis": "accepted:finalverse.humanoid/v1",
+            "detail": "canonical 26-joint hierarchy, identity rest rotations, consistent inverse binds",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "SH-01",
+            "text": "Canonical finalverse.humanoid/v1 rig (structure, not names only)"
+          },
+          {
+            "basis": "accepted:finalverse.humanoid/v1",
+            "detail": "height 1.79 m (expected 1.4..2.1 m)",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "SH-02",
+            "text": "Standing height 1.4..2.1 m (E0 height_mm 1400..2100)"
+          },
+          {
+            "basis": "accepted:finalverse.humanoid/v1",
+            "detail": "lowest point y = -0.0 m",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "SH-03",
+            "text": "Origin under the feet (lowest point within 0.05 m of y=0)"
+          },
+          {
+            "basis": "accepted:finalverse.humanoid/v1",
+            "detail": "clips: greet, idle, speak, turn, walk",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "SH-04",
+            "text": "At least one clip; all clips canonical and rotation-only"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "has walk, turn",
+            "level": "recommended",
+            "outcome": "pass",
+            "requirement": "SH-05",
+            "text": "Locomotion capability (walk, turn)"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "has greet, speak",
+            "level": "recommended",
+            "outcome": "pass",
+            "requirement": "SH-06",
+            "text": "Social capability (greet, speak)"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "has idle",
+            "level": "recommended",
+            "outcome": "pass",
+            "requirement": "SH-07",
+            "text": "Idle capability (idle)"
+          }
+        ],
+        "skeleton": "required: finalverse.humanoid/v1",
+        "status": "compatible",
+        "title": "Synthetic humanoid (droid, android)"
+      },
+      {
+        "contract_status": "provisional",
+        "e0_body_types": [],
+        "profile": "floating_spirit",
+        "recommendations_unmet": [
+          "FS-04"
+        ],
+        "requirements": [
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "extent 1.79 m (expected 0.1..4.0 m)",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "FS-01",
+            "text": "Finite extent 0.1..4 m"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "5 valid animation(s); kinds: skeletal",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "FS-02",
+            "text": "Ambient motion: at least one valid animation (node, skeletal or morph)"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "lowest point y = -0.0 m",
+            "level": "required",
+            "outcome": "fail",
+            "requirement": "FS-03",
+            "text": "Hovers: lowest point above 0.05 m (no ground contact assumed)"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "emissive=False, alpha BLEND=False",
+            "level": "recommended",
+            "outcome": "fail",
+            "requirement": "FS-04",
+            "text": "Luminous or translucent appearance (emission or BLEND)"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "5/5 animation(s) return to their first key",
+            "level": "recommended",
+            "outcome": "pass",
+            "requirement": "FS-05",
+            "text": "Ambient motion loops seamlessly"
+          }
+        ],
+        "skeleton": "optional (any or none)",
+        "status": "incompatible",
+        "title": "Floating spirit"
+      },
+      {
+        "contract_status": "provisional",
+        "e0_body_types": [],
+        "profile": "botanical_sprite",
+        "recommendations_unmet": [],
+        "requirements": [
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "extent 1.79 m (expected 0.05..1.5 m)",
+            "level": "required",
+            "outcome": "fail",
+            "requirement": "BS-01",
+            "text": "Finite extent 0.05..1.5 m"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "5 valid animation(s); kinds: skeletal",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "BS-02",
+            "text": "Ambient motion (sway): at least one valid animation"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "lowest point y = -0.0 m",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "BS-03",
+            "text": "Rooted on its origin (lowest point within 0.05 m of y=0)"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "no alpha-tested/blended materials",
+            "level": "recommended",
+            "outcome": "pass",
+            "requirement": "BS-04",
+            "text": "Alpha-tested/blended foliage materials are double-sided"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "5/5 animation(s) return to their first key",
+            "level": "recommended",
+            "outcome": "pass",
+            "requirement": "BS-05",
+            "text": "Ambient motion loops seamlessly"
+          }
+        ],
+        "skeleton": "optional (any or none)",
+        "status": "incompatible",
+        "title": "Botanical sprite"
+      },
+      {
+        "contract_status": "provisional",
+        "e0_body_types": [],
+        "profile": "nature_elemental",
+        "recommendations_unmet": [],
+        "requirements": [
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "extent 1.79 m (expected 0.5..8.0 m)",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "NE-01",
+            "text": "Finite extent 0.5..8 m"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "5 valid animation(s); kinds: skeletal",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "NE-02",
+            "text": "Motion: at least one valid animation"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "lowest point y = -0.0 m",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "NE-03",
+            "text": "Grounded on its origin (lowest point within 0.05 m of y=0)"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "5/5 animation(s) return to their first key",
+            "level": "recommended",
+            "outcome": "pass",
+            "requirement": "NE-04",
+            "text": "Motion loops seamlessly"
+          }
+        ],
+        "skeleton": "optional (any or none)",
+        "status": "compatible",
+        "title": "Nature elemental"
+      },
+      {
+        "contract_status": "provisional",
+        "e0_body_types": [],
+        "profile": "fire_elemental",
+        "recommendations_unmet": [
+          "FE-04"
+        ],
+        "requirements": [
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "extent 1.79 m (expected 0.2..6.0 m)",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "FE-01",
+            "text": "Finite extent 0.2..6 m"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "no used material has emission",
+            "level": "required",
+            "outcome": "fail",
+            "requirement": "FE-02",
+            "text": "Emissive: a used material emits light"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "no emissive material",
+            "level": "required",
+            "outcome": "fail",
+            "requirement": "FE-03",
+            "text": "Warm emission: every emissive material has R >= G >= B"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "5 valid animation(s); kinds: skeletal",
+            "level": "required",
+            "outcome": "pass",
+            "requirement": "FE-06",
+            "text": "Motion (flicker): at least one valid animation"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "no BLEND material",
+            "level": "recommended",
+            "outcome": "fail",
+            "requirement": "FE-04",
+            "text": "Translucent flame material (alpha BLEND)"
+          },
+          {
+            "basis": "provisional:s3a (no accepted E1 contract available)",
+            "detail": "5/5 animation(s) return to their first key",
+            "level": "recommended",
+            "outcome": "pass",
+            "requirement": "FE-05",
+            "text": "Motion loops seamlessly"
+          }
+        ],
+        "skeleton": "optional (any or none)",
+        "status": "incompatible",
+        "title": "Fire elemental"
+      }
+    ],
+    "runtime": [
+      {
+        "contract": {
+          "sources": [
+            {
+              "commit": "3cd0e93",
+              "path": "crates/ec/src/geometry.rs",
+              "repository": "finalverse/finalverse",
+              "symbol": "validate_glb"
+            }
+          ],
+          "status": "accepted"
+        },
+        "id": "finalverse.ec-static-glb/v1",
+        "notes": [],
+        "rules": [
+          {
+            "outcome": "pass",
+            "requirement": "Bounded GLB v2 (<= 2 MiB, declared length equals file length, JSON first chunk)",
+            "rule": "EC-01"
+          },
+          {
+            "outcome": "pass",
+            "requirement": "JSON chunk 1..262144 bytes, 4-byte aligned, followed by exactly one BIN chunk ending at EOF",
+            "rule": "EC-02"
+          },
+          {
+            "outcome": "pass",
+            "requirement": "UTF-8, strict duplicate-free JSON with finite numbers",
+            "rule": "EC-03"
+          },
+          {
+            "detail": "Only the reviewed static single-node mesh subset is supported",
+            "outcome": "fail",
+            "requirement": "Only reviewed top-level properties; asset.version 2.0; scene 0; scenes [{nodes:[0]}]; nodes [{mesh:0}]",
+            "rule": "EC-04"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "No uri, extensions, images, textures, shaders, scripts, animations, skins or morph targets anywhere",
+            "rule": "EC-05"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Exactly one buffer with only byteLength equal to the BIN chunk length",
+            "rule": "EC-06"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "At most 256 bufferViews and 256 accessors",
+            "rule": "EC-07"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "1..8 materials with only name/pbrMetallicRoughness/emissiveFactor/doubleSided/extras",
+            "rule": "EC-08"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Each material has baseColorFactor[4], metallicFactor, roughnessFactor and emissiveFactor[3] in [0,1]",
+            "rule": "EC-09"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Exactly one mesh with 1..8 indexed-triangle primitives referencing existing materials",
+            "rule": "EC-10"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Attributes exactly POSITION, NORMAL, TEXCOORD_0 (float) with uint32 indices; tightly packed, aligned",
+            "rule": "EC-11"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Equal attribute counts; at most 32768 vertices and 32768 triangles; index count multiple of 3",
+            "rule": "EC-12"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Finite positions |v|<=1000, unit normals (|n|^2 in [0.98,1.02]), finite UVs |v|<=10000",
+            "rule": "EC-13"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "POSITION min/max present and within 1e-4 of decoded data",
+            "rule": "EC-14"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Indices inside the vertex buffer and no degenerate triangles",
+            "rule": "EC-15"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Vertex normals lie in the front hemisphere of each triangle (winding agrees with normals)",
+            "rule": "EC-16"
+          }
+        ],
+        "status": "incompatible",
+        "title": "Finalverse EC static GLB subset (G0 static geometry admission)"
+      },
+      {
+        "contract": {
+          "sources": [
+            {
+              "commit": "3cd0e93",
+              "path": "crates/embodiment/src/lib.rs",
+              "repository": "finalverse/finalverse",
+              "symbol": "Asset::load"
+            },
+            {
+              "commit": "3cd0e93",
+              "path": "docs/genesis/E0-HUMANOID-STANDARD.md",
+              "repository": "finalverse/finalverse",
+              "symbol": "Finalverse humanoid v1"
+            },
+            {
+              "commit": "664445f",
+              "path": "src/bin/embodiment-render.rs",
+              "repository": "finalverse/infinity",
+              "symbol": "Asset::load (embodiment render path)"
+            }
+          ],
+          "status": "accepted"
+        },
+        "id": "finalverse.humanoid/v1",
+        "notes": [
+          "Infinity renders E0 bodies through this same loader (src/bin/embodiment-render.rs); renderer behaviour beyond the loader is not verified by S3-A."
+        ],
+        "rules": [
+          {
+            "outcome": "pass",
+            "requirement": "GLB of 28 bytes .. 4 MiB (byte identity is additionally pinned by the embodiment Definition)",
+            "rule": "E0-01"
+          },
+          {
+            "outcome": "pass",
+            "requirement": "GLB header and chunks: magic, version 2, exact length, JSON chunk then BIN chunk to EOF",
+            "rule": "E0-02"
+          },
+          {
+            "outcome": "pass",
+            "requirement": "UTF-8, strict duplicate-free JSON with finite numbers",
+            "rule": "E0-03"
+          },
+          {
+            "outcome": "pass",
+            "requirement": "No uri, extensions, scripts, textures, images or morph targets anywhere; depth <= 16",
+            "rule": "E0-04"
+          },
+          {
+            "outcome": "pass",
+            "requirement": "Exactly the top-level properties asset, scene, scenes, nodes, skins, meshes, materials, animations, buffers, bufferViews, accessors",
+            "rule": "E0-05"
+          },
+          {
+            "detail": "GLB profile/buffer",
+            "outcome": "fail",
+            "requirement": "asset has exactly version 2.0 and generator 'Finalverse blender-humanoid/1'; one embedded buffer",
+            "rule": "E0-06"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "27 nodes, one skin, one mesh; scene roots [0, 26]; node 26 holds only mesh 0, skin 0 and name",
+            "rule": "E0-07"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Skin joints are nodes 0..25 in canonical order with 26 float MAT4 inverse binds",
+            "rule": "E0-08"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Joint nodes carry only name/translation/children; canonical names, bounded translations, canonical hierarchy, identity rest rotation",
+            "rule": "E0-09"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Inverse bind matrices equal the inverse global rest transforms within 1e-4",
+            "rule": "E0-10"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "1..8 triangle primitives (explicit mode 4) without morph targets",
+            "rule": "E0-11"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "POSITION/NORMAL/WEIGHTS_0 float, JOINTS_0 uint16, uint32 indices; packed, aligned, explicit view offset",
+            "rule": "E0-12"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "At most 20000 vertices per primitive, equal counts, complete triangles, indices in range",
+            "rule": "E0-13"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Positions within 3 m, unit normals, joint indices < 26, weights in [0,1] summing to 1",
+            "rule": "E0-14"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Each primitive has a material with baseColorFactor in [0,1]",
+            "rule": "E0-15"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "1..16 animations named from the 12 canonical clips, no duplicates",
+            "rule": "E0-16"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Each clip: 1..26 rotation-only channels on distinct joints with explicit LINEAR interpolation",
+            "rule": "E0-17"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Key times: 2..256 keys starting at 0, strictly increasing, ending <= 10 s; unit quaternion keys",
+            "rule": "E0-18"
+          }
+        ],
+        "status": "incompatible",
+        "title": "Finalverse humanoid v1 strict E0 embodiment admission"
+      },
+      {
+        "contract": {
+          "sources": [
+            {
+              "commit": "664445f",
+              "path": "src/entry.rs",
+              "repository": "finalverse/infinity",
+              "symbol": "decode_parts"
+            }
+          ],
+          "status": "observed"
+        },
+        "id": "infinity.entry-glb/observed",
+        "material_feature_support": {
+          "pbrMetallicRoughness.baseColorFactor": "consumed_by_entry_reader",
+          "pbrMetallicRoughness.metallicFactor": "not_consumed_by_entry_reader",
+          "pbrMetallicRoughness.roughnessFactor": "not_consumed_by_entry_reader"
+        },
+        "notes": [],
+        "rules": [
+          {
+            "outcome": "pass",
+            "requirement": "GLB <= 8 MiB with valid header (magic, version 2, exact length, JSON chunk)",
+            "rule": "INF-01"
+          },
+          {
+            "outcome": "pass",
+            "requirement": "JSON chunk <= 65536 bytes and 4-byte aligned",
+            "rule": "INF-02"
+          },
+          {
+            "outcome": "pass",
+            "requirement": "JSON parses with finite numbers",
+            "rule": "INF-03"
+          },
+          {
+            "outcome": "pass",
+            "requirement": "BIN chunk immediately follows JSON and ends at EOF",
+            "rule": "INF-04"
+          },
+          {
+            "outcome": "pass",
+            "requirement": "Exactly one embedded buffer (no uri) not longer than the BIN chunk",
+            "rule": "INF-05"
+          },
+          {
+            "outcome": "pass",
+            "requirement": "No required extensions",
+            "rule": "INF-06"
+          },
+          {
+            "detail": "Nontrivial GLB node transforms unsupported",
+            "outcome": "fail",
+            "requirement": "If nodes are present: exactly one node, mesh 0, no transform or children",
+            "rule": "INF-07"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Exactly one mesh with 1..256 primitives, no primitive extensions",
+            "rule": "INF-08"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Each primitive passes the FinalStorm strict primitive decoder (finalstorm_spatialdb::glb::decode)",
+            "rule": "INF-09"
+          },
+          {
+            "outcome": "not_evaluated",
+            "requirement": "Referenced materials exist; baseColorFactor and emissiveFactor (if present) are finite and in [0,1]",
+            "rule": "INF-10"
+          }
+        ],
+        "status": "incompatible",
+        "title": "Infinity network entry GLB reader (observed from source)"
+      }
+    ]
+  },
+  "configuration": {
+    "budget": {
+      "max_animations": {
+        "basis": "finalverse/finalverse crates/embodiment/src/lib.rs Asset::load",
+        "value": 16
+      },
+      "max_draw_calls": {
+        "basis": "finalverse/infinity src/entry.rs decode_parts",
+        "value": 256
+      },
+      "max_file_bytes": {
+        "basis": "finalverse/finalverse docs/genesis/G0-GENERATOR-CONTRACTS.md (G0 worker budget)",
+        "value": 4194304
+      },
+      "max_joints": {
+        "basis": "provisional S3-A default; no accepted Finalverse contract found",
+        "value": 128
+      },
+      "max_materials": {
+        "basis": "provisional S3-A default; no accepted Finalverse contract found",
+        "value": 32
+      },
+      "max_morph_targets": {
+        "basis": "provisional S3-A default; no accepted Finalverse contract found",
+        "value": 16
+      },
+      "max_nodes": {
+        "basis": "provisional S3-A default; no accepted Finalverse contract found",
+        "value": 1024
+      },
+      "max_texture_dimension": {
+        "basis": "provisional S3-A default; no accepted Finalverse contract found",
+        "value": 4096
+      },
+      "max_triangles": {
+        "basis": "finalverse/finalverse docs/genesis/G0-GENERATOR-CONTRACTS.md (G0 worker budget)",
+        "value": 100000
+      },
+      "max_vertices": {
+        "basis": "provisional S3-A default; no accepted Finalverse contract found",
+        "value": 100000
+      },
+      "name": "finalverse.runtime-budget/default-v0"
+    },
+    "embodiment_profile": "biological_humanoid",
+    "limits": {
+      "allow_local_resources": true,
+      "max_array_length": 1000000,
+      "max_data_uri_bytes": 67108864,
+      "max_decoded_components": 40000000,
+      "max_external_files": 256,
+      "max_file_bytes": 134217728,
+      "max_json_bytes": 33554432,
+      "max_json_depth": 64,
+      "max_node_depth": 256,
+      "max_report_list_items": 512,
+      "max_total_buffer_bytes": 268435456,
+      "time_budget_seconds": 60.0
+    },
+    "runtime_profiles": [
+      "finalverse.ec-static-glb/v1",
+      "finalverse.humanoid/v1",
+      "infinity.entry-glb/observed"
+    ],
+    "target_profile": null
+  },
+  "findings": [],
+  "generated_at": "2026-11-04T00:00:00Z",
+  "inspection": {
+    "animations": {
+      "items": [
+        {
+          "channels": 2,
+          "duration": 2.0,
+          "index": 0,
+          "interpolations": [
+            "LINEAR"
+          ],
+          "kinds": [
+            "skeletal"
+          ],
+          "loops": true,
+          "name": "idle",
+          "paths": {
+            "rotation": 2
+          },
+          "targets": 2,
+          "valid": true
+        },
+        {
+          "channels": 6,
+          "duration": 2.0,
+          "index": 1,
+          "interpolations": [
+            "LINEAR"
+          ],
+          "kinds": [
+            "skeletal"
+          ],
+          "loops": true,
+          "name": "walk",
+          "paths": {
+            "rotation": 6
+          },
+          "targets": 6,
+          "valid": true
+        },
+        {
+          "channels": 1,
+          "duration": 2.0,
+          "index": 2,
+          "interpolations": [
+            "LINEAR"
+          ],
+          "kinds": [
+            "skeletal"
+          ],
+          "loops": true,
+          "name": "turn",
+          "paths": {
+            "rotation": 1
+          },
+          "targets": 1,
+          "valid": true
+        },
+        {
+          "channels": 2,
+          "duration": 2.0,
+          "index": 3,
+          "interpolations": [
+            "LINEAR"
+          ],
+          "kinds": [
+            "skeletal"
+          ],
+          "loops": true,
+          "name": "greet",
+          "paths": {
+            "rotation": 2
+          },
+          "targets": 2,
+          "valid": true
+        },
+        {
+          "channels": 2,
+          "duration": 2.0,
+          "index": 4,
+          "interpolations": [
+            "LINEAR"
+          ],
+          "kinds": [
+            "skeletal"
+          ],
+          "loops": true,
+          "name": "speak",
+          "paths": {
+            "rotation": 2
+          },
+          "targets": 2,
+          "valid": true
+        }
+      ],
+      "total": 5,
+      "truncated": false
+    },
+    "asset": {
+      "generator": "Finalverse S3-A fixture builder/1",
+      "version": "2.0"
+    },
+    "bounds": {
+      "frame": "gltf (Y up, metres)",
+      "max": [
+        0.24,
+        1.79,
+        0.14
+      ],
+      "min": [
+        -0.24,
+        -0.0,
+        -0.1
+      ],
+      "size": [
+        0.48,
+        1.79,
+        0.24
+      ]
+    },
+    "capabilities": {
+      "animated": true,
+      "clip_names": [
+        "greet",
+        "idle",
+        "speak",
+        "turn",
+        "walk"
+      ],
+      "emissive": false,
+      "morph_targets": false,
+      "skinned": true,
+      "static": false,
+      "textured": false,
+      "translucent": false
+    },
+    "container": {
+      "bin_byte_length": 28884,
+      "chunks": [
+        {
+          "length": 8816,
+          "offset": 12,
+          "type": "0x4e4f534a"
+        },
+        {
+          "length": 28884,
+          "offset": 8836,
+          "type": "0x004e4942"
+        }
+      ],
+      "declared_length": 37728,
+      "json_byte_length": 8816,
+      "kind": "glb"
+    },
+    "dependencies": {
+      "items": [
+        {
+          "byte_length": 28884,
+          "component": "/buffers/0",
+          "kind": "buffer",
+          "sha256": "36f0dd0f0f88910ff630bc5d01005778effed7d84cc80c0918831c9e86caf487",
+          "status": "resolved",
+          "uri_class": "embedded"
+        }
+      ],
+      "total": 1,
+      "truncated": false
+    },
+    "extensions": {
+      "present": [],
+      "required": [],
+      "used": []
+    },
+    "images": {
+      "items": [],
+      "total": 0,
+      "truncated": false
+    },
+    "materials": {
+      "items": [
+        {
+          "alpha_mode": "OPAQUE",
+          "base_color_factor": [
+            0.78,
+            0.6,
+            0.5,
+            1.0
+          ],
+          "double_sided": false,
+          "emissive_factor": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emissive_strength": 1.0,
+          "explicit": [
+            "baseColorFactor",
+            "metallicFactor",
+            "roughnessFactor"
+          ],
+          "extensions": [],
+          "index": 0,
+          "metallic_factor": 0.0,
+          "name": "skin",
+          "roughness_factor": 0.7,
+          "textures": {}
+        },
+        {
+          "alpha_mode": "OPAQUE",
+          "base_color_factor": [
+            0.2,
+            0.32,
+            0.45,
+            1.0
+          ],
+          "double_sided": false,
+          "emissive_factor": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "emissive_strength": 1.0,
+          "explicit": [
+            "baseColorFactor",
+            "metallicFactor",
+            "roughnessFactor"
+          ],
+          "extensions": [],
+          "index": 1,
+          "metallic_factor": 0.0,
+          "name": "clothing",
+          "roughness_factor": 0.9,
+          "textures": {}
+        }
+      ],
+      "total": 2,
+      "truncated": false
+    },
+    "meshes": {
+      "items": [
+        {
+          "index": 0,
+          "morph_target_names": null,
+          "name": "body",
+          "primitives": [
+            {
+              "attributes": {
+                "JOINTS_0": {
+                  "accessor": 2,
+                  "componentType": 5123,
+                  "count": 216,
+                  "normalized": false,
+                  "type": "VEC4"
+                },
+                "NORMAL": {
+                  "accessor": 1,
+                  "componentType": 5126,
+                  "count": 216,
+                  "normalized": false,
+                  "type": "VEC3"
+                },
+                "POSITION": {
+                  "accessor": 0,
+                  "componentType": 5126,
+                  "count": 216,
+                  "normalized": false,
+                  "type": "VEC3"
+                },
+                "WEIGHTS_0": {
+                  "accessor": 3,
+                  "componentType": 5126,
+                  "count": 216,
+                  "normalized": false,
+                  "type": "VEC4"
+                }
+              },
+              "bounds": {
+                "max": [
+                  0.235,
+                  1.79,
+                  0.112
+                ],
+                "min": [
+                  -0.235,
+                  0.82,
+                  -0.1
+                ]
+              },
+              "degenerate_triangles": 0,
+              "index": 0,
+              "material": 0,
+              "mode": 4,
+              "morph_targets": 0,
+              "triangles": 108,
+              "vertices": 216
+            },
+            {
+              "attributes": {
+                "JOINTS_0": {
+                  "accessor": 7,
+                  "componentType": 5123,
+                  "count": 264,
+                  "normalized": false,
+                  "type": "VEC4"
+                },
+                "NORMAL": {
+                  "accessor": 6,
+                  "componentType": 5126,
+                  "count": 264,
+                  "normalized": false,
+                  "type": "VEC3"
+                },
+                "POSITION": {
+                  "accessor": 5,
+                  "componentType": 5126,
+                  "count": 264,
+                  "normalized": false,
+                  "type": "VEC3"
+                },
+                "WEIGHTS_0": {
+                  "accessor": 8,
+                  "componentType": 5126,
+                  "count": 264,
+                  "normalized": false,
+                  "type": "VEC4"
+                }
+              },
+              "bounds": {
+                "max": [
+                  0.24,
+                  1.49,
+                  0.14
+                ],
+                "min": [
+                  -0.24,
+                  -0.0,
+                  -0.1
+                ]
+              },
+              "degenerate_triangles": 0,
+              "index": 1,
+              "material": 1,
+              "mode": 4,
+              "morph_targets": 0,
+              "triangles": 132,
+              "vertices": 264
+            }
+          ]
+        }
+      ],
+      "total": 1,
+      "truncated": false
+    },
+    "nodes": {
+      "items": [
+        {
+          "children": [
+            1
+          ],
+          "index": 0,
+          "mesh": null,
+          "name": "root",
+          "parent": null,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            2,
+            14,
+            17
+          ],
+          "index": 1,
+          "mesh": null,
+          "name": "pelvis",
+          "parent": 0,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              0.95,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            3
+          ],
+          "index": 2,
+          "mesh": null,
+          "name": "spine",
+          "parent": 1,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              0.12,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            4,
+            6,
+            10
+          ],
+          "index": 3,
+          "mesh": null,
+          "name": "chest",
+          "parent": 2,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              0.2,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            5
+          ],
+          "index": 4,
+          "mesh": null,
+          "name": "neck",
+          "parent": 3,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              0.22,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            20,
+            21,
+            22,
+            25
+          ],
+          "index": 5,
+          "mesh": null,
+          "name": "head",
+          "parent": 4,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              0.1,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            7
+          ],
+          "index": 6,
+          "mesh": null,
+          "name": "shoulder_l",
+          "parent": 3,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.08,
+              0.18,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            8
+          ],
+          "index": 7,
+          "mesh": null,
+          "name": "upper_arm_l",
+          "parent": 6,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.12,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            9
+          ],
+          "index": 8,
+          "mesh": null,
+          "name": "forearm_l",
+          "parent": 7,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              -0.28,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            23
+          ],
+          "index": 9,
+          "mesh": null,
+          "name": "hand_l",
+          "parent": 8,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              -0.25,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            11
+          ],
+          "index": 10,
+          "mesh": null,
+          "name": "shoulder_r",
+          "parent": 3,
+          "skin": null,
+          "transform": {
+            "translation": [
+              -0.08,
+              0.18,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            12
+          ],
+          "index": 11,
+          "mesh": null,
+          "name": "upper_arm_r",
+          "parent": 10,
+          "skin": null,
+          "transform": {
+            "translation": [
+              -0.12,
+              0.0,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            13
+          ],
+          "index": 12,
+          "mesh": null,
+          "name": "forearm_r",
+          "parent": 11,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              -0.28,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            24
+          ],
+          "index": 13,
+          "mesh": null,
+          "name": "hand_r",
+          "parent": 12,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              -0.25,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            15
+          ],
+          "index": 14,
+          "mesh": null,
+          "name": "thigh_l",
+          "parent": 1,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.1,
+              -0.05,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            16
+          ],
+          "index": 15,
+          "mesh": null,
+          "name": "shin_l",
+          "parent": 14,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              -0.42,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [],
+          "index": 16,
+          "mesh": null,
+          "name": "foot_l",
+          "parent": 15,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              -0.42,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            18
+          ],
+          "index": 17,
+          "mesh": null,
+          "name": "thigh_r",
+          "parent": 1,
+          "skin": null,
+          "transform": {
+            "translation": [
+              -0.1,
+              -0.05,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [
+            19
+          ],
+          "index": 18,
+          "mesh": null,
+          "name": "shin_r",
+          "parent": 17,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              -0.42,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [],
+          "index": 19,
+          "mesh": null,
+          "name": "foot_r",
+          "parent": 18,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              -0.42,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [],
+          "index": 20,
+          "mesh": null,
+          "name": "eye_l",
+          "parent": 5,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.035,
+              0.08,
+              0.09
+            ]
+          }
+        },
+        {
+          "children": [],
+          "index": 21,
+          "mesh": null,
+          "name": "eye_r",
+          "parent": 5,
+          "skin": null,
+          "transform": {
+            "translation": [
+              -0.035,
+              0.08,
+              0.09
+            ]
+          }
+        },
+        {
+          "children": [],
+          "index": 22,
+          "mesh": null,
+          "name": "jaw",
+          "parent": 5,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              0.02,
+              0.06
+            ]
+          }
+        },
+        {
+          "children": [],
+          "index": 23,
+          "mesh": null,
+          "name": "tool_l",
+          "parent": 9,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              -0.08,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [],
+          "index": 24,
+          "mesh": null,
+          "name": "tool_r",
+          "parent": 13,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              -0.08,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [],
+          "index": 25,
+          "mesh": null,
+          "name": "crown",
+          "parent": 5,
+          "skin": null,
+          "transform": {
+            "translation": [
+              0.0,
+              0.2,
+              0.0
+            ]
+          }
+        },
+        {
+          "children": [],
+          "index": 26,
+          "mesh": 0,
+          "name": "body",
+          "parent": null,
+          "skin": 0,
+          "transform": {}
+        }
+      ],
+      "total": 27,
+      "truncated": false
+    },
+    "scene": {
+      "count": 1,
+      "default": 0,
+      "nodes_in_default_scene": 27
+    },
+    "skins": {
+      "items": [
+        {
+          "depth": 8,
+          "index": 0,
+          "joint_names": [
+            "root",
+            "pelvis",
+            "spine",
+            "chest",
+            "neck",
+            "head",
+            "shoulder_l",
+            "upper_arm_l",
+            "forearm_l",
+            "hand_l",
+            "shoulder_r",
+            "upper_arm_r",
+            "forearm_r",
+            "hand_r",
+            "thigh_l",
+            "shin_l",
+            "foot_l",
+            "thigh_r",
+            "shin_r",
+            "foot_r",
+            "eye_l",
+            "eye_r",
+            "jaw",
+            "tool_l",
+            "tool_r",
+            "crown"
+          ],
+          "joints": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25
+          ],
+          "name": "humanoid",
+          "rest_consistent": true,
+          "skeleton": null,
+          "valid": true
+        }
+      ],
+      "total": 1,
+      "truncated": false
+    },
+    "textures": {
+      "items": [],
+      "total": 0,
+      "truncated": false
+    }
+  },
+  "metrics": {
+    "animation_duration_s": 2.0,
+    "animations": 5,
+    "degenerate_triangles": 0,
+    "draw_calls": 2,
+    "external_dependencies": 0,
+    "file_bytes": 37728,
+    "images": 0,
+    "joints": 26,
+    "materials": 2,
+    "max_texture_dimension": 0,
+    "mesh_instances": 1,
+    "meshes": 1,
+    "morph_targets": 0,
+    "nodes": 27,
+    "primitives": 2,
+    "scene_nodes": 27,
+    "skins": 1,
+    "texture_pixels": 0,
+    "textures": 0,
+    "triangles": 240,
+    "vertices": 480
+  },
+  "proposals": [],
+  "provenance": {
+    "contract_sources": [
+      {
+        "commit": "3cd0e93",
+        "path": "crates/ec/src/geometry.rs",
+        "repository": "finalverse/finalverse",
+        "symbol": "validate_glb"
+      },
+      {
+        "commit": "3cd0e93",
+        "path": "crates/embodiment/src/lib.rs",
+        "repository": "finalverse/finalverse",
+        "symbol": "Asset::load"
+      },
+      {
+        "commit": "3cd0e93",
+        "path": "docs/genesis/E0-HUMANOID-STANDARD.md",
+        "repository": "finalverse/finalverse",
+        "symbol": "Finalverse humanoid v1"
+      },
+      {
+        "commit": "664445f",
+        "path": "src/bin/embodiment-render.rs",
+        "repository": "finalverse/infinity",
+        "symbol": "Asset::load (embodiment render path)"
+      },
+      {
+        "commit": "664445f",
+        "path": "src/entry.rs",
+        "repository": "finalverse/infinity",
+        "symbol": "decode_parts"
+      }
+    ],
+    "inputs": [
+      {
+        "byte_length": 37728,
+        "role": "asset",
+        "sha256": "0edd4a1712c0c7d02326f56baebc5e4feb0d005b94f8b94c5897733a117d69f0"
+      }
+    ],
+    "inspector": "finalverse-asset-intelligence 0.1.0",
+    "modifies_asset": false,
+    "network_access": "none"
+  },
+  "quality": {
+    "categories": {
+      "animation_integrity": {
+        "basis": [],
+        "explanation": "Fraction of valid animations, capped by animation/skin findings.",
+        "method": "deterministic",
+        "score": 1.0,
+        "status": "assessed"
+      },
+      "artistic_coherence": {
+        "basis": [],
+        "explanation": "Subjective category: requires rendered visual evidence (--visual-evidence). Not inferred from geometry statistics.",
+        "method": "evidence",
+        "score": null,
+        "status": "not_assessed"
+      },
+      "embodiment_compatibility": {
+        "basis": [
+          "biological_humanoid"
+        ],
+        "explanation": "0 when a required rule fails; otherwise 0.6 + 0.4 x fraction of recommendations met.",
+        "method": "deterministic",
+        "score": 1.0,
+        "status": "assessed"
+      },
+      "geometry_integrity": {
+        "basis": [],
+        "explanation": "1.0 minus a penalty per distinct geometry/buffer/scene/container defect code (critical 1.0, error 0.35, warning 0.1); capped at 0.5 when any error is present.",
+        "method": "deterministic",
+        "score": 1.0,
+        "status": "assessed"
+      },
+      "material_completeness": {
+        "basis": [],
+        "checklist": {
+          "base_color_defined": true,
+          "explicit_material_on_every_primitive": true,
+          "metallic_roughness_defined": true,
+          "texture_dependencies_complete": true,
+          "uv_sets_present_for_textures": true,
+          "vertex_normals_present": true
+        },
+        "explanation": "Fraction of the material checklist satisfied, capped by material findings.",
+        "method": "deterministic",
+        "score": 1.0,
+        "status": "assessed"
+      },
+      "runtime_complexity": {
+        "basis": [
+          "joints=0.2031",
+          "materials=0.0625",
+          "nodes=0.0264"
+        ],
+        "explanation": "1.0 up to 50% of the tightest budget, falling linearly to 0 at 200%.",
+        "method": "deterministic",
+        "score": 1.0,
+        "status": "assessed"
+      },
+      "visual_reference_alignment": {
+        "basis": [],
+        "explanation": "Subjective category: requires rendered visual evidence (--visual-evidence). Not inferred from geometry statistics.",
+        "method": "evidence",
+        "score": null,
+        "status": "not_assessed"
+      }
+    },
+    "tier": {
+      "certified": "Q1",
+      "certified_name": "Stylized prototype",
+      "criteria": {
+        "Q0": [
+          {
+            "criterion": "inspection complete",
+            "met": true
+          },
+          {
+            "criterion": "glTF 2.0 valid and policy-clean",
+            "met": true
+          }
+        ],
+        "Q1": [
+          {
+            "criterion": "within configured runtime budget",
+            "met": true
+          },
+          {
+            "criterion": "geometry integrity >= 0.8",
+            "met": true
+          },
+          {
+            "criterion": "material completeness >= 0.6",
+            "met": true
+          },
+          {
+            "criterion": "animation integrity >= 0.8 (if animated)",
+            "met": true
+          }
+        ],
+        "Q2": [
+          {
+            "criterion": "visual evidence supplied (>= 2 verified renders)",
+            "met": false
+          },
+          {
+            "criterion": "geometry integrity >= 0.95",
+            "met": true
+          },
+          {
+            "criterion": "material completeness >= 0.8",
+            "met": true
+          },
+          {
+            "criterion": "visual reference alignment >= 0.6",
+            "met": false
+          },
+          {
+            "criterion": "artistic coherence >= 0.6",
+            "met": false
+          }
+        ],
+        "Q3": [
+          {
+            "criterion": ">= 4 verified renders",
+            "met": false
+          },
+          {
+            "criterion": ">= 1 human assessment",
+            "met": false
+          },
+          {
+            "criterion": "material completeness = 1.0",
+            "met": true
+          },
+          {
+            "criterion": "textured materials",
+            "met": false
+          },
+          {
+            "criterion": "visual reference alignment >= 0.75",
+            "met": false
+          },
+          {
+            "criterion": "artistic coherence >= 0.75",
+            "met": false
+          }
+        ],
+        "Q4": [
+          {
+            "criterion": ">= 6 verified renders",
+            "met": false
+          },
+          {
+            "criterion": "declared style 'realistic'",
+            "met": false
+          },
+          {
+            "criterion": "PBR texture set (base colour, normal, metallic-roughness)",
+            "met": false
+          },
+          {
+            "criterion": "visual reference alignment >= 0.9",
+            "met": false
+          },
+          {
+            "criterion": "artistic coherence >= 0.9",
+            "met": false
+          }
+        ]
+      },
+      "deterministic_ceiling": "Q1",
+      "next_tier": "Q2",
+      "next_tier_blockers": [
+        "visual evidence supplied (>= 2 verified renders)",
+        "visual reference alignment >= 0.6",
+        "artistic coherence >= 0.6"
+      ],
+      "policy": "Q2-Q4 are never certified without digest-verified rendered evidence; Q3+ need a human assessment.",
+      "visual_evidence": "absent"
+    }
+  },
+  "report_digest": "sha256:882a89702ef8ebbc2b945c436ff386f059af0b2cb7431741cef73df5126990be",
+  "schema": "finalverse.asset-intelligence/v1",
+  "tool": {
+    "name": "finalverse-asset-intelligence",
+    "version": "0.1.0"
+  },
+  "validation": {
+    "finding_counts": {
+      "critical": 0,
+      "error": 0,
+      "info": 0,
+      "warning": 0
+    },
+    "finding_counts_by_class": {},
+    "incomplete_reasons": [],
+    "inspection_complete": true,
+    "policy_clean": true,
+    "spec_valid": true,
+    "status": "valid",
+    "suppressed_repeats": {},
+    "target_profile_status": null,
+    "within_limits": true
+  }
+}
