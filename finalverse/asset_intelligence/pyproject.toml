@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "finalverse-asset-intelligence"
+version = "0.1.0"
+description = "Finalverse Studio S3-A: Blender-independent glTF/GLB inspection, validation, compatibility, quality and improvement proposals"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+authors = [{ name = "Finalverse Inc." }]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "hypothesis>=6", "jsonschema>=4.18", "ruff>=0.6"]
+
+[project.scripts]
+finalverse-asset = "finalverse_asset_intelligence.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tests", "tools", "src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+src = ["src", "tests", "tools"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "I", "UP"]
+ignore = ["E731", "B905"]
