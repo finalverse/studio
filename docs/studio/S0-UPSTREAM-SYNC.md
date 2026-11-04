@@ -12,6 +12,11 @@
    change, then configure/build the development and intended release profiles.
 7. Run candidate-integrity negative tests, actual startup/render/save/reopen/GLB
    smoke, visible workspace/menu/icon checks, and supervised Genesis adapter proof.
+   Re-test the offline-access banner on the Asset Browser's first draw and F3
+   menu search from that editor, including nested menu layouts. The pinned 5.4
+   alpha needed two null-initialization fixes; review and drop them once upstream
+   supplies equivalent fixes. A search-only guard alone does not cover nested
+   layouts without a region.
 8. Compare Studio export against the accepted E1/Genesis/Infinity profile. A good
    Studio render does not prove equivalent Infinity materials or animation.
 

@@ -114,3 +114,6 @@ scripts/modules/_bpy_internal/assets/remote_library/*_openapi.py linguist-genera
 
 # Fork-owned splash is original artwork, not an upstream LFS object.
 release/datafiles/splash.png -filter -diff -merge
+
+# Local acceptance screenshots must be readable without a private LFS upload.
+docs/studio/evidence/*.png -filter -diff -merge

@@ -29,6 +29,22 @@ rendering, scene save/reopen, IDs, GLB/source export and refusal to overwrite.
 A compatibility probe using installed Blender is reported separately, never as
 proof that this fork compiled. See acceptance for actual source-build results.
 
+The accepted executable was built from Studio
+`63e281993d748d6e3f9870dd9ecac1997514bf83`. Later acceptance commits contain
+documentation, Git attributes for evidence and receipts only. Actual smoke
+invocations use `--python-exit-code 1` so Python assertions fail the process.
+Use a new output directory for each invocation; existing candidates refuse
+overwrite. After a build, verify the offline Asset Browser's first draw, F3
+search from that editor, About, scene inspection, render/save controls and Finder
+icon visibly. Headless rendering alone cannot verify these native UI paths.
+
+The installed Mac icon is `Contents/Resources/finalverse-studio.icns`, selected
+by `CFBundleIconFile`. Its white Finalverse source is documented in S0-BRANDING.
+For an already installed development bundle, touching the bundle and registering
+it with macOS LaunchServices refreshes its application metadata. The actual
+installed icon was verified in Finder Info/Preview; no custom Finder icon or
+global icon-cache deletion is needed.
+
 Create a host backend descriptor using Python 3.13:
 `finalverse/genesis_backend.py APP_PATH NEW_CONFIG_PATH`. Select it in the isolated
 Core adapter through `FINALVERSE_STUDIO_CONFIG`. The descriptor grants no world

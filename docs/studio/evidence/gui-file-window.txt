@@ -1,0 +1,10 @@
+Window: "Finalverse Studio File View", App: Finalverse Studio.
+0 standard window Finalverse Studio File View, Secondary Actions: Raise
+	1 close button
+	2 zoom button
+	3 text Finalverse Studio File View
+4 menu bar
+	5 Finalverse Studio
+	6 Window
+
+The focused UI element is 0 standard window Finalverse Studio File View, Secondary Actions: Raise

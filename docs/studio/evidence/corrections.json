@@ -30,8 +30,24 @@
     },
     {
       "issue": "Visible native app inspection is blocked by locked Mac",
-      "resolution": "User asked to unlock; no unlock bypass or alternate desktop-capture method attempted."
+      "resolution": "Mac became available on 2026-11-04; continued with actual visible desktop checks using the computer-use tool."
+    },
+    {
+      "issue": "Native startup crashed in file_banners_update while the Asset Browser displayed its offline-access banner.",
+      "resolution": "Only mark an existing FileLayout dirty; first layout allocation is already initialized dirty.",
+      "source": "source/blender/editors/space_file/file_banner.cc",
+      "evidence": "Native diagnostic first reproduced 2026-11-04 01:46 and again at 07:28 Asia/Shanghai."
+    },
+    {
+      "issue": "Native About glyph used a 128-unit canvas while Blender rasterizes icons in 1600 units. Temporary render/file titles retained Blender product names.",
+      "resolution": "Use explicit 1600-unit glyph dimensions and product-specific temporary window titles. The user subsequently supplied the official white Finalverse base; final vector/icon/splash derive from it."
+    },
+    {
+      "issue": "F3 in the Asset Browser crashed reading region callbacks while constructing regionless nested menu-search layouts. A search-only guard alone did not cover nested layouts.",
+      "resolution": "Check the region before reading its callback collection; preserve existing callback behavior for normal region-backed blocks.",
+      "source": "source/blender/editors/interface/interface.cc",
+      "evidence": "Private native diagnostics 07:44 and 07:51; retained blender-menu-search.crash.txt."
     }
   ],
-  "current_free_bytes": 32526733312
+  "current_free_bytes": 30652170240
 }

@@ -1,0 +1,28 @@
+{
+  "schema_version": "finalverse.studio-desktop-verification/v1",
+  "date": "2026-11-04",
+  "timezone": "Asia/Shanghai",
+  "compiled_commit": "63e281993d748d6e3f9870dd9ecac1997514bf83",
+  "checks": {
+    "branded_splash_and_blender_attribution": true,
+    "finalverse_ai_studio_workspace_visible": true,
+    "scene_inspection_receipt_visible": true,
+    "future_s1_controls_disabled": true,
+    "asset_browser_offline_banner_and_thumbnails": true,
+    "asset_browser_f3_menu_search": true,
+    "about_white_emblem_attribution_and_build_hash": true,
+    "native_application_menu_names": true,
+    "render_result_and_branded_window": true,
+    "project_save_control_and_branded_file_window": true,
+    "finder_application_icon_white_finalverse_emblem": true
+  },
+  "method": "Actual native GUI observed through computer-use tools; screenshots are unaltered.",
+  "layout_note": "The Asset Browser inherits compact timeline height and was resized interactively for inspection. Select the Finalverse sidebar tab to open Studio controls.",
+  "native_menu_note": "Menu names were observed before the final two native null guards; those guards and logo changes do not change Cocoa menu names.",
+  "renderer_reported_preview": {
+    "time_seconds": 2.28,
+    "memory_megabytes": 109,
+    "peak_megabytes": 170,
+    "note": "Internal render statistics from the UI, not whole-process or GPU-memory measurements."
+  }
+}
