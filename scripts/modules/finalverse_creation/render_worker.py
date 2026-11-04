@@ -7,7 +7,7 @@ import sys
 import socket
 
 import bpy
-from finalverse_creation.protocol import check, OPERATIONS, parse
+from finalverse_creation.protocol import check, OPERATIONS_V2, RENDER_OPS, parse
 
 directory = Path(sys.argv[sys.argv.index('--')+1]).resolve()
 
@@ -31,8 +31,12 @@ with socket.socket() as network:
     except PermissionError: pass
     else: raise RuntimeError('Sandbox did not refuse a network connection')
 item = parse((directory/'render-request.json').read_text())
-check(item, OPERATIONS['scene.render'])
+if item.get('op') not in RENDER_OPS:
+    raise ValueError('Render worker accepts only render operations')
+check(item, OPERATIONS_V2[item['op']])
 scene = bpy.context.scene
+if 'frame' in item:
+    scene.frame_set(item['frame'])
 if not scene.camera:
     raise ValueError('A scene camera is required')
 scene.render.engine = 'BLENDER_EEVEE'

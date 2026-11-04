@@ -12,7 +12,7 @@ import uuid
 import bpy
 
 from . import engine
-from .protocol import CreationError, canonical, parse
+from .protocol import RENDER_OPS, CreationError, canonical, parse
 from . import keychain
 from .providers import SECRET_ENV, default_registry, load, profile, registry, save
 from .store import HostAuthority, Store, TERMINAL
@@ -52,6 +52,7 @@ class Host:
         self.expected_revision = None; self.last_snapshot = 0
         self.message = 'Session ready; proposals require approval'
         self.model_names = []; self.model_result = None; self.selected_provider = 'local'
+        self.loop = None; self.last_job_id = None
         self.refresh()
 
     def refresh(self):
@@ -59,7 +60,7 @@ class Host:
         self.store.snapshot(index); self.last_snapshot = time.monotonic()
         return index
 
-    def infer(self, provider_id, mode, model='', prompt=''):
+    def infer(self, provider_id, mode, model='', prompt='', language='v1', context=None):
         if self.inference or self.active:
             raise CreationError('Finish or cancel the active task first')
         self.providers = registry(self.config)
@@ -75,7 +76,8 @@ class Host:
                 raise CreationError('No API key stored in the Keychain for ' + p['label'])
         work = self.store.root/'inference'/str(uuid.uuid4()); work.mkdir(parents=True, mode=0o700)
         snapshot = self.refresh()
-        request = {'provider': provider_id, 'mode': mode, 'model': model, 'prompt': prompt, 'snapshot': snapshot}
+        request = {'provider': provider_id, 'mode': mode, 'model': model, 'prompt': prompt, 'snapshot': snapshot,
+                   'language': language, 'context': context}
         (work/'input.json').write_text(canonical(request))
         env = clean_env(work)
         if secret is not None:
@@ -160,6 +162,8 @@ class Host:
         if self.active and (job_id is None or self.active == job_id):
             self.store.cancel(self.active)
             self._stop_render(); self.active = None
+        if self.loop is not None and not self.loop.finished and job_id is None:
+            self.loop.cancel()
         self.message = 'Cancelled; completed authoring steps remain inspectable'
 
     def _stop_render(self):
@@ -201,6 +205,20 @@ class Host:
 
     def tick(self):
         """At most one bounded scene operation per tick; no network wait here."""
+        self._tick()
+        if self.loop is not None:
+            self.loop.tick()
+
+    def start_loop(self, **spec):
+        from .loop import CreationLoop
+        if self.loop is not None and not self.loop.finished:
+            raise CreationError('A creation loop is already running')
+        if self.inference or self.active:
+            raise CreationError('Finish or cancel the active task first')
+        self.loop = CreationLoop(self, **spec); self.loop.start()
+        return self.loop
+
+    def _tick(self):
         if self.inference:
             pending = self.inference; process = pending['process']
             if time.monotonic()-pending['started'] > 122:
@@ -216,6 +234,7 @@ class Host:
                     baseline = pending['request']['snapshot']
                     job = self.store.submit(result['plan'], baseline['scene_id'], baseline['revision'], str(uuid.uuid4()),
                                             source='model', model_receipt=result['receipt'])
+                    self.last_job_id = job['id']
                     self.message = 'Plan ready for review: ' + job['id']; self.refresh()
                 else:
                     detail = result.get('detail')
@@ -265,7 +284,7 @@ class Host:
             self._quota(256*1024*1024)
             self.message = f"Executing {job['step']+1}/{len(job['plan']['operations'])}: {item['op']}"
             directory = self.store.directory(job['id'])
-            if item['op'] == 'scene.render':
+            if item['op'] in RENDER_OPS:
                 directory = self.render_directory(job)
                 directory.mkdir(parents=True, exist_ok=False)
                 if (directory/item['path']).exists():

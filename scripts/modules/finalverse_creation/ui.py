@@ -7,7 +7,7 @@ from pathlib import Path
 
 import bpy
 from bpy.app.handlers import persistent
-from bpy.props import EnumProperty, FloatProperty, PointerProperty, StringProperty
+from bpy.props import EnumProperty, FloatProperty, IntProperty, PointerProperty, StringProperty
 from bpy.types import Operator, PropertyGroup
 
 from .host import Host
@@ -46,8 +46,21 @@ def provider_changed(self, _context):
         _host.model_names = []
 
 
+ARCHETYPE_ITEMS = [('floating_spirit', 'Floating spirit', 'No skeleton; hover, fly, drift (e.g. Lumi)'),
+                   ('humanoid', 'Humanoid', 'Skinned 6-joint rig; walk, run, climb'),
+                   ('synthetic_humanoid', 'Synthetic humanoid', 'Skinned rig; walk, run, climb'),
+                   ('botanical_sprite', 'Botanical sprite', 'No skeleton; fly, hover, drift'),
+                   ('nature_elemental', 'Nature elemental', 'Rooted, walk, climb'),
+                   ('fire_elemental', 'Fire elemental', 'Walk, run, hover'),
+                   ('environment', 'Environment', 'Buildings, vegetation, terrain'),
+                   ('prop', 'Prop', 'Static or hovering object')]
+
+
 class StudioSettings(PropertyGroup):
     provider: EnumProperty(name='Provider', items=provider_items, update=provider_changed)
+    archetype: EnumProperty(name='Archetype', items=ARCHETYPE_ITEMS)
+    asset_name: StringProperty(name='Asset', maxlen=64, default='Lumi')
+    revisions: IntProperty(name='Revisions', min=0, max=3, default=2)
     model: EnumProperty(name='Model', items=model_items)
     prompt: StringProperty(name='Intent', maxlen=4096, default='Create a teal beveled cube, animate a turn, add a camera and light, render a preview, export and save.')
 
@@ -319,6 +332,37 @@ class STUDIO_OT_provider_remove(Operator):
             self.report({'ERROR'}, str(error)); return {'CANCELLED'}
 
 
+class STUDIO_OT_loop_start(Operator):
+    bl_idname = 'finalverse.ai_loop_start'
+    bl_label = 'Start Creation Loop'
+    bl_description = 'Plan → preview → evaluate → revise (bounded) → validate → export; every plan needs your approval'
+
+    def execute(self, context):
+        try:
+            s = context.window_manager.finalverse_creation
+            current().start_loop(provider=s.provider, model=s.model, intent=s.prompt, archetype=s.archetype,
+                                 name=s.asset_name.strip() or 'Asset', max_revisions=s.revisions)
+            return {'FINISHED'}
+        except Exception as error:
+            self.report({'ERROR'}, str(error)); return {'CANCELLED'}
+
+
+class STUDIO_OT_loop_reject(Operator):
+    bl_idname = 'finalverse.ai_loop_reject'
+    bl_label = 'Reject & Revise'
+    bl_options = {'INTERNAL'}
+    reason: StringProperty(name='Reason', maxlen=400, default='Does not match the intent')
+
+    def invoke(self, context, event):
+        return context.window_manager.invoke_props_dialog(self, width=420)
+
+    def execute(self, _context):
+        try:
+            current().loop.reject(self.reason); return {'FINISHED'}
+        except Exception as error:
+            self.report({'ERROR'}, str(error)); return {'CANCELLED'}
+
+
 class STUDIO_OT_mcp_config(Operator):
     bl_idname = 'finalverse.ai_mcp_config'
     bl_label = 'Write MCP Client Configuration'
@@ -368,6 +412,22 @@ def draw(layout, context):
     controls.operator('finalverse.ai_connect', icon='FILE_REFRESH')
     controls.prop(settings, 'prompt')
     controls.operator('finalverse.ai_plan', icon='PLAY')
+    loop_box = box.box(); loop_box.label(text='Creation loop · S2', icon='FILE_REFRESH')
+    row = loop_box.row(); row.enabled = not busy; row.prop(settings, 'archetype')
+    row = loop_box.row(); row.enabled = not busy; row.prop(settings, 'asset_name'); row.prop(settings, 'revisions')
+    loop = _host.loop if _host is not None else None
+    start = loop_box.row(); start.enabled = not busy and (loop is None or loop.finished)
+    start.operator('finalverse.ai_loop_start', icon='PLAY')
+    if loop is not None:
+        loop_box.label(text=f"Stage: {loop.stage} · revisions {loop.revisions}/{loop.max_revisions}")
+        last = next((e for e in reversed(loop.ledger) if e['stage'] == 'evaluate'), None)
+        if last:
+            loop_box.label(text=('Evaluation passed' if last['passed'] else 'Failed: ' + ', '.join(last['failures'])[:70]),
+                           icon='CHECKMARK' if last['passed'] else 'ERROR')
+        if loop.stage in ('proposed', 'export_proposed'):
+            loop_box.operator('finalverse.ai_loop_reject', icon='LOOP_BACK')
+        if loop.result and loop.result.get('package'):
+            loop_box.label(text='Package: ' + loop.result['package'], icon='PACKAGE')
     box.operator('finalverse.ai_mcp_config', icon='PLUGIN')
     if _host is None:
         box.label(text='Connect to start a local authoring session')
@@ -416,5 +476,6 @@ def unregister():
 
 
 classes = (StudioSettings, STUDIO_OT_provider_toggle, STUDIO_OT_provider_key, STUDIO_OT_provider_forget,
-           STUDIO_OT_provider_custom, STUDIO_OT_provider_remove, STUDIO_OT_connect, STUDIO_OT_plan, STUDIO_OT_approve, STUDIO_OT_review,
+           STUDIO_OT_provider_custom, STUDIO_OT_provider_remove, STUDIO_OT_loop_start, STUDIO_OT_loop_reject,
+           STUDIO_OT_connect, STUDIO_OT_plan, STUDIO_OT_approve, STUDIO_OT_review,
            STUDIO_OT_cancel, STUDIO_OT_recover, STUDIO_OT_mcp_config)

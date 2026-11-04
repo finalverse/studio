@@ -8,7 +8,7 @@ from pathlib import Path
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from finalverse_creation.protocol import PLAN_SCHEMA, canonical, obj, string
+from finalverse_creation.protocol import PLAN_SCHEMA, PLAN_SCHEMA_V2, canonical, obj, string
 from finalverse_creation.store import Store
 
 
@@ -24,7 +24,7 @@ def main():
         ('studio_capabilities', 'Read the closed creation protocol and its bounds.', obj({}), True),
         ('studio_inspect', 'Read the host scene index; proposal execution revalidates its revision.', obj({}), True),
         ('studio_submit', 'Submit a creation proposal. Human approval in Studio is required; this tool cannot approve.',
-         obj({'plan': PLAN_SCHEMA, 'scene_id': string(maximum=36), 'base_revision': string(maximum=64),
+         obj({'plan': {'anyOf': [PLAN_SCHEMA, PLAN_SCHEMA_V2]}, 'scene_id': string(maximum=36), 'base_revision': string(maximum=64),
               'request_id': string(maximum=36)}), False),
         ('studio_status', 'Read a proposal status, progress and audit events.', obj({'job_id': string(maximum=36)}), True),
         ('studio_cancel', 'Cancel pending or executing authoring work; applied steps remain inspectable.',
@@ -42,7 +42,7 @@ def main():
     async def call(name, arguments):
         try:
             if name == 'studio_capabilities':
-                result = {'protocol': PLAN_SCHEMA, 'approval': 'Studio host only', 'publication_authorized': False}
+                result = {'protocol': PLAN_SCHEMA, 'protocol_v2': PLAN_SCHEMA_V2, 'approval': 'Studio host only', 'publication_authorized': False}
             elif name == 'studio_inspect':
                 result = store.snapshot() or {'state': 'host_not_connected'}
             elif name == 'studio_submit':

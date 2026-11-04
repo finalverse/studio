@@ -10,7 +10,7 @@ import uuid
 import bpy
 from mathutils import Vector
 
-from .protocol import CreationError, canonical, digest, validate
+from .protocol import CREATES, MATERIAL_CREATES, ACTION_CREATES, RENDER_OPS, SCHEMA_V2, CreationError, canonical, digest, validate
 
 OBJECT_ID = 'finalverse.object_id'
 MATERIAL_ID = 'finalverse.material_id'
@@ -35,6 +35,42 @@ def curves(action):
         return [f for layer in action.layers for strip in layer.strips
                 for bag in getattr(strip, 'channelbags', []) for f in bag.fcurves]
     return list(action.fcurves)
+
+
+def actions_of(o):
+    ad = o.animation_data
+    if not ad:
+        return []
+    found = [ad.action] if ad.action else []
+    for track in ad.nla_tracks:
+        found += [strip.action for strip in track.strips if strip.action and strip.action not in found]
+    if len(ad.nla_tracks) > 16:
+        raise CreationError('At most 16 clip tracks per object')
+    return found
+
+
+def animation_state(o):
+    ad = o.animation_data
+    if not ad:
+        return {'active': None, 'tracks': []}
+    def keys(action):
+        return [{'path': c.data_path, 'index': c.array_index, 'group': c.group.name if c.group else None,
+                 'keys': [[*k.co, k.interpolation] for k in c.keyframe_points]} for c in curves(action)]
+    tracks = [{'name': t.name, 'mute': t.mute, 'strips': [{'action': s.action.get('finalverse.action_id') if s.action else None,
+               'name': s.action.name if s.action else None, 'start': s.frame_start, 'end': s.frame_end,
+               'meta': {k: s.action.get('finalverse.' + k) for k in ('kind', 'locomotion', 'loop')} if s.action else None,
+               'curves': keys(s.action) if s.action else []} for s in t.strips]} for t in ad.nla_tracks]
+    return {'active': keys(ad.action) if ad.action else None, 'tracks': tracks}
+
+
+def weights_hash(o):
+    h = hashlib.sha256()
+    for g in o.vertex_groups:
+        h.update(g.name.encode() + b'\0')
+    for v in o.data.vertices:
+        for g in v.groups:
+            h.update(struct.pack('<IIf', v.index, g.group, g.weight))
+    return h.hexdigest()
 
 
 def node_state(tree):
@@ -66,13 +102,19 @@ def snapshot(scene):
     # S1 deliberately accepts a small authoring subset. Opaque evaluation graphs
     # are outside the revision and execution bounds of this initial bridge.
     for o in scene.objects:
-        if o.type not in {'MESH', 'CAMERA', 'LIGHT', 'EMPTY'}:
-            raise CreationError('S1 automation supports mesh, camera, light and empty objects')
-        if o.modifiers or o.constraints or (o.animation_data and o.animation_data.drivers):
-            raise CreationError('Apply modifiers and remove constraints/drivers before S1 automation')
-        action = o.animation_data.action if o.animation_data else None
-        if sum(len(f.keyframe_points) for f in curves(action)) > 4096:
-            raise CreationError('Object animation exceeds 4,096 keys')
+        if o.type not in {'MESH', 'CAMERA', 'LIGHT', 'EMPTY', 'ARMATURE'}:
+            raise CreationError('Automation supports mesh, armature, camera, light and empty objects')
+        # S2 admits exactly one live modifier kind: the Armature deform created by skinning.
+        if any(m.type != 'ARMATURE' or m.object is None or m.object.type != 'ARMATURE' for m in o.modifiers) \
+                or len(o.modifiers) > 1 or o.constraints or (o.animation_data and o.animation_data.drivers):
+            raise CreationError('Apply modifiers and remove constraints/drivers before automation')
+        if o.type == 'MESH' and o.data.shape_keys:
+            raise CreationError('Shape keys are outside the automation profile')
+        if o.type == 'ARMATURE' and len(o.data.bones) > 64:
+            raise CreationError('Armatures are limited to 64 bones')
+        for action in actions_of(o):
+            if sum(len(f.keyframe_points) for f in curves(action)) > 4096:
+                raise CreationError('Object animation exceeds 4,096 keys')
     for m in scene_materials:
         if m.use_nodes and (len(m.node_tree.nodes) > 2 or
                 any(n.type not in {'BSDF_PRINCIPLED', 'OUTPUT_MATERIAL'} for n in m.node_tree.nodes)):
@@ -111,6 +153,12 @@ def snapshot(scene):
         for curve in curves(action):
             animation.append({'path': curve.data_path, 'index': curve.array_index,
                 'keys': [[*k.co, k.interpolation] for k in curve.keyframe_points]})
+        if o.type == 'MESH':
+            attr = o.data.attributes.get('fv_part')
+            if attr is not None:
+                h = hashlib.sha256(struct.pack(f'<{len(attr.data)}i', *[a.value for a in attr.data]))
+                mesh_hash = hashlib.sha256((mesh_hash + h.hexdigest()).encode()).hexdigest()
+            mesh_hash = hashlib.sha256((mesh_hash + ''.join(str(p.material_index) for p in o.data.polygons)).encode()).hexdigest()
         item = {'id': o[OBJECT_ID], 'name': o.name, 'type': o.type,
                 'parent': o.parent.get(OBJECT_ID) if o.parent else None,
                 'location': list(o.location), 'rotation': list(o.rotation_euler), 'scale': list(o.scale),
@@ -119,8 +167,19 @@ def snapshot(scene):
                 'animations': animation, 'description': str(o.get('finalverse.description', ''))[:512],
                 'creation_provenance': str(o.get('finalverse.created_by', ''))[:512],
                 'provenance': str(o.get('finalverse.provenance', ''))[:512]}
+        item['hidden'] = [o.hide_render, o.hide_viewport]
+        item['clips'] = animation_state(o)
+        if o.get('finalverse.parts'):
+            item['parts'] = str(o['finalverse.parts'])[:8192]
+        if o.type == 'MESH':
+            item['skin'] = {'weights': weights_hash(o) if o.vertex_groups else None,
+                            'modifiers': [[m.type, m.object.get(OBJECT_ID) if m.object else None] for m in o.modifiers]}
+        if o.type == 'ARMATURE':
+            item['bones'] = [[b.name, b.parent.name if b.parent else None, list(b.head_local), list(b.tail_local)]
+                             for b in o.data.bones]
+            item['pose'] = [[b.name, list(b.location), list(b.rotation_euler), list(b.scale)] for b in o.pose.bones]
         if o.type == 'LIGHT':
-            item['light'] = [o.data.type, o.data.energy, list(o.data.color)]
+            item['light'] = [o.data.type, o.data.energy, list(o.data.color), getattr(o.data, 'size', None)]
         if o.type == 'CAMERA':
             item['lens'] = o.data.lens
         objects.append(item)
@@ -132,6 +191,8 @@ def snapshot(scene):
     result = {'schema_version': 'finalverse.studio-scene/v2', 'scene_id': sid, 'objects': objects,
               'materials': materials, 'camera': scene.camera.get(OBJECT_ID) if scene.camera else None,
               'frame': scene.frame_current, 'frame_range': [scene.frame_start, scene.frame_end],
+              'render': [scene.render.engine, scene.render.fps, scene.render.film_transparent,
+                         scene.view_settings.view_transform],
               'world': node_state(scene.world.node_tree) if scene.world and scene.world.use_nodes else None}
     result['revision'] = digest(result)
     return result
@@ -151,38 +212,67 @@ def preflight(scene, plan):
     kinds = {o['id']: o['type'] for o in index['objects']}
     mats = {m['id'] for m in index['materials']}
     created = 0
+    actions = {a.get('finalverse.action_id') for a in bpy.data.actions if a.get('finalverse.action_id')}
+    needs_mesh = {'mesh.bevel', 'material.assign', 'material.assign_parts', 'mesh.subdivide', 'mesh.deform'}
     for item in plan['operations']:
         name = item['op']
-        if name in {'object.create', 'camera.configure', 'light.configure'}:
-            kinds[item['ref']] = {'object.create': 'MESH', 'camera.configure': 'CAMERA', 'light.configure': 'LIGHT'}[name]
-            created += 1
-        if name == 'material.create':
+        if name in CREATES:
+            kinds[item['ref']] = CREATES[name]
+            created += 3 if name == 'light.rig' else 1
+        if name in MATERIAL_CREATES:
             mats.add(item['ref'])
-        if 'target' in item and item['target'] not in kinds:
-            raise CreationError("Plan targets an unknown scene object")
-        if name in {'mesh.bevel', 'material.assign'} and kinds.get(item['target']) != 'MESH':
+        if name in ACTION_CREATES:
+            actions.add(item['ref'])
+        for field in ('target', 'parent', 'surface', 'instance', 'armature', 'subject', 'source'):
+            if isinstance(item.get(field), str) and not (name == 'action.retarget' and field == 'action') and item[field] not in kinds:
+                raise CreationError("Plan targets an unknown scene object")
+        if name in needs_mesh and kinds.get(item['target']) != 'MESH':
             raise CreationError("Operation requires a mesh object")
+        if name in {'geonodes.scatter'} and (kinds.get(item['surface']) != 'MESH' or kinds.get(item['instance']) != 'MESH'):
+            raise CreationError("Scatter requires mesh surface and instance")
+        if name == 'armature.skin' and (kinds.get(item['target']) != 'MESH' or kinds.get(item['armature']) != 'ARMATURE'):
+            raise CreationError("Skinning needs a mesh and an armature")
+        if name == 'action.retarget' and (item['action'] not in actions or kinds.get(item['source']) != 'ARMATURE'
+                                          or kinds.get(item['target']) != 'ARMATURE'):
+            raise CreationError("Retarget needs an existing action and two armatures")
+        if name == 'asset.package' and any(c not in actions for c in item['clips']):
+            raise CreationError("Package clips must be existing actions")
         if name == 'mesh.bevel' and not item['target'].startswith('@'):
             if len(find_object(scene, item['target'], {}).data.vertices) > 2000:
                 raise CreationError("Bevel input exceeds the 2,000 vertex limit")
         if name == 'camera.configure' and (Vector(item['look_at'])-Vector(item['location'])).length < .001:
             raise CreationError("Camera must look away from its location")
-        if name == 'material.assign' and item['material'] not in mats:
+        if name in {'material.assign', 'material.assign_parts'} and item['material'] not in mats:
             raise CreationError("Unknown material reference")
     if len(scene.objects) + created > 256:
         raise CreationError("Plan exceeds the object limit")
 
 
 def _provenance(block, job, created=False):
-    value = canonical({'job': job['id'], 'plan': job['digest'], 'protocol': 'finalverse.creation/v1'})
+    value = canonical({'job': job['id'], 'plan': job['digest'], 'protocol': job['plan']['schema_version']})
     block['finalverse.provenance'] = value
     if created:
         block['finalverse.created_by'] = value
         block['finalverse.description'] = job['plan']['summary']
 
 
+V1_BRIDGE = {'scene.inspect', 'object.create', 'material.create', 'camera.configure', 'light.configure',
+             'object.transform', 'animation.keyframe', 'mesh.bevel', 'material.assign', 'scene.save', 'asset.export'}
+
+
 def apply(scene, item, aliases, directory, job):
     name = item['op']
+    if job['plan'].get('schema_version') == SCHEMA_V2 and name not in V1_BRIDGE:
+        from . import creation2
+        block, result = creation2.apply(scene, item, aliases, directory, job)
+        stamps = [block] if block is not None else []
+        if name == 'light.rig':
+            stamps = [o for o in scene.objects if o.get(OBJECT_ID) in result['lights']]
+        for b in stamps:
+            _provenance(b, job, name not in {'mesh.subdivide', 'mesh.deform', 'object.parent', 'material.assign_parts',
+                                             'armature.skin'})
+        bpy.context.view_layer.update()
+        return {'operation': name, **result}
     if name == 'scene.inspect':
         index = snapshot(scene)
         return {'scene_id': index['scene_id'], 'revision': index['revision'],

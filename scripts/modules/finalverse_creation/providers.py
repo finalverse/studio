@@ -15,7 +15,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-from .protocol import CreationError, PLAN_SCHEMA, canonical, digest, parse, validate
+from .protocol import CreationError, OPERATIONS_V2, PLAN_SCHEMA, PLAN_SCHEMA_V2, SCHEMA_V2, canonical, digest, parse, validate
 
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
@@ -290,7 +290,79 @@ EXAMPLE = {'schema_version': 'finalverse.creation/v1', 'summary': 'Example only:
 validate(EXAMPLE)
 
 
-def plan(p, model, prompt, snapshot):
+def grammar_v2():
+    """Compact field reference generated from the closed schema itself."""
+    def describe(schema):
+        if 'enum' in schema:
+            return '|'.join(map(str, schema['enum']))
+        kind = schema.get('type')
+        if kind == 'array' and 'items' in schema and schema['items'].get('type') in ('number', 'integer'):
+            i = schema['items']; return f"[{schema['minItems']} numbers {i['minimum']}..{i['maximum']}]"
+        if kind == 'array':
+            return f"list({schema['minItems']}..{schema['maxItems']})"
+        if kind in ('number', 'integer'):
+            return f"{kind[:3]} {schema['minimum']}..{schema['maximum']}"
+        if kind == 'string':
+            return '@ref' if schema.get('pattern', '').startswith('^(?:@') or schema.get('pattern', '').startswith('^@') else 'text'
+        return kind or 'value'
+    lines = []
+    for name, schema in OPERATIONS_V2.items():
+        if name in ('object.create', 'material.create', 'scene.save', 'asset.export', 'scene.render', 'asset.package'):
+            continue
+        fields = []
+        for key, sub in schema['properties'].items():
+            if key == 'op':
+                continue
+            fields.append(('' if key in schema['required'] else '?') + key + ':' + describe(sub))
+        lines.append(name + ' ' + ', '.join(fields))
+    return '\n'.join(lines)
+
+
+SYSTEM_V2 = """You are Finalverse Studio's S2 planner. Return only strict JSON with schema_version
+"finalverse.creation/v2", a summary and an operations list. Never emit code or unknown operations.
+You propose; the human approves each plan. Blender units: metres, radians, Z up, -Y is the front.
+Use @refs for things you create (declare each once, before use) and UUIDs for existing objects.
+Fields marked ? are optional. action.create keys hold absolute object location/rotation/scale per
+frame (or pose rotation with "bone" for armatures); loop clips must end where they start.
+Floating spirits and sprites have no skeleton, no legs and never walk: animate the object itself
+with hover/drift/fly clips. Humanoids use character.humanoid + armature.create + armature.skin and
+bone keys. For a preview: camera.configure looking at the subject, light.rig, render.configure with
+transparent true, then preview.render. Do not include asset.package; export is a separate step.
+Operations:
+"""
+
+EXAMPLE_V2 = {'schema_version': SCHEMA_V2, 'summary': 'Example only: hovering lantern prop', 'operations': [
+    {'op': 'scene.inspect'},
+    {'op': 'mesh.primitive', 'ref': '@lantern', 'name': 'Lantern', 'shape': 'cylinder', 'size': [.3, .3, .5],
+     'location': [0, 0, .6], 'segments': 16},
+    {'op': 'mesh.subdivide', 'target': '@lantern', 'levels': 1},
+    {'op': 'material.preset', 'ref': '@brass', 'name': 'Brass', 'color': [.7, .5, .2, 1], 'roughness': .3,
+     'metallic': .9, 'emission': [1, .6, .2], 'emission_strength': 2},
+    {'op': 'material.assign_parts', 'target': '@lantern', 'material': '@brass', 'part': 'all'},
+    {'op': 'action.create', 'ref': '@bob', 'name': 'Lantern Bob', 'target': '@lantern', 'kind': 'idle',
+     'locomotion': 'hover', 'loop': True, 'keys': [{'frame': 1, 'location': [0, 0, .6]},
+     {'frame': 20, 'location': [0, 0, .7]}, {'frame': 40, 'location': [0, 0, .6]}]},
+    {'op': 'camera.configure', 'ref': '@cam', 'name': 'Camera', 'location': [0, -3, 1], 'look_at': [0, 0, .6], 'lens': 50},
+    {'op': 'light.rig', 'ref': '@key', 'name': 'Light', 'style': 'three_point', 'target': [0, 0, .6], 'distance': 3,
+     'energy': 400, 'color': [1, 1, 1]},
+    {'op': 'render.configure', 'engine': 'EEVEE', 'frame_start': 1, 'frame_end': 40, 'fps': 24, 'transparent': True},
+    {'op': 'preview.render', 'path': 'lantern.png', 'width': 256, 'height': 256, 'samples': 16, 'frame': 1}]}
+validate(EXAMPLE_V2)
+
+
+def plan_messages_v2(prompt, visible, context):
+    system = SYSTEM_V2 + grammar_v2() + '\nExample (format only, do not copy its content): ' + canonical(EXAMPLE_V2)
+    user = {'intent': prompt, 'scene': visible}
+    if context:
+        user['context'] = context
+    return [{'role': 'system', 'content': system}, {'role': 'user', 'content': canonical(user)}]
+
+
+def plan(p, model, prompt, snapshot, language='v1', context=None):
+    if language not in ('v1', 'v2'):
+        raise CreationError("Unsupported creation language")
+    if context is not None and len(canonical(context)) > 16384:
+        raise CreationError("Planning context exceeds 16 KiB")
     if not isinstance(prompt, str) or not 1 <= len(prompt) <= 4096:
         raise CreationError("Prompt must contain 1–4096 characters")
     available = inventory(p)
@@ -307,15 +379,21 @@ def plan(p, model, prompt, snapshot):
              'All positions/rotations/scales have exactly 3 numbers; material color has 4, light color has 3. '
              'Frames 1..240; samples 1..64; image width/height 64..1024; at most 32 operations. '
              'Example: ' + canonical(EXAMPLE))
-    messages = [{'role': 'system', 'content': SYSTEM + '\n' + guide},
-                {'role': 'user', 'content': canonical({'intent': prompt, 'scene': visible})}]
+    if language == 'v2':
+        visible['objects'] = [{**o, 'clips': [t['name'] for t in s.get('clips', {}).get('tracks', [])]}
+                              for o, s in zip(visible['objects'], snapshot['objects'][:32])]
+        messages = plan_messages_v2(prompt, visible, context)
+    else:
+        messages = [{'role': 'system', 'content': SYSTEM + '\n' + guide},
+                    {'role': 'user', 'content': canonical({'intent': prompt, 'scene': visible})}]
+    budget = 3072 if language == 'v2' else 2304
     begin = time.monotonic()
     if p['kind'] == 'ollama':
         caps = request(p, '/api/show', {'model': model})
         # JSON mode avoids backend-specific union-schema grammar limitations.
         # The full closed schema remains in context and is enforced locally.
         payload = {'model': model, 'messages': messages, 'stream': False, 'format': 'json',
-                   'options': {'temperature': 0, 'seed': 41, 'num_predict': 2304, 'num_ctx': 8192},
+                   'options': {'temperature': 0, 'seed': 41, 'num_predict': budget, 'num_ctx': 12288 if language == 'v2' else 8192},
                    'keep_alive': '2m'}
         if False in caps.get('thinking', {}).get('values', []):
             payload['think'] = False
@@ -324,15 +402,16 @@ def plan(p, model, prompt, snapshot):
         usage = {'input_tokens': response.get('prompt_eval_count'), 'output_tokens': response.get('eval_count')}
     elif p['kind'] == 'anthropic':
         payload = {'model': model, 'system': messages[0]['content'], 'messages': messages[1:],
-                   'max_tokens': 2304, 'temperature': 0}
+                   'max_tokens': budget, 'temperature': 0}
         response = request(p, '/v1/messages', payload)
         blocks = response.get('content') or [{}]
         content = ''.join(b.get('text', '') for b in blocks if isinstance(b, dict) and b.get('type') == 'text')
         usage = response.get('usage', {})
     else:
-        payload = {'model': model, 'messages': messages, 'temperature': 0, 'max_tokens': 2304,
+        payload = {'model': model, 'messages': messages, 'temperature': 0, 'max_tokens': budget,
                    'response_format': {'type': 'json_schema', 'json_schema': {
-                       'name': 'finalverse_creation', 'strict': True, 'schema': PLAN_SCHEMA}}}
+                       'name': 'finalverse_creation', 'strict': True,
+                       'schema': PLAN_SCHEMA_V2 if language == 'v2' else PLAN_SCHEMA}}}
         response = request(p, '/chat/completions', payload)
         content = response.get('choices', [{}])[0].get('message', {}).get('content', '')
         usage = response.get('usage', {})
@@ -341,7 +420,8 @@ def plan(p, model, prompt, snapshot):
         'served_model': response.get('model'), 'latency_ms': (time.monotonic()-begin)*1000,
         'input_digest': digest(messages), 'response_digest': hashlib.sha256(content.encode()).hexdigest(),
         'usage': usage, 'real_inference': True, 'fallback_used': False,
-        'scene_id': snapshot['scene_id'], 'scene_revision': snapshot['revision']}
+        'scene_id': snapshot['scene_id'], 'scene_revision': snapshot['revision'], 'language': language,
+        'context_digest': digest(context) if context else None}
     result = None
     try:
         result = parse(content)
@@ -394,7 +474,8 @@ def main():
         if data['mode'] == 'models':
             result = {'models': models(p), 'provider': p['id']}
         elif data['mode'] == 'plan':
-            result = plan(p, data['model'], data['prompt'], data['snapshot'])
+            result = plan(p, data['model'], data['prompt'], data['snapshot'], data.get('language', 'v1'),
+                          data.get('context'))
         else:
             raise CreationError("Unsupported provider request")
         result = {'ok': True, **result}
