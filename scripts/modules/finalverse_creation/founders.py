@@ -85,10 +85,16 @@ def _build_part(scene, part, h, seed):
         if part.voxel:
             # Octree "smooth" remesh fuses primitives into one continuous surface without
             # OpenVDB (disabled in the reduced Studio build profile; voxel mode would no-op).
+            # Voxel remesh (OpenVDB) gives a closed manifold surface; the octree fallback
+            # leaves holes at thin overlaps, which render as dark seams.
             size = max(temp.dimensions) if max(temp.dimensions) > 0 else h
-            m = temp.modifiers.new('fuse', 'REMESH'); m.mode = 'SMOOTH'; m.scale = .99
-            m.octree_depth = max(4, min(8, math.ceil(math.log2(size/(part.voxel*h)))))
-            m.use_remove_disconnected = False; m.use_smooth_shade = True
+            m = temp.modifiers.new('fuse', 'REMESH'); m.use_smooth_shade = True
+            if bpy.app.build_options.openvdb:
+                m.mode = 'VOXEL'; m.voxel_size = max(part.voxel*h, size/256); m.adaptivity = 0
+            else:
+                m.mode = 'SMOOTH'; m.scale = .99
+                m.octree_depth = max(4, min(8, math.ceil(math.log2(size/(part.voxel*h)))))
+                m.use_remove_disconnected = False
         if part.smooth:
             m = temp.modifiers.new('relax', 'LAPLACIANSMOOTH'); m.iterations = part.smooth
             m.lambda_factor = .5; m.use_volume_preserve = True
@@ -110,6 +116,14 @@ def _build_part(scene, part, h, seed):
             reduced = bpy.data.meshes.new_from_object(temp.evaluated_get(bpy.context.evaluated_depsgraph_get()))
             temp.data = mesh
             bpy.data.meshes.remove(fused); fused = reduced
+        # Decimating thin voxel shells (flames, petals) can leave zero-area triangles,
+        # which the package validator rightly rejects; dissolve them here.
+        bm = bmesh.new(); bm.from_mesh(fused)
+        bmesh.ops.dissolve_degenerate(bm, dist=1e-5*h, edges=bm.edges)
+        loose = [v for v in bm.verts if not v.link_faces]
+        if loose:
+            bmesh.ops.delete(bm, geom=loose, context='VERTS')
+        bm.to_mesh(fused); bm.free()
         return fused
     finally:
         bpy.data.objects.remove(temp)
@@ -337,7 +351,8 @@ def lumi(item):
         body.ell((s*h*.32, h*.02, h*.62), (h*.13, h*.05, h*.08), 20)                       # soft crown fins
         body.ell((s*h*.27, 0, h*.34), (h*.05, h*.04, h*.09), 16)                           # subtle side fins
     body.cap((0, 0, h*.14), (0, h*.04, h*.04), h*.13, h*.02, 24)                          # tapering wisp, not legs
-    face(parts := [body], h*2.6, (0, -h*.17, h*.6), (h*.11, h*.1, h*.1), 'iris', joint=None, mouth=False)
+    # Canon: large expressive eyes (V0 sheet). Eye scale and spacing sized for a ~1 m spirit.
+    face(parts := [body], h*4.2, (0, -h*.17, h*.6), (h*.2, h*.1, h*.1), 'iris', joint=None, mouth=False)
     parts.append(Part('cheek glow', 'glow', None, 'expressive_detail', voxel=None, smooth=0, tris=300)
                  .ell((h*.16, -h*.235, h*.5), (h*.03, h*.01, h*.018), 14).ell((-h*.16, -h*.235, h*.5), (h*.03, h*.01, h*.018), 14))
     parts.append(Part('heart light', 'glow', None, voxel=None, smooth=0, tris=300).ell((0, -h*.255, h*.38), (h*.035, h*.01, h*.035), 16))
@@ -384,9 +399,10 @@ def terra(item):
 
 def ignis(item):
     h = item['height']
-    zones = palette(item, {'armor': ((.09, .07, .07), .55, .7), 'core': ((1.0, .35, .06), .4, 0, (1.0, .32, .04), 5.0),
-        'seam': ((1.0, .55, .12), .35, 0, (1.0, .5, .1), 6.0), 'flame': ((1.0, .7, .25), .4, 0, (1.0, .6, .15), 7.0),
-        'ember': ((.55, .12, .04), .6, 0, (.7, .14, .02), 2.0)})
+    # Emission kept near 1.5-2.6 so Khronos PBR Neutral keeps the fire hue instead of clipping to white.
+    zones = palette(item, {'armor': ((.09, .07, .07), .55, .7), 'core': ((.85, .22, .03), .4, 0, (1.0, .28, .02), .9),
+        'seam': ((1.0, .45, .08), .35, 0, (1.0, .4, .06), 1.2), 'flame': ((1.0, .42, .06), .4, 0, (1.0, .38, .04), 1.4),
+        'ember': ((.55, .12, .04), .6, 0, (.7, .14, .02), 1.2)})
     parts = []
     core = Part('molten core', 'core', 'root', voxel=.012, detail=('clouds', .01, .05), tris=2400)
     core.ell((0, 0, h*.64), (h*.12, h*.08, h*.15), 28).ell((0, 0, h*.5), (h*.09, h*.065, h*.07), 20)

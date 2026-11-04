@@ -1,0 +1,191 @@
+{
+  "archetype": "humanoid",
+  "clips": [
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        60
+      ],
+      "glb": "clips/Auren_Idle.glb",
+      "id": "1f13be84-b394-441b-91a9-31142aa437b6",
+      "kind": "idle",
+      "locomotion": "none",
+      "loop": true,
+      "name": "Auren Idle",
+      "samples": "clips/Auren_Idle.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        25
+      ],
+      "glb": "clips/Auren_Walk.glb",
+      "id": "ef9f72e8-069c-4dfa-83f6-885196b0eceb",
+      "kind": "locomote",
+      "locomotion": "walk",
+      "loop": true,
+      "name": "Auren Walk",
+      "samples": "clips/Auren_Walk.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        36
+      ],
+      "glb": "clips/Auren_Greet.glb",
+      "id": "c03f6213-a613-4bb9-8e11-7c88e9bfd977",
+      "kind": "greet",
+      "locomotion": "none",
+      "loop": false,
+      "name": "Auren Greet",
+      "samples": "clips/Auren_Greet.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        44
+      ],
+      "glb": "clips/Auren_Inspect.glb",
+      "id": "105466e4-965c-4aeb-927e-d2139fda0c98",
+      "kind": "observe",
+      "locomotion": "none",
+      "loop": false,
+      "name": "Auren Inspect",
+      "samples": "clips/Auren_Inspect.json"
+    }
+  ],
+  "evaluation": {
+    "advisories": [],
+    "digest": "9b420d8f6b129e4b994dbff861313a279b1e9da2973a08bd0905b7adc72c03b0",
+    "passed": true
+  },
+  "files": {
+    "asset.glb": {
+      "byte_length": 654676,
+      "media_type": "model/gltf-binary",
+      "sha256": "d62052ff4961071cce785679b93ffca9367c32e6dceab7f38b2f53612cc459ac"
+    },
+    "body.json": {
+      "byte_length": 1278446,
+      "media_type": "application/json",
+      "sha256": "f03994ee75c1e72768defe51c666c88636ad775a40c5d8b35f309180b6978a7a"
+    },
+    "clips/Auren_Greet.glb": {
+      "byte_length": 643224,
+      "media_type": "model/gltf-binary",
+      "sha256": "f08e7d244c8f0ec7fb1f8816fd4ecbc83e378415a413f16a6e05f360316baed7"
+    },
+    "clips/Auren_Greet.json": {
+      "byte_length": 1327,
+      "media_type": "application/json",
+      "sha256": "61786d752097fcadd09feae9d187840d94cde8d50d69f4e19b0d37295a6cd954"
+    },
+    "clips/Auren_Idle.glb": {
+      "byte_length": 644632,
+      "media_type": "model/gltf-binary",
+      "sha256": "435efa85be7974348d29c17ac6f85b2c84370ca98d4c3d187ecd659c998f8734"
+    },
+    "clips/Auren_Idle.json": {
+      "byte_length": 3480,
+      "media_type": "application/json",
+      "sha256": "2dbc05b16ad7076ed58d8ea7b21c23ac88c1252c78cf81fe545f71d52f49ce82"
+    },
+    "clips/Auren_Inspect.glb": {
+      "byte_length": 643560,
+      "media_type": "model/gltf-binary",
+      "sha256": "3148bb637443b2dd5250a71b304b269b37409db86401f82120a0e610539523d6"
+    },
+    "clips/Auren_Inspect.json": {
+      "byte_length": 1573,
+      "media_type": "application/json",
+      "sha256": "0f9a92192d611e69e07f7ae44b6feafa0fc2d01d1794733e0b32362d2db4ccab"
+    },
+    "clips/Auren_Walk.glb": {
+      "byte_length": 644152,
+      "media_type": "model/gltf-binary",
+      "sha256": "2e6f836485805dbabe3456a526adc475fc6863ba340ab871fbba1fc7384f350f"
+    },
+    "clips/Auren_Walk.json": {
+      "byte_length": 2633,
+      "media_type": "application/json",
+      "sha256": "4c33b5563960096784baa8b595e47389c780713a17b37c5dc8b0393e9b68b673"
+    },
+    "contract-check.json": {
+      "byte_length": 311,
+      "media_type": "application/json",
+      "sha256": "9b5d9ee9264963684f3d267115fd216c42daa53ceb9ec8ec432a7f9d8230a72b"
+    },
+    "definition.draft.json": {
+      "byte_length": 1535,
+      "media_type": "application/json",
+      "sha256": "aee70c63db1fd5cf6c69e3cf72db93b8dc66ff8813742c3f6dea257aece68706"
+    },
+    "evaluation.json": {
+      "byte_length": 7221,
+      "media_type": "application/json",
+      "sha256": "3145d2166969f5f2a9ef6b997d9ea57385e3a69ceb666cffbc02eae7b9b00568"
+    },
+    "glb-check.json": {
+      "byte_length": 3424,
+      "media_type": "application/json",
+      "sha256": "3ed9274af71e2b2e1328f1e96517aaaebf76f6c7a888f00d725982d7b0526aba"
+    },
+    "previews/step-011-auren-front.png": {
+      "byte_length": 133827,
+      "media_type": "image/png",
+      "sha256": "28f9526028cdd7f6a55cc1627b95bea3d9ef0cc78cd271f0c7bf43d06e185538"
+    },
+    "provenance.json": {
+      "byte_length": 799,
+      "media_type": "application/json",
+      "sha256": "8001e54a57b714121315015cc9bdd215c5534739dc0b13386a171c5caaca67e4"
+    },
+    "proxy.glb": {
+      "byte_length": 243904,
+      "media_type": "model/gltf-binary",
+      "sha256": "ab33e8f1c767169ff4bcea70c059fc4e3c374cf6d35568012c2c10e233808137"
+    },
+    "source.blend": {
+      "byte_length": 526351,
+      "media_type": "application/x-blender",
+      "sha256": "885756168b379dbb3a22b2a166c9249206da44327a1dafc8b6363c8294ebe92a"
+    },
+    "specification.json": {
+      "byte_length": 244,
+      "media_type": "application/json",
+      "sha256": "7fb4cd00f7f8061019f47f33f189e63a1fab0ea59c275565ca85256c22daf818"
+    }
+  },
+  "frame": {
+    "axes": "glTF right-handed Y-up",
+    "unit": "metre"
+  },
+  "genesis": {
+    "admission": "required",
+    "candidate_manifest": "candidate.json",
+    "definition_draft": "definition.draft.json",
+    "embodiment_body": "body.json",
+    "publication_authorized": false
+  },
+  "height_m": 1.8515,
+  "identity_reference": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+  "lods": [
+    {
+      "distance_m": 0.0
+    },
+    {
+      "distance_m": 18.0,
+      "triangle_ratio": 0.38
+    }
+  ],
+  "name": "Auren",
+  "published": false,
+  "schema_version": "finalverse.studio-asset-package/v1",
+  "state": "candidate",
+  "subject": "f1322a26-85e9-400f-bedb-26287cdc3af3",
+  "world_effects": 0
+}

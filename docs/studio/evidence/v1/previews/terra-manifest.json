@@ -1,0 +1,191 @@
+{
+  "archetype": "nature_elemental",
+  "clips": [
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        80
+      ],
+      "glb": "clips/Terra_Canopy_Sway.glb",
+      "id": "9296ecb4-0765-4b41-861c-4cd6eba9cf08",
+      "kind": "idle",
+      "locomotion": "none",
+      "loop": true,
+      "name": "Terra Canopy Sway",
+      "samples": "clips/Terra_Canopy_Sway.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        60
+      ],
+      "glb": "clips/Terra_Rooted_Shift.glb",
+      "id": "1ae3b0c8-51cd-4f5c-8867-acb17a18c963",
+      "kind": "locomote",
+      "locomotion": "rooted",
+      "loop": true,
+      "name": "Terra Rooted Shift",
+      "samples": "clips/Terra_Rooted_Shift.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        46
+      ],
+      "glb": "clips/Terra_Branch_Greet.glb",
+      "id": "bb86485a-0298-436e-940f-153bfb4b43ce",
+      "kind": "greet",
+      "locomotion": "none",
+      "loop": false,
+      "name": "Terra Branch Greet",
+      "samples": "clips/Terra_Branch_Greet.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        44
+      ],
+      "glb": "clips/Terra_Inspect.glb",
+      "id": "474089fe-e2b4-45bc-856f-59c6fcbc8877",
+      "kind": "observe",
+      "locomotion": "none",
+      "loop": false,
+      "name": "Terra Inspect",
+      "samples": "clips/Terra_Inspect.json"
+    }
+  ],
+  "evaluation": {
+    "advisories": [],
+    "digest": "e3530b34e7cf1b0620a532ee789e0c2d6098523e097bd18fb4a0557503da02ec",
+    "passed": true
+  },
+  "files": {
+    "asset.glb": {
+      "byte_length": 568636,
+      "media_type": "model/gltf-binary",
+      "sha256": "aca3968bc56651af621ea9ad62109e8db496f496a0a34ef614783d9245bb58d5"
+    },
+    "body.json": {
+      "byte_length": 1128927,
+      "media_type": "application/json",
+      "sha256": "60a1d42e9116da01381475c67faeee21345b9207c3dbcd6a52e4a941dbbc3c84"
+    },
+    "clips/Terra_Branch_Greet.glb": {
+      "byte_length": 557564,
+      "media_type": "model/gltf-binary",
+      "sha256": "c8ed114d23c844593f8df1c76aeb696a4c572d65835ba2310b8df1e741d1e245"
+    },
+    "clips/Terra_Branch_Greet.json": {
+      "byte_length": 1689,
+      "media_type": "application/json",
+      "sha256": "8f4080c39ec3ea9041920185de43d5522f8a79217060540e2562bdc4849276e6"
+    },
+    "clips/Terra_Canopy_Sway.glb": {
+      "byte_length": 560896,
+      "media_type": "model/gltf-binary",
+      "sha256": "54afc5e70eb119800f79ff5876140b4b9daae1493c58696115e68340f31fa858"
+    },
+    "clips/Terra_Canopy_Sway.json": {
+      "byte_length": 6340,
+      "media_type": "application/json",
+      "sha256": "4b5dc43374ce5d3b366e332b4870c3de3d1b988478672723dc076a849edd59af"
+    },
+    "clips/Terra_Inspect.glb": {
+      "byte_length": 557672,
+      "media_type": "model/gltf-binary",
+      "sha256": "7c8a54ec1f2efa6171e7b74b0bbd6433f353aa8f0820f1ddb668069d5c06c978"
+    },
+    "clips/Terra_Inspect.json": {
+      "byte_length": 1623,
+      "media_type": "application/json",
+      "sha256": "f248b00d098c3551d54739edbf3f718ed070e61918e2c9153a3233d5eb1baa38"
+    },
+    "clips/Terra_Rooted_Shift.glb": {
+      "byte_length": 557964,
+      "media_type": "model/gltf-binary",
+      "sha256": "b473e404f69d1faa5c15bfa899075d9ec1e6ecb838a5fc4ad494a246c42e2e72"
+    },
+    "clips/Terra_Rooted_Shift.json": {
+      "byte_length": 1843,
+      "media_type": "application/json",
+      "sha256": "2d53e533596ca9e0b622425b37d5c94a90eb5e00123b0548ffaf94c2a8e9aedd"
+    },
+    "contract-check.json": {
+      "byte_length": 311,
+      "media_type": "application/json",
+      "sha256": "09dcca2bac87f09905050841a628b23709600bf8c8d1920610076e001b5d3e2b"
+    },
+    "definition.draft.json": {
+      "byte_length": 1430,
+      "media_type": "application/json",
+      "sha256": "79b2e20e9584484c9a643633bbe30702738c57abee86653897c73ac7b2052d3c"
+    },
+    "evaluation.json": {
+      "byte_length": 6563,
+      "media_type": "application/json",
+      "sha256": "8108d23a39decc271d5593a76eedb34f663d9b02764a0e4fe3ce95d704d1369a"
+    },
+    "glb-check.json": {
+      "byte_length": 3341,
+      "media_type": "application/json",
+      "sha256": "b0ed751b7d52cc4482951cb2980097ab0e3093d1342b41be52a922f9ffccd642"
+    },
+    "previews/step-011-terra-front.png": {
+      "byte_length": 159863,
+      "media_type": "image/png",
+      "sha256": "fb366b2d3c204a614d0a47e5d563ceb5ea4014e83baedc567c695f465bac270f"
+    },
+    "provenance.json": {
+      "byte_length": 807,
+      "media_type": "application/json",
+      "sha256": "3bb321aeb2d9178d1025bb22c8d34eca0b80172baad5a306dff70ba334d173f9"
+    },
+    "proxy.glb": {
+      "byte_length": 212152,
+      "media_type": "model/gltf-binary",
+      "sha256": "09052329651a64e06e15ea957f9ba7a6032e1644ef3c0ca95521ffb02d3f93be"
+    },
+    "source.blend": {
+      "byte_length": 490764,
+      "media_type": "application/x-blender",
+      "sha256": "281d175e6e2f304031dfd489737470c7b9485f32a2e61560a1f61991027de3b8"
+    },
+    "specification.json": {
+      "byte_length": 252,
+      "media_type": "application/json",
+      "sha256": "472b9dd7063eff89f947efabaf8d377c68de7fe714760e71e7d927a720375cbd"
+    }
+  },
+  "frame": {
+    "axes": "glTF right-handed Y-up",
+    "unit": "metre"
+  },
+  "genesis": {
+    "admission": "required",
+    "candidate_manifest": "candidate.json",
+    "definition_draft": "definition.draft.json",
+    "embodiment_body": "body.json",
+    "publication_authorized": false
+  },
+  "height_m": 2.7883,
+  "identity_reference": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+  "lods": [
+    {
+      "distance_m": 0.0
+    },
+    {
+      "distance_m": 18.0,
+      "triangle_ratio": 0.38
+    }
+  ],
+  "name": "Terra",
+  "published": false,
+  "schema_version": "finalverse.studio-asset-package/v1",
+  "state": "candidate",
+  "subject": "19916cbf-33e7-4de2-b7ff-f361c36a88ec",
+  "world_effects": 0
+}

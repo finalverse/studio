@@ -1,0 +1,167 @@
+{
+  "archetype": "botanical_sprite",
+  "clips": [
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        48
+      ],
+      "glb": "clips/Elara_Hover.glb",
+      "id": "1790a0ab-f689-4e2a-b153-dcd9742941c7",
+      "kind": "idle",
+      "locomotion": "hover",
+      "loop": true,
+      "name": "Elara Hover",
+      "samples": "clips/Elara_Hover.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        72
+      ],
+      "glb": "clips/Elara_Fly.glb",
+      "id": "90f737f1-d602-46d8-a566-e3e4fb62fc89",
+      "kind": "locomote",
+      "locomotion": "fly",
+      "loop": true,
+      "name": "Elara Fly",
+      "samples": "clips/Elara_Fly.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        30
+      ],
+      "glb": "clips/Elara_Greet.glb",
+      "id": "0d62ddf8-9f89-468f-8011-8e92aaed538a",
+      "kind": "greet",
+      "locomotion": "none",
+      "loop": false,
+      "name": "Elara Greet",
+      "samples": "clips/Elara_Greet.json"
+    }
+  ],
+  "evaluation": {
+    "advisories": [],
+    "digest": "aefce99c930ca7c1bc91c197badfca714c759e50a7f6b873c5d4df24cff652bd",
+    "passed": true
+  },
+  "files": {
+    "asset.glb": {
+      "byte_length": 182188,
+      "media_type": "model/gltf-binary",
+      "sha256": "07c2237f2bcb7d79b99018b8e196cf5847434f27647aa7a9ece567f069415f86"
+    },
+    "body.json": {
+      "byte_length": 537447,
+      "media_type": "application/json",
+      "sha256": "ab4e353ed0c4b36b987dca3adabd2735ce200e15f757e579323875cda03e3bd5"
+    },
+    "clips/Elara_Fly.glb": {
+      "byte_length": 179436,
+      "media_type": "model/gltf-binary",
+      "sha256": "864f45197c8f429190e6067b4884b87a8508f3edab18368e20ef46013189204e"
+    },
+    "clips/Elara_Fly.json": {
+      "byte_length": 4518,
+      "media_type": "application/json",
+      "sha256": "ac212fadd93b53bc0b8be27314845a1b0ecfa3b0435aa3ac0f1c009bec627699"
+    },
+    "clips/Elara_Greet.glb": {
+      "byte_length": 177972,
+      "media_type": "model/gltf-binary",
+      "sha256": "844aed8e18a68be0bd1cec89692bfb974e4e01b929f325f3332da67d5e121bd6"
+    },
+    "clips/Elara_Greet.json": {
+      "byte_length": 1978,
+      "media_type": "application/json",
+      "sha256": "2768df7bc0c542c2e8e6dab9d8e3606cab6d95989a4717296a79e4514b5652c3"
+    },
+    "clips/Elara_Hover.glb": {
+      "byte_length": 178472,
+      "media_type": "model/gltf-binary",
+      "sha256": "21680f4f48f53355d54abe9d07c7cf8be3924c8b04b095e12ca5b0f46325b1a0"
+    },
+    "clips/Elara_Hover.json": {
+      "byte_length": 3033,
+      "media_type": "application/json",
+      "sha256": "4901e830b444373b87008e5f8549eebe3a751eb7d87c3e051d73eeb3e4861253"
+    },
+    "contract-check.json": {
+      "byte_length": 311,
+      "media_type": "application/json",
+      "sha256": "ace2314dde212127a225fb48341d559d75a7ce8e2f1e44c088b517ea7e3facc4"
+    },
+    "definition.draft.json": {
+      "byte_length": 1153,
+      "media_type": "application/json",
+      "sha256": "74dd189f0fee6b177d75d84fa5252dea6f7d1b3e8db7272d45371ccc116b3857"
+    },
+    "evaluation.json": {
+      "byte_length": 7372,
+      "media_type": "application/json",
+      "sha256": "96cf7084c0bba8c622a89bd990ee34b8636a7fa6c3a4465ec93ce4b4334f0ab0"
+    },
+    "glb-check.json": {
+      "byte_length": 2272,
+      "media_type": "application/json",
+      "sha256": "3d6f029433635aa32d1c6bd1745ec774d3f9c9ec6af2340be83877d575d26b90"
+    },
+    "previews/step-008-melody-front.png": {
+      "byte_length": 118118,
+      "media_type": "image/png",
+      "sha256": "25ce17f42b7bbcb6c9f00fa55625ac63450fca4f3715584f9a7ba590c3a426f1"
+    },
+    "provenance.json": {
+      "byte_length": 807,
+      "media_type": "application/json",
+      "sha256": "b449c3b91f72c39c9bc59e83d1246e5be51d7065be74e42ab2b2a4cc0fab0402"
+    },
+    "proxy.glb": {
+      "byte_length": 105904,
+      "media_type": "model/gltf-binary",
+      "sha256": "f3e102a4891f5fe1d24de352ab8154ccbb3a43ad750c54edaccd256b715d83f1"
+    },
+    "source.blend": {
+      "byte_length": 252166,
+      "media_type": "application/x-blender",
+      "sha256": "42613302d2c9976979b16ddbd6d8091fb5fe68092e7ade187bd41c88efe2cd1b"
+    },
+    "specification.json": {
+      "byte_length": 268,
+      "media_type": "application/json",
+      "sha256": "7e6c1208a39dbac91657e3cde6c696a9d91e381a3255a339fd35b893c4142e89"
+    }
+  },
+  "frame": {
+    "axes": "glTF right-handed Y-up",
+    "unit": "metre"
+  },
+  "genesis": {
+    "admission": "required",
+    "candidate_manifest": "candidate.json",
+    "definition_draft": "definition.draft.json",
+    "embodiment_body": "body.json",
+    "publication_authorized": false
+  },
+  "height_m": 0.2605,
+  "identity_reference": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+  "lods": [
+    {
+      "distance_m": 0.0
+    },
+    {
+      "distance_m": 18.0,
+      "triangle_ratio": 0.38
+    }
+  ],
+  "name": "Elara's Melody Sprite",
+  "published": false,
+  "schema_version": "finalverse.studio-asset-package/v1",
+  "state": "candidate",
+  "subject": "75b15d1b-6c92-47b9-90ec-68d4c4b3f7ae",
+  "world_effects": 0
+}

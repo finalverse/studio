@@ -1,0 +1,191 @@
+{
+  "archetype": "fire_elemental",
+  "clips": [
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        60
+      ],
+      "glb": "clips/Ignis_Idle.glb",
+      "id": "587e41d2-89b4-45e8-ac77-52da0024ccfe",
+      "kind": "idle",
+      "locomotion": "none",
+      "loop": true,
+      "name": "Ignis Idle",
+      "samples": "clips/Ignis_Idle.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        25
+      ],
+      "glb": "clips/Ignis_Walk.glb",
+      "id": "20dbedbe-4a76-4d49-b0cc-d3d8a2088690",
+      "kind": "locomote",
+      "locomotion": "walk",
+      "loop": true,
+      "name": "Ignis Walk",
+      "samples": "clips/Ignis_Walk.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        36
+      ],
+      "glb": "clips/Ignis_Greet.glb",
+      "id": "6f2bf6af-e1f4-47cb-8a9a-821894c67e91",
+      "kind": "greet",
+      "locomotion": "none",
+      "loop": false,
+      "name": "Ignis Greet",
+      "samples": "clips/Ignis_Greet.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        44
+      ],
+      "glb": "clips/Ignis_Inspect.glb",
+      "id": "4586bd7e-6a9d-4216-8412-b7247607bed5",
+      "kind": "observe",
+      "locomotion": "none",
+      "loop": false,
+      "name": "Ignis Inspect",
+      "samples": "clips/Ignis_Inspect.json"
+    }
+  ],
+  "evaluation": {
+    "advisories": [],
+    "digest": "9eb9cb3690375165411228251e06823769430f55a28d9432beeda8d98d18eb2a",
+    "passed": true
+  },
+  "files": {
+    "asset.glb": {
+      "byte_length": 490432,
+      "media_type": "model/gltf-binary",
+      "sha256": "9942f851f2171f412a207834ae2c536fba629767bd7998e3eb99c579f043531a"
+    },
+    "body.json": {
+      "byte_length": 953412,
+      "media_type": "application/json",
+      "sha256": "cbc5f6f73b2a5bcb3c54ba562fd4980167c32b84f483054a07d02729a0e13160"
+    },
+    "clips/Ignis_Greet.glb": {
+      "byte_length": 478980,
+      "media_type": "model/gltf-binary",
+      "sha256": "aa0d523a3beba5d4bfa521c56427971f30e6029f9e4f410888899bcdd0ffb768"
+    },
+    "clips/Ignis_Greet.json": {
+      "byte_length": 1327,
+      "media_type": "application/json",
+      "sha256": "97ad485bf857c1954f376580a425a2d78b2ba631f3182a3ce47d69291e9e1161"
+    },
+    "clips/Ignis_Idle.glb": {
+      "byte_length": 480256,
+      "media_type": "model/gltf-binary",
+      "sha256": "5b90b198d7896d144748e757695c87c09d0a39c76070feaef733ffd4157997e5"
+    },
+    "clips/Ignis_Idle.json": {
+      "byte_length": 3480,
+      "media_type": "application/json",
+      "sha256": "86d2314e952b061bafc0d166cb8dddffcf5f43d562d674fa7524a67200da8553"
+    },
+    "clips/Ignis_Inspect.glb": {
+      "byte_length": 479316,
+      "media_type": "model/gltf-binary",
+      "sha256": "0618fdd0f7ef6c19c17abe8bb4ce1803f86a58647822ecf95b934f4db886701e"
+    },
+    "clips/Ignis_Inspect.json": {
+      "byte_length": 1573,
+      "media_type": "application/json",
+      "sha256": "3007b1abec5e351f7fffaf953cb7bcf81876459d94a8103308ef518f23abbe40"
+    },
+    "clips/Ignis_Walk.glb": {
+      "byte_length": 479908,
+      "media_type": "model/gltf-binary",
+      "sha256": "72d443df3af707afdcf3858d6847fc5747588f8ed5d8153bfdbb291bc373c54e"
+    },
+    "clips/Ignis_Walk.json": {
+      "byte_length": 2633,
+      "media_type": "application/json",
+      "sha256": "178951b59a94022315427d2a40aaab8f4b06fa7c41a8d5be65664e57ee73f87b"
+    },
+    "contract-check.json": {
+      "byte_length": 311,
+      "media_type": "application/json",
+      "sha256": "a31428af2ace289c1e522b354b099ecfe9576ae0f6b6bae4d3e70a1f6354fb85"
+    },
+    "definition.draft.json": {
+      "byte_length": 1537,
+      "media_type": "application/json",
+      "sha256": "8e6dcc02822d3bc4f6732c66b7bb793995b0b5ac7be3165dff05529dcfc5da6a"
+    },
+    "evaluation.json": {
+      "byte_length": 7227,
+      "media_type": "application/json",
+      "sha256": "c7f382db75fc7df00a45b128c96dc9a8ae741b0e5d0d0001719cc9f7aee20765"
+    },
+    "glb-check.json": {
+      "byte_length": 3414,
+      "media_type": "application/json",
+      "sha256": "b65628338fb5b3a756c7548451a9ec08cc500b40f2704858c6b42de4091b0a00"
+    },
+    "previews/step-011-ignis-front.png": {
+      "byte_length": 143819,
+      "media_type": "image/png",
+      "sha256": "dacbba85814bfeda2ab102359ad64d879dbe845a666751e786292deb4bdca0ca"
+    },
+    "provenance.json": {
+      "byte_length": 805,
+      "media_type": "application/json",
+      "sha256": "2aede7c0d35b65c9c8b2862e08432105e603aad91ae099c94a4211c7add5bb07"
+    },
+    "proxy.glb": {
+      "byte_length": 181060,
+      "media_type": "model/gltf-binary",
+      "sha256": "e6badb91ced9e3c2eabef10be294d7554dd61d9a8af6e6935c246847b98e042b"
+    },
+    "source.blend": {
+      "byte_length": 421608,
+      "media_type": "application/x-blender",
+      "sha256": "d0e4923431f75eb832345bdbe07a4cf4f0d58e09e76f5e696bddc32ec8e483cf"
+    },
+    "specification.json": {
+      "byte_length": 250,
+      "media_type": "application/json",
+      "sha256": "92a489348031c50558d4ec5c19d202242aeb02fb6213168956f3d288d37fcf38"
+    }
+  },
+  "frame": {
+    "axes": "glTF right-handed Y-up",
+    "unit": "metre"
+  },
+  "genesis": {
+    "admission": "required",
+    "candidate_manifest": "candidate.json",
+    "definition_draft": "definition.draft.json",
+    "embodiment_body": "body.json",
+    "publication_authorized": false
+  },
+  "height_m": 2.3317,
+  "identity_reference": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+  "lods": [
+    {
+      "distance_m": 0.0
+    },
+    {
+      "distance_m": 18.0,
+      "triangle_ratio": 0.38
+    }
+  ],
+  "name": "Ignis",
+  "published": false,
+  "schema_version": "finalverse.studio-asset-package/v1",
+  "state": "candidate",
+  "subject": "88c8a3a4-f663-45d1-8077-947c70465fb8",
+  "world_effects": 0
+}

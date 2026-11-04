@@ -1,0 +1,1152 @@
+{
+  "schema_version": "finalverse.studio-v1-cloud/v1",
+  "bpy": "5.2.3 LTS",
+  "build_hash": "e13b728c6880",
+  "renderer": "CYCLES/CPU",
+  "founders": {
+    "elara": {
+      "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+      "archetype": "humanoid",
+      "ok": true,
+      "seconds": 6.6,
+      "steps": [
+        {
+          "op": "scene.inspect",
+          "ms": 0.0
+        },
+        {
+          "op": "character.founder",
+          "ms": 1563.6
+        },
+        {
+          "op": "armature.create",
+          "ms": 1.3
+        },
+        {
+          "op": "armature.skin",
+          "ms": 10.6
+        },
+        {
+          "op": "action.create",
+          "ms": 1.0
+        },
+        {
+          "op": "action.create",
+          "ms": 0.9
+        },
+        {
+          "op": "action.create",
+          "ms": 0.8
+        },
+        {
+          "op": "action.create",
+          "ms": 0.8
+        },
+        {
+          "op": "camera.configure",
+          "ms": 0.4
+        },
+        {
+          "op": "light.rig",
+          "ms": 0.9
+        },
+        {
+          "op": "render.configure",
+          "ms": 0.7
+        },
+        {
+          "op": "preview.render",
+          "ms": 3470.3
+        },
+        {
+          "op": "asset.package",
+          "ms": 1291.8
+        }
+      ],
+      "manifest_sha256": "4e2639e763cb730de1fc40061ce86787d6263266d4ad9346921e2e32effc6727",
+      "hashes_match": true,
+      "published": false,
+      "world_effects": 0,
+      "clips": [
+        "Elara Idle",
+        "Elara Walk",
+        "Elara Greet",
+        "Elara Inspect"
+      ],
+      "glb": {
+        "asset.glb": {
+          "triangles": 24086,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Elara Idle",
+              "channels": 18,
+              "duration_s": 2.5
+            },
+            {
+              "name": "Elara Walk",
+              "channels": 18,
+              "duration_s": 1.04167
+            },
+            {
+              "name": "Elara Greet",
+              "channels": 18,
+              "duration_s": 1.5
+            },
+            {
+              "name": "Elara Inspect",
+              "channels": 18,
+              "duration_s": 1.83333
+            }
+          ]
+        },
+        "clips/Elara_Greet.glb": {
+          "triangles": 24086,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 1.5
+            }
+          ]
+        },
+        "clips/Elara_Idle.glb": {
+          "triangles": 24086,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 2.5
+            }
+          ]
+        },
+        "clips/Elara_Inspect.glb": {
+          "triangles": 24086,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 1.83333
+            }
+          ]
+        },
+        "clips/Elara_Walk.glb": {
+          "triangles": 24086,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 1.04167
+            }
+          ]
+        },
+        "proxy.glb": {
+          "triangles": 9152,
+          "joints": 0,
+          "skins": 0,
+          "animations": []
+        }
+      },
+      "gate": {
+        "genesis_geometry_validated": false,
+        "manifest_sha256": "45bd05ff1d6497fa3f27288dedb3611f65ea979cac787323ecd7183abb7cf402",
+        "publication_authorized": false,
+        "schema_version": "finalverse.studio-integrity-receipt/v1",
+        "valid": true
+      },
+      "evaluation_passed": true,
+      "contract": {
+        "structural_errors": [],
+        "generator_header": "finalverse-studio-s2/1",
+        "e1_admits_generator": false,
+        "genesis_proxy": {
+          "vertices": 4645,
+          "triangles": 9152,
+          "materials": 8
+        },
+        "note": "E1 Artifact::validate admits only generator blender-universal/1; Genesis must admit this generator"
+      }
+    },
+    "auren": {
+      "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+      "archetype": "humanoid",
+      "ok": true,
+      "seconds": 5.6,
+      "steps": [
+        {
+          "op": "scene.inspect",
+          "ms": 0.0
+        },
+        {
+          "op": "character.founder",
+          "ms": 1226.4
+        },
+        {
+          "op": "armature.create",
+          "ms": 1.3
+        },
+        {
+          "op": "armature.skin",
+          "ms": 10.3
+        },
+        {
+          "op": "action.create",
+          "ms": 1.0
+        },
+        {
+          "op": "action.create",
+          "ms": 1.1
+        },
+        {
+          "op": "action.create",
+          "ms": 0.8
+        },
+        {
+          "op": "action.create",
+          "ms": 0.8
+        },
+        {
+          "op": "camera.configure",
+          "ms": 0.5
+        },
+        {
+          "op": "light.rig",
+          "ms": 0.8
+        },
+        {
+          "op": "render.configure",
+          "ms": 0.6
+        },
+        {
+          "op": "preview.render",
+          "ms": 2929.7
+        },
+        {
+          "op": "asset.package",
+          "ms": 1176.1
+        }
+      ],
+      "manifest_sha256": "ab39770aef22e167d33a840369a529f871c970444362985ccec5f87be141a920",
+      "hashes_match": true,
+      "published": false,
+      "world_effects": 0,
+      "clips": [
+        "Auren Idle",
+        "Auren Walk",
+        "Auren Greet",
+        "Auren Inspect"
+      ],
+      "glb": {
+        "asset.glb": {
+          "triangles": 22124,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Auren Idle",
+              "channels": 18,
+              "duration_s": 2.5
+            },
+            {
+              "name": "Auren Walk",
+              "channels": 18,
+              "duration_s": 1.04167
+            },
+            {
+              "name": "Auren Greet",
+              "channels": 18,
+              "duration_s": 1.5
+            },
+            {
+              "name": "Auren Inspect",
+              "channels": 18,
+              "duration_s": 1.83333
+            }
+          ]
+        },
+        "clips/Auren_Greet.glb": {
+          "triangles": 22124,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 1.5
+            }
+          ]
+        },
+        "clips/Auren_Idle.glb": {
+          "triangles": 22124,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 2.5
+            }
+          ]
+        },
+        "clips/Auren_Inspect.glb": {
+          "triangles": 22124,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 1.83333
+            }
+          ]
+        },
+        "clips/Auren_Walk.glb": {
+          "triangles": 22124,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 1.04167
+            }
+          ]
+        },
+        "proxy.glb": {
+          "triangles": 8406,
+          "joints": 0,
+          "skins": 0,
+          "animations": []
+        }
+      },
+      "gate": {
+        "genesis_geometry_validated": false,
+        "manifest_sha256": "7ce86a720ec8f53f3ce722f600a856d2f0fe6cac0d4d8ed73bd99735aea2456d",
+        "publication_authorized": false,
+        "schema_version": "finalverse.studio-integrity-receipt/v1",
+        "valid": true
+      },
+      "evaluation_passed": true,
+      "contract": {
+        "structural_errors": [],
+        "generator_header": "finalverse-studio-s2/1",
+        "e1_admits_generator": false,
+        "genesis_proxy": {
+          "vertices": 4255,
+          "triangles": 8406,
+          "materials": 8
+        },
+        "note": "E1 Artifact::validate admits only generator blender-universal/1; Genesis must admit this generator"
+      }
+    },
+    "kai": {
+      "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+      "archetype": "synthetic_humanoid",
+      "ok": true,
+      "seconds": 4.6,
+      "steps": [
+        {
+          "op": "scene.inspect",
+          "ms": 0.0
+        },
+        {
+          "op": "character.founder",
+          "ms": 794.0
+        },
+        {
+          "op": "armature.create",
+          "ms": 1.3
+        },
+        {
+          "op": "armature.skin",
+          "ms": 6.6
+        },
+        {
+          "op": "action.create",
+          "ms": 0.8
+        },
+        {
+          "op": "action.create",
+          "ms": 0.8
+        },
+        {
+          "op": "action.create",
+          "ms": 0.6
+        },
+        {
+          "op": "action.create",
+          "ms": 0.6
+        },
+        {
+          "op": "camera.configure",
+          "ms": 0.3
+        },
+        {
+          "op": "light.rig",
+          "ms": 0.7
+        },
+        {
+          "op": "render.configure",
+          "ms": 0.7
+        },
+        {
+          "op": "preview.render",
+          "ms": 2929.2
+        },
+        {
+          "op": "asset.package",
+          "ms": 723.4
+        }
+      ],
+      "manifest_sha256": "7eb71f8ead0c7f075221b636083646c622f15a456fc9dfecc8f89842cbaf4c8e",
+      "hashes_match": true,
+      "published": false,
+      "world_effects": 0,
+      "clips": [
+        "Kai Idle",
+        "Kai Walk",
+        "Kai Greet",
+        "Kai Inspect"
+      ],
+      "glb": {
+        "asset.glb": {
+          "triangles": 13442,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Kai Idle",
+              "channels": 18,
+              "duration_s": 2.5
+            },
+            {
+              "name": "Kai Walk",
+              "channels": 18,
+              "duration_s": 1.04167
+            },
+            {
+              "name": "Kai Greet",
+              "channels": 18,
+              "duration_s": 1.5
+            },
+            {
+              "name": "Kai Inspect",
+              "channels": 18,
+              "duration_s": 1.83333
+            }
+          ]
+        },
+        "clips/Kai_Greet.glb": {
+          "triangles": 13442,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 1.5
+            }
+          ]
+        },
+        "clips/Kai_Idle.glb": {
+          "triangles": 13442,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 2.5
+            }
+          ]
+        },
+        "clips/Kai_Inspect.glb": {
+          "triangles": 13442,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 1.83333
+            }
+          ]
+        },
+        "clips/Kai_Walk.glb": {
+          "triangles": 13442,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 1.04167
+            }
+          ]
+        },
+        "proxy.glb": {
+          "triangles": 5106,
+          "joints": 0,
+          "skins": 0,
+          "animations": []
+        }
+      },
+      "gate": {
+        "genesis_geometry_validated": false,
+        "manifest_sha256": "fa2b6d5bfb4752fd20f0ce980b2e54022af9fcfe5da5350bb6d409b7af16bce5",
+        "publication_authorized": false,
+        "schema_version": "finalverse.studio-integrity-receipt/v1",
+        "valid": true
+      },
+      "evaluation_passed": true,
+      "contract": {
+        "structural_errors": [],
+        "generator_header": "finalverse-studio-s2/1",
+        "e1_admits_generator": false,
+        "genesis_proxy": {
+          "vertices": 2605,
+          "triangles": 5106,
+          "materials": 5
+        },
+        "note": "E1 Artifact::validate admits only generator blender-universal/1; Genesis must admit this generator"
+      }
+    },
+    "lumi": {
+      "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+      "archetype": "floating_spirit",
+      "ok": true,
+      "seconds": 5.5,
+      "steps": [
+        {
+          "op": "scene.inspect",
+          "ms": 0.0
+        },
+        {
+          "op": "character.founder",
+          "ms": 963.8
+        },
+        {
+          "op": "action.create",
+          "ms": 0.7
+        },
+        {
+          "op": "action.create",
+          "ms": 0.5
+        },
+        {
+          "op": "action.create",
+          "ms": 0.4
+        },
+        {
+          "op": "camera.configure",
+          "ms": 0.4
+        },
+        {
+          "op": "light.rig",
+          "ms": 0.7
+        },
+        {
+          "op": "render.configure",
+          "ms": 0.5
+        },
+        {
+          "op": "preview.render",
+          "ms": 4196.7
+        },
+        {
+          "op": "asset.package",
+          "ms": 255.7
+        }
+      ],
+      "manifest_sha256": "5ef5b87bb311952c31922ebd76658e0737bf03dc1026cc926a5a1f2c95a9bd7f",
+      "hashes_match": true,
+      "published": false,
+      "world_effects": 0,
+      "clips": [
+        "Lumi Hover",
+        "Lumi Drift",
+        "Lumi Greet"
+      ],
+      "glb": {
+        "asset.glb": {
+          "triangles": 6748,
+          "joints": 0,
+          "skins": 0,
+          "animations": [
+            {
+              "name": "Lumi Hover",
+              "channels": 2,
+              "duration_s": 2.0
+            },
+            {
+              "name": "Lumi Drift",
+              "channels": 2,
+              "duration_s": 3.0
+            },
+            {
+              "name": "Lumi Greet",
+              "channels": 2,
+              "duration_s": 1.25
+            }
+          ]
+        },
+        "clips/Lumi_Drift.glb": {
+          "triangles": 6748,
+          "joints": 0,
+          "skins": 0,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 2,
+              "duration_s": 3.0
+            }
+          ]
+        },
+        "clips/Lumi_Greet.glb": {
+          "triangles": 6748,
+          "joints": 0,
+          "skins": 0,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 2,
+              "duration_s": 1.25
+            }
+          ]
+        },
+        "clips/Lumi_Hover.glb": {
+          "triangles": 6748,
+          "joints": 0,
+          "skins": 0,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 2,
+              "duration_s": 2.0
+            }
+          ]
+        },
+        "proxy.glb": {
+          "triangles": 2564,
+          "joints": 0,
+          "skins": 0,
+          "animations": []
+        }
+      },
+      "gate": {
+        "genesis_geometry_validated": false,
+        "manifest_sha256": "9dd31a05a62025499126dea9f56cb51a1b0289013b07b3ece5c8482dc0e7a18b",
+        "publication_authorized": false,
+        "schema_version": "finalverse.studio-integrity-receipt/v1",
+        "valid": true
+      },
+      "evaluation_passed": true,
+      "contract": {
+        "structural_errors": [],
+        "generator_header": "finalverse-studio-s2/1",
+        "e1_admits_generator": false,
+        "genesis_proxy": {
+          "vertices": 1304,
+          "triangles": 2564,
+          "materials": 5
+        },
+        "note": "E1 Artifact::validate admits only generator blender-universal/1; Genesis must admit this generator"
+      }
+    },
+    "terra": {
+      "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+      "archetype": "nature_elemental",
+      "ok": true,
+      "seconds": 6.4,
+      "steps": [
+        {
+          "op": "scene.inspect",
+          "ms": 0.0
+        },
+        {
+          "op": "character.founder",
+          "ms": 1419.4
+        },
+        {
+          "op": "armature.create",
+          "ms": 1.7
+        },
+        {
+          "op": "armature.skin",
+          "ms": 12.4
+        },
+        {
+          "op": "action.create",
+          "ms": 0.9
+        },
+        {
+          "op": "action.create",
+          "ms": 0.7
+        },
+        {
+          "op": "action.create",
+          "ms": 0.9
+        },
+        {
+          "op": "action.create",
+          "ms": 0.7
+        },
+        {
+          "op": "camera.configure",
+          "ms": 0.4
+        },
+        {
+          "op": "light.rig",
+          "ms": 0.9
+        },
+        {
+          "op": "render.configure",
+          "ms": 0.7
+        },
+        {
+          "op": "preview.render",
+          "ms": 3789.4
+        },
+        {
+          "op": "asset.package",
+          "ms": 997.9
+        }
+      ],
+      "manifest_sha256": "14f112d564fc1bc2da9532155860e3e3b6efed2a2f3a034170c93f79dfacad91",
+      "hashes_match": true,
+      "published": false,
+      "world_effects": 0,
+      "clips": [
+        "Terra Canopy Sway",
+        "Terra Rooted Shift",
+        "Terra Branch Greet",
+        "Terra Inspect"
+      ],
+      "glb": {
+        "asset.glb": {
+          "triangles": 19323,
+          "joints": 4,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Terra Canopy Sway",
+              "channels": 12,
+              "duration_s": 3.33333
+            },
+            {
+              "name": "Terra Rooted Shift",
+              "channels": 12,
+              "duration_s": 2.5
+            },
+            {
+              "name": "Terra Branch Greet",
+              "channels": 12,
+              "duration_s": 1.91667
+            },
+            {
+              "name": "Terra Inspect",
+              "channels": 12,
+              "duration_s": 1.83333
+            }
+          ]
+        },
+        "clips/Terra_Branch_Greet.glb": {
+          "triangles": 19323,
+          "joints": 4,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 12,
+              "duration_s": 1.91667
+            }
+          ]
+        },
+        "clips/Terra_Canopy_Sway.glb": {
+          "triangles": 19323,
+          "joints": 4,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 12,
+              "duration_s": 3.33333
+            }
+          ]
+        },
+        "clips/Terra_Inspect.glb": {
+          "triangles": 19323,
+          "joints": 4,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 12,
+              "duration_s": 1.83333
+            }
+          ]
+        },
+        "clips/Terra_Rooted_Shift.glb": {
+          "triangles": 19323,
+          "joints": 4,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 12,
+              "duration_s": 2.5
+            }
+          ]
+        },
+        "proxy.glb": {
+          "triangles": 7342,
+          "joints": 0,
+          "skins": 0,
+          "animations": []
+        }
+      },
+      "gate": {
+        "genesis_geometry_validated": false,
+        "manifest_sha256": "286a9d23202ed0f18fbddcd09d36d8c38277f9276c6d1f112bde9a6be8cf97c4",
+        "publication_authorized": false,
+        "schema_version": "finalverse.studio-integrity-receipt/v1",
+        "valid": true
+      },
+      "evaluation_passed": true,
+      "contract": {
+        "structural_errors": [],
+        "generator_header": "finalverse-studio-s2/1",
+        "e1_admits_generator": false,
+        "genesis_proxy": {
+          "vertices": 3714,
+          "triangles": 7342,
+          "materials": 6
+        },
+        "note": "E1 Artifact::validate admits only generator blender-universal/1; Genesis must admit this generator"
+      }
+    },
+    "ignis": {
+      "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+      "archetype": "fire_elemental",
+      "ok": true,
+      "seconds": 5.0,
+      "steps": [
+        {
+          "op": "scene.inspect",
+          "ms": 0.1
+        },
+        {
+          "op": "character.founder",
+          "ms": 730.1
+        },
+        {
+          "op": "armature.create",
+          "ms": 1.6
+        },
+        {
+          "op": "armature.skin",
+          "ms": 11.2
+        },
+        {
+          "op": "action.create",
+          "ms": 0.9
+        },
+        {
+          "op": "action.create",
+          "ms": 0.9
+        },
+        {
+          "op": "action.create",
+          "ms": 0.7
+        },
+        {
+          "op": "action.create",
+          "ms": 0.6
+        },
+        {
+          "op": "camera.configure",
+          "ms": 0.4
+        },
+        {
+          "op": "light.rig",
+          "ms": 1.3
+        },
+        {
+          "op": "render.configure",
+          "ms": 0.9
+        },
+        {
+          "op": "preview.render",
+          "ms": 3100.7
+        },
+        {
+          "op": "asset.package",
+          "ms": 960.1
+        }
+      ],
+      "manifest_sha256": "a9d3e2cb580eb7a5baee8a8d6c8d896967f9fe9e589a38e6db46327b68ee86be",
+      "hashes_match": true,
+      "published": false,
+      "world_effects": 0,
+      "clips": [
+        "Ignis Idle",
+        "Ignis Walk",
+        "Ignis Greet",
+        "Ignis Inspect"
+      ],
+      "glb": {
+        "asset.glb": {
+          "triangles": 16488,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Ignis Idle",
+              "channels": 18,
+              "duration_s": 2.5
+            },
+            {
+              "name": "Ignis Walk",
+              "channels": 18,
+              "duration_s": 1.04167
+            },
+            {
+              "name": "Ignis Greet",
+              "channels": 18,
+              "duration_s": 1.5
+            },
+            {
+              "name": "Ignis Inspect",
+              "channels": 18,
+              "duration_s": 1.83333
+            }
+          ]
+        },
+        "clips/Ignis_Greet.glb": {
+          "triangles": 16488,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 1.5
+            }
+          ]
+        },
+        "clips/Ignis_Idle.glb": {
+          "triangles": 16488,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 2.5
+            }
+          ]
+        },
+        "clips/Ignis_Inspect.glb": {
+          "triangles": 16488,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 1.83333
+            }
+          ]
+        },
+        "clips/Ignis_Walk.glb": {
+          "triangles": 16488,
+          "joints": 6,
+          "skins": 1,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 18,
+              "duration_s": 1.04167
+            }
+          ]
+        },
+        "proxy.glb": {
+          "triangles": 6264,
+          "joints": 0,
+          "skins": 0,
+          "animations": []
+        }
+      },
+      "gate": {
+        "genesis_geometry_validated": false,
+        "manifest_sha256": "3ed01b9f3da8792fef99a2aa3dc0f6a530f600066d2de240c8976edc396c3dab",
+        "publication_authorized": false,
+        "schema_version": "finalverse.studio-integrity-receipt/v1",
+        "valid": true
+      },
+      "evaluation_passed": true,
+      "contract": {
+        "structural_errors": [],
+        "generator_header": "finalverse-studio-s2/1",
+        "e1_admits_generator": false,
+        "genesis_proxy": {
+          "vertices": 3172,
+          "triangles": 6264,
+          "materials": 5
+        },
+        "note": "E1 Artifact::validate admits only generator blender-universal/1; Genesis must admit this generator"
+      }
+    },
+    "melody": {
+      "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+      "archetype": "botanical_sprite",
+      "ok": true,
+      "seconds": 3.7,
+      "steps": [
+        {
+          "op": "scene.inspect",
+          "ms": 0.0
+        },
+        {
+          "op": "character.founder",
+          "ms": 237.0
+        },
+        {
+          "op": "action.create",
+          "ms": 0.9
+        },
+        {
+          "op": "action.create",
+          "ms": 0.7
+        },
+        {
+          "op": "action.create",
+          "ms": 0.7
+        },
+        {
+          "op": "camera.configure",
+          "ms": 0.5
+        },
+        {
+          "op": "light.rig",
+          "ms": 1.1
+        },
+        {
+          "op": "render.configure",
+          "ms": 0.9
+        },
+        {
+          "op": "preview.render",
+          "ms": 2990.4
+        },
+        {
+          "op": "asset.package",
+          "ms": 331.2
+        }
+      ],
+      "manifest_sha256": "d0210881233c7cb156187538dc42c0aac45e6dbd613e334ed494406475ccb6bc",
+      "hashes_match": true,
+      "published": false,
+      "world_effects": 0,
+      "clips": [
+        "Elara Hover",
+        "Elara Fly",
+        "Elara Greet"
+      ],
+      "glb": {
+        "asset.glb": {
+          "triangles": 9246,
+          "joints": 0,
+          "skins": 0,
+          "animations": [
+            {
+              "name": "Elara Hover",
+              "channels": 2,
+              "duration_s": 2.0
+            },
+            {
+              "name": "Elara Fly",
+              "channels": 2,
+              "duration_s": 3.0
+            },
+            {
+              "name": "Elara Greet",
+              "channels": 2,
+              "duration_s": 1.25
+            }
+          ]
+        },
+        "clips/Elara_Fly.glb": {
+          "triangles": 9246,
+          "joints": 0,
+          "skins": 0,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 2,
+              "duration_s": 3.0
+            }
+          ]
+        },
+        "clips/Elara_Greet.glb": {
+          "triangles": 9246,
+          "joints": 0,
+          "skins": 0,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 2,
+              "duration_s": 1.25
+            }
+          ]
+        },
+        "clips/Elara_Hover.glb": {
+          "triangles": 9246,
+          "joints": 0,
+          "skins": 0,
+          "animations": [
+            {
+              "name": "Animation",
+              "channels": 2,
+              "duration_s": 2.0
+            }
+          ]
+        },
+        "proxy.glb": {
+          "triangles": 3512,
+          "joints": 0,
+          "skins": 0,
+          "animations": []
+        }
+      },
+      "gate": {
+        "genesis_geometry_validated": false,
+        "manifest_sha256": "ecddc7db47d4102bb58d4a06f41b69a12aed0a73a9e036680c4a240e79bdbfcb",
+        "publication_authorized": false,
+        "schema_version": "finalverse.studio-integrity-receipt/v1",
+        "valid": true
+      },
+      "evaluation_passed": true,
+      "contract": {
+        "structural_errors": [],
+        "generator_header": "finalverse-studio-s2/1",
+        "e1_admits_generator": false,
+        "genesis_proxy": {
+          "vertices": 1804,
+          "triangles": 3512,
+          "materials": 7
+        },
+        "note": "E1 Artifact::validate admits only generator blender-universal/1; Genesis must admit this generator"
+      }
+    }
+  }
+}

@@ -158,7 +158,7 @@ def evaluate(scene, subject, archetype, clips, previews=(), declared_height=None
             r.add('anatomy.floating_clearance', 'rig', clearance >= .02, round(clearance, 4), '>= 0.02 m above origin')
         elif archetype in RIGGED:
             r.add('anatomy.grounded', 'rig', abs(clearance) <= .05*max(size.z, .1), round(clearance, 4), '|feet - origin| <= 5% height')
-    names = [n for b in meshes for n, _ in json.loads(b.get('finalverse.parts', '[]'))] + [b.name for b in blocks]
+    names = [n for b in meshes for n, *_ in json.loads(b.get('finalverse.parts', '[]'))] + [b.name for b in blocks]
     if archetype in SPIRITS:
         legs = [n for n in names if any(w in n.lower() for w in ('leg', 'foot', 'walking'))]
         r.add('anatomy.no_legs', 'rig', not legs, legs, 'no leg/foot/walking parts (E1 spirit)')

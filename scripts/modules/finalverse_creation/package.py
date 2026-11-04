@@ -113,6 +113,85 @@ def material_behavior(material):
             'emissive_rgb': [round(e, 6) for e in emissive], 'pulse_amplitude': .25 if any(emissive) else 0.0}
 
 
+def static_proxy(parts, max_materials=8):
+    """Genesis publication proxy in the reviewed static subset (Core ec::geometry::validate_glb):
+    one node, one mesh, <= 8 indexed-triangle primitives with POSITION/NORMAL/TEXCOORD_0,
+    factor-only PBR materials, no names, skins, animation, textures or extensions.
+    Built from the E1 LOD1 parts (Y-up, metres, origin at ground contact)."""
+    import struct
+    def key(m):
+        e = [min(1.0, max(0.0, c)) for c in m['emissive_rgb']]
+        return (tuple(round(c, 4) for c in m['color_rgba']), round(m['metallic'], 4), round(m['roughness'], 4),
+                tuple(round(c, 4) for c in e))
+    groups = {}
+    for part in parts:
+        groups.setdefault(key(part['material']), []).append(part)
+    while len(groups) > max_materials:  # merge the smallest group into its nearest colour
+        small = min(groups, key=lambda k: (sum(len(p['indices']) for p in groups[k]), k))
+        others = [k for k in groups if k != small]
+        near = min(others, key=lambda k: (sum((a-b)**2 for a, b in zip(k[0], small[0])) + sum((a-b)**2 for a, b in zip(k[3], small[3])), k))
+        groups[near] += groups.pop(small)
+    def sub(a, b): return (a[0]-b[0], a[1]-b[1], a[2]-b[2])
+    def cross(a, b): return (a[1]*b[2]-a[2]*b[1], a[2]*b[0]-a[0]*b[2], a[0]*b[1]-a[1]*b[0])
+    def unit(v):
+        n = math.sqrt(sum(c*c for c in v)); return tuple(c/n for c in v) if n > 0 else None
+    f32 = lambda v: struct.unpack('<f', struct.pack('<f', v))[0]
+    bin_, views, accessors, prims, materials = bytearray(), [], [], [], []
+    total_v = total_t = 0
+    def view(data):
+        views.append({'buffer': 0, 'byteOffset': len(bin_), 'byteLength': len(data)}); bin_.extend(data)
+        while len(bin_) % 4: bin_.append(0)
+        return len(views) - 1
+    for k in sorted(groups):
+        pos, nor, idx, seen = [], [], [], {}
+        for part in groups[k]:
+            P = [tuple(f32(c) for c in v) for v in part['positions']]
+            N = [unit(n) for n in part['normals']]
+            I = part['indices']
+            for t in range(0, len(I), 3):
+                a, b, c = I[t:t+3]
+                fn = cross(sub(P[b], P[a]), sub(P[c], P[a]))
+                if sum(x*x for x in fn) <= 1e-18:
+                    continue  # degenerate in the proxy only; the E1 body keeps its geometry
+                fu = unit(fn); tri = []
+                for v in (a, b, c):
+                    n = N[v]
+                    if n is None or sum(x*y for x, y in zip(n, fn)) <= 1e-6:
+                        pos.append(P[v]); nor.append(fu); tri.append(len(pos)-1)  # split at hard edge
+                    else:
+                        if (id(part), v) not in seen:
+                            pos.append(P[v]); nor.append(n); seen[(id(part), v)] = len(pos)-1
+                        tri.append(seen[(id(part), v)])
+                idx += tri
+        if not idx:
+            continue
+        total_v += len(pos); total_t += len(idx)//3
+        lo = [min(p[i] for p in pos) for i in range(3)]; hi = [max(p[i] for p in pos) for i in range(3)]
+        a_pos = len(accessors); accessors.append({'bufferView': view(struct.pack(f'<{3*len(pos)}f', *[c for p in pos for c in p])),
+                                                  'componentType': 5126, 'count': len(pos), 'type': 'VEC3', 'min': lo, 'max': hi})
+        accessors.append({'bufferView': view(struct.pack(f'<{3*len(nor)}f', *[c for n in nor for c in n])),
+                          'componentType': 5126, 'count': len(nor), 'type': 'VEC3'})
+        accessors.append({'bufferView': view(struct.pack(f'<{2*len(pos)}f', *([0.0]*2*len(pos)))),
+                          'componentType': 5126, 'count': len(pos), 'type': 'VEC2'})
+        accessors.append({'bufferView': view(struct.pack(f'<{len(idx)}I', *idx)),
+                          'componentType': 5125, 'count': len(idx), 'type': 'SCALAR'})
+        color, metallic, rough, emit = k
+        materials.append({'pbrMetallicRoughness': {'baseColorFactor': list(color), 'metallicFactor': metallic,
+                                                   'roughnessFactor': rough}, 'emissiveFactor': list(emit)})
+        prims.append({'attributes': {'POSITION': a_pos, 'NORMAL': a_pos+1, 'TEXCOORD_0': a_pos+2},
+                      'indices': a_pos+3, 'material': len(materials)-1, 'mode': 4})
+    if not prims or total_v > 32768 or total_t > 32768:
+        raise CreationError(f'Static proxy outside budget ({total_v} vertices, {total_t} triangles)')
+    doc = {'asset': {'version': '2.0', 'generator': GENERATOR}, 'scene': 0, 'scenes': [{'nodes': [0]}],
+           'nodes': [{'mesh': 0}], 'meshes': [{'primitives': prims}], 'materials': materials,
+           'buffers': [{'byteLength': len(bin_)}], 'bufferViews': views, 'accessors': accessors}
+    j = json.dumps(doc, separators=(',', ':')).encode()
+    while len(j) % 4: j += b' '
+    out = b'glTF' + struct.pack('<II', 2, 28 + len(j) + len(bin_)) + struct.pack('<I', len(j)) + b'JSON' + j + \
+        struct.pack('<I', len(bin_)) + b'BIN\0' + bytes(bin_)
+    return out, {'vertices': total_v, 'triangles': total_t, 'materials': len(materials)}
+
+
 def parts_of(block, origin, joints, ratio=1.0, joint_by_name=None):
     """Split a generated mesh into E1 parts by its fv_part face attribute.
     LOD1 is a Decimate-modifier copy (face attributes and material indices carry
@@ -309,6 +388,8 @@ def package(scene, item, aliases, directory, job):
         if len(body) > 8*1024*1024:
             raise CreationError('E1 body exceeds 8 MiB')
         (out/'body.json').write_bytes(body); record(out/'body.json', 'application/json')
+        proxy, proxy_stats = static_proxy(lod1)
+        (out/'proxy.glb').write_bytes(proxy); record(out/'proxy.glb', 'model/gltf-binary')
         modes = sorted({c['locomotion'] for c in clip_entries if c['locomotion'] != 'none'}) or DEFAULT_MODES[archetype]
         kinds = sorted({c['kind'] for c in clip_entries}) or ['idle']
         spirit = archetype in ('floating_spirit', 'botanical_sprite')
@@ -329,7 +410,7 @@ def package(scene, item, aliases, directory, job):
             'provenance': f'Finalverse Studio S2 candidate from job {job["id"]} plan {job["digest"]}; not published or bound'}
         (out/'definition.draft.json').write_text(canonical(definition)); record(out/'definition.draft.json', 'application/json')
         contract = {'structural_errors': e1_structural(artifact, definition, body),
-                    'generator_header': GENERATOR, 'e1_admits_generator': False,
+                    'generator_header': GENERATOR, 'e1_admits_generator': False, 'genesis_proxy': proxy_stats,
                     'note': 'E1 Artifact::validate admits only generator blender-universal/1; Genesis must admit this generator'}
         if contract['structural_errors']:
             raise CreationError('E1 contract check failed: ' + ', '.join(contract['structural_errors'][:6]))

@@ -1,0 +1,140 @@
+{
+ "schema_version": "finalverse.studio-v1-genesis-ingest/v1",
+ "driver": "civilization-v1 ingest",
+ "model_calls": 0,
+ "characters": [
+  {
+   "name": "Elara",
+   "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+   "manifest_sha256": "4e2639e763cb730de1fc40061ce86787d6263266d4ad9346921e2e32effc6727",
+   "definition_sha256": "35cf1657b3e1888258681d7d33ce8891dc606b59c0d0fa45400d46cc61d1a3be",
+   "archetype": "humanoid",
+   "skeleton_joints": 6,
+   "lods": [
+    {
+     "parts": 20,
+     "triangles": 24086
+    },
+    {
+     "parts": 20,
+     "triangles": 9152
+    }
+   ],
+   "proxy_job_state": "AwaitingAuthorization"
+  },
+  {
+   "name": "Auren",
+   "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+   "manifest_sha256": "ab39770aef22e167d33a840369a529f871c970444362985ccec5f87be141a920",
+   "definition_sha256": "78726980d3221dfa72e41f298eaf111dc5d58c10d45f3c1f69f5a38a94981c34",
+   "archetype": "humanoid",
+   "skeleton_joints": 6,
+   "lods": [
+    {
+     "parts": 20,
+     "triangles": 22124
+    },
+    {
+     "parts": 20,
+     "triangles": 8406
+    }
+   ],
+   "proxy_job_state": "AwaitingAuthorization"
+  },
+  {
+   "name": "Kai",
+   "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+   "manifest_sha256": "7eb71f8ead0c7f075221b636083646c622f15a456fc9dfecc8f89842cbaf4c8e",
+   "definition_sha256": "8072e4a87206f9f8c86d5ee2662484d469a4c83d0fe80db8450023ca7303ae05",
+   "archetype": "synthetic_humanoid",
+   "skeleton_joints": 6,
+   "lods": [
+    {
+     "parts": 20,
+     "triangles": 13442
+    },
+    {
+     "parts": 20,
+     "triangles": 5106
+    }
+   ],
+   "proxy_job_state": "AwaitingAuthorization"
+  },
+  {
+   "name": "Lumi",
+   "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+   "manifest_sha256": "5ef5b87bb311952c31922ebd76658e0737bf03dc1026cc926a5a1f2c95a9bd7f",
+   "definition_sha256": "ddb59a953fad487aadd97afb4baa44d220ab0fcb96f593a3da9675039332527c",
+   "archetype": "floating_spirit",
+   "skeleton_joints": 0,
+   "lods": [
+    {
+     "parts": 6,
+     "triangles": 6748
+    },
+    {
+     "parts": 6,
+     "triangles": 2564
+    }
+   ],
+   "proxy_job_state": "AwaitingAuthorization"
+  },
+  {
+   "name": "Terra",
+   "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+   "manifest_sha256": "14f112d564fc1bc2da9532155860e3e3b6efed2a2f3a034170c93f79dfacad91",
+   "definition_sha256": "11d10fae16607b5fd7ad2c83dd9dd3bbf1da073e55d603e5a9c94c13fae770f9",
+   "archetype": "nature_elemental",
+   "skeleton_joints": 4,
+   "lods": [
+    {
+     "parts": 10,
+     "triangles": 19323
+    },
+    {
+     "parts": 10,
+     "triangles": 7342
+    }
+   ],
+   "proxy_job_state": "AwaitingAuthorization"
+  },
+  {
+   "name": "Ignis",
+   "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+   "manifest_sha256": "a9d3e2cb580eb7a5baee8a8d6c8d896967f9fe9e589a38e6db46327b68ee86be",
+   "definition_sha256": "da7b7275c5923f9cc0d732ca61dd9c33ba4681fd4c5524caaeb4b6430e43429b",
+   "archetype": "fire_elemental",
+   "skeleton_joints": 6,
+   "lods": [
+    {
+     "parts": 14,
+     "triangles": 16488
+    },
+    {
+     "parts": 14,
+     "triangles": 6264
+    }
+   ],
+   "proxy_job_state": "AwaitingAuthorization"
+  },
+  {
+   "name": "Elara's Melody Sprite",
+   "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+   "manifest_sha256": "d0210881233c7cb156187538dc42c0aac45e6dbd613e334ed494406475ccb6bc",
+   "definition_sha256": "52341cbad536129a7396b010f9272a65a56351639cf26d71d0039233d8225b26",
+   "archetype": "botanical_sprite",
+   "skeleton_joints": 0,
+   "lods": [
+    {
+     "parts": 8,
+     "triangles": 9246
+    },
+    {
+     "parts": 8,
+     "triangles": 3512
+    }
+   ],
+   "proxy_job_state": "AwaitingAuthorization"
+  }
+ ]
+}

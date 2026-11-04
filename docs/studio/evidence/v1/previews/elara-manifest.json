@@ -1,0 +1,191 @@
+{
+  "archetype": "humanoid",
+  "clips": [
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        60
+      ],
+      "glb": "clips/Elara_Idle.glb",
+      "id": "fb768b38-16c5-482d-b7a6-e719ffd6b1a6",
+      "kind": "idle",
+      "locomotion": "none",
+      "loop": true,
+      "name": "Elara Idle",
+      "samples": "clips/Elara_Idle.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        25
+      ],
+      "glb": "clips/Elara_Walk.glb",
+      "id": "b451c187-1d3c-4d61-98b8-e396ac429510",
+      "kind": "locomote",
+      "locomotion": "walk",
+      "loop": true,
+      "name": "Elara Walk",
+      "samples": "clips/Elara_Walk.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        36
+      ],
+      "glb": "clips/Elara_Greet.glb",
+      "id": "ba7ee798-90ee-4c64-a651-cf9a8aeb5089",
+      "kind": "greet",
+      "locomotion": "none",
+      "loop": false,
+      "name": "Elara Greet",
+      "samples": "clips/Elara_Greet.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        44
+      ],
+      "glb": "clips/Elara_Inspect.glb",
+      "id": "2e6ea31f-ae1e-4a1e-979f-7305bd774113",
+      "kind": "observe",
+      "locomotion": "none",
+      "loop": false,
+      "name": "Elara Inspect",
+      "samples": "clips/Elara_Inspect.json"
+    }
+  ],
+  "evaluation": {
+    "advisories": [],
+    "digest": "807d3ee99ebbd30df2ff07112816c22fce14e6c997b413f22966d3a94b8f4bde",
+    "passed": true
+  },
+  "files": {
+    "asset.glb": {
+      "byte_length": 710468,
+      "media_type": "model/gltf-binary",
+      "sha256": "dbc6a939e0b0093e6e7c4e89de2f928da509d6db2e383ff8342536a480f1a6e5"
+    },
+    "body.json": {
+      "byte_length": 1392021,
+      "media_type": "application/json",
+      "sha256": "f187a7fbeefa16383ee2341702e43cfc902843a079a08b0f115803a990d70125"
+    },
+    "clips/Elara_Greet.glb": {
+      "byte_length": 699016,
+      "media_type": "model/gltf-binary",
+      "sha256": "f8c232d88f2b0171b0480009cf761b995f305367c57c13db35d4aab625b437a6"
+    },
+    "clips/Elara_Greet.json": {
+      "byte_length": 1327,
+      "media_type": "application/json",
+      "sha256": "d69449fda91dbd8925ddd2cc19a366bb7fb9bd309ae4fb978f0dbd2f2b7d739e"
+    },
+    "clips/Elara_Idle.glb": {
+      "byte_length": 700284,
+      "media_type": "model/gltf-binary",
+      "sha256": "d867912f2083c1c12fc39254be32b3672473f15ee8f80018d46fa11e908d5b99"
+    },
+    "clips/Elara_Idle.json": {
+      "byte_length": 3480,
+      "media_type": "application/json",
+      "sha256": "1689c6463d18bbbf1a343b7673c915cffe5d2bfb200ca450ef9e43e94a786c7c"
+    },
+    "clips/Elara_Inspect.glb": {
+      "byte_length": 699208,
+      "media_type": "model/gltf-binary",
+      "sha256": "22a1541cdefee6b379f23f994f6511e3969e2321df0633eab22a595bbacd817e"
+    },
+    "clips/Elara_Inspect.json": {
+      "byte_length": 1573,
+      "media_type": "application/json",
+      "sha256": "27276d448223aac5e95633265ea2af53fc53f3819a109551f3228ad2c06f6f1f"
+    },
+    "clips/Elara_Walk.glb": {
+      "byte_length": 699944,
+      "media_type": "model/gltf-binary",
+      "sha256": "e77060bb8959156b34bf9a974b5babfd17063d8fab319e5027186e3ab8fefa48"
+    },
+    "clips/Elara_Walk.json": {
+      "byte_length": 2633,
+      "media_type": "application/json",
+      "sha256": "49799d09a8b4106a5275a5589f2758a7c3e9bc2bfd8edbf9acf354ec396dcb7c"
+    },
+    "contract-check.json": {
+      "byte_length": 311,
+      "media_type": "application/json",
+      "sha256": "1544ec808a9de3fb861479025bd70736685a16cf4e5c87a6610dacf6701ba6f6"
+    },
+    "definition.draft.json": {
+      "byte_length": 1532,
+      "media_type": "application/json",
+      "sha256": "0cc8b915cb89c953c63b7f9965bfa17f349d17d412db937ff5c17912e02b9848"
+    },
+    "evaluation.json": {
+      "byte_length": 7223,
+      "media_type": "application/json",
+      "sha256": "218b94c1a838eecf28ffd6d0468a0d09fd9f1649f92f4212929d8487f6df3fa1"
+    },
+    "glb-check.json": {
+      "byte_length": 3424,
+      "media_type": "application/json",
+      "sha256": "2bbe1794112a03c11ec7ee621d040a685303512175cc6319e3dd219d095ffce4"
+    },
+    "previews/step-011-elara-front.png": {
+      "byte_length": 140551,
+      "media_type": "image/png",
+      "sha256": "bc10f90d7e5b57727347c4c229477c214d9b46649c8f0139e16876c212deea05"
+    },
+    "provenance.json": {
+      "byte_length": 799,
+      "media_type": "application/json",
+      "sha256": "446725fe830d76e7ffbbd33aaa6706acff9a95dc97d239bc4f4358fd56a695e3"
+    },
+    "proxy.glb": {
+      "byte_length": 265356,
+      "media_type": "model/gltf-binary",
+      "sha256": "e7654e424ea4144a71728a4ff816643777149a16352be465d629452a022985c0"
+    },
+    "source.blend": {
+      "byte_length": 566889,
+      "media_type": "application/x-blender",
+      "sha256": "f6c7587aba8987a695835daf9f4b31d21bc3f1f8ffee48cbfdb72f2526cf2699"
+    },
+    "specification.json": {
+      "byte_length": 243,
+      "media_type": "application/json",
+      "sha256": "8f7a9acda89295b2e388df852e8e03bb6f380d0194e11e81b622ea694138fdb9"
+    }
+  },
+  "frame": {
+    "axes": "glTF right-handed Y-up",
+    "unit": "metre"
+  },
+  "genesis": {
+    "admission": "required",
+    "candidate_manifest": "candidate.json",
+    "definition_draft": "definition.draft.json",
+    "embodiment_body": "body.json",
+    "publication_authorized": false
+  },
+  "height_m": 1.706,
+  "identity_reference": "904d952a-aca7-51da-aa01-20aab7dd9893",
+  "lods": [
+    {
+      "distance_m": 0.0
+    },
+    {
+      "distance_m": 18.0,
+      "triangle_ratio": 0.38
+    }
+  ],
+  "name": "Elara",
+  "published": false,
+  "schema_version": "finalverse.studio-asset-package/v1",
+  "state": "candidate",
+  "subject": "2a2b120e-f7da-48d1-83e7-4ea2ccc0cef8",
+  "world_effects": 0
+}
