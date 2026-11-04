@@ -44,8 +44,8 @@ def defaults():
         {'id': 'local', 'label': 'Local Gemma (Ollama)', 'preset': 'local', 'kind': 'ollama',
          'base_url': 'http://127.0.0.1:11434', 'model': 'gemma4:e4b', 'credential': None,
          'timeout_seconds': 300, 'enabled': True},
-        {'id': 'maple', 'label': 'Maple (studio.finalverse.com)', 'preset': 'maple', 'kind': 'ollama',
-         'base_url': MAPLE_URL, 'model': None, 'credential': 'keychain',
+        {'id': 'maple', 'label': 'Maple (studio.finalverse.com)', 'preset': 'maple', 'kind': 'openai_compatible',
+         'base_url': MAPLE_URL + '/v1', 'model': None, 'credential': 'keychain',
          'timeout_seconds': 60, 'enabled': False}]}
 
 
@@ -74,8 +74,9 @@ def profile(value):
         raise CreationError("Invalid default model name")
     if value['preset'] == 'local' and not local:
         raise CreationError("The local preset must use a loopback address")
-    if value['preset'] == 'maple' and value['base_url'].rstrip('/') != MAPLE_URL:
-        raise CreationError("The Maple preset is fixed to " + MAPLE_URL)
+    if value['preset'] == 'maple' and (value['base_url'].rstrip('/') != MAPLE_URL + '/v1'
+                                       or value['kind'] != 'openai_compatible'):
+        raise CreationError("The Maple preset is fixed to the OpenAI-compatible API at " + MAPLE_URL + "/v1")
     if type(value['timeout_seconds']) not in (int, float) or not 2 <= value['timeout_seconds'] <= 300:
         raise CreationError("Provider timeout must be 2–300 seconds")
     return value
@@ -101,6 +102,17 @@ def migrate(data):
     return result
 
 
+def upgrade_maple(data):
+    """The S1 provider revision shipped Maple as Ollama at the bare host; Maple now
+    speaks the OpenAI-compatible API under /v1. Only that exact preset is rewritten."""
+    changed = False
+    for item in data['providers']:
+        if item.get('preset') == 'maple' and item.get('kind') == 'ollama' and \
+                str(item.get('base_url', '')).rstrip('/') == MAPLE_URL:
+            item['kind'] = 'openai_compatible'; item['base_url'] = MAPLE_URL + '/v1'; changed = True
+    return changed
+
+
 def load(path):
     path = Path(path)
     if path.is_symlink() or path.stat().st_size > 16384:
@@ -112,6 +124,7 @@ def load(path):
         data = migrate(data)
     elif data['schema_version'] != 'finalverse.providers/v2':
         raise CreationError("Incorrect provider registry version")
+    upgrade_maple(data)
     return data
 
 
@@ -161,6 +174,10 @@ def default_registry(path):
         save(path, defaults()['providers'])
     elif parse(path.read_text()).get('schema_version') == 'finalverse.providers/v1':
         save(path, migrate(parse(path.read_text()))['providers'])
+    else:
+        data = parse(path.read_text())
+        if isinstance(data.get('providers'), list) and upgrade_maple(data):
+            save(path, data['providers'])
 
 
 def tls_context():
@@ -244,10 +261,20 @@ def admit(p, record):
         return {'decision': 'admitted', 'basis': 'remote endpoint; no model weights loaded on this Mac',
                 'physical_memory_bytes': physical}
     size = record.get('size') if isinstance(record, dict) else None
+    basis = 'local weights within 65% of physical memory'
+    if size is None and p['kind'] != 'ollama':
+        # e.g. Ollama's own /v1 endpoint lists no sizes; ask the same origin's Ollama inventory.
+        url = urllib.parse.urlsplit(p['base_url'])
+        sibling = dict(p, kind='ollama', base_url=f'{url.scheme}://{url.netloc}', credential=None)
+        try:
+            listed = inventory(sibling).get(record.get('id') if isinstance(record, dict) else None)
+            size = listed.get('size') if listed else None
+            basis += ' (size from the same host\'s Ollama inventory)'
+        except (CreationError, OSError, ValueError):
+            size = None
     if type(size) is not int or size <= 0 or size > physical*.65:
         raise CreationError('Local model weights exceed the 65% physical-memory admission budget or have no size; choose a smaller model or configured remote provider')
-    return {'decision': 'admitted', 'basis': 'local weights within 65% of physical memory',
-            'weights_bytes': size, 'physical_memory_bytes': physical}
+    return {'decision': 'admitted', 'basis': basis, 'weights_bytes': size, 'physical_memory_bytes': physical}
 
 
 admit_local = admit  # S1 name retained for existing harnesses

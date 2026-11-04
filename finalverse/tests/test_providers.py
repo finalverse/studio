@@ -165,9 +165,15 @@ class ProviderContracts(unittest.TestCase):
         self.assertEqual(classify(urllib.error.URLError(TimeoutError()))[0], 'provider_timeout')
 
     def test_same_admission_runs_for_every_provider_kind(self):
+        # A loopback OpenAI-compatible server without sizes borrows the same origin's Ollama inventory.
         self.p.update(kind='openai_compatible', base_url=self.p['base_url']+'/v1')
-        # Loopback servers that do not report weight size are refused before generation.
-        with self.assertRaises(CreationError): plan(self.p, 'mock-gemma', 'Inspect', self.snapshot)
+        result = plan(self.p, 'mock-gemma', 'Inspect', self.snapshot)
+        self.assertEqual(result['receipt']['admission']['weights_bytes'], 1024)
+        self.assertIn('same host', result['receipt']['admission']['basis'])
+        # Without any size source the plan is refused before generation.
+        Handler.calls = []
+        with patch('finalverse_creation.providers.inventory', side_effect=[{'mock-gemma': {'id': 'mock-gemma'}}, {}]):
+            with self.assertRaises(CreationError): plan(self.p, 'mock-gemma', 'Inspect', self.snapshot)
         self.assertEqual(Handler.calls, [])
 
 
@@ -179,7 +185,8 @@ class ProviderRegistry(unittest.TestCase):
             self.assertEqual(list(providers)[0], 'local')
             self.assertTrue(providers['local']['enabled']); self.assertEqual(providers['local']['model'], 'gemma4:e4b')
             self.assertFalse(providers['maple']['enabled'])
-            self.assertEqual(providers['maple']['base_url'], MAPLE_URL)
+            self.assertEqual(providers['maple']['base_url'], MAPLE_URL + '/v1')
+            self.assertEqual(providers['maple']['kind'], 'openai_compatible')
             self.assertEqual(providers['maple']['credential'], 'keychain')
             self.assertEqual(os.stat(path).st_mode & 0o777, 0o600)
 
@@ -193,6 +200,17 @@ class ProviderRegistry(unittest.TestCase):
             data = json.loads(path.read_text())
             self.assertEqual(data['schema_version'], 'finalverse.providers/v2')
             self.assertEqual([p['id'] for p in data['providers']], ['local', 'maple'])
+
+    def test_s1_ollama_maple_preset_upgrades_to_openai_v1(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = Path(d)/'providers.json'; default_registry(path)
+            data = json.loads(path.read_text())
+            data['providers'][1].update(kind='ollama', base_url=MAPLE_URL)
+            path.write_text(json.dumps(data))
+            default_registry(path)
+            maple = registry(path)['maple']
+            self.assertEqual((maple['kind'], maple['base_url']), ('openai_compatible', MAPLE_URL + '/v1'))
+            self.assertFalse(maple['enabled'])
 
     def test_registry_refuses_literal_secrets_and_moved_maple(self):
         with tempfile.TemporaryDirectory() as d:
