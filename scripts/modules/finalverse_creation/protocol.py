@@ -193,44 +193,52 @@ def operations_for(plan):
     return OPERATIONS_V2 if isinstance(plan, dict) and plan.get('schema_version') == SCHEMA_V2 else OPERATIONS
 
 
-def check(value, schema):
-    """The exact JSON Schema subset used above, rejecting bool-as-number and NaN."""
+def check(value, schema, path='plan'):
+    """The exact JSON Schema subset used above, rejecting bool-as-number and NaN.
+    Errors name the JSON path, the offending value and the limit."""
+    def fail(reason):
+        raise CreationError(f"{path}: {reason}")
     if 'const' in schema and value != schema['const']:
-        raise CreationError("Incorrect operation or schema version")
+        fail("Incorrect operation or schema version")
     if 'enum' in schema and value not in schema['enum']:
-        raise CreationError("Unsupported enum value")
+        fail(f"Unsupported enum value {str(value)[:40]!r}; allowed: {'|'.join(map(str, schema['enum']))[:200]}")
     kind = schema.get('type')
     if kind == 'object':
-        if not isinstance(value, dict) or set(value) - set(schema['properties']):
-            raise CreationError("Unknown object field")
-        if set(schema['required']) - set(value):
-            raise CreationError("Missing required field")
+        if not isinstance(value, dict):
+            fail("Expected an object")
+        unknown = sorted(set(value) - set(schema['properties']))
+        if unknown:
+            fail(f"Unknown object field {unknown[0][:40]!r}")
+        missing = sorted(set(schema['required']) - set(value))
+        if missing:
+            fail(f"Missing required field {missing[0]!r}")
         for key, item in value.items():
-            check(item, schema['properties'][key])
+            check(item, schema['properties'][key], f"{path}.{key}")
     elif kind == 'array':
         if not isinstance(value, list) or not schema['minItems'] <= len(value) <= schema['maxItems']:
-            raise CreationError("Array length out of bounds")
-        for item in value:
+            fail(f"Array length out of bounds (needs {schema['minItems']}..{schema['maxItems']} items)")
+        for i, item in enumerate(value):
+            where = f"{path}[{i}]"
             if 'oneOf' in schema['items']:
                 table = OPERATIONS_V2 if schema['items'] is PLAN_SCHEMA_V2['properties']['operations']['items'] else OPERATIONS
                 if not isinstance(item, dict) or item.get('op') not in table:
-                    raise CreationError("Operation is not allowlisted")
-                check(item, table[item['op']])
+                    raise CreationError(f"{where}: Operation is not allowlisted")
+                check(item, table[item['op']], f"{where}({item['op']})")
             else:
-                check(item, schema['items'])
+                check(item, schema['items'], where)
     elif kind == 'boolean':
         if type(value) is not bool:
-            raise CreationError("Incorrect boolean type")
+            fail("Incorrect boolean type (use true or false)")
     elif kind == 'string':
         if not isinstance(value, str) or not schema['minLength'] <= len(value) <= schema['maxLength']:
-            raise CreationError("String length out of bounds")
+            fail(f"String length out of bounds ({schema['minLength']}..{schema['maxLength']})")
         if any(ord(c) < 32 for c in value) or ('pattern' in schema and not re.fullmatch(schema['pattern'], value)):
-            raise CreationError("Invalid string or identifier")
+            fail(f"Invalid string or identifier {value[:40]!r}")
     elif kind in ('number', 'integer'):
         if type(value) not in (int, float) or (kind == 'integer' and type(value) is not int):
-            raise CreationError("Incorrect numeric type")
+            fail("Incorrect numeric type" + (" (needs a whole number)" if kind == 'integer' else ""))
         if not math.isfinite(value) or not schema['minimum'] <= value <= schema['maximum']:
-            raise CreationError("Number out of bounds")
+            fail(f"Number out of bounds ({value} not in {schema['minimum']}..{schema['maximum']})")
 
 
 def validate(plan):
