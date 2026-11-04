@@ -1,0 +1,77 @@
+{
+  "schema_version": "finalverse.studio-s1-acceptance/v1",
+  "status": "local_functional_checks_passed",
+  "user_acceptance": "pending",
+  "compiled_source_commit": "7e99e2fd3ae3556fde0f47410bda5ac82dc82cb3",
+  "executable_sha256": "e38aa33b55d9c5107d75dee0740304f3c49b4bb77f7603e32b20bc9ef5b573ff",
+  "branch": "feat/studio-s1",
+  "checks": {
+    "unit_tests_passed": 27,
+    "real_gemma_full_workflow": true,
+    "source_save_reopen": true,
+    "glb_geometry_material_animation": true,
+    "real_mcp_stdio_client": true,
+    "mcp_protocol_version": "2025-11-25",
+    "native_failure_recovery": {
+      "cancel_stops_remaining_steps": true,
+      "restart_interrupted_no_duplicate_and_checkpoint_reopened": true,
+      "concurrent_edit_aborts_remaining_steps": true,
+      "stale_approval_refused": true,
+      "provider_child_cancelled": true,
+      "pending_provider_tick_max_seconds": 0.00013279199629323557
+    },
+    "native_ui_operators": {
+      "passed": true,
+      "mode": "native headless window/area context; not an interactive desktop capture",
+      "source_build": "7e99e2fd3ae3",
+      "window_context_count": 1,
+      "full_plan_review_text_editor": true,
+      "review_text_edits_cannot_mutate_proposal": true,
+      "approval_operator_executes_exact_plan": true,
+      "connection_cancel_operator": true,
+      "cancel_seconds": 0.0017626659973757342,
+      "mcp_config_operator": true
+    },
+    "s0_regression": {
+      "python_api": true,
+      "workspace": true,
+      "mesh_edit": true,
+      "render": true,
+      "save_reopen_identity": true,
+      "glb_export": true,
+      "source_export": true,
+      "refuse_overwrite": true
+    },
+    "render_isolation": {
+      "network_denied": true,
+      "outside_read_denied": true,
+      "outside_write_denied": true
+    },
+    "model_scene_revision_matches": true
+  },
+  "desktop": {
+    "initial_real_gemma_plan_and_approval": "passed",
+    "repeated_final_visual_check": "blocked: Mac locked; native operator checks passed separately"
+  },
+  "models": {
+    "working_local_model": "gemma4:e4b",
+    "oversized_local_model": "qwen3:30b-a3b",
+    "qwen_status": "two recorded timeouts, final memory admission rejection",
+    "maple": "disabled by user choice",
+    "remote_providers": "mock contract tests only",
+    "codex_claude": "documented MCP configuration; real SDK client tested"
+  },
+  "authority": {
+    "world_mutations": false,
+    "publication_authorized": false,
+    "push": false,
+    "merge": false,
+    "deploy": false
+  },
+  "preserved": {
+    "s0_source": "24d1acf06b55945bed5d247bd6e5184906bf4150",
+    "s0_executable_sha256": "e857ab2dfa7c316c9c69b2e6d85670b862d61a5907b7c6cff263f8b12b6343a4",
+    "core_adapter": "b601da2e7c9cdd673ab7d0a9b13ec2a68c7fea4f"
+  },
+  "next": "S2 only after S1 acceptance; not begun"
+}

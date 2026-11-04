@@ -1,5 +1,6 @@
 # Studio MCP integration
 
+Model Context Protocol (MCP) connects external clients to Studio's validated tools.
 `scripts/modules/finalverse_creation/mcp_entry.py` is a stdio MCP server using the
 official Python MCP SDK **1.23.3**, installed in an external host Python. The Studio
 application itself needs no pip packages. Install with

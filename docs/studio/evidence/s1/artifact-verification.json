@@ -1,0 +1,66 @@
+{
+  "passed": true,
+  "job_id": "6b18aa83-d079-49a2-ba9f-09a650bd1835",
+  "glb_vertices": 384,
+  "triangles": 188,
+  "animation_samples": 48,
+  "animation_duration_seconds": 1.95833333209157,
+  "material": {
+    "baseColorFactor": [
+      0.029999999329447746,
+      0.550000011920929,
+      0.46000000834465027,
+      1
+    ],
+    "metallicFactor": 0.20000000298023224,
+    "roughnessFactor": 0.3499999940395355
+  },
+  "stable_id_exported": true,
+  "source_reopen_passed": true,
+  "isolation_checks": {
+    "network_denied": true,
+    "outside_read_denied": true,
+    "outside_write_denied": true
+  },
+  "render_metrics": {
+    "credentials": "cleared",
+    "graphics_cache_growth_bytes": 13908744,
+    "graphics_cache_growth_limit_bytes": 134217728,
+    "graphics_cache_paths": [
+      "/private/var/folders/56/v6pzzwvd449dsz9wxqrt_sp40000gn/C/org.finalverse.studio.s1/com.apple.metalfe",
+      "/private/var/folders/56/v6pzzwvd449dsz9wxqrt_sp40000gn/C/org.finalverse.studio.s1/com.apple.gpuarchiver"
+    ],
+    "memory_limit_bytes": 1073741824,
+    "network": "denied",
+    "peak_rss_bytes": 188596224,
+    "wall_limit_seconds": 60,
+    "wall_seconds": 10.66662599999836
+  },
+  "native_wall_seconds": 11.853767332999269,
+  "tick_max_seconds": 0.2270924160038703,
+  "tick_median_seconds": 0.0016702090069884434,
+  "artifact_bytes": {
+    "checkpoint-009.blend": 61101,
+    "checkpoint-010.blend": 61101,
+    "checkpoint-012.blend": 61531,
+    "checkpoint-008.blend": 60321,
+    "checkpoint-011.blend": 61531,
+    "beacon.blend": 61531,
+    "checkpoint-002.blend": 52444,
+    "checkpoint-000.blend": 49579,
+    "checkpoint-004.blend": 55636,
+    "checkpoint-006.blend": 58912,
+    "checkpoint-001.blend": 49579,
+    "checkpoint-003.blend": 55636,
+    "checkpoint-007.blend": 58964,
+    "checkpoint-005.blend": 57701,
+    "beacon.fvasset/source.blend": 61101,
+    "beacon.fvasset/candidate.json": 1407,
+    "beacon.fvasset/asset.glb": 17112,
+    "previews/step-009/render.log": 474,
+    "previews/step-009/preview.png": 99246,
+    "previews/step-009/render-result.json": 144,
+    "previews/step-009/render-request.json": 80,
+    "previews/step-009/render-metrics.json": 496
+  }
+}

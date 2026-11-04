@@ -93,6 +93,14 @@
     {
       "path": "source/blender/editors/interface/interface.cc",
       "purpose": "Search-only menu blocks have no region in some contexts; skip reading region callbacks that are never invoked for search-only blocks, preventing F3 Asset Browser crash."
+    },
+    {
+      "path": "scripts/modules/finalverse_creation/",
+      "purpose": "S1 isolated Python protocol, provider helper, durable approvals, native bridge, scene index, UI, MCP and supervised preview; no additional Blender C++ patch"
+    },
+    {
+      "path": "scripts/startup/bl_ui/finalverse_studio.py",
+      "purpose": "Register S1 controls in the existing S0 workspace; retain accepted candidate format and publication boundary"
     }
   ]
 }

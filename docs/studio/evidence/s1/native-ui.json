@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "mode": "native headless window/area context; not an interactive desktop capture",
+  "source_build": "7e99e2fd3ae3",
+  "window_context_count": 1,
+  "full_plan_review_text_editor": true,
+  "review_text_edits_cannot_mutate_proposal": true,
+  "approval_operator_executes_exact_plan": true,
+  "connection_cancel_operator": true,
+  "cancel_seconds": 0.0017626659973757342,
+  "mcp_config_operator": true
+}

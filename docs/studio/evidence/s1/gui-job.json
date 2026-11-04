@@ -1,0 +1,89 @@
+{
+  "aliases": {
+    "@geminiseed": "613bfb64-bf87-459f-9127-16d0c0d45bb2"
+  },
+  "base_revision": "909fbf1b77dc5389d0a6f688710322a5e3b995d234d9d3af12c53b3ee278cee8",
+  "created_at": 1793753140.28436,
+  "digest": "5bdb9bf5484ba239b065cbe9a997cf18be03ab7711cd664019d4352f1a0e7961",
+  "error": null,
+  "events": [
+    {
+      "detail": null,
+      "event": "Proposed",
+      "time": 1793753140.284885
+    },
+    {
+      "detail": null,
+      "event": "Approved",
+      "time": 1793753289.549752
+    },
+    {
+      "detail": null,
+      "event": "Applying",
+      "time": 1793753290.8653922
+    },
+    {
+      "detail": null,
+      "event": "Applying",
+      "time": 1793753290.9991941
+    },
+    {
+      "detail": null,
+      "event": "Applying",
+      "time": 1793753291.181644
+    },
+    {
+      "detail": null,
+      "event": "Completed",
+      "time": 1793753291.369845
+    }
+  ],
+  "id": "9a450c43-6b08-4461-aed2-07a2b4db7442",
+  "model_receipt": {
+    "fallback_used": false,
+    "input_digest": "752425f999278ef639ed43965486b9e8da451f4e9cd3500f22f275b70e454d30",
+    "latency_ms": 20245.03425000148,
+    "model": "gemma4:e4b",
+    "provider": "local",
+    "real_inference": true,
+    "response_digest": "73c77bde0e6687f0852e88e9d0a391ffd2fdcc65fb13b9f16b057c154fa22b96",
+    "served_model": "gemma4:e4b",
+    "usage": {
+      "input_tokens": 2852,
+      "output_tokens": 132
+    }
+  },
+  "plan": {
+    "operations": [
+      {
+        "name": "Gemini Seed",
+        "op": "object.create",
+        "primitive": "cube",
+        "ref": "@geminiseed"
+      },
+      {
+        "op": "mesh.bevel",
+        "segments": 2,
+        "target": "@geminiseed",
+        "width": 0.1
+      }
+    ],
+    "schema_version": "finalverse.creation/v1",
+    "summary": "Create and bevel a cube named Gemini Seed"
+  },
+  "request_id": "696a91e4-79c7-4047-8cc2-3004994b6bf2",
+  "results": [
+    {
+      "id": "613bfb64-bf87-459f-9127-16d0c0d45bb2",
+      "operation": "object.create"
+    },
+    {
+      "id": "613bfb64-bf87-459f-9127-16d0c0d45bb2",
+      "operation": "mesh.bevel"
+    }
+  ],
+  "scene_id": "e50bdb92-ace6-425e-88e1-bfb883a285d0",
+  "source": "model",
+  "state": "Completed",
+  "step": 2
+}

@@ -1,0 +1,1180 @@
+{
+  "identity_animation_geometry_persisted": true,
+  "job": {
+    "aliases": {
+      "@beacon": "81482c52-59de-488d-9012-b84ec1074dd1",
+      "@camera": "399f0043-1a02-49c4-b53a-d314c4ed667e",
+      "@light": "7379e787-b460-4b81-a2d0-0ca575a44966",
+      "@teal": "5265c904-6ab5-4836-97b9-41454fbfa814"
+    },
+    "approval": null,
+    "base_revision": "9b85d99421f166a62645dcf2c7911f295c5b5ef4f878f85e1d796d10445aab2f",
+    "created_at": 1793754115.1193442,
+    "digest": "5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e",
+    "error": null,
+    "events": [
+      {
+        "detail": null,
+        "event": "Proposed",
+        "time": 1793754115.1193469
+      },
+      {
+        "detail": null,
+        "event": "Approved",
+        "time": 1793754115.1200871
+      },
+      {
+        "detail": null,
+        "event": "Applying",
+        "time": 1793754115.1829429
+      },
+      {
+        "detail": null,
+        "event": "Applying",
+        "time": 1793754115.214719
+      },
+      {
+        "detail": null,
+        "event": "Applying",
+        "time": 1793754115.257438
+      },
+      {
+        "detail": null,
+        "event": "Applying",
+        "time": 1793754115.29952
+      },
+      {
+        "detail": null,
+        "event": "Applying",
+        "time": 1793754115.3389928
+      },
+      {
+        "detail": null,
+        "event": "Applying",
+        "time": 1793754115.3731441
+      },
+      {
+        "detail": null,
+        "event": "Applying",
+        "time": 1793754115.415735
+      },
+      {
+        "detail": null,
+        "event": "Applying",
+        "time": 1793754115.456407
+      },
+      {
+        "detail": null,
+        "event": "Applying",
+        "time": 1793754115.496754
+      },
+      {
+        "detail": null,
+        "event": "Applying",
+        "time": 1793754115.543863
+      },
+      {
+        "detail": null,
+        "event": "Rendering",
+        "time": 1793754115.585985
+      },
+      {
+        "detail": null,
+        "event": "Applying",
+        "time": 1793754126.660662
+      },
+      {
+        "detail": null,
+        "event": "Applying",
+        "time": 1793754126.894461
+      },
+      {
+        "detail": null,
+        "event": "Applying",
+        "time": 1793754126.936996
+      },
+      {
+        "detail": null,
+        "event": "Completed",
+        "time": 1793754126.973512
+      }
+    ],
+    "id": "6b18aa83-d079-49a2-ba9f-09a650bd1835",
+    "model_receipt": {
+      "fallback_used": false,
+      "input_digest": "21b430a66698e7573a6cbd20e3eb998a25b2f835809abe218d07c49fd0ca80af",
+      "latency_ms": 35385.90254200244,
+      "model": "gemma4:e4b",
+      "provider": "local",
+      "real_inference": true,
+      "response_digest": "899bd7c77f8d1e0a2ed17bf7893d71bbd99261f50ed0f81fbfccdb17e05ceac6",
+      "scene_id": "0ea781bb-b0bc-45dd-87c3-a309b79f8797",
+      "scene_revision": "9b85d99421f166a62645dcf2c7911f295c5b5ef4f878f85e1d796d10445aab2f",
+      "served_model": "gemma4:e4b",
+      "usage": {
+        "input_tokens": 1192,
+        "output_tokens": 325
+      }
+    },
+    "plan": {
+      "operations": [
+        {
+          "op": "scene.inspect"
+        },
+        {
+          "name": "Aurora Beacon",
+          "op": "object.create",
+          "primitive": "cube",
+          "ref": "@beacon"
+        },
+        {
+          "op": "mesh.bevel",
+          "segments": 3,
+          "target": "@beacon",
+          "width": 0.12
+        },
+        {
+          "color": [
+            0.03,
+            0.55,
+            0.46,
+            1
+          ],
+          "metallic": 0.2,
+          "name": "Teal",
+          "op": "material.create",
+          "ref": "@teal",
+          "roughness": 0.35
+        },
+        {
+          "material": "@teal",
+          "op": "material.assign",
+          "target": "@beacon"
+        },
+        {
+          "frame": 1,
+          "op": "animation.keyframe",
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "target": "@beacon"
+        },
+        {
+          "frame": 48,
+          "op": "animation.keyframe",
+          "rotation": [
+            0,
+            0,
+            3.14
+          ],
+          "target": "@beacon"
+        },
+        {
+          "lens": 50,
+          "location": [
+            6,
+            -8,
+            5
+          ],
+          "look_at": [
+            0,
+            0,
+            0
+          ],
+          "name": "Camera",
+          "op": "camera.configure",
+          "ref": "@camera"
+        },
+        {
+          "color": [
+            1,
+            1,
+            1
+          ],
+          "energy": 1200,
+          "kind": "AREA",
+          "location": [
+            2,
+            -4,
+            6
+          ],
+          "name": "Key",
+          "op": "light.configure",
+          "ref": "@light"
+        },
+        {
+          "height": 384,
+          "op": "scene.render",
+          "path": "preview.png",
+          "samples": 16,
+          "width": 384
+        },
+        {
+          "op": "asset.export",
+          "path": "beacon.fvasset"
+        },
+        {
+          "op": "scene.save",
+          "path": "beacon.blend"
+        }
+      ],
+      "schema_version": "finalverse.creation/v1",
+      "summary": "Beacon creation and rendering"
+    },
+    "request_id": "1eed6283-527e-44f4-b746-5405aa479803",
+    "results": [
+      {
+        "materials": 0,
+        "objects": 0,
+        "revision": "9b85d99421f166a62645dcf2c7911f295c5b5ef4f878f85e1d796d10445aab2f",
+        "scene_id": "0ea781bb-b0bc-45dd-87c3-a309b79f8797"
+      },
+      {
+        "id": "81482c52-59de-488d-9012-b84ec1074dd1",
+        "operation": "object.create"
+      },
+      {
+        "id": "81482c52-59de-488d-9012-b84ec1074dd1",
+        "operation": "mesh.bevel"
+      },
+      {
+        "id": "5265c904-6ab5-4836-97b9-41454fbfa814",
+        "operation": "material.create"
+      },
+      {
+        "id": "81482c52-59de-488d-9012-b84ec1074dd1",
+        "operation": "material.assign"
+      },
+      {
+        "id": "81482c52-59de-488d-9012-b84ec1074dd1",
+        "operation": "animation.keyframe"
+      },
+      {
+        "id": "81482c52-59de-488d-9012-b84ec1074dd1",
+        "operation": "animation.keyframe"
+      },
+      {
+        "id": "399f0043-1a02-49c4-b53a-d314c4ed667e",
+        "operation": "camera.configure"
+      },
+      {
+        "id": "7379e787-b460-4b81-a2d0-0ca575a44966",
+        "operation": "light.configure"
+      },
+      {
+        "bytes": 99246,
+        "isolation_checks": {
+          "network_denied": true,
+          "outside_read_denied": true,
+          "outside_write_denied": true
+        },
+        "metrics": {
+          "credentials": "cleared",
+          "graphics_cache_growth_bytes": 13908744,
+          "graphics_cache_growth_limit_bytes": 134217728,
+          "graphics_cache_paths": [
+            "/private/var/folders/56/v6pzzwvd449dsz9wxqrt_sp40000gn/C/org.finalverse.studio.s1/com.apple.metalfe",
+            "/private/var/folders/56/v6pzzwvd449dsz9wxqrt_sp40000gn/C/org.finalverse.studio.s1/com.apple.gpuarchiver"
+          ],
+          "memory_limit_bytes": 1073741824,
+          "network": "denied",
+          "peak_rss_bytes": 188596224,
+          "wall_limit_seconds": 60,
+          "wall_seconds": 10.66662599999836
+        },
+        "path": "previews/step-009/preview.png"
+      },
+      {
+        "assets": {
+          "asset.glb": {
+            "byte_length": 17112,
+            "media_type": "model/gltf-binary",
+            "sha256": "e1ca3cbc6d1572d842f2a3fa353f6666f8830cff2e83254e34257029b3915d92"
+          },
+          "source.blend": {
+            "byte_length": 61101,
+            "media_type": "application/x-blender",
+            "sha256": "81b1094e2c8e8f58d22476e0b32bb147fc7baa43e2d7074d4965868f89b8afc6"
+          }
+        },
+        "path": "beacon.fvasset",
+        "published": false
+      },
+      {
+        "bytes": 61531,
+        "path": "beacon.blend"
+      }
+    ],
+    "scene_id": "0ea781bb-b0bc-45dd-87c3-a309b79f8797",
+    "source": "model",
+    "state": "Completed",
+    "step": 12
+  },
+  "reopened": {
+    "camera": "399f0043-1a02-49c4-b53a-d314c4ed667e",
+    "frame": 48,
+    "frame_range": [
+      1,
+      48
+    ],
+    "materials": [
+      {
+        "color": [
+          0.029999999329447746,
+          0.550000011920929,
+          0.46000000834465027,
+          1.0
+        ],
+        "creation_provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "graph": {
+          "links": [
+            [
+              "Principled BSDF",
+              "BSDF",
+              "Material Output",
+              "Surface"
+            ]
+          ],
+          "nodes": [
+            [
+              "Material Output",
+              "OUTPUT_MATERIAL",
+              false,
+              [
+                [
+                  "Displacement",
+                  [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                ],
+                [
+                  "Thickness",
+                  0.0
+                ]
+              ]
+            ],
+            [
+              "Principled BSDF",
+              "BSDF_PRINCIPLED",
+              false,
+              [
+                [
+                  "Base Color",
+                  [
+                    0.029999999329447746,
+                    0.550000011920929,
+                    0.46000000834465027,
+                    1.0
+                  ]
+                ],
+                [
+                  "Metallic",
+                  0.20000000298023224
+                ],
+                [
+                  "Roughness",
+                  0.3499999940395355
+                ],
+                [
+                  "IOR",
+                  1.5
+                ],
+                [
+                  "Alpha",
+                  1.0
+                ],
+                [
+                  "Thin Wall",
+                  false
+                ],
+                [
+                  "Normal",
+                  [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                ],
+                [
+                  "Weight",
+                  0.0
+                ],
+                [
+                  "Diffuse Roughness",
+                  0.0
+                ],
+                [
+                  "Subsurface Weight",
+                  0.0
+                ],
+                [
+                  "Subsurface Radius",
+                  [
+                    1.0,
+                    0.20000000298023224,
+                    0.10000000149011612
+                  ]
+                ],
+                [
+                  "Subsurface Scale",
+                  0.004999999888241291
+                ],
+                [
+                  "Subsurface IOR",
+                  1.399999976158142
+                ],
+                [
+                  "Subsurface Anisotropy",
+                  0.0
+                ],
+                [
+                  "Specular IOR Level",
+                  0.5
+                ],
+                [
+                  "Specular Tint",
+                  [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                ],
+                [
+                  "Anisotropic",
+                  0.0
+                ],
+                [
+                  "Anisotropic Rotation",
+                  0.0
+                ],
+                [
+                  "Tangent",
+                  [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                ],
+                [
+                  "Transmission Weight",
+                  0.0
+                ],
+                [
+                  "Transmission Dispersion Scale",
+                  0.0
+                ],
+                [
+                  "Transmission Dispersion Abbe Number",
+                  20.0
+                ],
+                [
+                  "Coat Weight",
+                  0.0
+                ],
+                [
+                  "Coat Roughness",
+                  0.029999999329447746
+                ],
+                [
+                  "Coat IOR",
+                  1.5
+                ],
+                [
+                  "Coat Tint",
+                  [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                ],
+                [
+                  "Coat Normal",
+                  [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                ],
+                [
+                  "Sheen Weight",
+                  0.0
+                ],
+                [
+                  "Sheen Roughness",
+                  0.5
+                ],
+                [
+                  "Sheen Tint",
+                  [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                ],
+                [
+                  "Emission Color",
+                  [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                ],
+                [
+                  "Emission Strength",
+                  0.0
+                ],
+                [
+                  "Thin Film Thickness",
+                  0.0
+                ],
+                [
+                  "Thin Film IOR",
+                  1.3300000429153442
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "5265c904-6ab5-4836-97b9-41454fbfa814",
+        "metallic": 0.20000000298023224,
+        "name": "Teal",
+        "provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "roughness": 0.3499999940395355
+      }
+    ],
+    "objects": [
+      {
+        "animations": [],
+        "creation_provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "description": "Beacon creation and rendering",
+        "geometry": null,
+        "id": "399f0043-1a02-49c4-b53a-d314c4ed667e",
+        "lens": 50.0,
+        "location": [
+          6.0,
+          -8.0,
+          5.0
+        ],
+        "materials": [],
+        "name": "Camera",
+        "parent": null,
+        "provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "rotation": [
+          1.1071488857269287,
+          -5.551115123125783e-17,
+          0.6435011029243469
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "type": "CAMERA",
+        "vertices": 0
+      },
+      {
+        "animations": [],
+        "creation_provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "description": "Beacon creation and rendering",
+        "geometry": null,
+        "id": "7379e787-b460-4b81-a2d0-0ca575a44966",
+        "light": [
+          "AREA",
+          1200.0,
+          [
+            1.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "location": [
+          2.0,
+          -4.0,
+          6.0
+        ],
+        "materials": [],
+        "name": "Key",
+        "parent": null,
+        "provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "type": "LIGHT",
+        "vertices": 0
+      },
+      {
+        "animations": [
+          {
+            "index": 0,
+            "keys": [
+              [
+                1.0,
+                0.0,
+                "LINEAR"
+              ],
+              [
+                48.0,
+                0.0,
+                "LINEAR"
+              ]
+            ],
+            "path": "rotation_euler"
+          },
+          {
+            "index": 1,
+            "keys": [
+              [
+                1.0,
+                0.0,
+                "LINEAR"
+              ],
+              [
+                48.0,
+                0.0,
+                "LINEAR"
+              ]
+            ],
+            "path": "rotation_euler"
+          },
+          {
+            "index": 2,
+            "keys": [
+              [
+                1.0,
+                0.0,
+                "LINEAR"
+              ],
+              [
+                48.0,
+                3.140000104904175,
+                "LINEAR"
+              ]
+            ],
+            "path": "rotation_euler"
+          }
+        ],
+        "creation_provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "description": "Beacon creation and rendering",
+        "geometry": "13f77cea6ea395fc91c3d23f1475797aaf2eea942efb888278e306149a9387ad",
+        "id": "81482c52-59de-488d-9012-b84ec1074dd1",
+        "location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "materials": [
+          "5265c904-6ab5-4836-97b9-41454fbfa814"
+        ],
+        "name": "Aurora Beacon",
+        "parent": null,
+        "provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "rotation": [
+          0.0,
+          0.0,
+          3.140000104904175
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "type": "MESH",
+        "vertices": 96
+      }
+    ],
+    "revision": "e56a7ffdd8cf3c67e4408d08607f6c505de2839123ef19102ff7a5646698d5be",
+    "scene_id": "0ea781bb-b0bc-45dd-87c3-a309b79f8797",
+    "schema_version": "finalverse.studio-scene/v2",
+    "world": {
+      "links": [
+        [
+          "Background",
+          "Background",
+          "World Output",
+          "Surface"
+        ]
+      ],
+      "nodes": [
+        [
+          "Background",
+          "BACKGROUND",
+          false,
+          [
+            [
+              "Color",
+              [
+                0.05087608844041824,
+                0.05087608844041824,
+                0.05087608844041824,
+                1.0
+              ]
+            ],
+            [
+              "Strength",
+              1.0
+            ],
+            [
+              "Weight",
+              0.0
+            ]
+          ]
+        ],
+        [
+          "World Output",
+          "OUTPUT_WORLD",
+          false,
+          []
+        ]
+      ]
+    }
+  },
+  "scene": {
+    "camera": "399f0043-1a02-49c4-b53a-d314c4ed667e",
+    "frame": 48,
+    "frame_range": [
+      1,
+      48
+    ],
+    "materials": [
+      {
+        "color": [
+          0.029999999329447746,
+          0.550000011920929,
+          0.46000000834465027,
+          1.0
+        ],
+        "creation_provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "graph": {
+          "links": [
+            [
+              "Principled BSDF",
+              "BSDF",
+              "Material Output",
+              "Surface"
+            ]
+          ],
+          "nodes": [
+            [
+              "Material Output",
+              "OUTPUT_MATERIAL",
+              false,
+              [
+                [
+                  "Displacement",
+                  [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                ],
+                [
+                  "Thickness",
+                  0.0
+                ]
+              ]
+            ],
+            [
+              "Principled BSDF",
+              "BSDF_PRINCIPLED",
+              false,
+              [
+                [
+                  "Base Color",
+                  [
+                    0.029999999329447746,
+                    0.550000011920929,
+                    0.46000000834465027,
+                    1.0
+                  ]
+                ],
+                [
+                  "Metallic",
+                  0.20000000298023224
+                ],
+                [
+                  "Roughness",
+                  0.3499999940395355
+                ],
+                [
+                  "IOR",
+                  1.5
+                ],
+                [
+                  "Alpha",
+                  1.0
+                ],
+                [
+                  "Thin Wall",
+                  false
+                ],
+                [
+                  "Normal",
+                  [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                ],
+                [
+                  "Weight",
+                  0.0
+                ],
+                [
+                  "Diffuse Roughness",
+                  0.0
+                ],
+                [
+                  "Subsurface Weight",
+                  0.0
+                ],
+                [
+                  "Subsurface Radius",
+                  [
+                    1.0,
+                    0.20000000298023224,
+                    0.10000000149011612
+                  ]
+                ],
+                [
+                  "Subsurface Scale",
+                  0.004999999888241291
+                ],
+                [
+                  "Subsurface IOR",
+                  1.399999976158142
+                ],
+                [
+                  "Subsurface Anisotropy",
+                  0.0
+                ],
+                [
+                  "Specular IOR Level",
+                  0.5
+                ],
+                [
+                  "Specular Tint",
+                  [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                ],
+                [
+                  "Anisotropic",
+                  0.0
+                ],
+                [
+                  "Anisotropic Rotation",
+                  0.0
+                ],
+                [
+                  "Tangent",
+                  [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                ],
+                [
+                  "Transmission Weight",
+                  0.0
+                ],
+                [
+                  "Transmission Dispersion Scale",
+                  0.0
+                ],
+                [
+                  "Transmission Dispersion Abbe Number",
+                  20.0
+                ],
+                [
+                  "Coat Weight",
+                  0.0
+                ],
+                [
+                  "Coat Roughness",
+                  0.029999999329447746
+                ],
+                [
+                  "Coat IOR",
+                  1.5
+                ],
+                [
+                  "Coat Tint",
+                  [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                ],
+                [
+                  "Coat Normal",
+                  [
+                    0.0,
+                    0.0,
+                    0.0
+                  ]
+                ],
+                [
+                  "Sheen Weight",
+                  0.0
+                ],
+                [
+                  "Sheen Roughness",
+                  0.5
+                ],
+                [
+                  "Sheen Tint",
+                  [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                ],
+                [
+                  "Emission Color",
+                  [
+                    1.0,
+                    1.0,
+                    1.0,
+                    1.0
+                  ]
+                ],
+                [
+                  "Emission Strength",
+                  0.0
+                ],
+                [
+                  "Thin Film Thickness",
+                  0.0
+                ],
+                [
+                  "Thin Film IOR",
+                  1.3300000429153442
+                ]
+              ]
+            ]
+          ]
+        },
+        "id": "5265c904-6ab5-4836-97b9-41454fbfa814",
+        "metallic": 0.20000000298023224,
+        "name": "Teal",
+        "provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "roughness": 0.3499999940395355
+      }
+    ],
+    "objects": [
+      {
+        "animations": [],
+        "creation_provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "description": "Beacon creation and rendering",
+        "geometry": null,
+        "id": "399f0043-1a02-49c4-b53a-d314c4ed667e",
+        "lens": 50.0,
+        "location": [
+          6.0,
+          -8.0,
+          5.0
+        ],
+        "materials": [],
+        "name": "Camera",
+        "parent": null,
+        "provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "rotation": [
+          1.1071488857269287,
+          -5.551115123125783e-17,
+          0.6435011029243469
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "type": "CAMERA",
+        "vertices": 0
+      },
+      {
+        "animations": [],
+        "creation_provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "description": "Beacon creation and rendering",
+        "geometry": null,
+        "id": "7379e787-b460-4b81-a2d0-0ca575a44966",
+        "light": [
+          "AREA",
+          1200.0,
+          [
+            1.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "location": [
+          2.0,
+          -4.0,
+          6.0
+        ],
+        "materials": [],
+        "name": "Key",
+        "parent": null,
+        "provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "type": "LIGHT",
+        "vertices": 0
+      },
+      {
+        "animations": [
+          {
+            "index": 0,
+            "keys": [
+              [
+                1.0,
+                0.0,
+                "LINEAR"
+              ],
+              [
+                48.0,
+                0.0,
+                "LINEAR"
+              ]
+            ],
+            "path": "rotation_euler"
+          },
+          {
+            "index": 1,
+            "keys": [
+              [
+                1.0,
+                0.0,
+                "LINEAR"
+              ],
+              [
+                48.0,
+                0.0,
+                "LINEAR"
+              ]
+            ],
+            "path": "rotation_euler"
+          },
+          {
+            "index": 2,
+            "keys": [
+              [
+                1.0,
+                0.0,
+                "LINEAR"
+              ],
+              [
+                48.0,
+                3.140000104904175,
+                "LINEAR"
+              ]
+            ],
+            "path": "rotation_euler"
+          }
+        ],
+        "creation_provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "description": "Beacon creation and rendering",
+        "geometry": "13f77cea6ea395fc91c3d23f1475797aaf2eea942efb888278e306149a9387ad",
+        "id": "81482c52-59de-488d-9012-b84ec1074dd1",
+        "location": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "materials": [
+          "5265c904-6ab5-4836-97b9-41454fbfa814"
+        ],
+        "name": "Aurora Beacon",
+        "parent": null,
+        "provenance": "{\"job\":\"6b18aa83-d079-49a2-ba9f-09a650bd1835\",\"plan\":\"5e7b258091641c314bf45d0eaa4812c3bdf9f9abd58fb311a2a9969d9f560d7e\",\"protocol\":\"finalverse.creation/v1\"}",
+        "rotation": [
+          0.0,
+          0.0,
+          3.140000104904175
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "type": "MESH",
+        "vertices": 96
+      }
+    ],
+    "revision": "e56a7ffdd8cf3c67e4408d08607f6c505de2839123ef19102ff7a5646698d5be",
+    "scene_id": "0ea781bb-b0bc-45dd-87c3-a309b79f8797",
+    "schema_version": "finalverse.studio-scene/v2",
+    "world": {
+      "links": [
+        [
+          "Background",
+          "Background",
+          "World Output",
+          "Surface"
+        ]
+      ],
+      "nodes": [
+        [
+          "Background",
+          "BACKGROUND",
+          false,
+          [
+            [
+              "Color",
+              [
+                0.05087608844041824,
+                0.05087608844041824,
+                0.05087608844041824,
+                1.0
+              ]
+            ],
+            [
+              "Strength",
+              1.0
+            ],
+            [
+              "Weight",
+              0.0
+            ]
+          ]
+        ],
+        [
+          "World Output",
+          "OUTPUT_WORLD",
+          false,
+          []
+        ]
+      ]
+    }
+  },
+  "tick_max_seconds": 0.2270924160038703,
+  "tick_median_seconds": 0.0016702090069884434,
+  "wall_seconds": 11.853767332999269
+}

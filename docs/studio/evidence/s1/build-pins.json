@@ -1,0 +1,21 @@
+{
+  "compiled_source_commit": "7e99e2fd3ae3556fde0f47410bda5ac82dc82cb3",
+  "executable_sha256": "e38aa33b55d9c5107d75dee0740304f3c49b4bb77f7603e32b20bc9ef5b573ff",
+  "info_plist_sha256": "d513f19e9c82687f376e7705aebbf6a83ef3cc3c0a715d47eaacf89a02d507a9",
+  "development_bundle_id": "org.finalverse.studio.s1",
+  "accepted_s0_executable_sha256": "e857ab2dfa7c316c9c69b2e6d85670b862d61a5907b7c6cff263f8b12b6343a4",
+  "package_sources": {
+    "store.py": "e88eb5813bb5466ef995a0359b7aa6d0712c8e05000eac60f4f4fc5e9269b81b",
+    "mcp_entry.py": "6671546a2fba497055969712e0c1ad91d44bf9f78b9d86efeaf376d5d26c05d9",
+    "render_worker.py": "8b33fb273109da9dc175ba04cb1178f86d949b2cdfcc3c95473bab5404a26ea8",
+    "supervisor.py": "188d4080b839d00582c0d2c6bda19de7296c38a0e039c30b18d66c4bbfef2615",
+    "ui.py": "0a7512b729ddb12da3ae1936d70644c30d6223a9a31c0ee6acdef3cc175a139f",
+    "host.py": "85b271e2e26ea737c8b16bd96482cc4f1968cfa3056f3c35cefb19aaa8b5d275",
+    "protocol.py": "c97ad0edeab637a0f36f2b693ae1965395b41f9645bbc435021257c87ff694ec",
+    "__init__.py": "6b286744b513694be6c3cfb08885b6e6be7d84daf5fbebce3d0408ed785c3bc8",
+    "providers.py": "6d17f279e7f19e4738373c70b9b85d89299e9da2a62125ad262383157d105649",
+    "provider_entry.py": "fabcda9a818d6b70bf7de184f109c044a05893f3e5f94cbbe161b8eeaa9e63a1",
+    "engine.py": "959bce0d768838881f7b74ab7824690223a2dc054b246f54bb9f0fecbb07eefc"
+  },
+  "model_input_revision_matches_executed_baseline": true
+}
