@@ -4,8 +4,19 @@ Studio is the Blender-based authoring application for Finalverse. Its approved
 white emblem, application icon and licensing foundation are documented in
 [S0 branding](S0-BRANDING.md). The accepted S0 app remains separately installed.
 
-The current isolated milestone is S1: embedded local AI planning, artist approval,
-bounded typed authoring and MCP. Start with [S1 acceptance](S1-ACCEPTANCE.md),
+The current isolated milestone is **S2** on `feat/studio-s2`: typed AI-native
+creation tools, E1-archetype characters (no forced humanoid skeleton), clip
+animation, deterministic preview evaluation, the bounded creation loop and
+Genesis-contract candidate packages. Start with [S2 acceptance](S2-ACCEPTANCE.md),
+then the [creation engine](S2-CREATION-ENGINE.md), [character pipeline](S2-CHARACTER-PIPELINE.md),
+[animation](S2-ANIMATION.md), [visual feedback](S2-VISUAL-FEEDBACK.md),
+[Genesis integration](S2-GENESIS-INTEGRATION.md) and [V1 handoff](S2-V1-HANDOFF.md).
+In the sidebar, **Creation loop · S2** takes an archetype, asset name and revision
+budget; every proposal it produces still needs your approval, and **Reject &
+Revise** sends a declined proposal back for a visible revision.
+
+S1 (embedded local AI planning, artist approval, bounded typed authoring and MCP)
+is documented in [S1 acceptance](S1-ACCEPTANCE.md),
 [provider architecture](S1-PROVIDER-ARCHITECTURE.md),
 [creation protocol](S1-CREATION-PROTOCOL.md), [MCP setup](S1-MCP.md),
 [security](S1-SECURITY.md) and [S2 handoff](S1-S2-HANDOFF.md).

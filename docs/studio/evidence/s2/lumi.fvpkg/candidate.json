@@ -1,0 +1,25 @@
+{
+  "assets": {
+    "asset.glb": {
+      "byte_length": 72868,
+      "media_type": "model/gltf-binary",
+      "sha256": "cbca5a2f99a2983192e767b9c03e3a37f53bd00f4949ace61f6d53246aa492a6"
+    },
+    "source.blend": {
+      "byte_length": 101419,
+      "media_type": "application/x-blender",
+      "sha256": "81afd0a6af8994758576e68ae068bb4e03539573602e9b34b4216db5a16f1821"
+    }
+  },
+  "blender_version": "5.4.0 Alpha",
+  "frame": {
+    "axes": "glTF right-handed Y-up",
+    "unit": "metre"
+  },
+  "product": "Finalverse Studio",
+  "publication": "Independent Genesis validation and authorization required",
+  "published": false,
+  "schema_version": "finalverse.studio-candidate/v1",
+  "source_license": "user-declared; required at Genesis admission",
+  "state": "candidate"
+}

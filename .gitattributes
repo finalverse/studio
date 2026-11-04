@@ -118,3 +118,6 @@ release/datafiles/splash.png -filter -diff -merge
 # Local acceptance screenshots must be readable without a private LFS upload.
 docs/studio/evidence/*.png -filter -diff -merge
 docs/studio/evidence/s1/*.png -filter -diff -merge
+docs/studio/evidence/**/*.png -filter -diff -merge
+# S2 candidate packages are small local evidence, stored directly.
+docs/studio/evidence/s2/** -filter -diff -merge -text

@@ -1,0 +1,12 @@
+[package]
+name = "s2-e1-check"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+finalverse-embodiment = { path = "/Users/wenyan/Finalverse/dev/worktrees/core-civilization-os2-e1-20261103/crates/embodiment" }
+serde_json = "1"
+sha2 = "0.10"
+
+[workspace]

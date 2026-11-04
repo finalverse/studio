@@ -1,0 +1,278 @@
+{
+  "schema_version": "finalverse.studio-provider-connectivity/v1",
+  "cases": [
+    {
+      "case": "local-default-inventory",
+      "provider": "local",
+      "mode": "models",
+      "enabled": true,
+      "credential": null,
+      "key_supplied": false,
+      "ok": true,
+      "error": null,
+      "detail": null,
+      "helper_wall_ms": 1737.8,
+      "helper_total_latency_ms": 536.4,
+      "models": [
+        "gemma4:e4b",
+        "qwen3:30b-a3b"
+      ]
+    },
+    {
+      "case": "maple-default-off",
+      "provider": "maple",
+      "mode": "models",
+      "enabled": false,
+      "credential": "keychain",
+      "key_supplied": false,
+      "ok": false,
+      "error": "provider_disabled",
+      "detail": "Provider is disabled",
+      "helper_wall_ms": 840.7,
+      "helper_total_latency_ms": 2.2
+    },
+    {
+      "case": "maple-on-no-key",
+      "provider": "maple",
+      "mode": "models",
+      "enabled": true,
+      "credential": "keychain",
+      "key_supplied": false,
+      "ok": false,
+      "error": "provider_credential_missing",
+      "detail": "No API key is stored in the Keychain for this provider",
+      "helper_wall_ms": 581.8,
+      "helper_total_latency_ms": 2.2
+    },
+    {
+      "case": "maple-on-with-key",
+      "provider": "maple",
+      "mode": "models",
+      "enabled": true,
+      "credential": "keychain",
+      "key_supplied": true,
+      "ok": false,
+      "error": "provider_unreachable",
+      "detail": "DNS resolution failed for the provider host",
+      "helper_wall_ms": 1201.5,
+      "helper_total_latency_ms": 536.1
+    },
+    {
+      "case": "maple-plan-attempt",
+      "provider": "maple",
+      "mode": "plan",
+      "enabled": true,
+      "credential": "keychain",
+      "key_supplied": true,
+      "ok": false,
+      "error": "provider_unreachable",
+      "detail": "DNS resolution failed for the provider host",
+      "helper_wall_ms": 2028.4,
+      "helper_total_latency_ms": 747.8
+    },
+    {
+      "case": "maple-off-again",
+      "provider": "maple",
+      "mode": "models",
+      "enabled": false,
+      "credential": "keychain",
+      "key_supplied": true,
+      "ok": false,
+      "error": "provider_disabled",
+      "detail": "Provider is disabled",
+      "helper_wall_ms": 3061.2,
+      "helper_total_latency_ms": 7.5
+    },
+    {
+      "case": "custom-ollama-inventory",
+      "provider": "custom-ollama",
+      "mode": "models",
+      "enabled": true,
+      "credential": null,
+      "key_supplied": false,
+      "ok": true,
+      "error": null,
+      "detail": null,
+      "helper_wall_ms": 2314.0,
+      "helper_total_latency_ms": 660.8,
+      "models": [
+        "gemma4:e4b",
+        "qwen3:30b-a3b"
+      ]
+    },
+    {
+      "case": "custom-ollama-plan",
+      "provider": "custom-ollama",
+      "mode": "plan",
+      "enabled": true,
+      "credential": null,
+      "key_supplied": false,
+      "ok": true,
+      "error": null,
+      "detail": null,
+      "helper_wall_ms": 38795.4,
+      "helper_total_latency_ms": 34783.9,
+      "plan_operations": [
+        "scene.inspect",
+        "object.create"
+      ],
+      "receipt": {
+        "admission": {
+          "basis": "local weights within 65% of physical memory",
+          "decision": "admitted",
+          "physical_memory_bytes": 17179869184,
+          "weights_bytes": 9461576343
+        },
+        "context_digest": null,
+        "endpoint_host": "127.0.0.1",
+        "fallback_used": false,
+        "input_digest": "c8a22cb808a0a045c83a3d2ac7f1f3bc721f6ca5575db2f348e9ce1e38f5eec5",
+        "language": "v1",
+        "latency_ms": 33751.85437500477,
+        "model": "gemma4:e4b",
+        "provider": "custom-ollama",
+        "provider_kind": "ollama",
+        "provider_preset": "custom",
+        "real_inference": true,
+        "response_digest": "d644ad74bfeeb032ee33d8454306cf5b5a90e4c550b439e0b157b5b9ea7dcd5a",
+        "scene_id": "00000000-0000-4000-8000-000000000001",
+        "scene_revision": "0000000000000000000000000000000000000000000000000000000000000000",
+        "served_model": "gemma4:e4b",
+        "usage": {
+          "input_tokens": 936,
+          "output_tokens": 52
+        }
+      }
+    },
+    {
+      "case": "custom-openai-local-inventory",
+      "provider": "custom-openai-local",
+      "mode": "models",
+      "enabled": true,
+      "credential": null,
+      "key_supplied": false,
+      "ok": true,
+      "error": null,
+      "detail": null,
+      "helper_wall_ms": 4060.2,
+      "helper_total_latency_ms": 795.0,
+      "models": [
+        "gemma4:e4b",
+        "qwen3:30b-a3b"
+      ]
+    },
+    {
+      "case": "custom-openai-local-plan",
+      "provider": "custom-openai-local",
+      "mode": "plan",
+      "enabled": true,
+      "credential": null,
+      "key_supplied": false,
+      "ok": false,
+      "error": "Invalid creation plan: Reference precedes its creation",
+      "detail": null,
+      "helper_wall_ms": 70367.4,
+      "helper_total_latency_ms": 66197.1,
+      "receipt": {
+        "admission": {
+          "basis": "local weights within 65% of physical memory (size from the same host's Ollama inventory)",
+          "decision": "admitted",
+          "physical_memory_bytes": 17179869184,
+          "weights_bytes": 9461576343
+        },
+        "context_digest": null,
+        "endpoint_host": "127.0.0.1",
+        "fallback_used": false,
+        "input_digest": "c8a22cb808a0a045c83a3d2ac7f1f3bc721f6ca5575db2f348e9ce1e38f5eec5",
+        "language": "v1",
+        "latency_ms": 64672.11229199893,
+        "model": "gemma4:e4b",
+        "provider": "custom-openai-local",
+        "provider_kind": "openai_compatible",
+        "provider_preset": "custom",
+        "real_inference": true,
+        "response_digest": "fd9aaafa0c5cc23a654cae24eb02955fdd78b5f8382ab65d7674dc74bd55cdea",
+        "scene_id": "00000000-0000-4000-8000-000000000001",
+        "scene_revision": "0000000000000000000000000000000000000000000000000000000000000000",
+        "served_model": "gemma4:e4b",
+        "usage": {
+          "completion_tokens": 198,
+          "prompt_tokens": 938,
+          "prompt_tokens_details": {
+            "cached_tokens": 4
+          },
+          "total_tokens": 1136
+        }
+      }
+    },
+    {
+      "case": "unreachable-refused",
+      "provider": "custom-refused",
+      "mode": "models",
+      "enabled": true,
+      "credential": null,
+      "key_supplied": false,
+      "ok": false,
+      "error": "provider_unreachable",
+      "detail": "connection refused",
+      "helper_wall_ms": 1186.8,
+      "helper_total_latency_ms": 102.2
+    },
+    {
+      "case": "unreachable-blackhole-timeout",
+      "provider": "custom-blackhole",
+      "mode": "models",
+      "enabled": true,
+      "credential": "keychain",
+      "key_supplied": true,
+      "ok": false,
+      "error": "provider_timeout",
+      "detail": "no response within the provider timeout",
+      "helper_wall_ms": 5360.8,
+      "helper_total_latency_ms": 4327.0
+    },
+    {
+      "case": "bad-credential-loopback-gateway",
+      "provider": "custom-auth-mock",
+      "mode": "models",
+      "enabled": true,
+      "credential": "keychain",
+      "key_supplied": true,
+      "ok": false,
+      "error": "provider_auth_failed",
+      "detail": "HTTP 401",
+      "helper_wall_ms": 2865.4,
+      "helper_total_latency_ms": 557.5
+    },
+    {
+      "case": "bad-credential-anthropic",
+      "provider": "custom-anthropic",
+      "mode": "models",
+      "enabled": true,
+      "credential": "keychain",
+      "key_supplied": true,
+      "ok": false,
+      "error": "provider_auth_failed",
+      "detail": "HTTP 403",
+      "helper_wall_ms": 3455.6,
+      "helper_total_latency_ms": 2223.7
+    },
+    {
+      "case": "oversize-local-model-admission",
+      "provider": "local",
+      "mode": "plan",
+      "enabled": true,
+      "credential": null,
+      "key_supplied": false,
+      "ok": false,
+      "error": "provider_admission_refused",
+      "detail": "Local model weights exceed the 65% physical-memory admission budget or have no size; choose a smaller model or configured remote provider",
+      "helper_wall_ms": 2183.8,
+      "helper_total_latency_ms": 532.9
+    }
+  ],
+  "placeholder_secret_found_in_files": [],
+  "keychain_items_removed": true,
+  "maple_key_preexisting": false,
+  "note": "custom-auth-mock is a labelled loopback 401 stand-in; all other endpoints are real."
+}

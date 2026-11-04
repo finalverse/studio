@@ -1,0 +1,107 @@
+{
+  "consistency": {
+    "animations_match_clips": true,
+    "clip_files_single_animation": true,
+    "skins_match_archetype": true
+  },
+  "files": {
+    "asset.glb": {
+      "animations": [
+        {
+          "channels": 1,
+          "duration_s": 5.0,
+          "name": "LumiIdleHover"
+        },
+        {
+          "channels": 1,
+          "duration_s": 10.0,
+          "name": "LumiSlowDrift"
+        },
+        {
+          "channels": 1,
+          "duration_s": 1.25,
+          "name": "LumiGreet"
+        }
+      ],
+      "bytes": 72868,
+      "generator": "Khronos glTF Blender I/O v5.4.11",
+      "joints": 0,
+      "materials": 2,
+      "meshes": 1,
+      "node_names": [
+        "Lumi"
+      ],
+      "nodes": 1,
+      "skins": 0,
+      "triangles": 3356,
+      "valid": true,
+      "vertices": 1700
+    },
+    "clips/LumiGreet.glb": {
+      "animations": [
+        {
+          "channels": 1,
+          "duration_s": 1.25,
+          "name": "Animation"
+        }
+      ],
+      "bytes": 67008,
+      "generator": "Khronos glTF Blender I/O v5.4.11",
+      "joints": 0,
+      "materials": 2,
+      "meshes": 1,
+      "node_names": [
+        "Lumi"
+      ],
+      "nodes": 1,
+      "skins": 0,
+      "triangles": 3356,
+      "valid": true,
+      "vertices": 1700
+    },
+    "clips/LumiIdleHover.glb": {
+      "animations": [
+        {
+          "channels": 1,
+          "duration_s": 5.0,
+          "name": "Animation"
+        }
+      ],
+      "bytes": 68444,
+      "generator": "Khronos glTF Blender I/O v5.4.11",
+      "joints": 0,
+      "materials": 2,
+      "meshes": 1,
+      "node_names": [
+        "Lumi"
+      ],
+      "nodes": 1,
+      "skins": 0,
+      "triangles": 3356,
+      "valid": true,
+      "vertices": 1700
+    },
+    "clips/LumiSlowDrift.glb": {
+      "animations": [
+        {
+          "channels": 1,
+          "duration_s": 10.0,
+          "name": "Animation"
+        }
+      ],
+      "bytes": 70368,
+      "generator": "Khronos glTF Blender I/O v5.4.11",
+      "joints": 0,
+      "materials": 2,
+      "meshes": 1,
+      "node_names": [
+        "Lumi"
+      ],
+      "nodes": 1,
+      "skins": 0,
+      "triangles": 3356,
+      "valid": true,
+      "vertices": 1700
+    }
+  }
+}

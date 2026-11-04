@@ -1,0 +1,162 @@
+{
+  "archetype": "floating_spirit",
+  "clips": [
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        120
+      ],
+      "glb": "clips/LumiIdleHover.glb",
+      "id": "61358279-0a29-48cb-97ec-210bf18998c3",
+      "kind": "idle",
+      "locomotion": "hover",
+      "loop": true,
+      "name": "LumiIdleHover",
+      "samples": "clips/LumiIdleHover.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        240
+      ],
+      "glb": "clips/LumiSlowDrift.glb",
+      "id": "c3ac365f-e037-4cd9-9852-2e1357341c91",
+      "kind": "idle",
+      "locomotion": "drift",
+      "loop": true,
+      "name": "LumiSlowDrift",
+      "samples": "clips/LumiSlowDrift.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        30
+      ],
+      "glb": "clips/LumiGreet.glb",
+      "id": "c03d9d53-d587-4016-b1c7-9d08661cb7f7",
+      "kind": "greet",
+      "locomotion": "none",
+      "loop": false,
+      "name": "LumiGreet",
+      "samples": "clips/LumiGreet.json"
+    }
+  ],
+  "evaluation": {
+    "advisories": [],
+    "digest": "0dfe417d1be64648c54348166a0dd2cd6387436f20df09174a8842f18e0be418",
+    "passed": true
+  },
+  "files": {
+    "asset.glb": {
+      "byte_length": 72868,
+      "media_type": "model/gltf-binary",
+      "sha256": "cbca5a2f99a2983192e767b9c03e3a37f53bd00f4949ace61f6d53246aa492a6"
+    },
+    "body.json": {
+      "byte_length": 182954,
+      "media_type": "application/json",
+      "sha256": "cd5f6977b78d6e6501a4744b9291ead6d96e9d004e362db75bacea82775a2a4d"
+    },
+    "clips/LumiGreet.glb": {
+      "byte_length": 67008,
+      "media_type": "model/gltf-binary",
+      "sha256": "d920c619379d3780d748c513871db1865a17266112f53f9f40218ebd5a522b2b"
+    },
+    "clips/LumiGreet.json": {
+      "byte_length": 1352,
+      "media_type": "application/json",
+      "sha256": "f653fe0c37f277e18c4d1fcae267945238979d82b3eb9a9b06b6a1ddbbb9feeb"
+    },
+    "clips/LumiIdleHover.glb": {
+      "byte_length": 68444,
+      "media_type": "model/gltf-binary",
+      "sha256": "631331c63aa028eb3d8028293375b273480646420b2d1bd5e71c98d76941edf4"
+    },
+    "clips/LumiIdleHover.json": {
+      "byte_length": 3489,
+      "media_type": "application/json",
+      "sha256": "546c381f9c70ca60c7720536865fd47347a2c0942775ef82cce827eb30fb2017"
+    },
+    "clips/LumiSlowDrift.glb": {
+      "byte_length": 70368,
+      "media_type": "model/gltf-binary",
+      "sha256": "2861d24359e4ce3557611eb6b223c9784d7bdb377e71c1aabf5b31b7326022d7"
+    },
+    "clips/LumiSlowDrift.json": {
+      "byte_length": 7976,
+      "media_type": "application/json",
+      "sha256": "2b6db676586045e8b20cc9b12e3343dacfa8d54fdc86cbc61af77311fe8bb030"
+    },
+    "contract-check.json": {
+      "byte_length": 221,
+      "media_type": "application/json",
+      "sha256": "1efd4425dae6a27d1844864aa82aa1ac09a9afdaa90969096a478eb470f308ff"
+    },
+    "definition.draft.json": {
+      "byte_length": 1143,
+      "media_type": "application/json",
+      "sha256": "e21fb7bfd80a1434444071a1b86ed43cc9e977f158ac506f204e0f493f69807d"
+    },
+    "evaluation.json": {
+      "byte_length": 6984,
+      "media_type": "application/json",
+      "sha256": "9356c8f02a4a6617b5caa99c9235f3c8bd305300cd5b1528c1b9aff3b7a591ed"
+    },
+    "glb-check.json": {
+      "byte_length": 2210,
+      "media_type": "application/json",
+      "sha256": "6922a98e83f151d336765889a2ffaf20d2652dfba98e7f57fbf16ae8b75ac2a5"
+    },
+    "previews/step-000-export-preview.png": {
+      "byte_length": 52988,
+      "media_type": "image/png",
+      "sha256": "c6f5aa4f6fc45aaa23f23a7ac9265a5f2ef0ca06f4add659176f92773c46a026"
+    },
+    "provenance.json": {
+      "byte_length": 799,
+      "media_type": "application/json",
+      "sha256": "c265f267f3104404b0ab6a433e46d59e4df3613dbdb8de412b29311de2df3b40"
+    },
+    "source.blend": {
+      "byte_length": 101419,
+      "media_type": "application/x-blender",
+      "sha256": "81afd0a6af8994758576e68ae068bb4e03539573602e9b34b4216db5a16f1821"
+    },
+    "specification.json": {
+      "byte_length": 248,
+      "media_type": "application/json",
+      "sha256": "90e0e5ac9a1ef4008d6e8e5eaddf753c2fd165eed14a9661dd91ec80d9e93c9e"
+    }
+  },
+  "frame": {
+    "axes": "glTF right-handed Y-up",
+    "unit": "metre"
+  },
+  "genesis": {
+    "admission": "required",
+    "candidate_manifest": "candidate.json",
+    "definition_draft": "definition.draft.json",
+    "embodiment_body": "body.json",
+    "publication_authorized": false
+  },
+  "height_m": 1.14,
+  "identity_reference": "2c92f74c-3643-5dac-95c6-e20af424767d",
+  "lods": [
+    {
+      "distance_m": 0.0
+    },
+    {
+      "distance_m": 18.0,
+      "triangle_ratio": 0.35
+    }
+  ],
+  "name": "Lumi",
+  "published": false,
+  "schema_version": "finalverse.studio-asset-package/v1",
+  "state": "candidate",
+  "subject": "b83d23c0-427e-42e6-85f0-11caea9f3218",
+  "world_effects": 0
+}

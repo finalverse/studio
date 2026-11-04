@@ -1,0 +1,6 @@
+{
+  "structural_errors": [],
+  "generator_header": "finalverse-studio-s2/1",
+  "e1_admits_generator": false,
+  "note": "E1 Artifact::validate admits only generator blender-universal/1; Genesis must admit this generator"
+}
