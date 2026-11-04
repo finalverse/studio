@@ -54,7 +54,7 @@ def main():
     providers = load(config)['providers']
     providers += [
         custom('custom-ollama', 'ollama', 'http://127.0.0.1:11434', model=args.plan_model, timeout=120),
-        custom('custom-openai-local', 'openai_compatible', 'http://127.0.0.1:11434/v1'),
+        custom('custom-openai-local', 'openai_compatible', 'http://127.0.0.1:11434/v1', model=args.plan_model, timeout=300),
         custom('custom-refused', 'openai_compatible', 'http://127.0.0.1:9/v1', timeout=5),
         custom('custom-blackhole', 'openai_compatible', 'https://10.255.255.1/v1', 'keychain', timeout=4),
         custom('custom-anthropic', 'anthropic', 'https://api.anthropic.com', 'keychain', timeout=20),
@@ -63,6 +63,9 @@ def main():
     accounts = ['custom-blackhole', 'custom-anthropic', 'custom-auth-mock']
     maple_had_key = keychain.exists('maple')
     cases = []
+    TWO_OPS = ('Return exactly two operations using the example flat JSON field shapes: 1 scene.inspect. '
+               '2 object.create ref @marker name Provider Marker primitive sphere. Include schema_version and summary. '
+               'Only strict JSON.')
 
     def run(name, pid, mode, use_key=True, model='', prompt='', enable=None):
         if enable is not None:
@@ -109,12 +112,9 @@ def main():
         run('maple-plan-attempt', 'maple', 'plan', model='gemma4:e4b', prompt='Inspect the scene.')
         run('maple-off-again', 'maple', 'models', enable=False)
         run('custom-ollama-inventory', 'custom-ollama', 'models')
-        run('custom-ollama-plan', 'custom-ollama', 'plan', model=args.plan_model, prompt=(
-            'Return exactly two operations using the example flat JSON field shapes: 1 scene.inspect. '
-            '2 object.create ref @marker name Provider Marker primitive sphere. Include schema_version and summary. '
-            'Only strict JSON.'))
+        run('custom-ollama-plan', 'custom-ollama', 'plan', model=args.plan_model, prompt=TWO_OPS)
         run('custom-openai-local-inventory', 'custom-openai-local', 'models')
-        run('custom-openai-local-plan-admission', 'custom-openai-local', 'plan', model=args.plan_model, prompt='Inspect the scene.')
+        run('custom-openai-local-plan', 'custom-openai-local', 'plan', model=args.plan_model, prompt=TWO_OPS)
         run('unreachable-refused', 'custom-refused', 'models')
         run('unreachable-blackhole-timeout', 'custom-blackhole', 'models')
         run('bad-credential-loopback-gateway', 'custom-auth-mock', 'models')
