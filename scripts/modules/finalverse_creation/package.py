@@ -162,7 +162,8 @@ def parts_of(block, origin, joints, ratio=1.0, joint_by_name=None):
                     joint = joints.index(best) if best in joints else None
             parts.append({'name': name, 'positions': positions, 'normals': normals, 'indices': indices,
                           'material': material_behavior(material), 'joint': joint,
-                          'role': 'expressive_detail' if index < len(names) and names[index][1] == 'eyes' else 'solid'})
+                          'role': (names[index][3] if index < len(names) and len(names[index]) > 3 else
+                                   'expressive_detail' if index < len(names) and names[index][1] == 'eyes' else 'solid')})
         return parts
     finally:
         bpy.data.meshes.remove(mesh)

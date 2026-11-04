@@ -377,7 +377,10 @@ def skin(scene, item, aliases):
         raise CreationError('Skin target must be an unparented mesh without modifiers')
     bpy.ops.object.select_all(action='DESELECT'); mesh.select_set(True); rig.select_set(True)
     bpy.context.view_layer.objects.active = rig
-    kind = 'ARMATURE_AUTO' if item['method'] == 'automatic' else 'ARMATURE_ENVELOPE'
+    # rigid: keep the template's one-joint-per-part weights (exactly what Infinity's E1 path animates)
+    kind = {'automatic': 'ARMATURE_AUTO', 'envelope': 'ARMATURE_ENVELOPE', 'rigid': 'ARMATURE'}[item['method']]
+    if kind == 'ARMATURE' and not mesh.vertex_groups:
+        raise CreationError('Rigid skinning needs a template with joint groups')
     bpy.ops.object.parent_set(type=kind)
     unweighted = sum(1 for v in mesh.data.vertices if not any(g.weight > 0 for g in v.groups))
     return mesh, {'method': item['method'], 'vertex_groups': len(mesh.vertex_groups), 'unweighted_vertices': unweighted}
@@ -527,6 +530,12 @@ def render_configure(scene, item):
 def apply(scene, item, aliases, directory, job):
     """Returns (block_or_None, result_dict). Caller stamps provenance."""
     name = item['op']
+    if name == 'character.founder':
+        from .founders import founder
+        block, template = founder(scene, item); new_identity(block, OBJECT_ID, aliases, item['ref'])
+        return block, {'id': block[OBJECT_ID], 'vertices': len(block.data.vertices), 'rig_template': template,
+                       'triangles': sum(len(p.vertices)-2 for p in block.data.polygons),
+                       'parts': len(json.loads(block[PARTS])), 'materials': len(block.data.materials)}
     if name in {'character.spirit', 'character.humanoid', 'procedural.building', 'procedural.tree', 'mesh.primitive'}:
         block = {'character.spirit': spirit, 'character.humanoid': humanoid, 'procedural.building': building,
                  'procedural.tree': tree, 'mesh.primitive': primitive}[name](scene, item)
