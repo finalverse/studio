@@ -201,6 +201,18 @@ def evaluate(scene, subject, archetype, clips, previews=(), declared_height=None
             r.add(cid + '.scale_delta', 'animation', delta <= .1, round(delta, 4), '<= 0.1 (E1 max_scale_delta)')
     if archetype in CHARACTERS:
         r.add('animation.clips_present', 'animation', len(clips) >= 1, len(clips), '>= 1 clip for a character')
+    if archetype in CHARACTERS:
+        camera = scene.camera
+        if camera is None:
+            r.add('preview.viewpoint', 'preview', False, None, 'scene camera faces the subject front')
+        else:
+            forward = (camera.matrix_world.to_quaternion() @ Vector((0, 0, -1))).normalized()
+            front = (subject.matrix_world.to_3x3() @ Vector((0, -1, 0))).normalized()
+            facing = -forward.dot(front)            # 1 = looking straight at the face
+            down = math.degrees(math.asin(max(-1, min(1, -forward.z))))
+            r.add('preview.viewpoint', 'preview', facing >= .5 and down <= 50,
+                  {'facing': round(facing, 4), 'look_down_deg': round(down, 2)},
+                  'faces the subject front (≥ 0.5, i.e. within 60°) and looks down ≤ 50°')
     transparent = scene.render.film_transparent
     for path in previews:
         info = preview(path, transparent)
