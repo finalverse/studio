@@ -30,9 +30,9 @@ The trusted workspace `providers.json` has schema `finalverse.providers/v2`
   "providers": [
     {"id": "local", "label": "Local Gemma (Ollama)", "preset": "local", "kind": "ollama",
      "base_url": "http://127.0.0.1:11434", "model": "gemma4:e4b", "credential": null,
-     "timeout_seconds": 120, "enabled": true},
-    {"id": "maple", "label": "Maple (studio.finalverse.com)", "preset": "maple", "kind": "ollama",
-     "base_url": "https://studio.finalverse.com", "model": null, "credential": "keychain",
+     "timeout_seconds": 300, "enabled": true},
+    {"id": "maple", "label": "Maple (studio.finalverse.com)", "preset": "maple", "kind": "openai_compatible",
+     "base_url": "https://studio.finalverse.com/v1", "model": null, "credential": "keychain",
      "timeout_seconds": 60, "enabled": false}
   ]
 }
@@ -41,7 +41,7 @@ The trusted workspace `providers.json` has schema `finalverse.providers/v2`
 `kind` is `ollama`, `openai_compatible` or `anthropic`. `credential` is `null`
 (loopback only) or `"keychain"`; the key itself is in the macOS Keychain (see
 [security](S1-SECURITY.md)). At most eight profiles; `local` cannot be removed or
-turned off; the Maple preset's URL is fixed to `https://studio.finalverse.com`.
+turned off; the Maple preset is fixed to the OpenAI-compatible API at `https://studio.finalverse.com/v1`.
 
 ### Switching providers in Studio
 
@@ -62,9 +62,9 @@ execution path and the same receipts (now with `provider_kind`, `provider_preset
 every generation: a loopback endpoint loads weights on this Mac, so it must report
 the model's size and stay within 65% of physical memory, otherwise it is refused
 (`provider_admission_refused`). A remote endpoint is admitted with the recorded
-basis "no model weights loaded on this Mac". As a result, a loopback
-OpenAI-compatible server that does not report sizes, such as Ollama's `/v1`, can
-list models but cannot plan. Use the Ollama kind for local Ollama.
+basis "no model weights loaded on this Mac". A loopback OpenAI-compatible server
+that lists no sizes (such as Ollama's own `/v1`) takes the size from the same
+host's Ollama inventory; with no size source at all, it is refused (S2 change).
 
 Failure codes: `provider_disabled`, `provider_credential_missing`,
 `provider_unreachable` (DNS, refused, other socket errors), `provider_timeout`,
@@ -90,13 +90,17 @@ generation bounds, not a guarantee of deterministic inference or valid semantics
 See official [chat API](https://docs.ollama.com/api/chat) and
 [structured outputs](https://docs.ollama.com/capabilities/structured-outputs).
 
-Maple is configured as an authenticated Ollama-protocol gateway at
-`https://studio.finalverse.com` (Bearer key from the Keychain). It ships **off**.
-On 2026-11-04 `studio.finalverse.com` did not resolve (NXDOMAIN), so only its
-error path was exercised: off → refused locally; on without key → refused
-locally; on with key → `provider_unreachable` (DNS) in about 0.13 s, with no fallback
-and no job created. If Maple turns out to serve the OpenAI-compatible protocol,
-change its kind in the registry; the URL stays fixed. Remote HTTP, embedded
+**Changed on `feat/studio-s2` (`9afdf2cd0a3`):** Maple is the OpenAI-compatible API
+at `https://studio.finalverse.com/v1` (`GET /v1/models`, `POST /v1/chat/completions`,
+Bearer key from the Keychain), still **off** by default. The S1 provider revision
+shipped it as an Ollama-protocol gateway at the bare host; those presets are
+upgraded in place. The reason is that the OpenAI-compatible path sends the closed
+plan schema as a strict `json_schema` response format, so a GPU server with
+schema-constrained decoding (vLLM, SGLang, llama.cpp server) returns
+structurally valid plans. On 2026-11-04 `studio.finalverse.com` did not resolve
+(NXDOMAIN), so only the error path was exercised: off → refused locally; on
+without key → refused locally; on with key → `provider_unreachable` (DNS), with
+no fallback and no job. Remote HTTP, embedded
 credentials, literal keys and redirects are rejected.
 
 `anthropic` uses `<base_url>/v1/models` and `/v1/messages` with `x-api-key` and
