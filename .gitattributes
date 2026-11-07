@@ -122,3 +122,4 @@ docs/studio/evidence/**/*.png -filter -diff -merge
 # S2 candidate packages are small local evidence, stored directly.
 docs/studio/evidence/s2/**/*.blend -filter -diff -merge -text
 docs/studio/evidence/s2/**/*.glb -filter -diff -merge -text
+docs/studio/evidence/**/*.gz -filter -diff -merge -text
