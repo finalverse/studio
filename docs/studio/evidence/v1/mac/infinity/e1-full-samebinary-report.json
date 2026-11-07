@@ -1,0 +1,52 @@
+{
+ "all_visible": true,
+ "animation_ms": {
+  "max": 6.2139999999999995,
+  "p50": 0.861125,
+  "p95": 1.526625
+ },
+ "bodies": true,
+ "experience": "Finalverse E1 \u2014 The Gathering of the Founding Beings",
+ "flat_body_material": false,
+ "focus": null,
+ "frame_wall_ms": {
+  "max": 21.629125,
+  "p50": 3.806833,
+  "p95": 7.723459
+ },
+ "frames": 600,
+ "gpu_ms": {
+  "max": 5.747959,
+  "p50": 1.752208,
+  "p95": 3.311125
+ },
+ "hardware": {
+  "backend": "Metal",
+  "name": "Apple M1"
+ },
+ "identity_count": 7,
+ "limitations": "Recorded authoritative scene playback; bounded CPU anatomy posing; procedural clips, no baked Blender animation; caption/chime events, no audible voice; shader cost estimated by paired GPU controls; sampled RSS and requested assets do not include all driver allocations",
+ "measurement_wall_ms": 2298.113208,
+ "model_calls": 0,
+ "particle_prepare_ms": {
+  "max": 0.045208,
+  "p50": 0.004458,
+  "p95": 0.01025
+ },
+ "particles": true,
+ "peak_draw_calls": 159,
+ "peak_particles": 28,
+ "peak_requested_gpu_asset_bytes": 8177744,
+ "peak_triangles": 28548,
+ "projection_playback_sha256": "0e99fab32f1e4b8be694670f1ce959751d54dd9bc5ec2839e1088044290559a0",
+ "publication_manifest_sha256": "89c09a2cbd9efcc4f9b1470f190b2ef233c593f67e85a7078c96796772b2fa7a",
+ "render_cpu_ms": {
+  "max": 14.644208,
+  "p50": 2.528125,
+  "p95": 4.534624999999999
+ },
+ "sampled_peak_rss_bytes": 70025216,
+ "schema_version": "finalverse.e1-native/v1",
+ "warmup_frames": 100,
+ "within_budget_p95": true
+}
