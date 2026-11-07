@@ -1,0 +1,416 @@
+{
+  "schema_version": "finalverse.character-foundry.recipe/v1",
+  "recipe_id": "cf1-elara-vayne",
+  "recipe_version": 1,
+  "character": {
+    "identity": "Elara",
+    "canon": "Core E1 finalverse.embodiment-spec/v1 (Elara, height_mm 1720)",
+    "vision_reference": "elara-vision.png (owner upload, 2026-11-07)",
+    "asset_class": "humanoid_embodiment",
+    "embodiment": "biological_humanoid",
+    "design_brief": "CF1-ELARA-DESIGN.md"
+  },
+  "path": "A (CC0 professional base) + procedural garments/hair/lookdev; no AI-generated geometry",
+  "tools": {
+    "blender": "bpy 5.2.3 LTS (upstream PyPI wheel, sha256 8ef4a335930d647233c661ae21be1abf81207af33e1440fc5a4fc2f2f2d44db7)",
+    "renderer": "Cycles CPU + OIDN",
+    "numpy": true,
+    "python": "3.13"
+  },
+  "source_assets": [
+    {
+      "file": "base.obj",
+      "sha256": "8e761e6624b8f54536409135d1636da63b32486a90d4897f84e121d144f6fb4c",
+      "license": "CC0-1.0",
+      "origin": "github.com/makehumancommunity/makehuman@master makehuman/data"
+    },
+    {
+      "file": "caucasian-female-young.target",
+      "sha256": "118379f6e8ba9266247fdb8788a20e1df40a239f97ced0b9905bcbcc74f6e820",
+      "license": "CC0-1.0",
+      "origin": "github.com/makehumancommunity/makehuman@master makehuman/data"
+    },
+    {
+      "file": "default.mhskel",
+      "sha256": "99f179bce0aa850b45d4191a1d0d234c5851f881c057439470ded3bddf729a24",
+      "license": "CC0-1.0",
+      "origin": "github.com/makehumancommunity/makehuman@master makehuman/data"
+    },
+    {
+      "file": "default_weights.mhw",
+      "sha256": "0f3641d651ae3d00ad6b4ccee43142edb109d3bd909d27d9e4139ef1beed8625",
+      "license": "CC0-1.0",
+      "origin": "github.com/makehumancommunity/makehuman@master makehuman/data"
+    },
+    {
+      "file": "face-poseunits.bvh",
+      "sha256": "42a8e69692e30010371ee6993a6e5d3b468d35065559ec0953c936e31b8d903f",
+      "license": "CC0-1.0",
+      "origin": "github.com/makehumancommunity/makehuman@master makehuman/data"
+    },
+    {
+      "file": "face-poseunits.json",
+      "sha256": "e7224f76e9610049b79e5f9e8ac2985d1e9a367333395c07537919258cb42cc3",
+      "license": "CC0-1.0",
+      "origin": "github.com/makehumancommunity/makehuman@master makehuman/data"
+    },
+    {
+      "file": "female-young-averagemuscle-averageweight-idealproportions.target",
+      "sha256": "0a3bd099b7a88150d56d68b69c07d3d3538cb57279e0e775d13f19d3dc3e339d",
+      "license": "CC0-1.0",
+      "origin": "github.com/makehumancommunity/makehuman@master makehuman/data"
+    },
+    {
+      "file": "female-young-averagemuscle-averageweight-maxheight.target",
+      "sha256": "3baacc70187410ebba2b62c56a53775266ab859b7844d47e658d36ee78493621",
+      "license": "CC0-1.0",
+      "origin": "github.com/makehumancommunity/makehuman@master makehuman/data"
+    },
+    {
+      "file": "high-poly.obj",
+      "sha256": "da2493215b708a344c33dc72f2a9a5b8fa985dcc5a70ad3b208995cf871da8e1",
+      "license": "CC0-1.0",
+      "origin": "github.com/makehumancommunity/makehuman@master makehuman/data"
+    },
+    {
+      "file": "universal-female-young-averagemuscle-minweight.target",
+      "sha256": "e53a4afc87ac2703460a59e8290b1111478aeee5c02ece6735328c1f8c62eb63",
+      "license": "CC0-1.0",
+      "origin": "github.com/makehumancommunity/makehuman@master makehuman/data"
+    }
+  ],
+  "code": [
+    {
+      "file": "build_elara.py",
+      "sha256": "951a57da1212e1e8f727041594be93eea2ccc5d832d15ac6b2fca1e80e847274"
+    },
+    {
+      "file": "cf_geo.py",
+      "sha256": "1b6cf5b52ba33ef9e34ebff68a8edcc237b79035e0054b946c74fd28db87ac48"
+    },
+    {
+      "file": "cf_mh.py",
+      "sha256": "e9c2c5e9576c28989ee30d267d497f3dd8a5b4a096226d2f87ddc5a5c8d3460f"
+    },
+    {
+      "file": "cf_render.py",
+      "sha256": "3dd45c0c6f88b65f9a90ea080268f6714a1b4a15d731214561032daa696d62d5"
+    },
+    {
+      "file": "cf_rig.py",
+      "sha256": "8fa23d3a266278f4d4f11f4e26ca5c35f2425802de4e68664571fe7c0086fbe8"
+    },
+    {
+      "file": "cf_tex.py",
+      "sha256": "f0c44744c0480c3d9c88719393d531cce492304112f22b0212a58e160035f58f"
+    },
+    {
+      "file": "elara_anim.py",
+      "sha256": "c1bd216b0aca4eefafa336fff40bb57795544a88001a37ce4ca8a23b32b7e484"
+    },
+    {
+      "file": "elara_body.py",
+      "sha256": "e51f3f25fecc005ff13362004ff20a677f61f0a4175f149018befec543851718"
+    },
+    {
+      "file": "elara_cloak.py",
+      "sha256": "4eee6b97702dff5a7df411499e0e0a7e658bf404b7f5d2bb6fd3ee96936cfbb2"
+    },
+    {
+      "file": "elara_export.py",
+      "sha256": "e2c0abfb63e66bfb10d0087228c0a514623393391f954d2127d2d075b7af0ad0"
+    },
+    {
+      "file": "elara_face.py",
+      "sha256": "a5cfea2c78b9a6216b196ab5059e83fe43934a5b4ab537dcec21c902bc570966"
+    },
+    {
+      "file": "elara_garments.py",
+      "sha256": "9c33d40d636a7fb9e2835787e5e97600ca37f9a903df2ddeee8b8ec840ad9806"
+    },
+    {
+      "file": "elara_hair.py",
+      "sha256": "b358fd5a09f32998c80329b55917b1e65a8eadf591e0f66ca9100ca9ba7c4c22"
+    },
+    {
+      "file": "elara_lookdev.py",
+      "sha256": "eb4554ab21ab5f9f666f323e2430bf7852e9b4bf312d22a28abc2cf92276f635"
+    },
+    {
+      "file": "elara_props.py",
+      "sha256": "1db12319f480188c2ed282474794754ea4f26d7a7c66152ccccd6fb8fcfe21c1"
+    },
+    {
+      "file": "elara_skin.py",
+      "sha256": "7162862eb3e10d33755ce7e22483c0571db2e2e1be241c443eaa150a2dc7fcdd"
+    },
+    {
+      "file": "glb_validate.py",
+      "sha256": "c6bcd45aff8deb59043c6cb66f840a113cde30356a53fa06eb96cb595d37eb3d"
+    },
+    {
+      "file": "make_recipe.py",
+      "sha256": "b0f64bee677ab3fa6c1b04483b4d65e0d4a0b94c31c999231c9580929e57157b"
+    },
+    {
+      "file": "montage.py",
+      "sha256": "0456cbea6d4541e0e1afd1f934a46a719a978f07538ed9fe7b0868dd3daa88ad"
+    },
+    {
+      "file": "patch_clips.py",
+      "sha256": "9f74a9ebee74aa2654a508c0b443fdb68d0d020111730e62781adf892c388ab7"
+    },
+    {
+      "file": "patch_tunic_skin.py",
+      "sha256": "dd9c2e3d8ccf7a2e2286fb9250dbff2823abc0d2d35a28a67ecb3a5cd1e92d3f"
+    },
+    {
+      "file": "r_anim.py",
+      "sha256": "28ff3cbdd5797aee2c015bcd07875d2de9762db88c9476e978eec1bc10e57aeb"
+    },
+    {
+      "file": "r_quick.py",
+      "sha256": "e143a904b26c6ac1439abf78f23a7c78ea5959cd920dc9ec72a722606fc92fb7"
+    },
+    {
+      "file": "render_compare.py",
+      "sha256": "65973a4eb494aadd3f1680f638218252d440a0ead8c03ca5ce2db57d4603e1aa"
+    },
+    {
+      "file": "render_final.py",
+      "sha256": "fbbb4eec8e9f1f5e20d5a7f3930d33ddb1478f87ad3cf258af3537cfc7eef7ec"
+    },
+    {
+      "file": "s1_test.py",
+      "sha256": "b15e199c12eb43f4243b18842116446256af5c31121183102b842e687a69c626"
+    },
+    {
+      "file": "t_body.py",
+      "sha256": "7103742ed2d00c82b8db43afaf3befb3d872ba22932f27469a389dea15263815"
+    },
+    {
+      "file": "t_cloth.py",
+      "sha256": "71b3bcdf1060e5903a67bbf2e17bfa8f8c3f4a2d9ffdd6aaa695aaeae10aa645"
+    },
+    {
+      "file": "t_face.py",
+      "sha256": "5f87ebf6a02a3cfcf5bd0285be762c0039d83a2a579acd73232f6941db4610ea"
+    },
+    {
+      "file": "t_img.py",
+      "sha256": "1a64e699ed7ef1855d59cfae57dd4cf6e7e120963f77a8bc1c0a2e7ab8012c93"
+    },
+    {
+      "file": "t_lm.py",
+      "sha256": "35991769ff9b9c269e41976130ef5e8da10a7abdc0847a6f6ea0e1ecc8668056"
+    },
+    {
+      "file": "t_prof.py",
+      "sha256": "77cb8be979c7685285870b020e60d9667ae27f6cba78950cb25aa61e2074b4de"
+    },
+    {
+      "file": "t_px.py",
+      "sha256": "fefefcc2d68a5a72be221840b91b483fd253730e68aed6ac06c77e80cc62f1e1"
+    },
+    {
+      "file": "t_stats.py",
+      "sha256": "4aeacd838572c69a2a64c49bd5859f4aa2c2d553d932c5e19c2700e032ca93ca"
+    },
+    {
+      "file": "elara_rig_map.json",
+      "sha256": "e7288380b26bb583621d668fd6ac8859c3dcd7fbe5581c2822154ca2f52418db"
+    }
+  ],
+  "operations": [
+    "body: hm08 + targets [caucasian-female-young 1.0, idealproportions 0.6, minweight 0.3], height 1.72 m, eyes +8%, lifted 14 mm for soles",
+    "rig: MakeHuman default skeleton (163), CC0 weights, relaxed rest pose (arms 14 deg), 4 influences",
+    "garments: tunic loft (96x49 rings), sleeves + rolled cuffs, leggings via body re-material, boots offset shell + sole + cuff + laces",
+    "props: belt + buckle, crossbody strap, satchel + flap + buckle, wooden flute, flower clasp",
+    "cloth: cloak 56x72 grid, Blender cloth (quality 8, mass 0.4, tension 15, bending 0.6), 80 frames, collisions body/tunic/sleeves/satchel/belt; hood derived from drape",
+    "hair: scalp shell + 18 top + 13 crown + 12 nape locks + 4 temple strands; 3-strand braid 7.5 cycles over left shoulder; tie + tail",
+    "lookdev: numpy-painted maps (skin 2048 BaseColor/Normal/ORM, tunic 2048, cloak 2048 + lining, leather/hair 1024 tiles, knit/wood 512, eye 512)",
+    "skin: data-transfer from body + per-part rules (see elara_skin.py)",
+    "animation: Elara_Idle 120f, Elara_Walk 32f in-place, Elara_Wave 90f @30fps; expressions smile/warm_smile/curious/blink from face pose units",
+    "review fixes applied to the delivered .blend: patch_tunic_skin.py (tunic arm weights), patch_clips.py (frame-0 NLA leak); both now in the build code",
+    "export: hero (textures capped 2048/1024/512), runtime (iterative decimate to <= 38k tris, textures 1024/512/256), proxy (single mesh, 7 factor materials)"
+  ],
+  "seeds": {
+    "tunic": 21,
+    "cloak": 31,
+    "leather": 41,
+    "hair": 11,
+    "skin": 5
+  },
+  "outputs": [
+    {
+      "file": "elara_cf1.glb",
+      "sha256": "eabfd62b2f562a91d810cde0808b26750bfc48ee4489867c17a6bdfdbb42b7c5",
+      "bytes": 6596724
+    },
+    {
+      "file": "elara_cf1_proxy.glb",
+      "sha256": "6d9e6714c8bacd66f05f4d3d831a99827167860c29ab1e6a5f64470d83aa6c4a",
+      "bytes": 410440
+    },
+    {
+      "file": "elara_cf1_runtime.glb",
+      "sha256": "843123e49e95959e437d3ad63313993312b3b1af3b10b7cd815ddaa8a9eb7c73",
+      "bytes": 2801984
+    },
+    {
+      "file": "elara_cf1.blend",
+      "sha256": "12163f599f917eed58f08d2bbc47873980b01015d91639dc1aa360658de0659d",
+      "bytes": 43505091
+    },
+    {
+      "file": "textures/T_Elara_CloakLining_BaseColor.png",
+      "sha256": "660b2c60ed117b8efb5fb080d1bfea3fd55356c8e2a46c5eaabbed5c927ba76e",
+      "bytes": 3847430
+    },
+    {
+      "file": "textures/T_Elara_Cloak_BaseColor.png",
+      "sha256": "9d7435e35afa738c11874d005a241d2f2b4aa4bfe5861a9572064d4f5f62340c",
+      "bytes": 5365633
+    },
+    {
+      "file": "textures/T_Elara_Cloak_Normal.png",
+      "sha256": "3fd8a779eedc60b891e0179cc2909ed90bf5570d7536c69f4945339b02b611ba",
+      "bytes": 12104481
+    },
+    {
+      "file": "textures/T_Elara_Cloak_ORM.png",
+      "sha256": "1a1802a4fa6e8963f29ef4caa6c072b8063f98e452ecb3830154fdfbec91f67e",
+      "bytes": 161395
+    },
+    {
+      "file": "textures/T_Elara_Eye.L_BaseColor.png",
+      "sha256": "341be7146891e8f5c08165b1339187729c71e7c0db571bec2d2c707c8366ca21",
+      "bytes": 39486
+    },
+    {
+      "file": "textures/T_Elara_Eye.R_BaseColor.png",
+      "sha256": "211b6e04fe0052ba3c22d7332144daf8018fad0e38a2cfc6c8bca4e43f72353e",
+      "bytes": 40561
+    },
+    {
+      "file": "textures/T_Elara_Skin_BaseColor.png",
+      "sha256": "893c155d3e4b2f5e6f5750f00ab84bc08082af9473f698fc93cfd643880ece6b",
+      "bytes": 678372
+    },
+    {
+      "file": "textures/T_Elara_Skin_Normal.png",
+      "sha256": "98175bab8c8759d20e2f37910f57196a26e6378d8ec0a0306375fab0e9f4210a",
+      "bytes": 5736596
+    },
+    {
+      "file": "textures/T_Elara_Skin_ORM.png",
+      "sha256": "f94b38d52f0bf78f458aa9363942c59546c0b67f17f02ae295405e4cfee26eca",
+      "bytes": 80186
+    },
+    {
+      "file": "textures/T_Elara_Tunic_BaseColor.png",
+      "sha256": "12bd771c35a455ec1fd69f83e5b8e6aa865ae06f5087fd7736b9ed6004c552c2",
+      "bytes": 4134701
+    },
+    {
+      "file": "textures/T_Elara_Tunic_Normal.png",
+      "sha256": "7f0f87457a57fb5a5b8be975b4e837838dcc9801cb25ffe8a2c706a04bb922ee",
+      "bytes": 3457409
+    },
+    {
+      "file": "textures/T_Elara_Tunic_ORM.png",
+      "sha256": "73ecfb4a7d7ac48ff6630eb23c6cfbf19f2e37b46bd79441ced9c0c1fffb1e7d",
+      "bytes": 141141
+    },
+    {
+      "file": "textures/T_Hair_BaseColor.png",
+      "sha256": "eff554b69e7ad720064665cb392612aad9d45b5c6b006ed32b7e79b07bdf953d",
+      "bytes": 330533
+    },
+    {
+      "file": "textures/T_Hair_Normal.png",
+      "sha256": "00805f99ebf95289655c530ed49973db195df56c85393982d4c43c6a848daf21",
+      "bytes": 822789
+    },
+    {
+      "file": "textures/T_Hair_ORM.png",
+      "sha256": "8ab64c055b8e40e18d1f4eae89ddcf7d8ad10c47fe2f82e14f919a50f30f4293",
+      "bytes": 163047
+    },
+    {
+      "file": "textures/T_Knit_BaseColor.png",
+      "sha256": "4222f8109972d07eb7194e9e0ecdf5996aade3e1f5cfc29ffb61d3349162c99c",
+      "bytes": 24704
+    },
+    {
+      "file": "textures/T_Knit_Normal.png",
+      "sha256": "a21e8fce50228ab5995514f7ce42a18d68dd0b7c336a752a564c62f1b04b2de6",
+      "bytes": 15427
+    },
+    {
+      "file": "textures/T_Leather_BaseColor.png",
+      "sha256": "8ed8111ce41eba9fb47b1524a586a6509d2beac3cb6055e698fc78e540613c04",
+      "bytes": 789977
+    },
+    {
+      "file": "textures/T_Leather_Normal.png",
+      "sha256": "9fde2ffc1ee096553ba13ea1dc83489de17842c2d900dfa2bf33e8bc7e875ab4",
+      "bytes": 1402965
+    },
+    {
+      "file": "textures/T_Leather_ORM.png",
+      "sha256": "3237716ba7260b337588168cc8ce6dfe2fb254ef86c4029e59e8e37f77ce6ee1",
+      "bytes": 577868
+    },
+    {
+      "file": "textures/T_Wood_BaseColor.png",
+      "sha256": "b97c52de0f282558a32fa9531c4c40fda1ff87d6908add7291b717617d4b0666",
+      "bytes": 351352
+    },
+    {
+      "file": "textures/T_Wood_Normal.png",
+      "sha256": "55a8446058fb425c107d842f12dce2977c3474acbe57e8522e6dbf1798d09c49",
+      "bytes": 587779
+    },
+    {
+      "file": "textures/T_test.png",
+      "sha256": "5c69985a50b9f08053862977709f4262fcb3e5f12c1c0158512e43fa6b622a61",
+      "bytes": 12613
+    }
+  ],
+  "validation": [
+    "glb-check-hero.json",
+    "glb-check-proxy.json",
+    "glb-check-runtime.json"
+  ],
+  "evidence": [
+    "renders/elara_neutral_face.png",
+    "renders/elara_neutral_front.png",
+    "renders/elara_neutral_rear.png",
+    "renders/elara_neutral_side.png",
+    "renders/elara_neutral_three_quarter.png",
+    "renders/elara_production_bust.png",
+    "renders/elara_production_face3.png",
+    "renders/elara_production_front.png",
+    "renders/elara_production_rear.png",
+    "renders/elara_production_side.png",
+    "renders/elara_production_three_quarter.png",
+    "renders/runtime_glb_neutral_face.png",
+    "renders/runtime_glb_neutral_front.png",
+    "renders/v1elara_neutral_face.png",
+    "renders/v1elara_neutral_front.png",
+    "renders/v1elara_neutral_three_quarter.png"
+  ],
+  "approval": {
+    "status": "candidate",
+    "required": [
+      "all glb checks pass",
+      "independent artistic review (not the generating agent)",
+      "Infinity Gate B capture"
+    ],
+    "reviews": [],
+    "publication": "blocked: hero replacement needs owner visual approval before catalogue admission"
+  },
+  "created": "2026-11-07T19:03:23Z",
+  "author": "Claude (Character Foundry CF1 thread)"
+}

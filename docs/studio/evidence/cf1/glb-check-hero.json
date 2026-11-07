@@ -1,0 +1,265 @@
+{
+  "schema_version": "finalverse.cf-glb-check/v1",
+  "file": "elara_cf1.glb",
+  "profile": "hero",
+  "bytes": 6596724,
+  "sha256": "eabfd62b2f562a91d810cde0808b26750bfc48ee4489867c17a6bdfdbb42b7c5",
+  "checks": [
+    {
+      "check": "bufferviews_in_bounds",
+      "pass": true,
+      "detail": "1897 views"
+    },
+    {
+      "check": "y_up_height",
+      "pass": true,
+      "detail": "height along +Y = 1.767 m (canon 1.72)"
+    },
+    {
+      "check": "ground_contact",
+      "pass": true,
+      "detail": "min Y = 0.0000 m (origin at ground contact)"
+    },
+    {
+      "check": "centred",
+      "pass": true,
+      "detail": "XZ centre near origin"
+    },
+    {
+      "check": "within_8m",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "triangle_budget",
+      "pass": true,
+      "detail": "100980 <= 250000"
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_Leather",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_Skin",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_Leggings",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_Hair",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_Brass",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_Cloak",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_CloakLining",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_CloakTrim",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_Tunic",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_Eye.L",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_Eye.R",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_Flower",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_Wood",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_HairCap",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_Lashes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:M_Elara_LeatherDark",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "textures_jpeg_or_png",
+      "pass": true,
+      "detail": "{'jpeg': 22}"
+    },
+    {
+      "check": "texture_dim_cap",
+      "pass": true,
+      "detail": "2048 <= 2048"
+    },
+    {
+      "check": "texture_memory",
+      "pass": true,
+      "detail": "149.3 MiB <= 160"
+    },
+    {
+      "check": "pbr_channels_present",
+      "pass": true,
+      "detail": "{'baseColorTexture': 10, 'normalTexture': 9, 'metallicRoughnessTexture': 5}"
+    },
+    {
+      "check": "one_skin",
+      "pass": true,
+      "detail": "1 skins"
+    },
+    {
+      "check": "inverse_bind_matrices",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "skeleton_structure",
+      "pass": true,
+      "detail": "163 joints; missing: []"
+    },
+    {
+      "check": "skin_weights_normalised",
+      "pass": true,
+      "detail": "max |sum-1| = 0.0000"
+    },
+    {
+      "check": "max_4_influences",
+      "pass": true,
+      "detail": "0 primitives use WEIGHTS_1"
+    },
+    {
+      "check": "joint_indices_in_range",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "all_mesh_nodes_skinned",
+      "pass": true,
+      "detail": "128/128"
+    },
+    {
+      "check": "anim_finite_monotonic:Elara_Idle",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "anim_finite_monotonic:Elara_Walk",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "anim_finite_monotonic:Elara_Wave",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "clip_present:Elara_Idle",
+      "pass": true,
+      "detail": "['Elara_Idle', 'Elara_Walk', 'Elara_Wave']"
+    },
+    {
+      "check": "clip_present:Elara_Walk",
+      "pass": true,
+      "detail": "['Elara_Idle', 'Elara_Walk', 'Elara_Wave']"
+    },
+    {
+      "check": "clip_present:Elara_Wave",
+      "pass": true,
+      "detail": "['Elara_Idle', 'Elara_Walk', 'Elara_Wave']"
+    }
+  ],
+  "stats": {
+    "triangles": 100980,
+    "primitives": 133,
+    "mesh_nodes": 128,
+    "bounds_min": [
+      -0.3592,
+      0.0,
+      -0.2
+    ],
+    "bounds_max": [
+      0.3579,
+      1.7669,
+      0.1779
+    ],
+    "materials": 16,
+    "material_channels": {
+      "baseColorTexture": 10,
+      "normalTexture": 9,
+      "metallicRoughnessTexture": 5
+    },
+    "images": 22,
+    "image_formats": {
+      "jpeg": 22
+    },
+    "max_texture_dim": 2048,
+    "gpu_texture_mib_rgba8_mips": 149.3,
+    "joints": 163,
+    "animations": [
+      {
+        "name": "Elara_Idle",
+        "duration_s": 4.0,
+        "channels": 489,
+        "paths": [
+          "rotation",
+          "scale",
+          "translation"
+        ]
+      },
+      {
+        "name": "Elara_Walk",
+        "duration_s": 1.067,
+        "channels": 489,
+        "paths": [
+          "rotation",
+          "scale",
+          "translation"
+        ]
+      },
+      {
+        "name": "Elara_Wave",
+        "duration_s": 3.0,
+        "channels": 489,
+        "paths": [
+          "rotation",
+          "scale",
+          "translation"
+        ]
+      }
+    ]
+  },
+  "pass": true
+}

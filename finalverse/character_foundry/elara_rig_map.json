@@ -1,0 +1,16 @@
+{
+  "schema_version": "finalverse.cf-rig-map/v1",
+  "source_skeleton": "makehuman.default/110 (163 bones, CC0)",
+  "target_rig": "finalverse.humanoid/v1",
+  "note": "Side suffixes: MakeHuman .L/.R and humanoid/v1 _l/_r both mean the character's own left/right (+X in Blender, +X in glTF).",
+  "map": {
+    "root": "root", "pelvis": "spine05", "spine": "spine03", "chest": "spine01", "neck": "neck01", "head": "head",
+    "shoulder_l": "clavicle.L", "upper_arm_l": "upperarm01.L", "forearm_l": "lowerarm01.L", "hand_l": "wrist.L",
+    "shoulder_r": "clavicle.R", "upper_arm_r": "upperarm01.R", "forearm_r": "lowerarm01.R", "hand_r": "wrist.R",
+    "thigh_l": "upperleg01.L", "shin_l": "lowerleg01.L", "foot_l": "foot.L",
+    "thigh_r": "upperleg01.R", "shin_r": "lowerleg01.R", "foot_r": "foot.R",
+    "eye_l": "eye.L", "eye_r": "eye.R", "jaw": "jaw",
+    "tool_l": "finger3-1.L", "tool_r": "finger3-1.R", "crown": "head@tail"
+  },
+  "collapse_rule": "When driving only the 26 mapped joints, fold each unmapped deform bone's weights into its nearest mapped ancestor (e.g. upperarm02.* -> upperarm01.*, spine04 -> spine05, spine02 -> spine01, neck02/neck03 -> neck01, fingers/metacarpals -> wrist, toes -> foot, face bones -> head except jaw/eyes)."
+}
