@@ -1,0 +1,116 @@
+{
+  "schema_version": "finalverse.cf-glb-check/v1",
+  "file": "elara_cf1_proxy.glb",
+  "profile": "proxy",
+  "bytes": 410440,
+  "sha256": "6d9e6714c8bacd66f05f4d3d831a99827167860c29ab1e6a5f64470d83aa6c4a",
+  "checks": [
+    {
+      "check": "bufferviews_in_bounds",
+      "pass": true,
+      "detail": "21 views"
+    },
+    {
+      "check": "y_up_height",
+      "pass": true,
+      "detail": "height along +Y = 1.767 m (canon 1.72)"
+    },
+    {
+      "check": "ground_contact",
+      "pass": true,
+      "detail": "min Y = -0.0000 m (origin at ground contact)"
+    },
+    {
+      "check": "centred",
+      "pass": true,
+      "detail": "XZ centre near origin"
+    },
+    {
+      "check": "within_8m",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "triangle_budget",
+      "pass": true,
+      "detail": "20256 <= 40000"
+    },
+    {
+      "check": "single_node_single_mesh",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:proxy_skin",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:proxy_leather",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:proxy_tunic",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:proxy_metal",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:proxy_wood",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:proxy_cloak",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_alpha_opaque:proxy_hair",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "material_count",
+      "pass": true,
+      "detail": "7 <= 8"
+    },
+    {
+      "check": "factor_only_pbr",
+      "pass": true,
+      "detail": ""
+    }
+  ],
+  "stats": {
+    "triangles": 20256,
+    "primitives": 7,
+    "mesh_nodes": 1,
+    "bounds_min": [
+      -0.3581,
+      -0.0,
+      -0.2
+    ],
+    "bounds_max": [
+      0.3576,
+      1.7669,
+      0.1783
+    ],
+    "materials": 7,
+    "material_channels": {
+      "baseColorTexture": 0,
+      "normalTexture": 0,
+      "metallicRoughnessTexture": 0
+    },
+    "images": 0,
+    "image_formats": {},
+    "max_texture_dim": 0,
+    "gpu_texture_mib_rgba8_mips": 0.0,
+    "animations": []
+  },
+  "pass": true
+}
