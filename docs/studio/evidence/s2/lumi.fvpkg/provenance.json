@@ -1,0 +1,17 @@
+{
+  "archetype": "floating_spirit",
+  "authority": "none: local candidate; no publication, binding or world mutation",
+  "blender_version": "5.4.0 Alpha",
+  "build_hash": "f165abf4e77f",
+  "evaluation_digest": "0dfe417d1be64648c54348166a0dd2cd6387436f20df09174a8842f18e0be418",
+  "job": "ca28891e-853f-4573-b24a-9f5c6601ccdf",
+  "license": "user-declared; required at Genesis admission",
+  "model_receipts": [],
+  "plan_digest": "3390f1460cfb4012819dd355ab2775d100b307885cdf2255e5bf4319916cd86e",
+  "plan_protocol": "finalverse.creation/v2",
+  "product": "Finalverse Studio",
+  "scene_revision": "f63ac7bbe9acfcbe7a7bd2257ea8e96e5b305405f4362a47736265359abe7a4a",
+  "schema_version": "finalverse.studio-provenance/v1",
+  "source": "loop-export",
+  "subject": "b83d23c0-427e-42e6-85f0-11caea9f3218"
+}

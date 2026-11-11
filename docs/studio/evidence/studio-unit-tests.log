@@ -1,0 +1,14 @@
+test_macos_bundle_and_executable_agree (test_branding.ProductContract.test_macos_bundle_and_executable_agree) ... ok
+test_native_icons_use_upstream_glyph_canvas (test_branding.ProductContract.test_native_icons_use_upstream_glyph_canvas) ... ok
+test_upstream_licenses_and_original_resources_present (test_branding.ProductContract.test_upstream_licenses_and_original_resources_present) ... ok
+test_duplicate_json_keys (test_candidate.IntegrityBoundary.test_duplicate_json_keys) ... ok
+test_integrity_does_not_grant_geometry_or_publication (test_candidate.IntegrityBoundary.test_integrity_does_not_grant_geometry_or_publication) ... ok
+test_manifest_cannot_assert_publication (test_candidate.IntegrityBoundary.test_manifest_cannot_assert_publication) ... ok
+test_no_symlink_asset (test_candidate.IntegrityBoundary.test_no_symlink_asset) ... ok
+test_no_traversal_or_extra_asset (test_candidate.IntegrityBoundary.test_no_traversal_or_extra_asset) ... ok
+test_tampered_asset (test_candidate.IntegrityBoundary.test_tampered_asset) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.009s
+
+OK

@@ -1,0 +1,90 @@
+{
+  "schema_version": "finalverse.studio-evidence/v1",
+  "capture_format": "JSON pretty printed; version.txt trailing whitespace normalized; private original captures retained; screenshots unchanged",
+  "files": {
+    "artifact-verification.json": {
+      "bytes": 2180,
+      "sha256": "5c0877f3de632d438800bcb105f4683f94e10726c69edd5d733dc7d45d8b5c38"
+    },
+    "build-pins.json": {
+      "bytes": 1457,
+      "sha256": "e04765e21a7642c58bb789cea15f95a6d5b5f48e0c3d6ee94fd356763286ef5e"
+    },
+    "candidate.json": {
+      "bytes": 1408,
+      "sha256": "e229c6ecc7d7886c1b6e9ae46ab340d7e8e300e0e99d911e02625af70d543c08"
+    },
+    "gui-completed.png": {
+      "bytes": 652275,
+      "sha256": "1a775f3c254a966ae79cb9cf44a10db5e09d3716419113ba9c7cd22ee48b9a90"
+    },
+    "gui-job.json": {
+      "bytes": 2185,
+      "sha256": "f8f478e139c3e3d62ba2814049d851d3707c9ff8f49b731e81c0a4c10cff88a9"
+    },
+    "gui-proposed.png": {
+      "bytes": 640151,
+      "sha256": "e7050edef64ec0c027a9e51e617cbcf695236a695e5bd871917606b5a22e83a5"
+    },
+    "mcp-artist.json": {
+      "bytes": 163,
+      "sha256": "3e059186fc613a695fae30397e1a24756d80f9fef450bf81435c74f9904f9ac7"
+    },
+    "mcp-client.json": {
+      "bytes": 84999,
+      "sha256": "491f3061b9f9605b3b30d131c1228652ce5e051be0f3a8271d9f645b5dfc8049"
+    },
+    "model-attempts.json": {
+      "bytes": 5561,
+      "sha256": "c2b50bf06df7f04aa6ebb1b9488f814acc1dbac5a810e69d47ff2ade8c862411"
+    },
+    "model-inventory.json": {
+      "bytes": 1282,
+      "sha256": "2cc737c8f0cf9649d15c955aaf172d575e45511a048182379abede7f24e19305"
+    },
+    "model-plan.json": {
+      "bytes": 3694,
+      "sha256": "a2b39a61bbd403e222522df1171ad0a149b531a358a4e22b5891fb9ba93228ac"
+    },
+    "native-result.json": {
+      "bytes": 30391,
+      "sha256": "03c247d4b7a2a4e559728af1ba542a4af0fb866bed3094bad92197e6798eae16"
+    },
+    "native-safety.json": {
+      "bytes": 294,
+      "sha256": "cde4d07f30ad13adacb2af67014f5c4de505311632ec0cfe123cee03631bc73f"
+    },
+    "native-ui-check.py": {
+      "bytes": 2455,
+      "sha256": "955ab09b35e7f4c73dbec5d7ac732cd77d8c48d05e8e135d8616adb46462a789"
+    },
+    "native-ui.json": {
+      "bytes": 422,
+      "sha256": "56d8de1e8966f8e49dad5bd292a24a0d64c7e73443a5b5b037c5af6537610873"
+    },
+    "ollama-version.json": {
+      "bytes": 27,
+      "sha256": "3b6321c2bb0c62e1a1356b4a451cc3ea7f27ad440c96450b30573424199bb3cd"
+    },
+    "preview.png": {
+      "bytes": 99246,
+      "sha256": "0be0194cb47105487b1314266821cbc4a984eb15db01ad1344651d7ad4f7d784"
+    },
+    "qwen-admission.json": {
+      "bytes": 327,
+      "sha256": "099bc36b90c5b6bf299c2013485aebe2c9ed19b6782bbca18e53edf0a2f22b05"
+    },
+    "s0-regression.json": {
+      "bytes": 725,
+      "sha256": "8ed649aa09e2cbacfe26147900e06a9c8cb3bc54c187e3a936abdbfc6a8b9a88"
+    },
+    "unit-tests.txt": {
+      "bytes": 3645,
+      "sha256": "a95dc2963a7b067640a896e0d99f7bf147a7334f023cbacc7451ea02fee922d6"
+    },
+    "version.txt": {
+      "bytes": 1352,
+      "sha256": "544c7478715d51ada630aa27d3572da004cd6efe3c0d30b592f445b0d00b94ce"
+    }
+  }
+}

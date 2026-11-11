@@ -1,38 +1,30 @@
-<!--
-Keep this document short & concise,
-linking to external resources instead of including content in-line.
-See 'release/text/readme.html' for the end user read-me.
--->
+# Finalverse Studio
 
-Blender
-=======
+**AI-Native 3D Creation, Animation, and World Authoring Environment.**
 
-Blender is the free and open source 3D creation suite.
-It supports the entirety of the 3D pipeline—modeling, rigging, animation, simulation, rendering, compositing,
-motion tracking and video editing.
+Finalverse Studio is a maintained Blender fork for the Finalverse ecosystem. It
+preserves Blender's modeling, Python APIs and `.blend` interoperability while
+adding a dedicated Finalverse authoring workspace and an independently branded
+application. Based on Blender 5.4 alpha; this is a development foundation.
 
-![Blender screenshot](https://code.blender.org/wp-content/uploads/2018/12/springrg.jpg "Blender screenshot")
+Studio creates assets. Genesis validates candidates and governs publication.
+Civilization OS operates persistent residents and worlds. Infinity renders the
+published results. An editor export never grants world or publication authority.
 
-Project Pages
--------------
+S0 provides the branded application, scene inspection with persistent object IDs,
+local creation receipts, editable source and GLB candidate export. Embedded model
+planning and MCP are **S1 work**, visibly disabled in S0. They are not implemented
+by a provider selector or a branded splash screen.
 
-- [Main Website](https://www.blender.org)
-- [Reference Manual](https://docs.blender.org/manual/en/latest/index.html)
-- [User Community](https://www.blender.org/community/)
+- [Build and run](docs/studio/S0-BUILD.md)
+- [Architecture](docs/studio/S0-ARCHITECTURE.md)
+- [Acceptance and limits](docs/studio/S0-ACCEPTANCE.md)
+- [Fork maintenance](docs/studio/S0-FORK-STRATEGY.md)
+- [Upstream Blender introduction](docs/studio/UPSTREAM-README.md)
 
-Development
------------
-
-- [Build Instructions](https://developer.blender.org/docs/handbook/building_blender/)
-- [Code Review & Bug Tracker](https://projects.blender.org)
-- [Developer Forum](https://devtalk.blender.org)
-- [Developer Documentation](https://developer.blender.org/docs/)
-
-
-License
--------
-
-Blender as a whole is licensed under the GNU General Public License, Version 3.
-Individual files may have a different but compatible license.
-
-See [blender.org/about/license](https://www.blender.org/about/license) for details.
+Blender and the Blender Authors remain the underlying upstream project. Required
+copyright, GPL and third-party notices are retained in [COPYING](COPYING),
+[AUTHORS](AUTHORS), and upstream source files. Finalverse Studio's original brand
+does not imply endorsement by the Blender Foundation. See the official
+[Blender license](https://www.blender.org/about/license/) and
+[trademark policy](https://www.blender.org/about/trademark-policy/).

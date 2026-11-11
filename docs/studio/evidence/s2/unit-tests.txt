@@ -1,0 +1,49 @@
+test_macos_bundle_and_executable_agree (test_branding.ProductContract.test_macos_bundle_and_executable_agree) ... ok
+test_native_icons_use_upstream_glyph_canvas (test_branding.ProductContract.test_native_icons_use_upstream_glyph_canvas) ... ok
+test_upstream_licenses_and_original_resources_present (test_branding.ProductContract.test_upstream_licenses_and_original_resources_present) ... ok
+test_duplicate_json_keys (test_candidate.IntegrityBoundary.test_duplicate_json_keys) ... ok
+test_integrity_does_not_grant_geometry_or_publication (test_candidate.IntegrityBoundary.test_integrity_does_not_grant_geometry_or_publication) ... ok
+test_manifest_cannot_assert_publication (test_candidate.IntegrityBoundary.test_manifest_cannot_assert_publication) ... ok
+test_no_symlink_asset (test_candidate.IntegrityBoundary.test_no_symlink_asset) ... ok
+test_no_traversal_or_extra_asset (test_candidate.IntegrityBoundary.test_no_traversal_or_extra_asset) ... ok
+test_tampered_asset (test_candidate.IntegrityBoundary.test_tampered_asset) ... ok
+test_approval_cannot_be_transferred_or_plan_tampered (test_creation.DurableApprovalTests.test_approval_cannot_be_transferred_or_plan_tampered) ... ok
+test_cancel_invalidates_execution_state (test_creation.DurableApprovalTests.test_cancel_invalidates_execution_state) ... ok
+test_duplicate_jobs_across_connections_are_idempotent (test_creation.DurableApprovalTests.test_duplicate_jobs_across_connections_are_idempotent) ... ok
+test_missing_approval_and_stale_scene_refused (test_creation.DurableApprovalTests.test_missing_approval_and_stale_scene_refused) ... ok
+test_restart_never_replays_uncertain_work (test_creation.DurableApprovalTests.test_restart_never_replays_uncertain_work) ... ok
+test_restart_requires_new_approval_for_unstarted_work (test_creation.DurableApprovalTests.test_restart_requires_new_approval_for_unstarted_work) ... ok
+test_second_host_is_refused_and_symlink_workspace_rejected (test_creation.DurableApprovalTests.test_second_host_is_refused_and_symlink_workspace_rejected) ... ok
+test_closed_language_rejects_unknown_code_and_fields (test_creation.ProtocolTests.test_closed_language_rejects_unknown_code_and_fields) ... ok
+test_duplicate_keys_and_forward_references_refused (test_creation.ProtocolTests.test_duplicate_keys_and_forward_references_refused) ... ok
+test_path_escape_and_nonfinite_bool_numbers_refused (test_creation.ProtocolTests.test_path_escape_and_nonfinite_bool_numbers_refused) ... ok
+test_remote_transport_requires_https_and_auth (test_creation.ProtocolTests.test_remote_transport_requires_https_and_auth) ... ok
+test_repeated_outputs_and_count_bounds (test_creation.ProtocolTests.test_repeated_outputs_and_count_bounds) ... ok
+test_valid_triangle_and_rejections (test_creation_v2.GLBCheck.test_valid_triangle_and_rejections) ... ok
+test_fixture_plans_validate (test_creation_v2.LanguageV2.test_fixture_plans_validate) ... ok
+test_humanoid_may_walk_but_not_hover_unless_allowed (test_creation_v2.LanguageV2.test_humanoid_may_walk_but_not_hover_unless_allowed) ... ok
+test_model_prompt_is_generated_from_schema_and_bounded (test_creation_v2.LanguageV2.test_model_prompt_is_generated_from_schema_and_bounded) ... ok
+test_references_types_and_bounds (test_creation_v2.LanguageV2.test_references_types_and_bounds) ... ok
+test_spirit_never_gets_skeleton_legs_or_walk (test_creation_v2.LanguageV2.test_spirit_never_gets_skeleton_legs_or_walk) ... ok
+test_v1_plans_still_validate_and_cannot_use_v2_tools (test_creation_v2.LanguageV2.test_v1_plans_still_validate_and_cannot_use_v2_tools) ... ok
+test_round_trip_update_and_delete (test_providers.KeychainStorage.test_round_trip_update_and_delete) ... ok
+test_anthropic_adapter_uses_messages_api_and_same_validation (test_providers.ProviderContracts.test_anthropic_adapter_uses_messages_api_and_same_validation) ... ok
+test_bad_credentials_are_classified_without_body (test_providers.ProviderContracts.test_bad_credentials_are_classified_without_body) ... ok
+test_malformed_model_output_is_rejected_without_fallback (test_providers.ProviderContracts.test_malformed_model_output_is_rejected_without_fallback) ... ok
+test_missing_keychain_credential_fails_before_network (test_providers.ProviderContracts.test_missing_keychain_credential_fails_before_network) ... ok
+test_ollama_inventory_schema_and_supported_thinking (test_providers.ProviderContracts.test_ollama_inventory_schema_and_supported_thinking) ... ok
+test_openai_compatible_uses_same_closed_plan (test_providers.ProviderContracts.test_openai_compatible_uses_same_closed_plan) ... ok
+test_oversize_local_weights_are_refused_before_generation (test_providers.ProviderContracts.test_oversize_local_weights_are_refused_before_generation) ... ok
+test_redirect_disabled_and_unknown_model_are_refused (test_providers.ProviderContracts.test_redirect_disabled_and_unknown_model_are_refused) ... ok
+test_same_admission_runs_for_every_provider_kind (test_providers.ProviderContracts.test_same_admission_runs_for_every_provider_kind) ... ok
+test_socket_timeout_is_bounded (test_providers.ProviderContracts.test_socket_timeout_is_bounded) ... ok
+test_unreachable_hosts_are_classified (test_providers.ProviderContracts.test_unreachable_hosts_are_classified) ... ok
+test_default_registry_has_local_default_and_maple_off (test_providers.ProviderRegistry.test_default_registry_has_local_default_and_maple_off) ... ok
+test_registry_refuses_literal_secrets_and_moved_maple (test_providers.ProviderRegistry.test_registry_refuses_literal_secrets_and_moved_maple) ... ok
+test_s1_ollama_maple_preset_upgrades_to_openai_v1 (test_providers.ProviderRegistry.test_s1_ollama_maple_preset_upgrades_to_openai_v1) ... ok
+test_v1_registry_migrates_without_secrets (test_providers.ProviderRegistry.test_v1_registry_migrates_without_secrets) ... ok
+
+----------------------------------------------------------------------
+Ran 44 tests in 3.244s
+
+OK

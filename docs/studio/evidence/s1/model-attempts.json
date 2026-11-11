@@ -1,0 +1,182 @@
+[
+  {
+    "attempt": "gemma-plan-first",
+    "ok": false,
+    "error": "CreationError",
+    "detail": "Reference precedes its creation",
+    "total_wall_seconds": 80.65546400000312,
+    "receipt": null,
+    "model": "gemma4:e4b",
+    "substitute_used": false
+  },
+  {
+    "attempt": "gemma-plan-second",
+    "ok": false,
+    "error": "Invalid creation plan: Reference precedes its creation",
+    "detail": null,
+    "total_wall_seconds": 96.26082279199909,
+    "receipt": {
+      "fallback_used": false,
+      "input_digest": "5d3698d48b7e185cbe6c07af9850c991cb92f719fb8c0484265de97775beeb03",
+      "latency_ms": 95532.60041699832,
+      "model": "gemma4:e4b",
+      "provider": "local",
+      "real_inference": true,
+      "response_digest": "edee1aec9fb4f35ca44d292a8d2af9718d46e76b0d47bc2949a0c5988913c0ff",
+      "served_model": "gemma4:e4b",
+      "usage": {
+        "input_tokens": 2347,
+        "output_tokens": 367
+      }
+    },
+    "model": "gemma4:e4b",
+    "substitute_used": false
+  },
+  {
+    "attempt": "gemma-plan-json",
+    "ok": false,
+    "error": "Invalid creation plan: Array length out of bounds",
+    "detail": null,
+    "total_wall_seconds": 25.278121832998295,
+    "receipt": {
+      "fallback_used": false,
+      "input_digest": "19828bbc9af9350586b80dc2048cd447502a1c61d29ff08680fe637a9f26c8c4",
+      "latency_ms": 25072.675582996453,
+      "model": "gemma4:e4b",
+      "provider": "local",
+      "real_inference": true,
+      "response_digest": "06236e4e6be12908a413d1454a5e3a2c6229a0ed9f593cfcf988a8c737ed73f9",
+      "served_model": "gemma4:e4b",
+      "usage": {
+        "input_tokens": 2435,
+        "output_tokens": 440
+      }
+    },
+    "model": "gemma4:e4b",
+    "substitute_used": false
+  },
+  {
+    "attempt": "gemma-plan-euler",
+    "ok": false,
+    "error": "Invalid creation plan: Array length out of bounds",
+    "detail": null,
+    "total_wall_seconds": 25.152610500001174,
+    "receipt": {
+      "fallback_used": false,
+      "input_digest": "2dee156691cf30181e8916035a47cb0a466047e608e121685ee71d6ea165499f",
+      "latency_ms": 24989.860624998983,
+      "model": "gemma4:e4b",
+      "provider": "local",
+      "real_inference": true,
+      "response_digest": "ecda4ce8ed97633b152b3fd7befe45d8af8d29d02de1fc9ef621495bcabf1be2",
+      "served_model": "gemma4:e4b",
+      "usage": {
+        "input_tokens": 2497,
+        "output_tokens": 432
+      }
+    },
+    "model": "gemma4:e4b",
+    "substitute_used": false
+  },
+  {
+    "attempt": "gemma-plan-example",
+    "ok": false,
+    "error": "Invalid creation plan: Unknown object field",
+    "detail": null,
+    "total_wall_seconds": 19.54370512499736,
+    "receipt": {
+      "fallback_used": false,
+      "input_digest": "a630c0198680d8e722fc325fe2ac1cd81128d8042b7b72b78ef8cf46696ed5e8",
+      "latency_ms": 19172.989874998166,
+      "model": "gemma4:e4b",
+      "provider": "local",
+      "real_inference": true,
+      "response_digest": "5a78dd916031b261da8c2a15f15f8b6025555a8652efe1b2e33ff3958259f47f",
+      "served_model": "gemma4:e4b",
+      "usage": {
+        "input_tokens": 1095,
+        "output_tokens": 337
+      }
+    },
+    "model": "gemma4:e4b",
+    "substitute_used": false
+  },
+  {
+    "attempt": "gemma-plan-explicit",
+    "ok": true,
+    "error": null,
+    "detail": null,
+    "total_wall_seconds": 16.60492633299873,
+    "receipt": {
+      "fallback_used": false,
+      "input_digest": "21b430a66698e7573a6cbd20e3eb998a25b2f835809abe218d07c49fd0ca80af",
+      "latency_ms": 16272.734458994819,
+      "model": "gemma4:e4b",
+      "provider": "local",
+      "real_inference": true,
+      "response_digest": "899bd7c77f8d1e0a2ed17bf7893d71bbd99261f50ed0f81fbfccdb17e05ceac6",
+      "served_model": "gemma4:e4b",
+      "usage": {
+        "input_tokens": 1192,
+        "output_tokens": 325
+      }
+    },
+    "model": "gemma4:e4b",
+    "substitute_used": false
+  },
+  {
+    "attempt": "gemma-plan-final",
+    "ok": true,
+    "error": null,
+    "detail": null,
+    "total_wall_seconds": 35.44362712499424,
+    "receipt": {
+      "fallback_used": false,
+      "input_digest": "21b430a66698e7573a6cbd20e3eb998a25b2f835809abe218d07c49fd0ca80af",
+      "latency_ms": 35385.90254200244,
+      "model": "gemma4:e4b",
+      "provider": "local",
+      "real_inference": true,
+      "response_digest": "899bd7c77f8d1e0a2ed17bf7893d71bbd99261f50ed0f81fbfccdb17e05ceac6",
+      "scene_id": "0ea781bb-b0bc-45dd-87c3-a309b79f8797",
+      "scene_revision": "9b85d99421f166a62645dcf2c7911f295c5b5ef4f878f85e1d796d10445aab2f",
+      "served_model": "gemma4:e4b",
+      "usage": {
+        "input_tokens": 1192,
+        "output_tokens": 325
+      }
+    },
+    "model": "gemma4:e4b",
+    "substitute_used": false
+  },
+  {
+    "attempt": "qwen-plan-first",
+    "ok": false,
+    "error": "TimeoutError",
+    "detail": "timed out",
+    "total_wall_seconds": 120.28255545900174,
+    "receipt": null,
+    "model": "qwen3:30b-a3b",
+    "substitute_used": false
+  },
+  {
+    "attempt": "qwen-inspect",
+    "ok": false,
+    "error": "TimeoutError",
+    "detail": "timed out",
+    "total_wall_seconds": 120.37619962500321,
+    "receipt": null,
+    "model": "qwen3:30b-a3b",
+    "substitute_used": false
+  },
+  {
+    "attempt": "qwen-admission",
+    "ok": false,
+    "error": "CreationError",
+    "detail": "Local model weights exceed the 65% physical-memory admission budget or have no size; choose a smaller model or configured remote provider",
+    "total_wall_seconds": 0.07328774999768939,
+    "receipt": null,
+    "model": "qwen3:30b-a3b",
+    "substitute_used": false
+  }
+]

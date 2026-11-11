@@ -1,0 +1,2938 @@
+{
+  "passed": true,
+  "protocol_version": "2025-11-25",
+  "client": "official Python MCP SDK 1.23.3",
+  "tools": [
+    "studio_capabilities",
+    "studio_inspect",
+    "studio_submit",
+    "studio_status",
+    "studio_cancel"
+  ],
+  "transcript": [
+    {
+      "tool": "studio_capabilities",
+      "arguments": null,
+      "is_error": false,
+      "result": {
+        "protocol": {
+          "type": "object",
+          "properties": {
+            "schema_version": {
+              "const": "finalverse.creation/v1"
+            },
+            "summary": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 512
+            },
+            "operations": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 32,
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "const": "scene.inspect"
+                      }
+                    },
+                    "required": [
+                      "op"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "const": "object.create"
+                      },
+                      "ref": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80,
+                        "pattern": "^@[a-z][a-z0-9_]{0,31}$"
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80
+                      },
+                      "primitive": {
+                        "enum": [
+                          "cube",
+                          "sphere",
+                          "cylinder",
+                          "plane"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "ref",
+                      "name",
+                      "primitive"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "const": "object.transform"
+                      },
+                      "target": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80,
+                        "pattern": "^(?:@[a-z][a-z0-9_]{0,31}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"
+                      },
+                      "location": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "minimum": -1000,
+                          "maximum": 1000
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "rotation": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "minimum": -6.284,
+                          "maximum": 6.284
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "scale": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "minimum": 0.001,
+                          "maximum": 100
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "target"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "const": "mesh.bevel"
+                      },
+                      "target": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80,
+                        "pattern": "^(?:@[a-z][a-z0-9_]{0,31}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"
+                      },
+                      "width": {
+                        "type": "number",
+                        "minimum": 0.001,
+                        "maximum": 0.5
+                      },
+                      "segments": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 4
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "target",
+                      "width",
+                      "segments"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "const": "material.create"
+                      },
+                      "ref": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80,
+                        "pattern": "^@[a-z][a-z0-9_]{0,31}$"
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80
+                      },
+                      "color": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "minItems": 4,
+                        "maxItems": 4
+                      },
+                      "roughness": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      "metallic": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "ref",
+                      "name",
+                      "color",
+                      "roughness",
+                      "metallic"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "const": "material.assign"
+                      },
+                      "target": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80,
+                        "pattern": "^(?:@[a-z][a-z0-9_]{0,31}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"
+                      },
+                      "material": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80,
+                        "pattern": "^(?:@[a-z][a-z0-9_]{0,31}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "target",
+                      "material"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "const": "camera.configure"
+                      },
+                      "ref": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80,
+                        "pattern": "^@[a-z][a-z0-9_]{0,31}$"
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80
+                      },
+                      "location": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "minimum": -1000,
+                          "maximum": 1000
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "look_at": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "minimum": -1000,
+                          "maximum": 1000
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "lens": {
+                        "type": "number",
+                        "minimum": 20,
+                        "maximum": 120
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "ref",
+                      "name",
+                      "location",
+                      "look_at",
+                      "lens"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "const": "light.configure"
+                      },
+                      "ref": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80,
+                        "pattern": "^@[a-z][a-z0-9_]{0,31}$"
+                      },
+                      "name": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80
+                      },
+                      "location": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "minimum": -1000,
+                          "maximum": 1000
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "kind": {
+                        "enum": [
+                          "AREA",
+                          "POINT"
+                        ]
+                      },
+                      "energy": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 5000
+                      },
+                      "color": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "ref",
+                      "name",
+                      "location",
+                      "kind",
+                      "energy",
+                      "color"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "const": "animation.keyframe"
+                      },
+                      "target": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80,
+                        "pattern": "^(?:@[a-z][a-z0-9_]{0,31}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})$"
+                      },
+                      "frame": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 240
+                      },
+                      "location": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "minimum": -1000,
+                          "maximum": 1000
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "rotation": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "minimum": -6.284,
+                          "maximum": 6.284
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      },
+                      "scale": {
+                        "type": "array",
+                        "items": {
+                          "type": "number",
+                          "minimum": 0.001,
+                          "maximum": 100
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "target",
+                      "frame"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "const": "scene.render"
+                      },
+                      "path": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80,
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,63}\\.png$"
+                      },
+                      "width": {
+                        "type": "integer",
+                        "minimum": 64,
+                        "maximum": 1024
+                      },
+                      "height": {
+                        "type": "integer",
+                        "minimum": 64,
+                        "maximum": 1024
+                      },
+                      "samples": {
+                        "type": "integer",
+                        "minimum": 1,
+                        "maximum": 64
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "path",
+                      "width",
+                      "height",
+                      "samples"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "const": "scene.save"
+                      },
+                      "path": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80,
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,63}\\.blend$"
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "path"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "op": {
+                        "const": "asset.export"
+                      },
+                      "path": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 80,
+                        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]{0,63}\\.fvasset$"
+                      }
+                    },
+                    "required": [
+                      "op",
+                      "path"
+                    ],
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            }
+          },
+          "required": [
+            "schema_version",
+            "summary",
+            "operations"
+          ],
+          "additionalProperties": false
+        },
+        "approval": "Studio host only",
+        "publication_authorized": false
+      }
+    },
+    {
+      "tool": "studio_inspect",
+      "arguments": null,
+      "is_error": false,
+      "result": {
+        "camera": null,
+        "frame": 1,
+        "frame_range": [
+          1,
+          250
+        ],
+        "materials": [],
+        "objects": [],
+        "revision": "dd6a1281c7f58b800d6e3b39cf2d0575b6ce11b17e6da61b39f9cc532ce37802",
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "schema_version": "finalverse.studio-scene/v2",
+        "world": {
+          "links": [
+            [
+              "Background",
+              "Background",
+              "World Output",
+              "Surface"
+            ]
+          ],
+          "nodes": [
+            [
+              "Background",
+              "BACKGROUND",
+              false,
+              [
+                [
+                  "Color",
+                  [
+                    0.05087608844041824,
+                    0.05087608844041824,
+                    0.05087608844041824,
+                    1.0
+                  ]
+                ],
+                [
+                  "Strength",
+                  1.0
+                ],
+                [
+                  "Weight",
+                  0.0
+                ]
+              ]
+            ],
+            [
+              "World Output",
+              "OUTPUT_WORLD",
+              false,
+              []
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "tool": "studio_submit",
+      "arguments": {
+        "plan": {
+          "schema_version": "finalverse.creation/v1",
+          "summary": "MCP SDK fixture: create, material, animate, export, save",
+          "operations": [
+            {
+              "op": "object.create",
+              "ref": "@cube",
+              "name": "MCP Beacon",
+              "primitive": "cube"
+            },
+            {
+              "op": "mesh.bevel",
+              "target": "@cube",
+              "width": 0.1,
+              "segments": 2
+            },
+            {
+              "op": "material.create",
+              "ref": "@blue",
+              "name": "MCP Blue",
+              "color": [
+                0.04,
+                0.2,
+                0.7,
+                1
+              ],
+              "roughness": 0.4,
+              "metallic": 0.1
+            },
+            {
+              "op": "material.assign",
+              "target": "@cube",
+              "material": "@blue"
+            },
+            {
+              "op": "animation.keyframe",
+              "target": "@cube",
+              "frame": 1,
+              "location": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "op": "animation.keyframe",
+              "target": "@cube",
+              "frame": 24,
+              "location": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "op": "asset.export",
+              "path": "mcp.fvasset"
+            },
+            {
+              "op": "scene.save",
+              "path": "mcp.blend"
+            }
+          ]
+        },
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "base_revision": "dd6a1281c7f58b800d6e3b39cf2d0575b6ce11b17e6da61b39f9cc532ce37802",
+        "request_id": "78d18b25-da6b-4e04-8630-48e2bc21e6a3"
+      },
+      "is_error": false,
+      "result": {
+        "id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f",
+        "request_id": "78d18b25-da6b-4e04-8630-48e2bc21e6a3",
+        "plan": {
+          "schema_version": "finalverse.creation/v1",
+          "summary": "MCP SDK fixture: create, material, animate, export, save",
+          "operations": [
+            {
+              "op": "object.create",
+              "ref": "@cube",
+              "name": "MCP Beacon",
+              "primitive": "cube"
+            },
+            {
+              "op": "mesh.bevel",
+              "target": "@cube",
+              "width": 0.1,
+              "segments": 2
+            },
+            {
+              "op": "material.create",
+              "ref": "@blue",
+              "name": "MCP Blue",
+              "color": [
+                0.04,
+                0.2,
+                0.7,
+                1
+              ],
+              "roughness": 0.4,
+              "metallic": 0.1
+            },
+            {
+              "op": "material.assign",
+              "target": "@cube",
+              "material": "@blue"
+            },
+            {
+              "op": "animation.keyframe",
+              "target": "@cube",
+              "frame": 1,
+              "location": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "op": "animation.keyframe",
+              "target": "@cube",
+              "frame": 24,
+              "location": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "op": "asset.export",
+              "path": "mcp.fvasset"
+            },
+            {
+              "op": "scene.save",
+              "path": "mcp.blend"
+            }
+          ]
+        },
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "base_revision": "dd6a1281c7f58b800d6e3b39cf2d0575b6ce11b17e6da61b39f9cc532ce37802",
+        "digest": "27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179",
+        "source": "mcp",
+        "model_receipt": null,
+        "state": "Proposed",
+        "step": 0,
+        "created_at": 1793754098.065928,
+        "events": [
+          {
+            "event": "Proposed",
+            "time": 1793754098.06593,
+            "detail": null
+          }
+        ],
+        "aliases": {},
+        "results": [],
+        "error": null
+      }
+    },
+    {
+      "tool": "studio_submit",
+      "arguments": {
+        "plan": {
+          "schema_version": "finalverse.creation/v1",
+          "summary": "MCP SDK fixture: create, material, animate, export, save",
+          "operations": [
+            {
+              "op": "object.create",
+              "ref": "@cube",
+              "name": "MCP Beacon",
+              "primitive": "cube"
+            },
+            {
+              "op": "mesh.bevel",
+              "target": "@cube",
+              "width": 0.1,
+              "segments": 2
+            },
+            {
+              "op": "material.create",
+              "ref": "@blue",
+              "name": "MCP Blue",
+              "color": [
+                0.04,
+                0.2,
+                0.7,
+                1
+              ],
+              "roughness": 0.4,
+              "metallic": 0.1
+            },
+            {
+              "op": "material.assign",
+              "target": "@cube",
+              "material": "@blue"
+            },
+            {
+              "op": "animation.keyframe",
+              "target": "@cube",
+              "frame": 1,
+              "location": [
+                0,
+                0,
+                0
+              ]
+            },
+            {
+              "op": "animation.keyframe",
+              "target": "@cube",
+              "frame": 24,
+              "location": [
+                0,
+                0,
+                1
+              ]
+            },
+            {
+              "op": "asset.export",
+              "path": "mcp.fvasset"
+            },
+            {
+              "op": "scene.save",
+              "path": "mcp.blend"
+            }
+          ]
+        },
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "base_revision": "dd6a1281c7f58b800d6e3b39cf2d0575b6ce11b17e6da61b39f9cc532ce37802",
+        "request_id": "78d18b25-da6b-4e04-8630-48e2bc21e6a3"
+      },
+      "is_error": false,
+      "result": {
+        "aliases": {},
+        "base_revision": "dd6a1281c7f58b800d6e3b39cf2d0575b6ce11b17e6da61b39f9cc532ce37802",
+        "created_at": 1793754098.065928,
+        "digest": "27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179",
+        "error": null,
+        "events": [
+          {
+            "detail": null,
+            "event": "Proposed",
+            "time": 1793754098.06593
+          }
+        ],
+        "id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f",
+        "model_receipt": null,
+        "plan": {
+          "operations": [
+            {
+              "name": "MCP Beacon",
+              "op": "object.create",
+              "primitive": "cube",
+              "ref": "@cube"
+            },
+            {
+              "op": "mesh.bevel",
+              "segments": 2,
+              "target": "@cube",
+              "width": 0.1
+            },
+            {
+              "color": [
+                0.04,
+                0.2,
+                0.7,
+                1
+              ],
+              "metallic": 0.1,
+              "name": "MCP Blue",
+              "op": "material.create",
+              "ref": "@blue",
+              "roughness": 0.4
+            },
+            {
+              "material": "@blue",
+              "op": "material.assign",
+              "target": "@cube"
+            },
+            {
+              "frame": 1,
+              "location": [
+                0,
+                0,
+                0
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "frame": 24,
+              "location": [
+                0,
+                0,
+                1
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "op": "asset.export",
+              "path": "mcp.fvasset"
+            },
+            {
+              "op": "scene.save",
+              "path": "mcp.blend"
+            }
+          ],
+          "schema_version": "finalverse.creation/v1",
+          "summary": "MCP SDK fixture: create, material, animate, export, save"
+        },
+        "request_id": "78d18b25-da6b-4e04-8630-48e2bc21e6a3",
+        "results": [],
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "source": "mcp",
+        "state": "Proposed",
+        "step": 0
+      }
+    },
+    {
+      "tool": "studio_status",
+      "arguments": {
+        "job_id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f"
+      },
+      "is_error": false,
+      "result": {
+        "aliases": {},
+        "base_revision": "dd6a1281c7f58b800d6e3b39cf2d0575b6ce11b17e6da61b39f9cc532ce37802",
+        "created_at": 1793754098.065928,
+        "digest": "27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179",
+        "error": null,
+        "events": [
+          {
+            "detail": null,
+            "event": "Proposed",
+            "time": 1793754098.06593
+          }
+        ],
+        "id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f",
+        "model_receipt": null,
+        "plan": {
+          "operations": [
+            {
+              "name": "MCP Beacon",
+              "op": "object.create",
+              "primitive": "cube",
+              "ref": "@cube"
+            },
+            {
+              "op": "mesh.bevel",
+              "segments": 2,
+              "target": "@cube",
+              "width": 0.1
+            },
+            {
+              "color": [
+                0.04,
+                0.2,
+                0.7,
+                1
+              ],
+              "metallic": 0.1,
+              "name": "MCP Blue",
+              "op": "material.create",
+              "ref": "@blue",
+              "roughness": 0.4
+            },
+            {
+              "material": "@blue",
+              "op": "material.assign",
+              "target": "@cube"
+            },
+            {
+              "frame": 1,
+              "location": [
+                0,
+                0,
+                0
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "frame": 24,
+              "location": [
+                0,
+                0,
+                1
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "op": "asset.export",
+              "path": "mcp.fvasset"
+            },
+            {
+              "op": "scene.save",
+              "path": "mcp.blend"
+            }
+          ],
+          "schema_version": "finalverse.creation/v1",
+          "summary": "MCP SDK fixture: create, material, animate, export, save"
+        },
+        "request_id": "78d18b25-da6b-4e04-8630-48e2bc21e6a3",
+        "results": [],
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "source": "mcp",
+        "state": "Proposed",
+        "step": 0
+      }
+    },
+    {
+      "tool": "studio_inspect",
+      "arguments": null,
+      "is_error": false,
+      "result": {
+        "camera": null,
+        "frame": 1,
+        "frame_range": [
+          1,
+          250
+        ],
+        "materials": [],
+        "objects": [],
+        "revision": "dd6a1281c7f58b800d6e3b39cf2d0575b6ce11b17e6da61b39f9cc532ce37802",
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "schema_version": "finalverse.studio-scene/v2",
+        "world": {
+          "links": [
+            [
+              "Background",
+              "Background",
+              "World Output",
+              "Surface"
+            ]
+          ],
+          "nodes": [
+            [
+              "Background",
+              "BACKGROUND",
+              false,
+              [
+                [
+                  "Color",
+                  [
+                    0.05087608844041824,
+                    0.05087608844041824,
+                    0.05087608844041824,
+                    1.0
+                  ]
+                ],
+                [
+                  "Strength",
+                  1.0
+                ],
+                [
+                  "Weight",
+                  0.0
+                ]
+              ]
+            ],
+            [
+              "World Output",
+              "OUTPUT_WORLD",
+              false,
+              []
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "tool": "studio_approve",
+      "arguments": {
+        "job_id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f"
+      },
+      "is_error": true,
+      "result": {
+        "detail": "Unknown tool",
+        "error": "ValueError"
+      }
+    },
+    {
+      "tool": "studio_status",
+      "arguments": {
+        "job_id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f"
+      },
+      "is_error": false,
+      "result": {
+        "aliases": {},
+        "base_revision": "dd6a1281c7f58b800d6e3b39cf2d0575b6ce11b17e6da61b39f9cc532ce37802",
+        "created_at": 1793754098.065928,
+        "digest": "27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179",
+        "error": null,
+        "events": [
+          {
+            "detail": null,
+            "event": "Proposed",
+            "time": 1793754098.06593
+          }
+        ],
+        "id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f",
+        "model_receipt": null,
+        "plan": {
+          "operations": [
+            {
+              "name": "MCP Beacon",
+              "op": "object.create",
+              "primitive": "cube",
+              "ref": "@cube"
+            },
+            {
+              "op": "mesh.bevel",
+              "segments": 2,
+              "target": "@cube",
+              "width": 0.1
+            },
+            {
+              "color": [
+                0.04,
+                0.2,
+                0.7,
+                1
+              ],
+              "metallic": 0.1,
+              "name": "MCP Blue",
+              "op": "material.create",
+              "ref": "@blue",
+              "roughness": 0.4
+            },
+            {
+              "material": "@blue",
+              "op": "material.assign",
+              "target": "@cube"
+            },
+            {
+              "frame": 1,
+              "location": [
+                0,
+                0,
+                0
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "frame": 24,
+              "location": [
+                0,
+                0,
+                1
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "op": "asset.export",
+              "path": "mcp.fvasset"
+            },
+            {
+              "op": "scene.save",
+              "path": "mcp.blend"
+            }
+          ],
+          "schema_version": "finalverse.creation/v1",
+          "summary": "MCP SDK fixture: create, material, animate, export, save"
+        },
+        "request_id": "78d18b25-da6b-4e04-8630-48e2bc21e6a3",
+        "results": [],
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "source": "mcp",
+        "state": "Proposed",
+        "step": 0
+      }
+    },
+    {
+      "tool": "studio_status",
+      "arguments": {
+        "job_id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f"
+      },
+      "is_error": false,
+      "result": {
+        "aliases": {},
+        "base_revision": "dd6a1281c7f58b800d6e3b39cf2d0575b6ce11b17e6da61b39f9cc532ce37802",
+        "created_at": 1793754098.065928,
+        "digest": "27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179",
+        "error": null,
+        "events": [
+          {
+            "detail": null,
+            "event": "Proposed",
+            "time": 1793754098.06593
+          },
+          {
+            "detail": null,
+            "event": "Approved",
+            "time": 1793754098.631538
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.78789
+          }
+        ],
+        "id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f",
+        "model_receipt": null,
+        "plan": {
+          "operations": [
+            {
+              "name": "MCP Beacon",
+              "op": "object.create",
+              "primitive": "cube",
+              "ref": "@cube"
+            },
+            {
+              "op": "mesh.bevel",
+              "segments": 2,
+              "target": "@cube",
+              "width": 0.1
+            },
+            {
+              "color": [
+                0.04,
+                0.2,
+                0.7,
+                1
+              ],
+              "metallic": 0.1,
+              "name": "MCP Blue",
+              "op": "material.create",
+              "ref": "@blue",
+              "roughness": 0.4
+            },
+            {
+              "material": "@blue",
+              "op": "material.assign",
+              "target": "@cube"
+            },
+            {
+              "frame": 1,
+              "location": [
+                0,
+                0,
+                0
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "frame": 24,
+              "location": [
+                0,
+                0,
+                1
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "op": "asset.export",
+              "path": "mcp.fvasset"
+            },
+            {
+              "op": "scene.save",
+              "path": "mcp.blend"
+            }
+          ],
+          "schema_version": "finalverse.creation/v1",
+          "summary": "MCP SDK fixture: create, material, animate, export, save"
+        },
+        "request_id": "78d18b25-da6b-4e04-8630-48e2bc21e6a3",
+        "results": [],
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "source": "mcp",
+        "state": "Applying",
+        "step": 0
+      }
+    },
+    {
+      "tool": "studio_status",
+      "arguments": {
+        "job_id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f"
+      },
+      "is_error": false,
+      "result": {
+        "aliases": {
+          "@blue": "40d8ca38-01de-4c3f-b146-8743562634e6",
+          "@cube": "67c143ae-f29b-4f1f-8650-f0d10f207884"
+        },
+        "base_revision": "dd6a1281c7f58b800d6e3b39cf2d0575b6ce11b17e6da61b39f9cc532ce37802",
+        "created_at": 1793754098.065928,
+        "digest": "27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179",
+        "error": null,
+        "events": [
+          {
+            "detail": null,
+            "event": "Proposed",
+            "time": 1793754098.06593
+          },
+          {
+            "detail": null,
+            "event": "Approved",
+            "time": 1793754098.631538
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.78789
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.847044
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.8903072
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.93061
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.966169
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754099.009392
+          }
+        ],
+        "id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f",
+        "model_receipt": null,
+        "plan": {
+          "operations": [
+            {
+              "name": "MCP Beacon",
+              "op": "object.create",
+              "primitive": "cube",
+              "ref": "@cube"
+            },
+            {
+              "op": "mesh.bevel",
+              "segments": 2,
+              "target": "@cube",
+              "width": 0.1
+            },
+            {
+              "color": [
+                0.04,
+                0.2,
+                0.7,
+                1
+              ],
+              "metallic": 0.1,
+              "name": "MCP Blue",
+              "op": "material.create",
+              "ref": "@blue",
+              "roughness": 0.4
+            },
+            {
+              "material": "@blue",
+              "op": "material.assign",
+              "target": "@cube"
+            },
+            {
+              "frame": 1,
+              "location": [
+                0,
+                0,
+                0
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "frame": 24,
+              "location": [
+                0,
+                0,
+                1
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "op": "asset.export",
+              "path": "mcp.fvasset"
+            },
+            {
+              "op": "scene.save",
+              "path": "mcp.blend"
+            }
+          ],
+          "schema_version": "finalverse.creation/v1",
+          "summary": "MCP SDK fixture: create, material, animate, export, save"
+        },
+        "request_id": "78d18b25-da6b-4e04-8630-48e2bc21e6a3",
+        "results": [
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "object.create"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "mesh.bevel"
+          },
+          {
+            "id": "40d8ca38-01de-4c3f-b146-8743562634e6",
+            "operation": "material.create"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "material.assign"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "animation.keyframe"
+          }
+        ],
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "source": "mcp",
+        "state": "Applying",
+        "step": 5
+      }
+    },
+    {
+      "tool": "studio_status",
+      "arguments": {
+        "job_id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f"
+      },
+      "is_error": false,
+      "result": {
+        "aliases": {
+          "@blue": "40d8ca38-01de-4c3f-b146-8743562634e6",
+          "@cube": "67c143ae-f29b-4f1f-8650-f0d10f207884"
+        },
+        "base_revision": "dd6a1281c7f58b800d6e3b39cf2d0575b6ce11b17e6da61b39f9cc532ce37802",
+        "created_at": 1793754098.065928,
+        "digest": "27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179",
+        "error": null,
+        "events": [
+          {
+            "detail": null,
+            "event": "Proposed",
+            "time": 1793754098.06593
+          },
+          {
+            "detail": null,
+            "event": "Approved",
+            "time": 1793754098.631538
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.78789
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.847044
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.8903072
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.93061
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.966169
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754099.009392
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754099.050653
+          }
+        ],
+        "id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f",
+        "model_receipt": null,
+        "plan": {
+          "operations": [
+            {
+              "name": "MCP Beacon",
+              "op": "object.create",
+              "primitive": "cube",
+              "ref": "@cube"
+            },
+            {
+              "op": "mesh.bevel",
+              "segments": 2,
+              "target": "@cube",
+              "width": 0.1
+            },
+            {
+              "color": [
+                0.04,
+                0.2,
+                0.7,
+                1
+              ],
+              "metallic": 0.1,
+              "name": "MCP Blue",
+              "op": "material.create",
+              "ref": "@blue",
+              "roughness": 0.4
+            },
+            {
+              "material": "@blue",
+              "op": "material.assign",
+              "target": "@cube"
+            },
+            {
+              "frame": 1,
+              "location": [
+                0,
+                0,
+                0
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "frame": 24,
+              "location": [
+                0,
+                0,
+                1
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "op": "asset.export",
+              "path": "mcp.fvasset"
+            },
+            {
+              "op": "scene.save",
+              "path": "mcp.blend"
+            }
+          ],
+          "schema_version": "finalverse.creation/v1",
+          "summary": "MCP SDK fixture: create, material, animate, export, save"
+        },
+        "request_id": "78d18b25-da6b-4e04-8630-48e2bc21e6a3",
+        "results": [
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "object.create"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "mesh.bevel"
+          },
+          {
+            "id": "40d8ca38-01de-4c3f-b146-8743562634e6",
+            "operation": "material.create"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "material.assign"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "animation.keyframe"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "animation.keyframe"
+          }
+        ],
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "source": "mcp",
+        "state": "Applying",
+        "step": 6
+      }
+    },
+    {
+      "tool": "studio_status",
+      "arguments": {
+        "job_id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f"
+      },
+      "is_error": false,
+      "result": {
+        "aliases": {
+          "@blue": "40d8ca38-01de-4c3f-b146-8743562634e6",
+          "@cube": "67c143ae-f29b-4f1f-8650-f0d10f207884"
+        },
+        "base_revision": "dd6a1281c7f58b800d6e3b39cf2d0575b6ce11b17e6da61b39f9cc532ce37802",
+        "created_at": 1793754098.065928,
+        "digest": "27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179",
+        "error": null,
+        "events": [
+          {
+            "detail": null,
+            "event": "Proposed",
+            "time": 1793754098.06593
+          },
+          {
+            "detail": null,
+            "event": "Approved",
+            "time": 1793754098.631538
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.78789
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.847044
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.8903072
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.93061
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.966169
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754099.009392
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754099.050653
+          }
+        ],
+        "id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f",
+        "model_receipt": null,
+        "plan": {
+          "operations": [
+            {
+              "name": "MCP Beacon",
+              "op": "object.create",
+              "primitive": "cube",
+              "ref": "@cube"
+            },
+            {
+              "op": "mesh.bevel",
+              "segments": 2,
+              "target": "@cube",
+              "width": 0.1
+            },
+            {
+              "color": [
+                0.04,
+                0.2,
+                0.7,
+                1
+              ],
+              "metallic": 0.1,
+              "name": "MCP Blue",
+              "op": "material.create",
+              "ref": "@blue",
+              "roughness": 0.4
+            },
+            {
+              "material": "@blue",
+              "op": "material.assign",
+              "target": "@cube"
+            },
+            {
+              "frame": 1,
+              "location": [
+                0,
+                0,
+                0
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "frame": 24,
+              "location": [
+                0,
+                0,
+                1
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "op": "asset.export",
+              "path": "mcp.fvasset"
+            },
+            {
+              "op": "scene.save",
+              "path": "mcp.blend"
+            }
+          ],
+          "schema_version": "finalverse.creation/v1",
+          "summary": "MCP SDK fixture: create, material, animate, export, save"
+        },
+        "request_id": "78d18b25-da6b-4e04-8630-48e2bc21e6a3",
+        "results": [
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "object.create"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "mesh.bevel"
+          },
+          {
+            "id": "40d8ca38-01de-4c3f-b146-8743562634e6",
+            "operation": "material.create"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "material.assign"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "animation.keyframe"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "animation.keyframe"
+          }
+        ],
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "source": "mcp",
+        "state": "Applying",
+        "step": 6
+      }
+    },
+    {
+      "tool": "studio_status",
+      "arguments": {
+        "job_id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f"
+      },
+      "is_error": false,
+      "result": {
+        "aliases": {
+          "@blue": "40d8ca38-01de-4c3f-b146-8743562634e6",
+          "@cube": "67c143ae-f29b-4f1f-8650-f0d10f207884"
+        },
+        "base_revision": "dd6a1281c7f58b800d6e3b39cf2d0575b6ce11b17e6da61b39f9cc532ce37802",
+        "created_at": 1793754098.065928,
+        "digest": "27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179",
+        "error": null,
+        "events": [
+          {
+            "detail": null,
+            "event": "Proposed",
+            "time": 1793754098.06593
+          },
+          {
+            "detail": null,
+            "event": "Approved",
+            "time": 1793754098.631538
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.78789
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.847044
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.8903072
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.93061
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754098.966169
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754099.009392
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754099.050653
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754099.4845922
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754099.5354729
+          },
+          {
+            "detail": null,
+            "event": "Completed",
+            "time": 1793754099.5695481
+          }
+        ],
+        "id": "05e22c9c-7fb1-4759-b388-bc1a2bf0e79f",
+        "model_receipt": null,
+        "plan": {
+          "operations": [
+            {
+              "name": "MCP Beacon",
+              "op": "object.create",
+              "primitive": "cube",
+              "ref": "@cube"
+            },
+            {
+              "op": "mesh.bevel",
+              "segments": 2,
+              "target": "@cube",
+              "width": 0.1
+            },
+            {
+              "color": [
+                0.04,
+                0.2,
+                0.7,
+                1
+              ],
+              "metallic": 0.1,
+              "name": "MCP Blue",
+              "op": "material.create",
+              "ref": "@blue",
+              "roughness": 0.4
+            },
+            {
+              "material": "@blue",
+              "op": "material.assign",
+              "target": "@cube"
+            },
+            {
+              "frame": 1,
+              "location": [
+                0,
+                0,
+                0
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "frame": 24,
+              "location": [
+                0,
+                0,
+                1
+              ],
+              "op": "animation.keyframe",
+              "target": "@cube"
+            },
+            {
+              "op": "asset.export",
+              "path": "mcp.fvasset"
+            },
+            {
+              "op": "scene.save",
+              "path": "mcp.blend"
+            }
+          ],
+          "schema_version": "finalverse.creation/v1",
+          "summary": "MCP SDK fixture: create, material, animate, export, save"
+        },
+        "request_id": "78d18b25-da6b-4e04-8630-48e2bc21e6a3",
+        "results": [
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "object.create"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "mesh.bevel"
+          },
+          {
+            "id": "40d8ca38-01de-4c3f-b146-8743562634e6",
+            "operation": "material.create"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "material.assign"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "animation.keyframe"
+          },
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "animation.keyframe"
+          },
+          {
+            "assets": {
+              "asset.glb": {
+                "byte_length": 10732,
+                "media_type": "model/gltf-binary",
+                "sha256": "a67d5c8e23a7110377e1dd06d66e57d24027ef0f1453bbe12a409614fae7ccf1"
+              },
+              "source.blend": {
+                "byte_length": 60699,
+                "media_type": "application/x-blender",
+                "sha256": "5bf1513818f8b5a5ed1fcb6f028ba3043b41992fb46daecbc60e917bf9ffaf27"
+              }
+            },
+            "path": "mcp.fvasset",
+            "published": false
+          },
+          {
+            "bytes": 61078,
+            "path": "mcp.blend"
+          }
+        ],
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "source": "mcp",
+        "state": "Completed",
+        "step": 8
+      }
+    },
+    {
+      "tool": "studio_inspect",
+      "arguments": null,
+      "is_error": false,
+      "result": {
+        "camera": null,
+        "frame": 24,
+        "frame_range": [
+          1,
+          24
+        ],
+        "materials": [
+          {
+            "color": [
+              0.03999999910593033,
+              0.20000000298023224,
+              0.699999988079071,
+              1.0
+            ],
+            "creation_provenance": "{\"job\":\"05e22c9c-7fb1-4759-b388-bc1a2bf0e79f\",\"plan\":\"27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179\",\"protocol\":\"finalverse.creation/v1\"}",
+            "graph": {
+              "links": [
+                [
+                  "Principled BSDF",
+                  "BSDF",
+                  "Material Output",
+                  "Surface"
+                ]
+              ],
+              "nodes": [
+                [
+                  "Material Output",
+                  "OUTPUT_MATERIAL",
+                  false,
+                  [
+                    [
+                      "Displacement",
+                      [
+                        0.0,
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      "Thickness",
+                      0.0
+                    ]
+                  ]
+                ],
+                [
+                  "Principled BSDF",
+                  "BSDF_PRINCIPLED",
+                  false,
+                  [
+                    [
+                      "Base Color",
+                      [
+                        0.03999999910593033,
+                        0.20000000298023224,
+                        0.699999988079071,
+                        1.0
+                      ]
+                    ],
+                    [
+                      "Metallic",
+                      0.10000000149011612
+                    ],
+                    [
+                      "Roughness",
+                      0.4000000059604645
+                    ],
+                    [
+                      "IOR",
+                      1.5
+                    ],
+                    [
+                      "Alpha",
+                      1.0
+                    ],
+                    [
+                      "Thin Wall",
+                      false
+                    ],
+                    [
+                      "Normal",
+                      [
+                        0.0,
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      "Weight",
+                      0.0
+                    ],
+                    [
+                      "Diffuse Roughness",
+                      0.0
+                    ],
+                    [
+                      "Subsurface Weight",
+                      0.0
+                    ],
+                    [
+                      "Subsurface Radius",
+                      [
+                        1.0,
+                        0.20000000298023224,
+                        0.10000000149011612
+                      ]
+                    ],
+                    [
+                      "Subsurface Scale",
+                      0.004999999888241291
+                    ],
+                    [
+                      "Subsurface IOR",
+                      1.399999976158142
+                    ],
+                    [
+                      "Subsurface Anisotropy",
+                      0.0
+                    ],
+                    [
+                      "Specular IOR Level",
+                      0.5
+                    ],
+                    [
+                      "Specular Tint",
+                      [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0
+                      ]
+                    ],
+                    [
+                      "Anisotropic",
+                      0.0
+                    ],
+                    [
+                      "Anisotropic Rotation",
+                      0.0
+                    ],
+                    [
+                      "Tangent",
+                      [
+                        0.0,
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      "Transmission Weight",
+                      0.0
+                    ],
+                    [
+                      "Transmission Dispersion Scale",
+                      0.0
+                    ],
+                    [
+                      "Transmission Dispersion Abbe Number",
+                      20.0
+                    ],
+                    [
+                      "Coat Weight",
+                      0.0
+                    ],
+                    [
+                      "Coat Roughness",
+                      0.029999999329447746
+                    ],
+                    [
+                      "Coat IOR",
+                      1.5
+                    ],
+                    [
+                      "Coat Tint",
+                      [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0
+                      ]
+                    ],
+                    [
+                      "Coat Normal",
+                      [
+                        0.0,
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      "Sheen Weight",
+                      0.0
+                    ],
+                    [
+                      "Sheen Roughness",
+                      0.5
+                    ],
+                    [
+                      "Sheen Tint",
+                      [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0
+                      ]
+                    ],
+                    [
+                      "Emission Color",
+                      [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0
+                      ]
+                    ],
+                    [
+                      "Emission Strength",
+                      0.0
+                    ],
+                    [
+                      "Thin Film Thickness",
+                      0.0
+                    ],
+                    [
+                      "Thin Film IOR",
+                      1.3300000429153442
+                    ]
+                  ]
+                ]
+              ]
+            },
+            "id": "40d8ca38-01de-4c3f-b146-8743562634e6",
+            "metallic": 0.10000000149011612,
+            "name": "MCP Blue",
+            "provenance": "{\"job\":\"05e22c9c-7fb1-4759-b388-bc1a2bf0e79f\",\"plan\":\"27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179\",\"protocol\":\"finalverse.creation/v1\"}",
+            "roughness": 0.4000000059604645
+          }
+        ],
+        "objects": [
+          {
+            "animations": [
+              {
+                "index": 0,
+                "keys": [
+                  [
+                    1.0,
+                    0.0,
+                    "LINEAR"
+                  ],
+                  [
+                    24.0,
+                    0.0,
+                    "LINEAR"
+                  ]
+                ],
+                "path": "location"
+              },
+              {
+                "index": 1,
+                "keys": [
+                  [
+                    1.0,
+                    0.0,
+                    "LINEAR"
+                  ],
+                  [
+                    24.0,
+                    0.0,
+                    "LINEAR"
+                  ]
+                ],
+                "path": "location"
+              },
+              {
+                "index": 2,
+                "keys": [
+                  [
+                    1.0,
+                    0.0,
+                    "LINEAR"
+                  ],
+                  [
+                    24.0,
+                    1.0,
+                    "LINEAR"
+                  ]
+                ],
+                "path": "location"
+              }
+            ],
+            "creation_provenance": "{\"job\":\"05e22c9c-7fb1-4759-b388-bc1a2bf0e79f\",\"plan\":\"27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179\",\"protocol\":\"finalverse.creation/v1\"}",
+            "description": "MCP SDK fixture: create, material, animate, export, save",
+            "geometry": "52d48cf454ca533b5815b09482593131863109eafc2662b9ff032a86386fc1cd",
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "location": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "materials": [
+              "40d8ca38-01de-4c3f-b146-8743562634e6"
+            ],
+            "name": "MCP Beacon",
+            "parent": null,
+            "provenance": "{\"job\":\"05e22c9c-7fb1-4759-b388-bc1a2bf0e79f\",\"plan\":\"27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179\",\"protocol\":\"finalverse.creation/v1\"}",
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "type": "MESH",
+            "vertices": 56
+          }
+        ],
+        "revision": "32abae87c9b7b2362dd22393891bc42a8abe06157936f0ec3c73e41758f8a3f7",
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "schema_version": "finalverse.studio-scene/v2",
+        "world": {
+          "links": [
+            [
+              "Background",
+              "Background",
+              "World Output",
+              "Surface"
+            ]
+          ],
+          "nodes": [
+            [
+              "Background",
+              "BACKGROUND",
+              false,
+              [
+                [
+                  "Color",
+                  [
+                    0.05087608844041824,
+                    0.05087608844041824,
+                    0.05087608844041824,
+                    1.0
+                  ]
+                ],
+                [
+                  "Strength",
+                  1.0
+                ],
+                [
+                  "Weight",
+                  0.0
+                ]
+              ]
+            ],
+            [
+              "World Output",
+              "OUTPUT_WORLD",
+              false,
+              []
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "tool": "studio_submit",
+      "arguments": {
+        "plan": {
+          "schema_version": "finalverse.creation/v1",
+          "summary": "Unauthorized",
+          "operations": [
+            {
+              "op": "python",
+              "code": "print(1)"
+            }
+          ]
+        },
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "base_revision": "79fb09553371f9b69393b397559ec9f97936621c1aa0f9fc6337747b3dcb5193",
+        "request_id": "bc51f01b-9e51-403e-a3d5-2f9c87e128ab"
+      },
+      "is_error": false,
+      "result": {
+        "id": "c8e00259-c1d0-4d71-9b3e-b0aba2453cfb",
+        "request_id": "59c4b335-f97d-4421-b8fa-2c762be90191",
+        "plan": {
+          "schema_version": "finalverse.creation/v1",
+          "summary": "Modify existing UUID without rebuilding",
+          "operations": [
+            {
+              "op": "object.transform",
+              "target": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+              "scale": [
+                1.5,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "base_revision": "32abae87c9b7b2362dd22393891bc42a8abe06157936f0ec3c73e41758f8a3f7",
+        "digest": "225d7046cdcab6a382af997dbbee1534079de0feb1472e6dc2a5f192e498fd40",
+        "source": "mcp",
+        "model_receipt": null,
+        "state": "Proposed",
+        "step": 0,
+        "created_at": 1793754099.698123,
+        "events": [
+          {
+            "event": "Proposed",
+            "time": 1793754099.698134,
+            "detail": null
+          }
+        ],
+        "aliases": {},
+        "results": [],
+        "error": null
+      }
+    },
+    {
+      "tool": "studio_status",
+      "arguments": {
+        "job_id": "c8e00259-c1d0-4d71-9b3e-b0aba2453cfb"
+      },
+      "is_error": false,
+      "result": {
+        "aliases": {},
+        "base_revision": "32abae87c9b7b2362dd22393891bc42a8abe06157936f0ec3c73e41758f8a3f7",
+        "created_at": 1793754099.698123,
+        "digest": "225d7046cdcab6a382af997dbbee1534079de0feb1472e6dc2a5f192e498fd40",
+        "error": null,
+        "events": [
+          {
+            "detail": null,
+            "event": "Proposed",
+            "time": 1793754099.698134
+          }
+        ],
+        "id": "c8e00259-c1d0-4d71-9b3e-b0aba2453cfb",
+        "model_receipt": null,
+        "plan": {
+          "operations": [
+            {
+              "op": "object.transform",
+              "scale": [
+                1.5,
+                1,
+                1
+              ],
+              "target": "67c143ae-f29b-4f1f-8650-f0d10f207884"
+            }
+          ],
+          "schema_version": "finalverse.creation/v1",
+          "summary": "Modify existing UUID without rebuilding"
+        },
+        "request_id": "59c4b335-f97d-4421-b8fa-2c762be90191",
+        "results": [],
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "source": "mcp",
+        "state": "Proposed",
+        "step": 0
+      }
+    },
+    {
+      "tool": "studio_status",
+      "arguments": {
+        "job_id": "c8e00259-c1d0-4d71-9b3e-b0aba2453cfb"
+      },
+      "is_error": false,
+      "result": {
+        "aliases": {},
+        "base_revision": "32abae87c9b7b2362dd22393891bc42a8abe06157936f0ec3c73e41758f8a3f7",
+        "created_at": 1793754099.698123,
+        "digest": "225d7046cdcab6a382af997dbbee1534079de0feb1472e6dc2a5f192e498fd40",
+        "error": null,
+        "events": [
+          {
+            "detail": null,
+            "event": "Proposed",
+            "time": 1793754099.698134
+          },
+          {
+            "detail": null,
+            "event": "Approved",
+            "time": 1793754099.729601
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754099.74627
+          },
+          {
+            "detail": null,
+            "event": "Applying",
+            "time": 1793754099.7782989
+          },
+          {
+            "detail": null,
+            "event": "Completed",
+            "time": 1793754099.8188958
+          }
+        ],
+        "id": "c8e00259-c1d0-4d71-9b3e-b0aba2453cfb",
+        "model_receipt": null,
+        "plan": {
+          "operations": [
+            {
+              "op": "object.transform",
+              "scale": [
+                1.5,
+                1,
+                1
+              ],
+              "target": "67c143ae-f29b-4f1f-8650-f0d10f207884"
+            }
+          ],
+          "schema_version": "finalverse.creation/v1",
+          "summary": "Modify existing UUID without rebuilding"
+        },
+        "request_id": "59c4b335-f97d-4421-b8fa-2c762be90191",
+        "results": [
+          {
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "operation": "object.transform"
+          }
+        ],
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "source": "mcp",
+        "state": "Completed",
+        "step": 1
+      }
+    },
+    {
+      "tool": "studio_inspect",
+      "arguments": null,
+      "is_error": false,
+      "result": {
+        "camera": null,
+        "frame": 24,
+        "frame_range": [
+          1,
+          24
+        ],
+        "materials": [
+          {
+            "color": [
+              0.03999999910593033,
+              0.20000000298023224,
+              0.699999988079071,
+              1.0
+            ],
+            "creation_provenance": "{\"job\":\"05e22c9c-7fb1-4759-b388-bc1a2bf0e79f\",\"plan\":\"27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179\",\"protocol\":\"finalverse.creation/v1\"}",
+            "graph": {
+              "links": [
+                [
+                  "Principled BSDF",
+                  "BSDF",
+                  "Material Output",
+                  "Surface"
+                ]
+              ],
+              "nodes": [
+                [
+                  "Material Output",
+                  "OUTPUT_MATERIAL",
+                  false,
+                  [
+                    [
+                      "Displacement",
+                      [
+                        0.0,
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      "Thickness",
+                      0.0
+                    ]
+                  ]
+                ],
+                [
+                  "Principled BSDF",
+                  "BSDF_PRINCIPLED",
+                  false,
+                  [
+                    [
+                      "Base Color",
+                      [
+                        0.03999999910593033,
+                        0.20000000298023224,
+                        0.699999988079071,
+                        1.0
+                      ]
+                    ],
+                    [
+                      "Metallic",
+                      0.10000000149011612
+                    ],
+                    [
+                      "Roughness",
+                      0.4000000059604645
+                    ],
+                    [
+                      "IOR",
+                      1.5
+                    ],
+                    [
+                      "Alpha",
+                      1.0
+                    ],
+                    [
+                      "Thin Wall",
+                      false
+                    ],
+                    [
+                      "Normal",
+                      [
+                        0.0,
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      "Weight",
+                      0.0
+                    ],
+                    [
+                      "Diffuse Roughness",
+                      0.0
+                    ],
+                    [
+                      "Subsurface Weight",
+                      0.0
+                    ],
+                    [
+                      "Subsurface Radius",
+                      [
+                        1.0,
+                        0.20000000298023224,
+                        0.10000000149011612
+                      ]
+                    ],
+                    [
+                      "Subsurface Scale",
+                      0.004999999888241291
+                    ],
+                    [
+                      "Subsurface IOR",
+                      1.399999976158142
+                    ],
+                    [
+                      "Subsurface Anisotropy",
+                      0.0
+                    ],
+                    [
+                      "Specular IOR Level",
+                      0.5
+                    ],
+                    [
+                      "Specular Tint",
+                      [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0
+                      ]
+                    ],
+                    [
+                      "Anisotropic",
+                      0.0
+                    ],
+                    [
+                      "Anisotropic Rotation",
+                      0.0
+                    ],
+                    [
+                      "Tangent",
+                      [
+                        0.0,
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      "Transmission Weight",
+                      0.0
+                    ],
+                    [
+                      "Transmission Dispersion Scale",
+                      0.0
+                    ],
+                    [
+                      "Transmission Dispersion Abbe Number",
+                      20.0
+                    ],
+                    [
+                      "Coat Weight",
+                      0.0
+                    ],
+                    [
+                      "Coat Roughness",
+                      0.029999999329447746
+                    ],
+                    [
+                      "Coat IOR",
+                      1.5
+                    ],
+                    [
+                      "Coat Tint",
+                      [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0
+                      ]
+                    ],
+                    [
+                      "Coat Normal",
+                      [
+                        0.0,
+                        0.0,
+                        0.0
+                      ]
+                    ],
+                    [
+                      "Sheen Weight",
+                      0.0
+                    ],
+                    [
+                      "Sheen Roughness",
+                      0.5
+                    ],
+                    [
+                      "Sheen Tint",
+                      [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0
+                      ]
+                    ],
+                    [
+                      "Emission Color",
+                      [
+                        1.0,
+                        1.0,
+                        1.0,
+                        1.0
+                      ]
+                    ],
+                    [
+                      "Emission Strength",
+                      0.0
+                    ],
+                    [
+                      "Thin Film Thickness",
+                      0.0
+                    ],
+                    [
+                      "Thin Film IOR",
+                      1.3300000429153442
+                    ]
+                  ]
+                ]
+              ]
+            },
+            "id": "40d8ca38-01de-4c3f-b146-8743562634e6",
+            "metallic": 0.10000000149011612,
+            "name": "MCP Blue",
+            "provenance": "{\"job\":\"05e22c9c-7fb1-4759-b388-bc1a2bf0e79f\",\"plan\":\"27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179\",\"protocol\":\"finalverse.creation/v1\"}",
+            "roughness": 0.4000000059604645
+          }
+        ],
+        "objects": [
+          {
+            "animations": [
+              {
+                "index": 0,
+                "keys": [
+                  [
+                    1.0,
+                    0.0,
+                    "LINEAR"
+                  ],
+                  [
+                    24.0,
+                    0.0,
+                    "LINEAR"
+                  ]
+                ],
+                "path": "location"
+              },
+              {
+                "index": 1,
+                "keys": [
+                  [
+                    1.0,
+                    0.0,
+                    "LINEAR"
+                  ],
+                  [
+                    24.0,
+                    0.0,
+                    "LINEAR"
+                  ]
+                ],
+                "path": "location"
+              },
+              {
+                "index": 2,
+                "keys": [
+                  [
+                    1.0,
+                    0.0,
+                    "LINEAR"
+                  ],
+                  [
+                    24.0,
+                    1.0,
+                    "LINEAR"
+                  ]
+                ],
+                "path": "location"
+              }
+            ],
+            "creation_provenance": "{\"job\":\"05e22c9c-7fb1-4759-b388-bc1a2bf0e79f\",\"plan\":\"27f150d3fac9d317b0f75e984447e7e4e2398a1fe868ba7992c42722480d8179\",\"protocol\":\"finalverse.creation/v1\"}",
+            "description": "MCP SDK fixture: create, material, animate, export, save",
+            "geometry": "52d48cf454ca533b5815b09482593131863109eafc2662b9ff032a86386fc1cd",
+            "id": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+            "location": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "materials": [
+              "40d8ca38-01de-4c3f-b146-8743562634e6"
+            ],
+            "name": "MCP Beacon",
+            "parent": null,
+            "provenance": "{\"job\":\"c8e00259-c1d0-4d71-9b3e-b0aba2453cfb\",\"plan\":\"225d7046cdcab6a382af997dbbee1534079de0feb1472e6dc2a5f192e498fd40\",\"protocol\":\"finalverse.creation/v1\"}",
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.5,
+              1.0,
+              1.0
+            ],
+            "type": "MESH",
+            "vertices": 56
+          }
+        ],
+        "revision": "79fb09553371f9b69393b397559ec9f97936621c1aa0f9fc6337747b3dcb5193",
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "schema_version": "finalverse.studio-scene/v2",
+        "world": {
+          "links": [
+            [
+              "Background",
+              "Background",
+              "World Output",
+              "Surface"
+            ]
+          ],
+          "nodes": [
+            [
+              "Background",
+              "BACKGROUND",
+              false,
+              [
+                [
+                  "Color",
+                  [
+                    0.05087608844041824,
+                    0.05087608844041824,
+                    0.05087608844041824,
+                    1.0
+                  ]
+                ],
+                [
+                  "Strength",
+                  1.0
+                ],
+                [
+                  "Weight",
+                  0.0
+                ]
+              ]
+            ],
+            [
+              "World Output",
+              "OUTPUT_WORLD",
+              false,
+              []
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "tool": "studio_submit",
+      "arguments": {
+        "plan": {
+          "schema_version": "finalverse.creation/v1",
+          "summary": "Unauthorized",
+          "operations": [
+            {
+              "op": "python",
+              "code": "print(1)"
+            }
+          ]
+        },
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "base_revision": "79fb09553371f9b69393b397559ec9f97936621c1aa0f9fc6337747b3dcb5193",
+        "request_id": "bc51f01b-9e51-403e-a3d5-2f9c87e128ab"
+      },
+      "is_error": false,
+      "result": {
+        "id": "2547a097-f324-4e79-a225-83b03512b202",
+        "request_id": "bc51f01b-9e51-403e-a3d5-2f9c87e128ab",
+        "plan": {
+          "schema_version": "finalverse.creation/v1",
+          "summary": "Modify existing UUID without rebuilding",
+          "operations": [
+            {
+              "op": "object.transform",
+              "target": "67c143ae-f29b-4f1f-8650-f0d10f207884",
+              "scale": [
+                1.5,
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "base_revision": "79fb09553371f9b69393b397559ec9f97936621c1aa0f9fc6337747b3dcb5193",
+        "digest": "e7777c044efab903f387c1c32cd1d1d656d21a0f64dcc590529028c738f167d3",
+        "source": "mcp",
+        "model_receipt": null,
+        "state": "Proposed",
+        "step": 0,
+        "created_at": 1793754099.954005,
+        "events": [
+          {
+            "event": "Proposed",
+            "time": 1793754099.954012,
+            "detail": null
+          }
+        ],
+        "aliases": {},
+        "results": [],
+        "error": null
+      }
+    },
+    {
+      "tool": "studio_cancel",
+      "arguments": {
+        "job_id": "2547a097-f324-4e79-a225-83b03512b202"
+      },
+      "is_error": false,
+      "result": {
+        "aliases": {},
+        "base_revision": "79fb09553371f9b69393b397559ec9f97936621c1aa0f9fc6337747b3dcb5193",
+        "created_at": 1793754099.954005,
+        "digest": "e7777c044efab903f387c1c32cd1d1d656d21a0f64dcc590529028c738f167d3",
+        "error": null,
+        "events": [
+          {
+            "detail": null,
+            "event": "Proposed",
+            "time": 1793754099.954012
+          },
+          {
+            "event": "Cancelled",
+            "time": 1793754099.9599822,
+            "detail": null
+          }
+        ],
+        "id": "2547a097-f324-4e79-a225-83b03512b202",
+        "model_receipt": null,
+        "plan": {
+          "operations": [
+            {
+              "op": "object.transform",
+              "scale": [
+                1.5,
+                1,
+                1
+              ],
+              "target": "67c143ae-f29b-4f1f-8650-f0d10f207884"
+            }
+          ],
+          "schema_version": "finalverse.creation/v1",
+          "summary": "Modify existing UUID without rebuilding"
+        },
+        "request_id": "bc51f01b-9e51-403e-a3d5-2f9c87e128ab",
+        "results": [],
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "source": "mcp",
+        "state": "Cancelled",
+        "step": 0
+      }
+    },
+    {
+      "tool": "studio_submit",
+      "arguments": {
+        "plan": {
+          "schema_version": "finalverse.creation/v1",
+          "summary": "Unauthorized",
+          "operations": [
+            {
+              "op": "python",
+              "code": "print(1)"
+            }
+          ]
+        },
+        "scene_id": "fa0fdc8d-b2cb-4492-aef5-625671e8c2de",
+        "base_revision": "79fb09553371f9b69393b397559ec9f97936621c1aa0f9fc6337747b3dcb5193",
+        "request_id": "bc51f01b-9e51-403e-a3d5-2f9c87e128ab"
+      },
+      "is_error": true,
+      "result": {
+        "sdk_validation_error": "Input validation error: {'op': 'python', 'code': 'print(1)'} is not valid under any of the given schemas"
+      }
+    }
+  ]
+}

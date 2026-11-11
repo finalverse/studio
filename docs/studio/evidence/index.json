@@ -1,0 +1,85 @@
+{
+  "schema_version": "finalverse.studio-evidence/v1",
+  "files": [
+    {
+      "path": "cleanup-summary.json",
+      "bytes": 623,
+      "sha256": "55c09745aeb7f5c508722c1278b66b09eb5e310a80b836d09977e3c6527d673f"
+    },
+    {
+      "path": "corrections.json",
+      "bytes": 3207,
+      "sha256": "cf1652364dd85f1ae4aadea1aa167d8def49d312eb0410bdb33e126fe727debc"
+    },
+    {
+      "path": "fork-smoke.json",
+      "bytes": 728,
+      "sha256": "8ac91a4a3098a7ea4f61d37f4070ca56ef3cdc73893df9dda9774e54ebf3187c"
+    },
+    {
+      "path": "genesis-proof.json",
+      "bytes": 624,
+      "sha256": "1aa32ea5cf8f1a9687ca912b7acb581df115ae36669fac8e2a6e16cfbaf63bbd"
+    },
+    {
+      "path": "gui-about.png",
+      "bytes": 551399,
+      "sha256": "5c520733259d94961f58f277c4f54bdaf5d7db47d70de4703058f08c2694b5aa"
+    },
+    {
+      "path": "gui-file-window.txt",
+      "bytes": 342,
+      "sha256": "182a42020748050a7663fcc7475a484acee1c2daeef18244b3c210a2c489e64e"
+    },
+    {
+      "path": "gui-mac-icon.png",
+      "bytes": 179475,
+      "sha256": "4b4904b6e23f8442d3c466cf07932dc34deca53795d34c1731f1b7f39f3c44af"
+    },
+    {
+      "path": "gui-menu-search.png",
+      "bytes": 587087,
+      "sha256": "c7efe12d0b87c29a62bad379673c01255f24cbd2b22eafb89f3cc9c8270bbf03"
+    },
+    {
+      "path": "gui-native-menu.txt",
+      "bytes": 433,
+      "sha256": "87e4506581fdf7f61db6fd62ccfb0dcc9a1a0f9af8a3ac423b02133a0d431bd5"
+    },
+    {
+      "path": "gui-render.png",
+      "bytes": 117468,
+      "sha256": "85f9a2b48eb46fc556a210b4b63630e3ddd0b2e28d6319e9d8dd852543744e45"
+    },
+    {
+      "path": "gui-splash.png",
+      "bytes": 577265,
+      "sha256": "ca2408dfe099b1a93b9aac3bd6b424bfcffd73e67dc9771266238f88600907ad"
+    },
+    {
+      "path": "gui-verification.json",
+      "bytes": 1409,
+      "sha256": "4015207c559e8859ff506fa72b2deb382b2758716e7094c138c66ea31cbfda36"
+    },
+    {
+      "path": "gui-workspace.png",
+      "bytes": 636817,
+      "sha256": "df1ac3a0e1d5c370cfc54d7e5c085789b7af84ead8260bcf3ee35460df46894c"
+    },
+    {
+      "path": "preview.png",
+      "bytes": 183151,
+      "sha256": "02d9294e436a11a0ade6799413a6ca8882ce36a67c0fcfab51c711b36d8bc79a"
+    },
+    {
+      "path": "studio-unit-tests.log",
+      "bytes": 1129,
+      "sha256": "fe2b027a24b103f12a8e7caa3b835c070726a2e37adb70f22826ad3d83d77b93"
+    },
+    {
+      "path": "version.txt",
+      "bytes": 1356,
+      "sha256": "4b7d5150bd192354a25f70dee6d954ed2d9fe764f39401ab0e2823f561162085"
+    }
+  ]
+}

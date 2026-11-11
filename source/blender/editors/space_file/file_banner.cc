@@ -30,7 +30,11 @@ void file_banners_update(const SpaceFile &sfile)
   const bool any_visible = file_banners_any_visible(sfile);
 
   if (sfile.runtime->banners_state.any_visible != any_visible) {
-    sfile.layout->dirty = true;
+    /* The first draw can discover a banner before the file layout exists.
+     * ED_fileselect_init_layout() creates a dirty layout in that case. */
+    if (sfile.layout) {
+      sfile.layout->dirty = true;
+    }
     sfile.runtime->banners_state.any_visible = any_visible;
   }
 }

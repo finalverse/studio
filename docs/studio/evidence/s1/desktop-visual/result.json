@@ -1,0 +1,80 @@
+{
+  "mode": "interactive window (not --background); operators invoked by in-app timer, framebuffer captured with screen.screenshot; not human clicks",
+  "build_hash": "7e99e2fd3ae3",
+  "background": false,
+  "operations": 12,
+  "review_text_matches_proposal": true,
+  "cancel_operator_seconds": 0.013374000001931563,
+  "step_at_cancel": 4,
+  "state_after_cancel": "Cancelled",
+  "step_after_wait": 4,
+  "no_steps_after_cancel": true,
+  "inference_cancel_seconds": 0.002571083008660935,
+  "inference_child_stopped": true,
+  "passed": true,
+  "log": [
+    {
+      "workspace": "Finalverse AI Studio",
+      "t": 3.239
+    },
+    {
+      "models": [
+        "gemma4:e4b",
+        "qwen3:30b-a3b"
+      ],
+      "message": "Connected: 2 models",
+      "t": 5.542
+    },
+    {
+      "screenshot": "01-planning-responsive.png",
+      "bytes": 908714,
+      "t": 6.118
+    },
+    {
+      "plan_seconds": 25.59,
+      "message": "Plan ready for review: ca5f0411-cc67-4746-bf73-941aa30cf2b2",
+      "receipt": {
+        "fallback_used": false,
+        "input_digest": "bdaab100a35581d2fec43b6b740db6811bdb9aa6d57cba2ab627c0c2a7881e15",
+        "latency_ms": 21194.908459001454,
+        "model": "gemma4:e4b",
+        "provider": "local",
+        "real_inference": true,
+        "response_digest": "285bc94326f4f667c3a9f1000bfb16b1dc11692cf3f95297d03747a449fb7ea7",
+        "scene_id": "c9f6d1fe-aeef-4aff-a7c2-21c52db38dbf",
+        "scene_revision": "db1e01035a6ce049136de0c496a92c011a70db5d458b2ce75fe49b3ee5a5a6a3",
+        "served_model": "gemma4:e4b",
+        "usage": {
+          "input_tokens": 1785,
+          "output_tokens": 325
+        }
+      },
+      "t": 31.137
+    },
+    {
+      "screenshot": "02-proposed-panel-full-plan-control.png",
+      "bytes": 919197,
+      "t": 32.439
+    },
+    {
+      "screenshot": "03-full-plan-review-text-editor.png",
+      "bytes": 370695,
+      "t": 33.821
+    },
+    {
+      "screenshot": "04-applying-before-cancel.png",
+      "bytes": 941068,
+      "t": 35.846
+    },
+    {
+      "screenshot": "05-cancelled-panel.png",
+      "bytes": 945314,
+      "t": 39.557
+    },
+    {
+      "screenshot": "06-after-inference-cancel.png",
+      "bytes": 943661,
+      "t": 40.449
+    }
+  ]
+}

@@ -2898,7 +2898,7 @@ static eHandlerActionFlag wm_handler_fileselect_do(bContext *C,
       const int display_type = handler->is_fileselect_keep_popup ? USER_TEMP_SPACE_DISPLAY_WINDOW :
                                                                    U.filebrowser_display_type;
       ScrArea *area = ED_screen_temp_space_open(
-          C, IFACE_("Blender File View"), SPACE_FILE, display_type, true);
+          C, IFACE_("Finalverse Studio File View"), SPACE_FILE, display_type, true);
       if (!area) {
         BKE_report(&wm->runtime->reports, RPT_ERROR, "Failed to open file browser!");
         return WM_HANDLER_BREAK;

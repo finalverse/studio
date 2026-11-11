@@ -1,0 +1,9 @@
+{
+  "detail": "Local model weights exceed the 65% physical-memory admission budget or have no size; choose a smaller model or configured remote provider",
+  "error": "CreationError",
+  "fallback_used": false,
+  "model": "qwen3:30b-a3b",
+  "ok": false,
+  "prompt": "Inspect only.",
+  "total_wall_seconds": 0.07328774999768939
+}

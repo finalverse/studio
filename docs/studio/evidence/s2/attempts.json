@@ -1,0 +1,1020 @@
+{
+  "schema_version": "finalverse.studio-s2-attempts/v1",
+  "model": "gemma4:e4b",
+  "runs": [
+    {
+      "run": "loop-model-first",
+      "build_hash": "a5b0978161e4",
+      "mode": "model",
+      "elapsed_s": 227.52,
+      "outcome": "failed",
+      "revisions": 2,
+      "reason": "revision budget (2) exhausted: previous plan was rejected: Invalid creation plan: Unknown object field",
+      "stages": [
+        {
+          "t": 0.015,
+          "stage": "plan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 120.639,
+          "stage": "plan_failed",
+          "error": "provider_timeout",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 120.892,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "plan.valid"
+          ],
+          "passed": null
+        },
+        {
+          "t": 209.841,
+          "stage": "plan_failed",
+          "error": "Invalid creation plan: Invalid strict JSON",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 210.056,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "plan.valid"
+          ],
+          "passed": null
+        },
+        {
+          "t": 227.447,
+          "stage": "plan_failed",
+          "error": "Invalid creation plan: Unknown object field",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 227.463,
+          "stage": "failed",
+          "error": null,
+          "failures": [
+            {
+              "id": "plan.valid",
+              "measured": "Invalid creation plan: Unknown object field",
+              "limit": "valid v2 plan"
+            }
+          ],
+          "passed": null
+        }
+      ]
+    },
+    {
+      "run": "loop-model-second",
+      "build_hash": "9568f2f1e27d",
+      "mode": "model",
+      "elapsed_s": 489.04,
+      "outcome": "failed",
+      "revisions": 2,
+      "reason": "revision budget (2) exhausted: previous plan was rejected: Invalid creation plan: Invalid string or identifier",
+      "stages": [
+        {
+          "t": 0.024,
+          "stage": "plan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 253.804,
+          "stage": "plan_failed",
+          "error": "Invalid creation plan: Unsupported enum value",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 254.038,
+          "stage": "replan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 387.491,
+          "stage": "proposed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 388.412,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 392.422,
+          "stage": "generate_failed",
+          "error": "Render worker failed; inspect its local log",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 392.468,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "generate.execute"
+          ],
+          "passed": null
+        },
+        {
+          "t": 488.968,
+          "stage": "plan_failed",
+          "error": "Invalid creation plan: Invalid string or identifier",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 488.977,
+          "stage": "failed",
+          "error": null,
+          "failures": [
+            {
+              "id": "plan.valid",
+              "measured": "Invalid creation plan: Invalid string or identifier",
+              "limit": "valid v2 plan"
+            }
+          ],
+          "passed": null
+        }
+      ]
+    },
+    {
+      "run": "loop-seeded-first",
+      "build_hash": "1b2d5c88b3a4",
+      "mode": "seeded",
+      "elapsed_s": 599.05,
+      "outcome": "failed",
+      "revisions": 3,
+      "reason": "revision budget (3) exhausted: previous plan was rejected: Invalid creation plan: Number out of bounds",
+      "stages": [
+        {
+          "t": 0.007,
+          "stage": "plan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 0.169,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 23.247,
+          "stage": "preview",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 23.802,
+          "stage": "evaluate",
+          "error": null,
+          "failures": [
+            "preview.lumi-front.png.coverage",
+            "preview.lumi-front.png.exposure"
+          ],
+          "passed": false
+        },
+        {
+          "t": 23.825,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "preview.lumi-front.png.coverage",
+            "preview.lumi-front.png.exposure"
+          ],
+          "passed": null
+        },
+        {
+          "t": 183.682,
+          "stage": "proposed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 184.206,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 246.706,
+          "stage": "generate_failed",
+          "error": "Render worker failed; inspect its local log",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 246.862,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "generate.execute"
+          ],
+          "passed": null
+        },
+        {
+          "t": 440.461,
+          "stage": "proposed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 441.089,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 502.734,
+          "stage": "generate_failed",
+          "error": "Render worker failed; inspect its local log",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 502.964,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "generate.execute"
+          ],
+          "passed": null
+        },
+        {
+          "t": 598.972,
+          "stage": "plan_failed",
+          "error": "Invalid creation plan: Number out of bounds",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 598.994,
+          "stage": "failed",
+          "error": null,
+          "failures": [
+            {
+              "id": "plan.valid",
+              "measured": "Invalid creation plan: Number out of bounds",
+              "limit": "valid v2 plan"
+            }
+          ],
+          "passed": null
+        }
+      ]
+    },
+    {
+      "run": "loop-seeded-second",
+      "build_hash": "876137ac76fa",
+      "mode": "seeded",
+      "elapsed_s": 578.28,
+      "outcome": "failed",
+      "revisions": 3,
+      "reason": "revision budget (3) exhausted: execution failed: Render exceeded the 60 s preview wall limit (384x384 at 16 samples); use a smaller preview or fewer samples",
+      "stages": [
+        {
+          "t": 0.002,
+          "stage": "plan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 0.134,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 23.647,
+          "stage": "preview",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 23.933,
+          "stage": "evaluate",
+          "error": null,
+          "failures": [
+            "preview.lumi-front.png.coverage",
+            "preview.lumi-front.png.exposure"
+          ],
+          "passed": false
+        },
+        {
+          "t": 23.955,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "preview.lumi-front.png.coverage",
+            "preview.lumi-front.png.exposure"
+          ],
+          "passed": null
+        },
+        {
+          "t": 192.849,
+          "stage": "proposed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 193.236,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 255.26,
+          "stage": "generate_failed",
+          "error": "Render exceeded the 60 s preview wall limit (384x384 at 16 samples); use a smaller preview or fewer samples",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 255.427,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "generate.execute"
+          ],
+          "passed": null
+        },
+        {
+          "t": 373.11,
+          "stage": "proposed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 373.685,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 435.144,
+          "stage": "generate_failed",
+          "error": "Render exceeded the 60 s preview wall limit (384x384 at 16 samples); use a smaller preview or fewer samples",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 435.33,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "generate.execute"
+          ],
+          "passed": null
+        },
+        {
+          "t": 514.479,
+          "stage": "proposed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 515.05,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 578.134,
+          "stage": "generate_failed",
+          "error": "Render exceeded the 60 s preview wall limit (384x384 at 16 samples); use a smaller preview or fewer samples",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 578.207,
+          "stage": "failed",
+          "error": null,
+          "failures": [
+            {
+              "id": "generate.execute",
+              "measured": "Render exceeded the 60 s preview wall limit (384x384 at 16 samples); use a smaller preview or fewer samples",
+              "limit": "plan executes"
+            }
+          ],
+          "passed": null
+        }
+      ]
+    },
+    {
+      "run": "loop-seeded-third",
+      "build_hash": "806ff87734ce",
+      "mode": "seeded",
+      "elapsed_s": 414.34,
+      "outcome": "completed",
+      "revisions": 2,
+      "reason": null,
+      "stages": [
+        {
+          "t": 0.005,
+          "stage": "plan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 0.117,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 19.869,
+          "stage": "preview",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 20.078,
+          "stage": "evaluate",
+          "error": null,
+          "failures": [
+            "preview.lumi-front.png.coverage",
+            "preview.lumi-front.png.exposure"
+          ],
+          "passed": false
+        },
+        {
+          "t": 20.097,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "preview.lumi-front.png.coverage",
+            "preview.lumi-front.png.exposure"
+          ],
+          "passed": null
+        },
+        {
+          "t": 196.999,
+          "stage": "plan_failed",
+          "error": "Invalid creation plan: Unknown object field",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 197.148,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "plan.valid"
+          ],
+          "passed": null
+        },
+        {
+          "t": 366.868,
+          "stage": "proposed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 367.168,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 391.376,
+          "stage": "preview",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 391.431,
+          "stage": "evaluate",
+          "error": null,
+          "failures": [],
+          "passed": true
+        },
+        {
+          "t": 391.445,
+          "stage": "validate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 391.591,
+          "stage": "export",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 414.287,
+          "stage": "completed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        }
+      ]
+    },
+    {
+      "run": "loop-model-third",
+      "build_hash": "806ff87734ce",
+      "mode": "model",
+      "elapsed_s": 249.5,
+      "outcome": "completed",
+      "revisions": 0,
+      "reason": null,
+      "stages": [
+        {
+          "t": 0.013,
+          "stage": "plan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 200.476,
+          "stage": "proposed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 200.813,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 227.588,
+          "stage": "preview",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 227.821,
+          "stage": "evaluate",
+          "error": null,
+          "failures": [],
+          "passed": true
+        },
+        {
+          "t": 227.836,
+          "stage": "validate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 227.95,
+          "stage": "export",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 249.445,
+          "stage": "completed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        }
+      ]
+    },
+    {
+      "run": "loop-model-final",
+      "build_hash": "7659c7a8e6a6",
+      "mode": "model",
+      "elapsed_s": 973.65,
+      "outcome": "failed",
+      "revisions": 3,
+      "reason": "revision budget (3) exhausted: previous plan was rejected: provider_timeout",
+      "stages": [
+        {
+          "t": 0.019,
+          "stage": "plan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 203.375,
+          "stage": "plan_failed",
+          "error": "Invalid creation plan: Number out of bounds",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 203.466,
+          "stage": "replan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 429.191,
+          "stage": "plan_failed",
+          "error": "Invalid creation plan: Number out of bounds",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 429.275,
+          "stage": "replan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 671.281,
+          "stage": "plan_failed",
+          "error": "Invalid creation plan: Number out of bounds",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 671.411,
+          "stage": "replan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 973.553,
+          "stage": "plan_failed",
+          "error": "provider_timeout",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 973.585,
+          "stage": "failed",
+          "error": null,
+          "failures": [
+            {
+              "id": "plan.valid",
+              "measured": "provider_timeout",
+              "limit": "valid v2 plan"
+            }
+          ],
+          "passed": null
+        }
+      ]
+    },
+    {
+      "run": "loop-model-final2",
+      "build_hash": "3b3c1616290e",
+      "mode": "model",
+      "elapsed_s": 443.78,
+      "outcome": "failed",
+      "revisions": 3,
+      "reason": "revision budget (3) exhausted: previous plan was rejected: Invalid creation plan: plan.operations[0]: Operation is not allowlisted",
+      "stages": [
+        {
+          "t": 0.068,
+          "stage": "plan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 81.764,
+          "stage": "plan_failed",
+          "error": "Invalid creation plan: plan.operations[1](material.preset).color[1]: Number out of bounds (1.9 not in 0..1)",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 81.85,
+          "stage": "replan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 229.662,
+          "stage": "proposed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 229.992,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 250.628,
+          "stage": "preview",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 250.961,
+          "stage": "evaluate",
+          "error": null,
+          "failures": [
+            "clip.LumiIdle.loop_continuity",
+            "clip.LumiDrift.loop_continuity",
+            "preview.viewpoint"
+          ],
+          "passed": false
+        },
+        {
+          "t": 250.985,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "clip.LumiIdle.loop_continuity",
+            "clip.LumiDrift.loop_continuity",
+            "preview.viewpoint"
+          ],
+          "passed": null
+        },
+        {
+          "t": 342.654,
+          "stage": "plan_failed",
+          "error": "Invalid creation plan: plan: Unknown object field 'operations_list'",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 342.766,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "plan.valid"
+          ],
+          "passed": null
+        },
+        {
+          "t": 443.705,
+          "stage": "plan_failed",
+          "error": "Invalid creation plan: plan.operations[0]: Operation is not allowlisted",
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 443.71,
+          "stage": "failed",
+          "error": null,
+          "failures": [
+            {
+              "id": "plan.valid",
+              "measured": "Invalid creation plan: plan.operations[0]: Operation is not allowlisted",
+              "limit": "valid v2 plan"
+            }
+          ],
+          "passed": null
+        }
+      ]
+    },
+    {
+      "run": "loop-model-final3",
+      "build_hash": "f165abf4e77f",
+      "mode": "model",
+      "elapsed_s": 119.76,
+      "outcome": "completed",
+      "revisions": 1,
+      "reason": null,
+      "stages": [
+        {
+          "t": 0.006,
+          "stage": "plan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 65.211,
+          "stage": "proposed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 65.393,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 74.957,
+          "stage": "preview",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 75.076,
+          "stage": "evaluate",
+          "error": null,
+          "failures": [
+            "preview.viewpoint"
+          ],
+          "passed": false
+        },
+        {
+          "t": 75.084,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "preview.viewpoint"
+          ],
+          "passed": null
+        },
+        {
+          "t": 103.55,
+          "stage": "proposed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 103.684,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 112.362,
+          "stage": "preview",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 112.389,
+          "stage": "evaluate",
+          "error": null,
+          "failures": [],
+          "passed": true
+        },
+        {
+          "t": 112.397,
+          "stage": "validate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 112.486,
+          "stage": "export",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 119.705,
+          "stage": "completed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        }
+      ]
+    },
+    {
+      "run": "loop-seeded-final",
+      "build_hash": "f165abf4e77f",
+      "mode": "seeded",
+      "elapsed_s": 117.85,
+      "outcome": "completed",
+      "revisions": 1,
+      "reason": null,
+      "stages": [
+        {
+          "t": 0.002,
+          "stage": "plan",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 0.108,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 8.86,
+          "stage": "preview",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 8.96,
+          "stage": "evaluate",
+          "error": null,
+          "failures": [
+            "preview.viewpoint",
+            "preview.lumi-front.png.coverage",
+            "preview.lumi-front.png.exposure"
+          ],
+          "passed": false
+        },
+        {
+          "t": 8.971,
+          "stage": "revise",
+          "error": null,
+          "failures": [
+            "preview.viewpoint",
+            "preview.lumi-front.png.coverage",
+            "preview.lumi-front.png.exposure"
+          ],
+          "passed": null
+        },
+        {
+          "t": 100.398,
+          "stage": "proposed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 100.543,
+          "stage": "generate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 110.529,
+          "stage": "preview",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 110.567,
+          "stage": "evaluate",
+          "error": null,
+          "failures": [],
+          "passed": true
+        },
+        {
+          "t": 110.576,
+          "stage": "validate",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 110.671,
+          "stage": "export",
+          "error": null,
+          "failures": null,
+          "passed": null
+        },
+        {
+          "t": 117.794,
+          "stage": "completed",
+          "error": null,
+          "failures": null,
+          "passed": null
+        }
+      ]
+    }
+  ]
+}

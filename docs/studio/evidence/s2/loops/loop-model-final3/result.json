@@ -1,0 +1,692 @@
+{
+  "schema_version": "finalverse.studio-s2-loop/v1",
+  "mode": "model",
+  "model": "gemma4:e4b",
+  "build_hash": "f165abf4e77f",
+  "elapsed_s": 119.76,
+  "loop": {
+    "schema_version": "finalverse.studio-loop/v1",
+    "id": "01652282-e3ed-4613-a381-a81b707e04e7",
+    "stage": "completed",
+    "archetype": "floating_spirit",
+    "name": "Lumi",
+    "revisions": 1,
+    "max_revisions": 3,
+    "subject": "b83d23c0-427e-42e6-85f0-11caea9f3218",
+    "clips": {
+      "LumiIdleHover": "61358279-0a29-48cb-97ec-210bf18998c3",
+      "LumiSlowDrift": "c3ac365f-e037-4cd9-9852-2e1357341c91",
+      "LumiGreet": "c03d9d53-d587-4016-b1c7-9d08661cb7f7"
+    },
+    "job": "ca28891e-853f-4573-b24a-9f5c6601ccdf",
+    "finished": true,
+    "result": {
+      "outcome": "completed",
+      "package": "lumi.fvpkg",
+      "job": "ca28891e-853f-4573-b24a-9f5c6601ccdf",
+      "manifest_sha256": "f37a588f22268876dda8bea8dc78f262fc688c51716bce754aea9d51d72ac45f",
+      "revisions": 1
+    },
+    "ledger": [
+      {
+        "t": 0.0,
+        "stage": "intent",
+        "intent": "Create Lumi, the floating spirit companion: a soft, rounded, luminous pale-mint body about 1.2 m tall with a rounded crown, small side fins and large dark expressive eyes. Lumi floats and never walks. Give the body a gentle glowing material and the eyes a dark glossy material. Add an idle hover loop, a slow drift loop and a short greet expression. Frame Lumi from the front in a 384x384 preview.",
+        "archetype": "floating_spirit",
+        "name": "Lumi",
+        "provider": "local",
+        "model": "gemma4:e4b",
+        "max_revisions": 3
+      },
+      {
+        "t": 0.006,
+        "stage": "plan",
+        "request": "initial"
+      },
+      {
+        "t": 65.211,
+        "stage": "proposed",
+        "job": "f6e28af5-c8b2-4cde-a34f-ca66b4ee5dfe",
+        "receipt": {
+          "provider": "local",
+          "model": "gemma4:e4b",
+          "latency_ms": 64919.72799999348,
+          "usage": {
+            "input_tokens": 2436,
+            "output_tokens": 1418
+          },
+          "response_digest": "37a034263b6e259c3fbd822ec6d6a6eef44fb8921fb1a9746748485c23ea59de"
+        }
+      },
+      {
+        "t": 65.393,
+        "stage": "generate",
+        "job": "f6e28af5-c8b2-4cde-a34f-ca66b4ee5dfe",
+        "approved": true
+      },
+      {
+        "t": 74.957,
+        "stage": "preview",
+        "job": "f6e28af5-c8b2-4cde-a34f-ca66b4ee5dfe",
+        "results": 12
+      },
+      {
+        "t": 75.076,
+        "stage": "evaluate",
+        "job": "f6e28af5-c8b2-4cde-a34f-ca66b4ee5dfe",
+        "passed": false,
+        "failures": [
+          "preview.viewpoint"
+        ],
+        "advisories": [],
+        "digest": "cb072448caabab3cde9b7b0ff54f7533587100ad2a4b2e7b3cc3ec6a4895a36e",
+        "checks": 32
+      },
+      {
+        "t": 75.084,
+        "stage": "revise",
+        "revision": 1,
+        "failures": [
+          "preview.viewpoint"
+        ],
+        "reason": "evaluation failed"
+      },
+      {
+        "t": 103.55,
+        "stage": "proposed",
+        "job": "2df028c7-2a52-4961-a0fb-b024ef207658",
+        "receipt": {
+          "provider": "local",
+          "model": "gemma4:e4b",
+          "latency_ms": 28179.14500000188,
+          "usage": {
+            "input_tokens": 4074,
+            "output_tokens": 215
+          },
+          "response_digest": "e564e72f19d1df9622e8742250fd68e2dde706b8522b494d458c57e61c1cda5d"
+        }
+      },
+      {
+        "t": 103.684,
+        "stage": "generate",
+        "job": "2df028c7-2a52-4961-a0fb-b024ef207658",
+        "approved": true
+      },
+      {
+        "t": 112.362,
+        "stage": "preview",
+        "job": "2df028c7-2a52-4961-a0fb-b024ef207658",
+        "results": 2
+      },
+      {
+        "t": 112.389,
+        "stage": "evaluate",
+        "job": "2df028c7-2a52-4961-a0fb-b024ef207658",
+        "passed": true,
+        "failures": [],
+        "advisories": [],
+        "digest": "f5a16fdea96e26e7ab7ee7c46350fa25f32ccdef856a8ee853c282917bc288c3",
+        "checks": 32
+      },
+      {
+        "t": 112.397,
+        "stage": "validate",
+        "export_job": "ca28891e-853f-4573-b24a-9f5c6601ccdf",
+        "plan_digest": "3390f1460cfb4012819dd355ab2775d100b307885cdf2255e5bf4319916cd86e"
+      },
+      {
+        "t": 112.486,
+        "stage": "export",
+        "job": "ca28891e-853f-4573-b24a-9f5c6601ccdf",
+        "approved": true
+      },
+      {
+        "t": 119.705,
+        "stage": "completed",
+        "package": "lumi.fvpkg",
+        "job": "ca28891e-853f-4573-b24a-9f5c6601ccdf",
+        "manifest_sha256": "f37a588f22268876dda8bea8dc78f262fc688c51716bce754aea9d51d72ac45f",
+        "revisions": 1
+      }
+    ]
+  },
+  "reviews": [
+    {
+      "job": "f6e28af5-c8b2-4cde-a34f-ca66b4ee5dfe",
+      "source": "model",
+      "digest": "31658510425063d108122d6852a0b84ad05737d3e051b938ce2bbfcded45360f",
+      "summary": "Create Lumi, a floating spirit companion with custom materials and multiple animation loops, rendered in a front view.",
+      "operations": [
+        "character.spirit",
+        "material.preset",
+        "material.preset",
+        "material.assign_parts",
+        "material.assign_parts",
+        "action.create",
+        "action.create",
+        "action.create",
+        "camera.configure",
+        "light.rig",
+        "render.configure",
+        "preview.render"
+      ],
+      "reviewer": "acceptance harness acting as artist (not a human click)",
+      "t": 65.22,
+      "decision": "approved"
+    },
+    {
+      "job": "2df028c7-2a52-4961-a0fb-b024ef207658",
+      "source": "model",
+      "digest": "6212bba954dbd3dcd86fd21b8b52747bbd9175eee40c828f1e66063484065d95",
+      "summary": "Fix camera viewpoint for Lumi to face front and look down.",
+      "operations": [
+        "camera.configure",
+        "preview.render"
+      ],
+      "reviewer": "acceptance harness acting as artist (not a human click)",
+      "t": 103.56,
+      "decision": "approved"
+    },
+    {
+      "job": "ca28891e-853f-4573-b24a-9f5c6601ccdf",
+      "source": "loop-export",
+      "digest": "3390f1460cfb4012819dd355ab2775d100b307885cdf2255e5bf4319916cd86e",
+      "summary": "Validate and export Lumi as a Genesis candidate",
+      "operations": [
+        "preview.render",
+        "asset.package"
+      ],
+      "reviewer": "acceptance harness acting as artist (not a human click)",
+      "t": 112.4,
+      "decision": "approved"
+    }
+  ],
+  "approval_note": "Approvals were issued by this harness through Host.approve; no human clicked.",
+  "jobs": [
+    {
+      "id": "ca28891e-853f-4573-b24a-9f5c6601ccdf",
+      "state": "Completed",
+      "source": "loop-export",
+      "steps": 2,
+      "operations": 2,
+      "error": null,
+      "receipt": {
+        "model": null,
+        "latency_ms": null,
+        "usage": null,
+        "language": null
+      }
+    },
+    {
+      "id": "2df028c7-2a52-4961-a0fb-b024ef207658",
+      "state": "Completed",
+      "source": "model",
+      "steps": 2,
+      "operations": 2,
+      "error": null,
+      "receipt": {
+        "model": "gemma4:e4b",
+        "latency_ms": 28179.14500000188,
+        "usage": {
+          "input_tokens": 4074,
+          "output_tokens": 215
+        },
+        "language": "v2"
+      }
+    },
+    {
+      "id": "f6e28af5-c8b2-4cde-a34f-ca66b4ee5dfe",
+      "state": "Completed",
+      "source": "model",
+      "steps": 12,
+      "operations": 12,
+      "error": null,
+      "receipt": {
+        "model": "gemma4:e4b",
+        "latency_ms": 64919.72799999348,
+        "usage": {
+          "input_tokens": 2436,
+          "output_tokens": 1418
+        },
+        "language": "v2"
+      }
+    }
+  ],
+  "package_dir": "/Users/wenyan/Finalverse/dev/studio-s2-20261104/loop-model-final3/workspace/jobs/ca28891e-853f-4573-b24a-9f5c6601ccdf/lumi.fvpkg",
+  "package": {
+    "hashes_match": true,
+    "files": [
+      "asset.glb",
+      "body.json",
+      "clips/LumiGreet.glb",
+      "clips/LumiGreet.json",
+      "clips/LumiIdleHover.glb",
+      "clips/LumiIdleHover.json",
+      "clips/LumiSlowDrift.glb",
+      "clips/LumiSlowDrift.json",
+      "contract-check.json",
+      "definition.draft.json",
+      "evaluation.json",
+      "glb-check.json",
+      "previews/step-000-export-preview.png",
+      "provenance.json",
+      "source.blend",
+      "specification.json"
+    ],
+    "published": false,
+    "world_effects": 0,
+    "glb": {
+      "asset.glb": {
+        "valid": true,
+        "bytes": 72868,
+        "generator": "Khronos glTF Blender I/O v5.4.11",
+        "nodes": 1,
+        "meshes": 1,
+        "skins": 0,
+        "joints": 0,
+        "materials": 2,
+        "vertices": 1700,
+        "triangles": 3356,
+        "animations": [
+          {
+            "name": "LumiIdleHover",
+            "channels": 1,
+            "duration_s": 5.0
+          },
+          {
+            "name": "LumiSlowDrift",
+            "channels": 1,
+            "duration_s": 10.0
+          },
+          {
+            "name": "LumiGreet",
+            "channels": 1,
+            "duration_s": 1.25
+          }
+        ],
+        "node_names": [
+          "Lumi"
+        ]
+      },
+      "clips/LumiGreet.glb": {
+        "valid": true,
+        "bytes": 67008,
+        "generator": "Khronos glTF Blender I/O v5.4.11",
+        "nodes": 1,
+        "meshes": 1,
+        "skins": 0,
+        "joints": 0,
+        "materials": 2,
+        "vertices": 1700,
+        "triangles": 3356,
+        "animations": [
+          {
+            "name": "Animation",
+            "channels": 1,
+            "duration_s": 1.25
+          }
+        ],
+        "node_names": [
+          "Lumi"
+        ]
+      },
+      "clips/LumiIdleHover.glb": {
+        "valid": true,
+        "bytes": 68444,
+        "generator": "Khronos glTF Blender I/O v5.4.11",
+        "nodes": 1,
+        "meshes": 1,
+        "skins": 0,
+        "joints": 0,
+        "materials": 2,
+        "vertices": 1700,
+        "triangles": 3356,
+        "animations": [
+          {
+            "name": "Animation",
+            "channels": 1,
+            "duration_s": 5.0
+          }
+        ],
+        "node_names": [
+          "Lumi"
+        ]
+      },
+      "clips/LumiSlowDrift.glb": {
+        "valid": true,
+        "bytes": 70368,
+        "generator": "Khronos glTF Blender I/O v5.4.11",
+        "nodes": 1,
+        "meshes": 1,
+        "skins": 0,
+        "joints": 0,
+        "materials": 2,
+        "vertices": 1700,
+        "triangles": 3356,
+        "animations": [
+          {
+            "name": "Animation",
+            "channels": 1,
+            "duration_s": 10.0
+          }
+        ],
+        "node_names": [
+          "Lumi"
+        ]
+      }
+    },
+    "evaluation": {
+      "advisories": [],
+      "archetype": "floating_spirit",
+      "checks": [
+        {
+          "category": "geometry",
+          "gating": true,
+          "id": "geometry.present",
+          "limit": ">= 12 triangles",
+          "measured": 3356,
+          "passed": true
+        },
+        {
+          "category": "geometry",
+          "gating": true,
+          "id": "geometry.finite",
+          "limit": "all finite",
+          "measured": true,
+          "passed": true
+        },
+        {
+          "category": "geometry",
+          "gating": true,
+          "id": "geometry.triangle_budget",
+          "limit": "<= 100000 (E1)",
+          "measured": 3356,
+          "passed": true
+        },
+        {
+          "category": "geometry",
+          "gating": true,
+          "id": "geometry.degenerate_triangles",
+          "limit": "0",
+          "measured": 0,
+          "passed": true
+        },
+        {
+          "category": "geometry",
+          "gating": false,
+          "id": "geometry.nonmanifold_ratio",
+          "limit": "<= 0.02",
+          "measured": 0.0,
+          "passed": true
+        },
+        {
+          "category": "material",
+          "gating": true,
+          "id": "material.assigned",
+          "limit": "0 faces without material",
+          "measured": 0,
+          "passed": true
+        },
+        {
+          "category": "material",
+          "gating": true,
+          "id": "material.e1_bounds",
+          "limit": "color/roughness/emission within E1 bounds",
+          "measured": [],
+          "passed": true
+        },
+        {
+          "category": "geometry",
+          "gating": true,
+          "id": "geometry.bounds",
+          "limit": "height 0.1\u20133.5 m (E1 specification)",
+          "measured": [
+            0.7728,
+            0.4958,
+            1.14
+          ],
+          "passed": true
+        },
+        {
+          "category": "rig",
+          "gating": true,
+          "id": "anatomy.floating_clearance",
+          "limit": ">= 0.02 m above origin",
+          "measured": 0.048,
+          "passed": true
+        },
+        {
+          "category": "rig",
+          "gating": true,
+          "id": "anatomy.no_legs",
+          "limit": "no leg/foot/walking parts (E1 spirit)",
+          "measured": [],
+          "passed": true
+        },
+        {
+          "category": "rig",
+          "gating": true,
+          "id": "rig.no_skeleton",
+          "limit": "floating spirit has no skeleton (E1)",
+          "measured": false,
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiIdleHover.keys",
+          "limit": ">= 2 frames, finite",
+          "measured": {
+            "channels": 1,
+            "frames": 120
+          },
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiIdleHover.duration",
+          "limit": "0.25\u201320 s",
+          "measured": 4.9583,
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiIdleHover.locomotion",
+          "limit": [
+            "drift",
+            "fly",
+            "hover",
+            "none"
+          ],
+          "measured": "hover",
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiIdleHover.loop_continuity",
+          "limit": "<= 0.001 first\u2194last frame",
+          "measured": 0.0,
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiIdleHover.displacement",
+          "limit": "<= 2.0 m from rest",
+          "measured": 0.05,
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiSlowDrift.keys",
+          "limit": ">= 2 frames, finite",
+          "measured": {
+            "channels": 1,
+            "frames": 240
+          },
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiSlowDrift.duration",
+          "limit": "0.25\u201320 s",
+          "measured": 9.9583,
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiSlowDrift.locomotion",
+          "limit": [
+            "drift",
+            "fly",
+            "hover",
+            "none"
+          ],
+          "measured": "drift",
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiSlowDrift.loop_continuity",
+          "limit": "<= 0.001 first\u2194last frame",
+          "measured": 0.0,
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiSlowDrift.displacement",
+          "limit": "<= 2.0 m from rest",
+          "measured": 0.1414,
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiGreet.keys",
+          "limit": ">= 2 frames, finite",
+          "measured": {
+            "channels": 1,
+            "frames": 30
+          },
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiGreet.duration",
+          "limit": "0.25\u201320 s",
+          "measured": 1.2083,
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiGreet.locomotion",
+          "limit": [
+            "drift",
+            "fly",
+            "hover",
+            "none"
+          ],
+          "measured": "none",
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "clip.LumiGreet.displacement",
+          "limit": "<= 0.3 m from rest",
+          "measured": 0.1732,
+          "passed": true
+        },
+        {
+          "category": "animation",
+          "gating": true,
+          "id": "animation.clips_present",
+          "limit": ">= 1 clip for a character",
+          "measured": 3,
+          "passed": true
+        },
+        {
+          "category": "preview",
+          "gating": true,
+          "id": "preview.viewpoint",
+          "limit": "faces the subject front (\u2265 0.5, i.e. within 60\u00b0) and looks down \u2264 50\u00b0",
+          "measured": {
+            "facing": 0.9991,
+            "look_down_deg": 2.44
+          },
+          "passed": true
+        },
+        {
+          "category": "preview",
+          "gating": true,
+          "id": "preview.export-preview.png.coverage",
+          "limit": "0.03\u20130.85 of frame",
+          "measured": 0.05946,
+          "passed": true
+        },
+        {
+          "category": "preview",
+          "gating": true,
+          "id": "preview.export-preview.png.framing",
+          "limit": "subject inside frame",
+          "measured": false,
+          "passed": true
+        },
+        {
+          "category": "preview",
+          "gating": true,
+          "id": "preview.export-preview.png.exposure",
+          "limit": "0.04\u20130.95",
+          "measured": 0.89518,
+          "passed": true
+        },
+        {
+          "category": "preview",
+          "gating": false,
+          "id": "preview.export-preview.png.centred",
+          "limit": "<= 0.25 from centre",
+          "measured": 0.0041,
+          "passed": true
+        },
+        {
+          "category": "preview",
+          "gating": true,
+          "id": "preview.present",
+          "limit": ">= 1 preview",
+          "measured": 1,
+          "passed": true
+        }
+      ],
+      "digest": "0dfe417d1be64648c54348166a0dd2cd6387436f20df09174a8842f18e0be418",
+      "failures": [],
+      "passed": true,
+      "scene_revision": "f63ac7bbe9acfcbe7a7bd2257ea8e96e5b305405f4362a47736265359abe7a4a",
+      "schema_version": "finalverse.studio-evaluation/v1",
+      "subject": "b83d23c0-427e-42e6-85f0-11caea9f3218",
+      "subject_name": "Lumi"
+    },
+    "contract": {
+      "structural_errors": [],
+      "generator_header": "finalverse-studio-s2/1",
+      "e1_admits_generator": false,
+      "note": "E1 Artifact::validate admits only generator blender-universal/1; Genesis must admit this generator"
+    },
+    "s0_transport_gate": {
+      "genesis_geometry_validated": false,
+      "manifest_sha256": "3be4e05ae5322a7690af98e7c96e321b36aec33e9d5d6a39d1d8e6dffdef6967",
+      "publication_authorized": false,
+      "schema_version": "finalverse.studio-integrity-receipt/v1",
+      "valid": true
+    }
+  }
+}

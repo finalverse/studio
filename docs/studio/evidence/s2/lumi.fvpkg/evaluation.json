@@ -1,0 +1,300 @@
+{
+  "advisories": [],
+  "archetype": "floating_spirit",
+  "checks": [
+    {
+      "category": "geometry",
+      "gating": true,
+      "id": "geometry.present",
+      "limit": ">= 12 triangles",
+      "measured": 3356,
+      "passed": true
+    },
+    {
+      "category": "geometry",
+      "gating": true,
+      "id": "geometry.finite",
+      "limit": "all finite",
+      "measured": true,
+      "passed": true
+    },
+    {
+      "category": "geometry",
+      "gating": true,
+      "id": "geometry.triangle_budget",
+      "limit": "<= 100000 (E1)",
+      "measured": 3356,
+      "passed": true
+    },
+    {
+      "category": "geometry",
+      "gating": true,
+      "id": "geometry.degenerate_triangles",
+      "limit": "0",
+      "measured": 0,
+      "passed": true
+    },
+    {
+      "category": "geometry",
+      "gating": false,
+      "id": "geometry.nonmanifold_ratio",
+      "limit": "<= 0.02",
+      "measured": 0.0,
+      "passed": true
+    },
+    {
+      "category": "material",
+      "gating": true,
+      "id": "material.assigned",
+      "limit": "0 faces without material",
+      "measured": 0,
+      "passed": true
+    },
+    {
+      "category": "material",
+      "gating": true,
+      "id": "material.e1_bounds",
+      "limit": "color/roughness/emission within E1 bounds",
+      "measured": [],
+      "passed": true
+    },
+    {
+      "category": "geometry",
+      "gating": true,
+      "id": "geometry.bounds",
+      "limit": "height 0.1\u20133.5 m (E1 specification)",
+      "measured": [
+        0.7728,
+        0.4958,
+        1.14
+      ],
+      "passed": true
+    },
+    {
+      "category": "rig",
+      "gating": true,
+      "id": "anatomy.floating_clearance",
+      "limit": ">= 0.02 m above origin",
+      "measured": 0.048,
+      "passed": true
+    },
+    {
+      "category": "rig",
+      "gating": true,
+      "id": "anatomy.no_legs",
+      "limit": "no leg/foot/walking parts (E1 spirit)",
+      "measured": [],
+      "passed": true
+    },
+    {
+      "category": "rig",
+      "gating": true,
+      "id": "rig.no_skeleton",
+      "limit": "floating spirit has no skeleton (E1)",
+      "measured": false,
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiIdleHover.keys",
+      "limit": ">= 2 frames, finite",
+      "measured": {
+        "channels": 1,
+        "frames": 120
+      },
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiIdleHover.duration",
+      "limit": "0.25\u201320 s",
+      "measured": 4.9583,
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiIdleHover.locomotion",
+      "limit": [
+        "drift",
+        "fly",
+        "hover",
+        "none"
+      ],
+      "measured": "hover",
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiIdleHover.loop_continuity",
+      "limit": "<= 0.001 first\u2194last frame",
+      "measured": 0.0,
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiIdleHover.displacement",
+      "limit": "<= 2.0 m from rest",
+      "measured": 0.05,
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiSlowDrift.keys",
+      "limit": ">= 2 frames, finite",
+      "measured": {
+        "channels": 1,
+        "frames": 240
+      },
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiSlowDrift.duration",
+      "limit": "0.25\u201320 s",
+      "measured": 9.9583,
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiSlowDrift.locomotion",
+      "limit": [
+        "drift",
+        "fly",
+        "hover",
+        "none"
+      ],
+      "measured": "drift",
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiSlowDrift.loop_continuity",
+      "limit": "<= 0.001 first\u2194last frame",
+      "measured": 0.0,
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiSlowDrift.displacement",
+      "limit": "<= 2.0 m from rest",
+      "measured": 0.1414,
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiGreet.keys",
+      "limit": ">= 2 frames, finite",
+      "measured": {
+        "channels": 1,
+        "frames": 30
+      },
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiGreet.duration",
+      "limit": "0.25\u201320 s",
+      "measured": 1.2083,
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiGreet.locomotion",
+      "limit": [
+        "drift",
+        "fly",
+        "hover",
+        "none"
+      ],
+      "measured": "none",
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "clip.LumiGreet.displacement",
+      "limit": "<= 0.3 m from rest",
+      "measured": 0.1732,
+      "passed": true
+    },
+    {
+      "category": "animation",
+      "gating": true,
+      "id": "animation.clips_present",
+      "limit": ">= 1 clip for a character",
+      "measured": 3,
+      "passed": true
+    },
+    {
+      "category": "preview",
+      "gating": true,
+      "id": "preview.viewpoint",
+      "limit": "faces the subject front (\u2265 0.5, i.e. within 60\u00b0) and looks down \u2264 50\u00b0",
+      "measured": {
+        "facing": 0.9991,
+        "look_down_deg": 2.44
+      },
+      "passed": true
+    },
+    {
+      "category": "preview",
+      "gating": true,
+      "id": "preview.export-preview.png.coverage",
+      "limit": "0.03\u20130.85 of frame",
+      "measured": 0.05946,
+      "passed": true
+    },
+    {
+      "category": "preview",
+      "gating": true,
+      "id": "preview.export-preview.png.framing",
+      "limit": "subject inside frame",
+      "measured": false,
+      "passed": true
+    },
+    {
+      "category": "preview",
+      "gating": true,
+      "id": "preview.export-preview.png.exposure",
+      "limit": "0.04\u20130.95",
+      "measured": 0.89518,
+      "passed": true
+    },
+    {
+      "category": "preview",
+      "gating": false,
+      "id": "preview.export-preview.png.centred",
+      "limit": "<= 0.25 from centre",
+      "measured": 0.0041,
+      "passed": true
+    },
+    {
+      "category": "preview",
+      "gating": true,
+      "id": "preview.present",
+      "limit": ">= 1 preview",
+      "measured": 1,
+      "passed": true
+    }
+  ],
+  "digest": "0dfe417d1be64648c54348166a0dd2cd6387436f20df09174a8842f18e0be418",
+  "failures": [],
+  "passed": true,
+  "scene_revision": "f63ac7bbe9acfcbe7a7bd2257ea8e96e5b305405f4362a47736265359abe7a4a",
+  "schema_version": "finalverse.studio-evaluation/v1",
+  "subject": "b83d23c0-427e-42e6-85f0-11caea9f3218",
+  "subject_name": "Lumi"
+}

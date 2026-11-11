@@ -1,0 +1,898 @@
+{
+  "schema_version": "finalverse.studio-s2-native/v1",
+  "build_hash": "f165abf4e77f",
+  "modules": "/Users/wenyan/Finalverse/dev/studio-s2-20261104/install/Finalverse Studio.app/Contents/Resources/5.4/scripts/modules/finalverse_creation/engine.py",
+  "runs": {
+    "lumi": {
+      "operations": 14,
+      "seconds": 7.428,
+      "steps": [
+        {
+          "op": "scene.inspect",
+          "ms": 0.03,
+          "result": {
+            "scene_id": "5defac83-1f25-4a31-af11-8c72a84f2554",
+            "revision": "d48a48db612f98d0e83af793da2e58ea9e8956913a177999366912f348f9ebd1",
+            "objects": 0,
+            "materials": 0
+          }
+        },
+        {
+          "op": "character.spirit",
+          "ms": 96.2,
+          "result": {
+            "operation": "character.spirit",
+            "id": "0d97d0bb-d8d6-45ea-9464-a223b27bbcbc",
+            "vertices": 1700,
+            "triangles": 3356,
+            "parts": 11
+          }
+        },
+        {
+          "op": "material.preset",
+          "ms": 0.29,
+          "result": {
+            "operation": "material.preset",
+            "id": "15c60723-3f8a-421f-9e4f-f30c23ec463e"
+          }
+        },
+        {
+          "op": "material.preset",
+          "ms": 0.11,
+          "result": {
+            "operation": "material.preset",
+            "id": "078519b9-b260-4830-a9c2-65235ebef69f"
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 1.55,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "0d97d0bb-d8d6-45ea-9464-a223b27bbcbc",
+            "faces": 1842
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 0.77,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "0d97d0bb-d8d6-45ea-9464-a223b27bbcbc",
+            "faces": 400
+          }
+        },
+        {
+          "op": "action.create",
+          "ms": 0.41,
+          "result": {
+            "operation": "action.create",
+            "id": "c1454c12-b6b0-49eb-a123-c9369405f05c",
+            "target": "0d97d0bb-d8d6-45ea-9464-a223b27bbcbc",
+            "keys": 3
+          }
+        },
+        {
+          "op": "action.create",
+          "ms": 0.17,
+          "result": {
+            "operation": "action.create",
+            "id": "4b285958-86ef-4c9f-bde7-5509a66223cf",
+            "target": "0d97d0bb-d8d6-45ea-9464-a223b27bbcbc",
+            "keys": 5
+          }
+        },
+        {
+          "op": "action.create",
+          "ms": 0.15,
+          "result": {
+            "operation": "action.create",
+            "id": "7a36ea95-8a4b-4fd8-8df0-c0e7622ad9d8",
+            "target": "0d97d0bb-d8d6-45ea-9464-a223b27bbcbc",
+            "keys": 3
+          }
+        },
+        {
+          "op": "camera.configure",
+          "ms": 0.13,
+          "result": {
+            "id": "d6620097-1a87-4589-b87a-da203d08f2d7",
+            "operation": "camera.configure"
+          }
+        },
+        {
+          "op": "light.rig",
+          "ms": 0.31,
+          "result": {
+            "operation": "light.rig",
+            "id": "bbba2c0d-f369-4562-9015-09dab1eddb87",
+            "lights": [
+              "bbba2c0d-f369-4562-9015-09dab1eddb87",
+              "dd6298e7-1c61-4821-a8a2-034d2833ba09",
+              "b14ee1cd-bd73-48e6-bec5-c1ff79d4716c"
+            ]
+          }
+        },
+        {
+          "op": "render.configure",
+          "ms": 0.26,
+          "result": {
+            "operation": "render.configure",
+            "frame_range": [
+              1,
+              72
+            ],
+            "fps": 24,
+            "transparent": true
+          }
+        },
+        {
+          "op": "preview.render",
+          "ms": 7017.18,
+          "result": {
+            "path": "previews/step-012/lumi-front.png"
+          }
+        },
+        {
+          "op": "asset.package",
+          "ms": 309.45,
+          "result": {
+            "operation": "asset.package",
+            "path": "lumi.fvpkg",
+            "files": 18,
+            "manifest_sha256": "afa17d233009797a97ca458ce7ea2ce8e8f3f1dfb34571719c01e53b2025aee8",
+            "evaluation_passed": true,
+            "clips": 3,
+            "published": false
+          }
+        }
+      ],
+      "snapshot_revision": "6bd722ece38c44c93730a30831bc99c494031942b3409fd775fb1197f78af315",
+      "package": {
+        "files": [
+          "asset.glb",
+          "body.json",
+          "clips/Lumi_Drift.glb",
+          "clips/Lumi_Drift.json",
+          "clips/Lumi_Greet.glb",
+          "clips/Lumi_Greet.json",
+          "clips/Lumi_Hover.glb",
+          "clips/Lumi_Hover.json",
+          "contract-check.json",
+          "definition.draft.json",
+          "evaluation.json",
+          "glb-check.json",
+          "previews/step-012-lumi-front.png",
+          "provenance.json",
+          "source.blend",
+          "specification.json"
+        ],
+        "hashes_match": true,
+        "published": false,
+        "world_effects": 0,
+        "clips": [
+          "Lumi Hover",
+          "Lumi Drift",
+          "Lumi Greet"
+        ],
+        "glb": {
+          "asset.glb": {
+            "animations": [
+              {
+                "name": "Lumi Hover",
+                "channels": 2,
+                "duration_s": 2.0
+              },
+              {
+                "name": "Lumi Drift",
+                "channels": 2,
+                "duration_s": 3.0
+              },
+              {
+                "name": "Lumi Greet",
+                "channels": 3,
+                "duration_s": 1.5
+              }
+            ],
+            "skins": 0,
+            "joints": 0,
+            "triangles": 3356
+          },
+          "clips/Lumi_Drift.glb": {
+            "animations": [
+              {
+                "name": "Animation",
+                "channels": 2,
+                "duration_s": 3.0
+              }
+            ],
+            "skins": 0,
+            "joints": 0,
+            "triangles": 3356
+          },
+          "clips/Lumi_Greet.glb": {
+            "animations": [
+              {
+                "name": "Animation",
+                "channels": 3,
+                "duration_s": 1.5
+              }
+            ],
+            "skins": 0,
+            "joints": 0,
+            "triangles": 3356
+          },
+          "clips/Lumi_Hover.glb": {
+            "animations": [
+              {
+                "name": "Animation",
+                "channels": 2,
+                "duration_s": 2.0
+              }
+            ],
+            "skins": 0,
+            "joints": 0,
+            "triangles": 3356
+          }
+        },
+        "s0_transport_gate": {
+          "genesis_geometry_validated": false,
+          "manifest_sha256": "2010475ce5448ff1b9aaed67b4874894934c8af1eb2dc714d26c1d4a9cbeffca",
+          "publication_authorized": false,
+          "schema_version": "finalverse.studio-integrity-receipt/v1",
+          "valid": true
+        },
+        "evaluation": true,
+        "contract": {
+          "structural_errors": [],
+          "generator_header": "finalverse-studio-s2/1",
+          "e1_admits_generator": false,
+          "note": "E1 Artifact::validate admits only generator blender-universal/1; Genesis must admit this generator"
+        }
+      }
+    },
+    "rigs": {
+      "operations": 17,
+      "seconds": 0.524,
+      "steps": [
+        {
+          "op": "scene.inspect",
+          "ms": 0.03,
+          "result": {
+            "scene_id": "a910aed3-5e22-4f88-890b-9f749443ed2c",
+            "revision": "9049b9af8e4de62c74837aeb3c37eeca962bd71e4f2d21b4262bb5520054bfef",
+            "objects": 0,
+            "materials": 0
+          }
+        },
+        {
+          "op": "character.humanoid",
+          "ms": 65.51,
+          "result": {
+            "operation": "character.humanoid",
+            "id": "1b23cb94-e0ef-4bf9-bd8b-93b593535865",
+            "vertices": 1726,
+            "triangles": 3384,
+            "parts": 17
+          }
+        },
+        {
+          "op": "armature.create",
+          "ms": 0.52,
+          "result": {
+            "operation": "armature.create",
+            "id": "0593f1a0-33c5-4836-a169-34f18c454854",
+            "bones": 6
+          }
+        },
+        {
+          "op": "material.preset",
+          "ms": 0.17,
+          "result": {
+            "operation": "material.preset",
+            "id": "22a06319-70f8-4ae4-a263-e67276b1eee3"
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 1.38,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "1b23cb94-e0ef-4bf9-bd8b-93b593535865",
+            "faces": 1740
+          }
+        },
+        {
+          "op": "armature.skin",
+          "ms": 16.21,
+          "result": {
+            "operation": "armature.skin",
+            "id": "1b23cb94-e0ef-4bf9-bd8b-93b593535865",
+            "method": "automatic",
+            "vertex_groups": 6,
+            "unweighted_vertices": 0
+          }
+        },
+        {
+          "op": "action.create",
+          "ms": 0.41,
+          "result": {
+            "operation": "action.create",
+            "id": "b8eff5a0-74a5-4084-b13d-3a43250900ad",
+            "target": "0593f1a0-33c5-4836-a169-34f18c454854",
+            "keys": 12
+          }
+        },
+        {
+          "op": "character.humanoid",
+          "ms": 73.55,
+          "result": {
+            "operation": "character.humanoid",
+            "id": "7d970289-4ce3-400e-b460-508c17bfa2c2",
+            "vertices": 1788,
+            "triangles": 3504,
+            "parts": 18
+          }
+        },
+        {
+          "op": "armature.create",
+          "ms": 0.52,
+          "result": {
+            "operation": "armature.create",
+            "id": "029cbb0f-175e-4b96-8eca-efe72bd262cf",
+            "bones": 6
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 1.44,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "7d970289-4ce3-400e-b460-508c17bfa2c2",
+            "faces": 1812
+          }
+        },
+        {
+          "op": "armature.skin",
+          "ms": 2.44,
+          "result": {
+            "operation": "armature.skin",
+            "id": "7d970289-4ce3-400e-b460-508c17bfa2c2",
+            "method": "envelope",
+            "vertex_groups": 6,
+            "unweighted_vertices": 0
+          }
+        },
+        {
+          "op": "action.retarget",
+          "ms": 0.72,
+          "result": {
+            "operation": "action.retarget",
+            "id": "bd8ef764-5fb9-4455-aa76-16d366b00f4e",
+            "target": "029cbb0f-175e-4b96-8eca-efe72bd262cf",
+            "copied_keys": 36
+          }
+        },
+        {
+          "op": "camera.configure",
+          "ms": 0.22,
+          "result": {
+            "id": "3349a734-076f-424a-8d1e-650b09f829ec",
+            "operation": "camera.configure"
+          }
+        },
+        {
+          "op": "light.rig",
+          "ms": 0.4,
+          "result": {
+            "operation": "light.rig",
+            "id": "62e0da8f-7896-4b0e-a0fd-b30ea9d35429",
+            "lights": [
+              "62e0da8f-7896-4b0e-a0fd-b30ea9d35429",
+              "b4b9a70f-d183-4d36-b58c-03fcfc4eafb5",
+              "82e2b258-04bd-4a76-9ab4-447cb89107f1"
+            ]
+          }
+        },
+        {
+          "op": "render.configure",
+          "ms": 0.24,
+          "result": {
+            "operation": "render.configure",
+            "frame_range": [
+              1,
+              25
+            ],
+            "fps": 24,
+            "transparent": true
+          }
+        },
+        {
+          "op": "preview.render",
+          "ms": 239.62,
+          "result": {
+            "path": "previews/step-015/rigs.png"
+          }
+        },
+        {
+          "op": "asset.package",
+          "ms": 119.71,
+          "result": {
+            "operation": "asset.package",
+            "path": "human.fvpkg",
+            "files": 14,
+            "manifest_sha256": "3e4f411427097e43211422e9285a401769f89bb7781fef1027c8343e7a48b779",
+            "evaluation_passed": true,
+            "clips": 1,
+            "published": false
+          }
+        }
+      ],
+      "snapshot_revision": "66c46178e247f6dac7c5709aa70427101817fea0fa26593574768b1b3601d28a",
+      "package": {
+        "files": [
+          "asset.glb",
+          "body.json",
+          "clips/Human_Walk.glb",
+          "clips/Human_Walk.json",
+          "contract-check.json",
+          "definition.draft.json",
+          "evaluation.json",
+          "glb-check.json",
+          "previews/step-015-rigs.png",
+          "provenance.json",
+          "source.blend",
+          "specification.json"
+        ],
+        "hashes_match": true,
+        "published": false,
+        "world_effects": 0,
+        "clips": [
+          "Human Walk"
+        ],
+        "glb": {
+          "asset.glb": {
+            "animations": [
+              {
+                "name": "Human Walk",
+                "channels": 18,
+                "duration_s": 1.04167
+              }
+            ],
+            "skins": 1,
+            "joints": 6,
+            "triangles": 3384
+          },
+          "clips/Human_Walk.glb": {
+            "animations": [
+              {
+                "name": "Animation",
+                "channels": 18,
+                "duration_s": 1.04167
+              }
+            ],
+            "skins": 1,
+            "joints": 6,
+            "triangles": 3384
+          }
+        },
+        "s0_transport_gate": {
+          "genesis_geometry_validated": false,
+          "manifest_sha256": "913ccb78038bda129e800e5b2f41d47ae8d12a107859b953a6a7126e9127d07b",
+          "publication_authorized": false,
+          "schema_version": "finalverse.studio-integrity-receipt/v1",
+          "valid": true
+        },
+        "evaluation": true,
+        "contract": {
+          "structural_errors": [],
+          "generator_header": "finalverse-studio-s2/1",
+          "e1_admits_generator": false,
+          "note": "E1 Artifact::validate admits only generator blender-universal/1; Genesis must admit this generator"
+        }
+      },
+      "retarget_rotation_keys_equal": true,
+      "envelope_unweighted": 0
+    },
+    "environment": {
+      "operations": 37,
+      "seconds": 0.686,
+      "steps": [
+        {
+          "op": "scene.inspect",
+          "ms": 0.03,
+          "result": {
+            "scene_id": "eea53a8e-131c-4fd9-8e00-8497d67f6be3",
+            "revision": "14d49e03ea4beb4246119974f6fd59a932f3830f8f1a74ca1348d8497d99a1be",
+            "objects": 0,
+            "materials": 0
+          }
+        },
+        {
+          "op": "mesh.primitive",
+          "ms": 0.53,
+          "result": {
+            "operation": "mesh.primitive",
+            "id": "bcf01011-768e-4d60-ad3d-b8537e293ada",
+            "vertices": 4,
+            "triangles": 2,
+            "parts": 0
+          }
+        },
+        {
+          "op": "procedural.building",
+          "ms": 2.45,
+          "result": {
+            "operation": "procedural.building",
+            "id": "32a5d8a7-4bc3-4baf-b5ac-0fead589a161",
+            "vertices": 230,
+            "triangles": 344,
+            "parts": 29
+          }
+        },
+        {
+          "op": "procedural.building",
+          "ms": 3.72,
+          "result": {
+            "operation": "procedural.building",
+            "id": "1f2b2b68-edd2-4a37-8b4f-6193061fb05d",
+            "vertices": 352,
+            "triangles": 528,
+            "parts": 44
+          }
+        },
+        {
+          "op": "procedural.tree",
+          "ms": 24.81,
+          "result": {
+            "operation": "procedural.tree",
+            "id": "69929116-59c5-4855-bfa6-ac55441c32fe",
+            "vertices": 756,
+            "triangles": 1456,
+            "parts": 14
+          }
+        },
+        {
+          "op": "procedural.tree",
+          "ms": 1.06,
+          "result": {
+            "operation": "procedural.tree",
+            "id": "bde7d70c-545a-41e5-9614-1a30c8157d18",
+            "vertices": 152,
+            "triangles": 284,
+            "parts": 5
+          }
+        },
+        {
+          "op": "mesh.primitive",
+          "ms": 0.3,
+          "result": {
+            "operation": "mesh.primitive",
+            "id": "7b4e8969-66aa-4d4c-8cf4-ee61c9b583a2",
+            "vertices": 4,
+            "triangles": 2,
+            "parts": 0
+          }
+        },
+        {
+          "op": "material.preset",
+          "ms": 0.17,
+          "result": {
+            "operation": "material.preset",
+            "id": "6c4cfefd-79ee-4d44-bc38-283ea0ececda"
+          }
+        },
+        {
+          "op": "material.preset",
+          "ms": 0.1,
+          "result": {
+            "operation": "material.preset",
+            "id": "64aae449-f7ea-4d12-8401-bfec301f5b17"
+          }
+        },
+        {
+          "op": "material.preset",
+          "ms": 0.1,
+          "result": {
+            "operation": "material.preset",
+            "id": "cc0fbf07-c792-436c-9161-4a5e53528483"
+          }
+        },
+        {
+          "op": "material.preset",
+          "ms": 0.13,
+          "result": {
+            "operation": "material.preset",
+            "id": "a17e010f-7a5b-403c-9278-6743d4600486"
+          }
+        },
+        {
+          "op": "material.preset",
+          "ms": 0.14,
+          "result": {
+            "operation": "material.preset",
+            "id": "3025c628-d04a-4c99-9538-d77709757136"
+          }
+        },
+        {
+          "op": "material.preset",
+          "ms": 0.2,
+          "result": {
+            "operation": "material.preset",
+            "id": "d096f952-c13a-4c10-a8cc-68bfb832a97a"
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 0.24,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "bcf01011-768e-4d60-ad3d-b8537e293ada",
+            "faces": 1
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 0.17,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "7b4e8969-66aa-4d4c-8cf4-ee61c9b583a2",
+            "faces": 1
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 0.25,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "32a5d8a7-4bc3-4baf-b5ac-0fead589a161",
+            "faces": 24
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 0.41,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "32a5d8a7-4bc3-4baf-b5ac-0fead589a161",
+            "faces": 144
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 0.25,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "32a5d8a7-4bc3-4baf-b5ac-0fead589a161",
+            "faces": 5
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 0.25,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "1f2b2b68-edd2-4a37-8b4f-6193061fb05d",
+            "faces": 42
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 0.37,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "1f2b2b68-edd2-4a37-8b4f-6193061fb05d",
+            "faces": 216
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 0.2,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "1f2b2b68-edd2-4a37-8b4f-6193061fb05d",
+            "faces": 6
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 0.37,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "69929116-59c5-4855-bfa6-ac55441c32fe",
+            "faces": 64
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 0.86,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "69929116-59c5-4855-bfa6-ac55441c32fe",
+            "faces": 744
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 0.19,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "bde7d70c-545a-41e5-9614-1a30c8157d18",
+            "faces": 14
+          }
+        },
+        {
+          "op": "material.assign_parts",
+          "ms": 0.22,
+          "result": {
+            "operation": "material.assign_parts",
+            "id": "bde7d70c-545a-41e5-9614-1a30c8157d18",
+            "faces": 72
+          }
+        },
+        {
+          "op": "geonodes.scatter",
+          "ms": 2.81,
+          "result": {
+            "operation": "geonodes.scatter",
+            "id": "af538406-c7f3-40f2-a7ca-00588b4ef736",
+            "vertices": 9072,
+            "node_recipe": "distribute-instance-realize/1"
+          }
+        },
+        {
+          "op": "mesh.deform",
+          "ms": 0.44,
+          "result": {
+            "operation": "mesh.deform",
+            "id": "bde7d70c-545a-41e5-9614-1a30c8157d18",
+            "vertices": 152
+          }
+        },
+        {
+          "op": "object.parent",
+          "ms": 0.18,
+          "result": {
+            "operation": "object.parent",
+            "id": "32a5d8a7-4bc3-4baf-b5ac-0fead589a161",
+            "parent": "bcf01011-768e-4d60-ad3d-b8537e293ada"
+          }
+        },
+        {
+          "op": "object.parent",
+          "ms": 0.15,
+          "result": {
+            "operation": "object.parent",
+            "id": "1f2b2b68-edd2-4a37-8b4f-6193061fb05d",
+            "parent": "bcf01011-768e-4d60-ad3d-b8537e293ada"
+          }
+        },
+        {
+          "op": "object.parent",
+          "ms": 0.14,
+          "result": {
+            "operation": "object.parent",
+            "id": "bde7d70c-545a-41e5-9614-1a30c8157d18",
+            "parent": "bcf01011-768e-4d60-ad3d-b8537e293ada"
+          }
+        },
+        {
+          "op": "object.parent",
+          "ms": 0.14,
+          "result": {
+            "operation": "object.parent",
+            "id": "7b4e8969-66aa-4d4c-8cf4-ee61c9b583a2",
+            "parent": "bcf01011-768e-4d60-ad3d-b8537e293ada"
+          }
+        },
+        {
+          "op": "object.parent",
+          "ms": 0.14,
+          "result": {
+            "operation": "object.parent",
+            "id": "af538406-c7f3-40f2-a7ca-00588b4ef736",
+            "parent": "bcf01011-768e-4d60-ad3d-b8537e293ada"
+          }
+        },
+        {
+          "op": "camera.configure",
+          "ms": 0.2,
+          "result": {
+            "id": "761ad5be-1261-4eb1-b0d8-dd005e57c995",
+            "operation": "camera.configure"
+          }
+        },
+        {
+          "op": "light.rig",
+          "ms": 0.3,
+          "result": {
+            "operation": "light.rig",
+            "id": "3694896d-3cea-4178-9e4d-a8b5f5fc260e",
+            "lights": [
+              "3694896d-3cea-4178-9e4d-a8b5f5fc260e",
+              "03465624-7f8f-4703-a335-5e467e2e51b7"
+            ]
+          }
+        },
+        {
+          "op": "render.configure",
+          "ms": 0.26,
+          "result": {
+            "operation": "render.configure",
+            "frame_range": [
+              1,
+              1
+            ],
+            "fps": 24,
+            "transparent": false
+          }
+        },
+        {
+          "op": "preview.render",
+          "ms": 505.7,
+          "result": {
+            "path": "previews/step-035/village.png"
+          }
+        },
+        {
+          "op": "asset.package",
+          "ms": 137.39,
+          "result": {
+            "operation": "asset.package",
+            "path": "village.fvpkg",
+            "files": 8,
+            "manifest_sha256": "bf5dd97ba3cd643315c7042cc60b7f9360e2cb4fa640e2dfb4db18c9a1eb70c5",
+            "evaluation_passed": true,
+            "clips": 0,
+            "published": false
+          }
+        }
+      ],
+      "snapshot_revision": "f5256de99fbf9dd59b4e6b090309b12dbd3bc27b121fb7390212722dbb4e277d",
+      "package": {
+        "files": [
+          "asset.glb",
+          "evaluation.json",
+          "glb-check.json",
+          "previews/step-035-village.png",
+          "provenance.json",
+          "source.blend"
+        ],
+        "hashes_match": true,
+        "published": false,
+        "world_effects": 0,
+        "clips": [],
+        "glb": {
+          "asset.glb": {
+            "animations": [],
+            "skins": 0,
+            "joints": 0,
+            "triangles": 18632
+          }
+        },
+        "s0_transport_gate": {
+          "genesis_geometry_validated": false,
+          "manifest_sha256": "ba4dcef2c9bab0eeeb0006e5c7a5904e432294ffd813d6a12fc8d65b57251c21",
+          "publication_authorized": false,
+          "schema_version": "finalverse.studio-integrity-receipt/v1",
+          "valid": true
+        },
+        "evaluation": true,
+        "contract": null
+      },
+      "scatter_vertices": 9072
+    }
+  },
+  "negative": {
+    "spirit_skeleton": "refused: floating_spirit has no skeleton or humanoid body",
+    "spirit_walk_clip": "refused: walk locomotion is not allowed for floating_spirit",
+    "spirit_leg_name": "refused: floating_spirit cannot acquire conventional legs or walking",
+    "badly_framed_export": "refused: Validation failed: preview.viewpoint, preview.lumi-front.png.coverage, preview.lumi-front.png.exposure",
+    "badly_framed_package_absent": true
+  },
+  "determinism": {
+    "spirit_repeat_equal": true,
+    "tree_same_seed_equal": true,
+    "tree_other_seed_differs": true
+  }
+}

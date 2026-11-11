@@ -1,0 +1,9 @@
+{
+  "schema_version": "finalverse.brand-source/v1",
+  "authorization": "User supplied Finalverse project artwork and requested its white form as the Studio base, 2026-11-04.",
+  "source_path": "/Users/wenyan/Project2026/Finalverse/Images/Finalverse_logo_07@3x.png",
+  "source_sha256": "74a49f14f8c25319af5d81608075073539b8f4f6d771b3fe05a9ecce336807c7",
+  "source_reference": "source-finalverse-logo.png",
+  "derivative": "Monochrome vector simplification of the angular Finalverse emblem; no bevels or raster shadows. Studio wordmark and application layouts are new.",
+  "runtime_dependency": "None; all generated resources are committed."
+}

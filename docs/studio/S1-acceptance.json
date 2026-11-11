@@ -1,0 +1,106 @@
+{
+  "schema_version": "finalverse.studio-s1-acceptance/v1",
+  "status": "local_engineering_checks_passed",
+  "user_acceptance": "pending",
+  "compiled_source_commit": "7e99e2fd3ae3556fde0f47410bda5ac82dc82cb3",
+  "executable_sha256": "e38aa33b55d9c5107d75dee0740304f3c49b4bb77f7603e32b20bc9ef5b573ff",
+  "branch": "feat/studio-s1",
+  "checks": {
+    "unit_tests_passed": 36,
+    "real_gemma_full_workflow": true,
+    "source_save_reopen": true,
+    "glb_geometry_material_animation": true,
+    "real_mcp_stdio_client": true,
+    "mcp_protocol_version": "2025-11-25",
+    "native_failure_recovery": {
+      "cancel_stops_remaining_steps": true,
+      "restart_interrupted_no_duplicate_and_checkpoint_reopened": true,
+      "concurrent_edit_aborts_remaining_steps": true,
+      "stale_approval_refused": true,
+      "provider_child_cancelled": true,
+      "pending_provider_tick_max_seconds": 0.00013279199629323557
+    },
+    "native_ui_operators": {
+      "passed": true,
+      "mode": "native headless window/area context; not an interactive desktop capture",
+      "source_build": "7e99e2fd3ae3",
+      "window_context_count": 1,
+      "full_plan_review_text_editor": true,
+      "review_text_edits_cannot_mutate_proposal": true,
+      "approval_operator_executes_exact_plan": true,
+      "connection_cancel_operator": true,
+      "cancel_seconds": 0.0017626659973757342,
+      "mcp_config_operator": true
+    },
+    "s0_regression": {
+      "python_api": true,
+      "workspace": true,
+      "mesh_edit": true,
+      "render": true,
+      "save_reopen_identity": true,
+      "glb_export": true,
+      "source_export": true,
+      "refuse_overwrite": true
+    },
+    "render_isolation": {
+      "network_denied": true,
+      "outside_read_denied": true,
+      "outside_write_denied": true
+    },
+    "model_scene_revision_matches": true
+  },
+  "desktop": {
+    "initial_real_gemma_plan_and_approval": "passed",
+    "final_visual_check": "passed: interactive window, timer-invoked operators, framebuffer capture; computer-use access declined so no human-equivalent clicks claimed",
+    "operations": 12,
+    "review_text_matches_proposal": true,
+    "cancel_step": "4/12",
+    "no_steps_after_cancel": true,
+    "cancel_operator_ms": 13.4,
+    "inference_child_cancel_ms": 2.6
+  },
+  "models": {
+    "working_local_model": "gemma4:e4b",
+    "oversized_local_model": "qwen3:30b-a3b",
+    "qwen_status": "two recorded timeouts, final memory admission rejection",
+    "maple": "configured at https://studio.finalverse.com, off by default, switchable in Studio; host NXDOMAIN on 2026-11-04 so only error path tested",
+    "remote_providers": "custom Ollama/OpenAI-compatible/Anthropic; keys in macOS Keychain; live failure modes tested; no successful remote inference",
+    "codex_claude": "documented MCP configuration; real SDK client tested"
+  },
+  "authority": {
+    "world_mutations": false,
+    "publication_authorized": false,
+    "push": false,
+    "merge": false,
+    "deploy": false
+  },
+  "preserved": {
+    "s0_source": "24d1acf06b55945bed5d247bd6e5184906bf4150",
+    "s0_executable_sha256": "e857ab2dfa7c316c9c69b2e6d85670b862d61a5907b7c6cff263f8b12b6343a4",
+    "core_adapter": "b601da2e7c9cdd673ab7d0a9b13ec2a68c7fea4f"
+  },
+  "next": "S2 on feat/studio-s1 lineage under its own acceptance boundary",
+  "provider_revision": {
+    "source_commit": "452fedc07122",
+    "executable_sha256": "d38abfd5971583c60e0068d874919b50aefa8dd94adc9089e5fd05584f97da1f",
+    "app": "/Users/wenyan/Finalverse/dev/studio-s1-20261104/install-providers/Finalverse Studio.app"
+  },
+  "providers": {
+    "default": "local gemma4:e4b",
+    "studio_ui_checks": "20/20",
+    "live_helper_cases": 15,
+    "same_proposal_validation_approval_path": true,
+    "same_memory_admission_rule": true,
+    "secrets_in_files": false,
+    "defect_fixed": "bundled OpenSSL had no CA store; certifi CA bundle now used for HTTPS",
+    "failure_modes": {
+      "disabled": "provider_disabled",
+      "missing_key": "provider_credential_missing",
+      "dns": "provider_unreachable",
+      "refused": "provider_unreachable",
+      "timeout": "provider_timeout",
+      "bad_credentials": "provider_auth_failed",
+      "oversize_local": "provider_admission_refused"
+    }
+  }
+}

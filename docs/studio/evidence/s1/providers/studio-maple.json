@@ -1,0 +1,12 @@
+{
+  "message": "Failed: provider_unreachable (DNS resolution failed for the provider host); no fallback used",
+  "result": {
+    "detail": "DNS resolution failed for the provider host",
+    "error": "provider_unreachable",
+    "fallback_used": false,
+    "ok": false,
+    "total_latency_ms": 146.42533399455715
+  },
+  "maple_enabled_after": false,
+  "maple_key_removed": true
+}

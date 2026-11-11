@@ -1,0 +1,3 @@
+# Original Finalverse artwork ships in the fork without an external LFS dependency.
+branding/*.png -filter -diff -merge
+branding/*.icns -filter -diff -merge

@@ -1,0 +1,170 @@
+{
+  "mode": "interactive window; operators invoked by in-app timer; not human clicks",
+  "build_hash": "f165abf4e77f",
+  "background": false,
+  "log": [
+    {
+      "shot": "u01-loop-configured",
+      "t": 4.55
+    },
+    {
+      "shot": "u02-proposed",
+      "t": 698.46
+    },
+    {
+      "approve": "0f821319-4979-44bc-afa8-338ef6bba7da",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 698.48
+    },
+    {
+      "shot": "u04-evaluate-fail",
+      "t": 712.71
+    },
+    {
+      "shot": "u09-loop-failed",
+      "t": 809.63
+    }
+  ],
+  "loop": {
+    "schema_version": "finalverse.studio-loop/v1",
+    "id": "72ca3cc6-f23e-41ce-8bd0-3e8c6667e4ef",
+    "stage": "failed",
+    "archetype": "floating_spirit",
+    "name": "Lumi",
+    "revisions": 3,
+    "max_revisions": 3,
+    "subject": "708141e1-d389-4af7-9ae9-f259345286c8",
+    "clips": {
+      "LumiIdle": "0194e4d0-32ed-48f6-b976-e4888fdaeac4",
+      "LumiDrift": "7f522648-186a-45e7-bc62-a57c1119a5cd",
+      "LumiGreet": "97523100-b235-4943-b525-7489aff947ea"
+    },
+    "job": "0f821319-4979-44bc-afa8-338ef6bba7da",
+    "finished": true,
+    "result": {
+      "outcome": "failed",
+      "reason": "revision budget (3) exhausted: previous plan was rejected: Invalid creation plan: plan.operations[0](action.create).ref: Invalid string or identifier '@LumiIdleFixed'",
+      "failures": [
+        {
+          "id": "plan.valid",
+          "measured": "Invalid creation plan: plan.operations[0](action.create).ref: Invalid string or identifier '@LumiIdleFixed'",
+          "limit": "valid v2 plan"
+        }
+      ]
+    },
+    "ledger": [
+      {
+        "t": 0.0,
+        "stage": "intent",
+        "intent": "Create Lumi, the floating spirit companion: a soft, rounded, luminous pale-mint body about 1.2 m tall with a rounded crown, small side fins and large dark expressive eyes. Lumi floats and never walks. Give the body a gentle glowing material and the eyes a dark glossy material. Add an idle hover loop, a slow drift loop and a short greet expression. Frame Lumi from the front in a 384x384 preview.",
+        "archetype": "floating_spirit",
+        "name": "Lumi",
+        "provider": "local",
+        "model": "gemma4:e4b",
+        "max_revisions": 3
+      },
+      {
+        "t": 0.02,
+        "stage": "plan",
+        "request": "initial"
+      },
+      {
+        "t": 302.754,
+        "stage": "plan_failed",
+        "error": "provider_timeout",
+        "detail": "no response within the provider timeout"
+      },
+      {
+        "t": 302.902,
+        "stage": "replan",
+        "revision": 1,
+        "reason": "previous plan was rejected: provider_timeout"
+      },
+      {
+        "t": 577.54,
+        "stage": "plan_failed",
+        "error": "Invalid creation plan: plan.operations[1](material.preset).color[1]: Number out of bounds (1.5 not in 0..1)",
+        "detail": null
+      },
+      {
+        "t": 577.59,
+        "stage": "replan",
+        "revision": 2,
+        "reason": "previous plan was rejected: Invalid creation plan: plan.operations[1](material.preset).color[1]: Number out of bounds (1.5 not in 0..1)"
+      },
+      {
+        "t": 693.374,
+        "stage": "proposed",
+        "job": "0f821319-4979-44bc-afa8-338ef6bba7da",
+        "receipt": {
+          "provider": "local",
+          "model": "gemma4:e4b",
+          "latency_ms": 115285.38858299726,
+          "usage": {
+            "input_tokens": 2502,
+            "output_tokens": 1458
+          },
+          "response_digest": "4f9ca446776b3f3dd7cafe84f3094dd1dcd86673b2f744e6a55ab3b98cc568ee"
+        }
+      },
+      {
+        "t": 694.056,
+        "stage": "generate",
+        "job": "0f821319-4979-44bc-afa8-338ef6bba7da",
+        "approved": true
+      },
+      {
+        "t": 707.823,
+        "stage": "preview",
+        "job": "0f821319-4979-44bc-afa8-338ef6bba7da",
+        "results": 12
+      },
+      {
+        "t": 707.983,
+        "stage": "evaluate",
+        "job": "0f821319-4979-44bc-afa8-338ef6bba7da",
+        "passed": false,
+        "failures": [
+          "clip.LumiIdle.loop_continuity",
+          "clip.LumiDrift.loop_continuity",
+          "preview.viewpoint"
+        ],
+        "advisories": [],
+        "digest": "d6a0ea15b58e2809c0b91f42ce7b44f531c625734254cd2887208c405436a3c2",
+        "checks": 32
+      },
+      {
+        "t": 707.996,
+        "stage": "revise",
+        "revision": 3,
+        "failures": [
+          "clip.LumiIdle.loop_continuity",
+          "clip.LumiDrift.loop_continuity",
+          "preview.viewpoint"
+        ],
+        "reason": "evaluation failed"
+      },
+      {
+        "t": 804.73,
+        "stage": "plan_failed",
+        "error": "Invalid creation plan: plan.operations[0](action.create).ref: Invalid string or identifier '@LumiIdleFixed'",
+        "detail": null
+      },
+      {
+        "t": 804.739,
+        "stage": "failed",
+        "reason": "revision budget (3) exhausted: previous plan was rejected: Invalid creation plan: plan.operations[0](action.create).ref: Invalid string or identifier '@LumiIdleFixed'",
+        "failures": [
+          {
+            "id": "plan.valid",
+            "measured": "Invalid creation plan: plan.operations[0](action.create).ref: Invalid string or identifier '@LumiIdleFixed'",
+            "limit": "valid v2 plan"
+          }
+        ]
+      }
+    ]
+  },
+  "passed": false
+}

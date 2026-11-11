@@ -32,21 +32,21 @@
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
-	<string>Blender</string>
+	<string>Finalverse Studio</string>
 	<key>CFBundleGetInfoString</key>
-	<string>${MACOSX_BUNDLE_LONG_VERSION_STRING}, Blender Foundation</string>
+	<string>Finalverse Studio; based on Blender ${MACOSX_BUNDLE_LONG_VERSION_STRING}, Blender Authors</string>
 	<!-- Legacy, non-Liquid Glass icon, used on pre-Tahoe / 26 macOS versions. -->
 	<key>CFBundleIconFile</key>
-	<string>blender_icon_legacy.icns</string>
+	<string>finalverse-studio.icns</string>
 	<!-- Modern Liquid Glass icon, the app bundle Asset.car file needs to be regenerated in Xcode on modification -->
-	<key>CFBundleIconName</key>
-	<string>blender_liquid_glass</string>
+	<key>CFBundleDisplayName</key>
+	<string>Finalverse Studio</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.blenderfoundation.blender</string>
+	<string>org.finalverse.studio</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Blender</string>
+	<string>Finalverse Studio</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -62,11 +62,11 @@
 	<key>NSIsTouchNative</key>
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>A Blender extension wants to access your microphone.</string>
+	<string>A Finalverse Studio extension wants to access your microphone.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>A Blender extension wants to access your camera.</string>
+	<string>A Finalverse Studio extension wants to access your camera.</string>
 	<key>NSAudioCaptureUsageDescription</key>
-	<string>A Blender extension wants to capture your system audio.</string>
+	<string>A Finalverse Studio extension wants to capture your system audio.</string>
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>

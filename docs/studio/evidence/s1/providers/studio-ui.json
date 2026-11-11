@@ -1,0 +1,346 @@
+{
+  "mode": "interactive window (not --background); operators invoked by in-app timer; not human clicks",
+  "build_hash": "452fedc07122",
+  "background": false,
+  "maple_key_preexisting": false,
+  "checks": {
+    "local_is_default_selection": true,
+    "local_default_model_gemma": true,
+    "maple_listed_off_by_default": true,
+    "maple_off_refuses_connect_without_network": true,
+    "maple_switched_on_in_studio": true,
+    "maple_without_key_refused": true,
+    "maple_key_stored_in_keychain_from_studio": true,
+    "maple_unreachable_reported_no_fallback": true,
+    "maple_switched_back_off": true,
+    "custom_provider_added_and_selected": true,
+    "custom_inventory_real": true,
+    "custom_plan_proposed_same_store": true,
+    "custom_receipt_names_provider_and_admission": true,
+    "custom_plan_approved_and_completed": true,
+    "remote_custom_requires_keychain": true,
+    "bad_credentials_reported": true,
+    "remote_without_key_refused": true,
+    "oversize_model_refused_by_admission": true,
+    "no_secret_in_workspace_files": true,
+    "custom_keychain_items_removed": true
+  },
+  "maple_connect": {
+    "error": "provider_unreachable",
+    "detail": "DNS resolution failed for the provider host",
+    "seconds": 1.072,
+    "message": "Failed: provider_unreachable (DNS resolution failed for the provider host); no fallback used"
+  },
+  "custom_plan_seconds": 55.89,
+  "custom_plan_message": "Plan ready for review: 986c3be4-f81a-459d-b4e2-5bd360b74daf",
+  "custom_receipt": {
+    "admission": {
+      "basis": "local weights within 65% of physical memory",
+      "decision": "admitted",
+      "physical_memory_bytes": 17179869184,
+      "weights_bytes": 9461576343
+    },
+    "endpoint_host": "127.0.0.1",
+    "fallback_used": false,
+    "input_digest": "b3da6ff30475c501886f9265a96c52b0a09d68d07c19a6fa454ee86e7eadf2c6",
+    "latency_ms": 55251.154500001576,
+    "model": "gemma4:e4b",
+    "provider": "custom-1",
+    "provider_kind": "ollama",
+    "provider_preset": "custom",
+    "real_inference": true,
+    "response_digest": "f903d9f9f7cea0ffe8b2b24ddaf68c85ef1bc5ecb21b639e258e67b59d54bbd4",
+    "scene_id": "bcd03177-93a3-42cc-9c7b-c574d4f26cb3",
+    "scene_revision": "de9f2a65c70291e10add10ce6b5f00496d2d2de528e9e49f7807b90b2539c228",
+    "served_model": "gemma4:e4b",
+    "usage": {
+      "input_tokens": 1786,
+      "output_tokens": 328
+    }
+  },
+  "custom_job": {
+    "state": "Completed",
+    "step": 12,
+    "operations": 12,
+    "error": null,
+    "seconds": 21.06
+  },
+  "anthropic_connect": {
+    "error": "provider_auth_failed",
+    "detail": "HTTP 403",
+    "seconds": 1.295,
+    "message": "Failed: provider_auth_failed (HTTP 403); no fallback used"
+  },
+  "qwen_admission": {
+    "error": "provider_admission_refused",
+    "message": "Failed: provider_admission_refused (Local model weights exceed the 65% physical-memory admission budget or have no size; choose a smaller model or configured remote provider); no fallback used"
+  },
+  "placeholder_found_in_workspace_files": [],
+  "providers_json_after": {
+    "schema_version": "finalverse.providers/v2",
+    "providers": [
+      {
+        "id": "local",
+        "label": "Local Gemma (Ollama)",
+        "preset": "local",
+        "kind": "ollama",
+        "base_url": "http://127.0.0.1:11434",
+        "model": "gemma4:e4b",
+        "credential": null,
+        "timeout_seconds": 120,
+        "enabled": true
+      },
+      {
+        "id": "maple",
+        "label": "Maple (studio.finalverse.com)",
+        "preset": "maple",
+        "kind": "ollama",
+        "base_url": "https://studio.finalverse.com",
+        "model": null,
+        "credential": "keychain",
+        "timeout_seconds": 60,
+        "enabled": false
+      }
+    ]
+  },
+  "passed": true,
+  "log": [
+    {
+      "check": "local_is_default_selection",
+      "value": true,
+      "t": 6.03
+    },
+    {
+      "check": "local_default_model_gemma",
+      "value": true,
+      "t": 6.03
+    },
+    {
+      "check": "maple_listed_off_by_default",
+      "value": true,
+      "t": 6.03
+    },
+    {
+      "screenshot": "p01-maple-listed-off",
+      "t": 7.88
+    },
+    {
+      "op": "ai_connect",
+      "refused": "Error: Maple (studio.finalverse.com) is off. Turn it on before connecting.",
+      "t": 7.89
+    },
+    {
+      "check": "maple_off_refuses_connect_without_network",
+      "value": true,
+      "t": 7.89
+    },
+    {
+      "op": "ai_provider_toggle",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 7.93
+    },
+    {
+      "check": "maple_switched_on_in_studio",
+      "value": true,
+      "t": 7.93
+    },
+    {
+      "op": "ai_connect",
+      "refused": "Error: No API key stored in the Keychain for Maple (studio.finalverse.com)",
+      "t": 7.94
+    },
+    {
+      "check": "maple_without_key_refused",
+      "value": true,
+      "t": 7.94
+    },
+    {
+      "op": "ai_provider_key",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 8.09
+    },
+    {
+      "check": "maple_key_stored_in_keychain_from_studio",
+      "value": true,
+      "t": 8.1
+    },
+    {
+      "screenshot": "p02-maple-on-key-in-keychain",
+      "t": 9.01
+    },
+    {
+      "op": "ai_connect",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 9.16
+    },
+    {
+      "check": "maple_unreachable_reported_no_fallback",
+      "value": true,
+      "t": 10.09
+    },
+    {
+      "screenshot": "p03-maple-unreachable-error",
+      "t": 11.1
+    },
+    {
+      "op": "ai_provider_toggle",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 11.16
+    },
+    {
+      "check": "maple_switched_back_off",
+      "value": true,
+      "t": 11.16
+    },
+    {
+      "op": "ai_provider_custom",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 11.16
+    },
+    {
+      "check": "custom_provider_added_and_selected",
+      "value": true,
+      "t": 11.16
+    },
+    {
+      "op": "ai_connect",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 11.71
+    },
+    {
+      "check": "custom_inventory_real",
+      "value": true,
+      "t": 12.3
+    },
+    {
+      "op": "ai_plan",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 12.31
+    },
+    {
+      "check": "custom_plan_proposed_same_store",
+      "value": true,
+      "t": 68.19
+    },
+    {
+      "check": "custom_receipt_names_provider_and_admission",
+      "value": true,
+      "t": 68.19
+    },
+    {
+      "screenshot": "p04-custom-provider-proposal",
+      "t": 69.21
+    },
+    {
+      "op": "ai_approve",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 69.22
+    },
+    {
+      "check": "custom_plan_approved_and_completed",
+      "value": true,
+      "t": 90.27
+    },
+    {
+      "screenshot": "p05-custom-provider-completed",
+      "t": 91.31
+    },
+    {
+      "op": "ai_provider_custom",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 91.4
+    },
+    {
+      "check": "remote_custom_requires_keychain",
+      "value": true,
+      "t": 91.41
+    },
+    {
+      "op": "ai_connect",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 91.45
+    },
+    {
+      "check": "bad_credentials_reported",
+      "value": true,
+      "t": 92.71
+    },
+    {
+      "screenshot": "p06-bad-credentials-error",
+      "t": 93.69
+    },
+    {
+      "op": "ai_provider_custom",
+      "refused": "Error: A remote provider needs an API key",
+      "t": 93.69
+    },
+    {
+      "check": "remote_without_key_refused",
+      "value": true,
+      "t": 93.69
+    },
+    {
+      "op": "ai_connect",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 94.03
+    },
+    {
+      "op": "ai_plan",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 94.63
+    },
+    {
+      "check": "oversize_model_refused_by_admission",
+      "value": true,
+      "t": 95.22
+    },
+    {
+      "op": "ai_provider_remove",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 95.25
+    },
+    {
+      "op": "ai_provider_remove",
+      "result": [
+        "FINISHED"
+      ],
+      "t": 95.3
+    },
+    {
+      "check": "no_secret_in_workspace_files",
+      "value": true,
+      "t": 95.33
+    },
+    {
+      "check": "custom_keychain_items_removed",
+      "value": true,
+      "t": 95.34
+    }
+  ]
+}

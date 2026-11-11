@@ -46,6 +46,10 @@ unset(MY_WC_HASH)
 # Force Package Name
 execute_process(COMMAND date "+%Y%m%d" OUTPUT_VARIABLE CPACK_DATE OUTPUT_STRIP_TRAILING_WHITESPACE)
 string(TOLOWER ${PROJECT_NAME} PROJECT_NAME_LOWER)
+# Finalverse product identity; internal Blender target/API names remain compatible.
+set(PROJECT_NAME_LOWER "finalverse-studio")
+set(CPACK_PACKAGE_NAME "Finalverse Studio")
+set(CPACK_PACKAGE_VENDOR "Finalverse; based on Blender")
 if(MSVC)
   if("${CMAKE_SIZEOF_VOID_P}" EQUAL "8")
     set(PACKAGE_ARCH windows64)

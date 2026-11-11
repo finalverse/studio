@@ -1,0 +1,128 @@
+{
+  "ok": true,
+  "plan": {
+    "operations": [
+      {
+        "op": "scene.inspect"
+      },
+      {
+        "name": "Aurora Beacon",
+        "op": "object.create",
+        "primitive": "cube",
+        "ref": "@beacon"
+      },
+      {
+        "op": "mesh.bevel",
+        "segments": 3,
+        "target": "@beacon",
+        "width": 0.12
+      },
+      {
+        "color": [
+          0.03,
+          0.55,
+          0.46,
+          1
+        ],
+        "metallic": 0.2,
+        "name": "Teal",
+        "op": "material.create",
+        "ref": "@teal",
+        "roughness": 0.35
+      },
+      {
+        "material": "@teal",
+        "op": "material.assign",
+        "target": "@beacon"
+      },
+      {
+        "frame": 1,
+        "op": "animation.keyframe",
+        "rotation": [
+          0,
+          0,
+          0
+        ],
+        "target": "@beacon"
+      },
+      {
+        "frame": 48,
+        "op": "animation.keyframe",
+        "rotation": [
+          0,
+          0,
+          3.14
+        ],
+        "target": "@beacon"
+      },
+      {
+        "lens": 50,
+        "location": [
+          6,
+          -8,
+          5
+        ],
+        "look_at": [
+          0,
+          0,
+          0
+        ],
+        "name": "Camera",
+        "op": "camera.configure",
+        "ref": "@camera"
+      },
+      {
+        "color": [
+          1,
+          1,
+          1
+        ],
+        "energy": 1200,
+        "kind": "AREA",
+        "location": [
+          2,
+          -4,
+          6
+        ],
+        "name": "Key",
+        "op": "light.configure",
+        "ref": "@light"
+      },
+      {
+        "height": 384,
+        "op": "scene.render",
+        "path": "preview.png",
+        "samples": 16,
+        "width": 384
+      },
+      {
+        "op": "asset.export",
+        "path": "beacon.fvasset"
+      },
+      {
+        "op": "scene.save",
+        "path": "beacon.blend"
+      }
+    ],
+    "schema_version": "finalverse.creation/v1",
+    "summary": "Beacon creation and rendering"
+  },
+  "prompt": "Return exactly these twelve ordered operations using the example flat JSON field shapes: 1 scene.inspect. 2 object.create ref @beacon name Aurora Beacon primitive cube. 3 mesh.bevel target @beacon width 0.12 segments 3. 4 material.create ref @teal name Teal color [0.03,0.55,0.46,1] roughness 0.35 metallic 0.2: color roughness metallic MUST be direct keys of this operation, never nested. 5 material.assign target @beacon material @teal. 6 animation.keyframe target @beacon frame 1 rotation [0,0,0]. 7 animation.keyframe target @beacon frame 48 rotation [0,0,3.14]. 8 camera.configure ref @camera name Camera location [6,-8,5] look_at [0,0,0] lens 50. 9 light.configure ref @light name Key kind AREA location [2,-4,6] energy 1200 color [1,1,1]. 10 scene.render path preview.png width 384 height 384 samples 16. 11 asset.export path beacon.fvasset. 12 scene.save path beacon.blend. Keep exactly three numbers in every rotation. Camera and light operations create their own objects. Include schema_version and summary. Only strict JSON.",
+  "receipt": {
+    "fallback_used": false,
+    "input_digest": "21b430a66698e7573a6cbd20e3eb998a25b2f835809abe218d07c49fd0ca80af",
+    "latency_ms": 35385.90254200244,
+    "model": "gemma4:e4b",
+    "provider": "local",
+    "real_inference": true,
+    "response_digest": "899bd7c77f8d1e0a2ed17bf7893d71bbd99261f50ed0f81fbfccdb17e05ceac6",
+    "scene_id": "0ea781bb-b0bc-45dd-87c3-a309b79f8797",
+    "scene_revision": "9b85d99421f166a62645dcf2c7911f295c5b5ef4f878f85e1d796d10445aab2f",
+    "served_model": "gemma4:e4b",
+    "usage": {
+      "input_tokens": 1192,
+      "output_tokens": 325
+    }
+  },
+  "total_wall_seconds": 35.44362712499424
+}

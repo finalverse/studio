@@ -1,0 +1,69 @@
+{
+  "schema_version": "finalverse.studio-s2-acceptance/v1",
+  "status": "local_engineering_checks_passed",
+  "user_acceptance": "pending",
+  "branch": "feat/studio-s2",
+  "base_s1_close": "5fa8900ee7b5b8ed4bac50d02b7d7015c8ae1d99",
+  "compiled_source": "f165abf4e77f",
+  "executable_sha256": "b23029a36547a21e3ae85765099d8d2cecd4ab5f85982c80618087a56e2d1591",
+  "demo": {
+    "asset": "Lumi",
+    "archetype": "floating_spirit",
+    "model": "gemma4:e4b",
+    "loop_seconds": 119.76,
+    "revisions": 1,
+    "first_failure": "preview.viewpoint",
+    "package": "docs/studio/evidence/s2/lumi.fvpkg",
+    "skins": 0,
+    "animations": 3,
+    "triangles_lod0": 3356,
+    "triangles_lod1": 1174,
+    "approvals": "issued by the acceptance harness through Host.approve; not human clicks"
+  },
+  "seeded_revision": {
+    "seconds": 117.85,
+    "revisions": 1,
+    "fixed": [
+      "preview.viewpoint",
+      "coverage",
+      "exposure"
+    ]
+  },
+  "attempts": {
+    "runs": 10,
+    "completed": 4,
+    "failed_visibly": 6
+  },
+  "fixtures": {
+    "lumi": true,
+    "humanoid_rigs": true,
+    "environment": true,
+    "retarget_keys_equal": true,
+    "determinism": true
+  },
+  "e1_contract": {
+    "as_exported": "rejected at generator header only",
+    "structural_probe": "artifact and definition pass",
+    "validator": "Core 33eb4b0"
+  },
+  "s0_transport_gate": true,
+  "unit_tests_passed": 44,
+  "maple": {
+    "api": "openai_compatible",
+    "base_url": "https://studio.finalverse.com/v1",
+    "enabled_by_default": false,
+    "host_resolves": false
+  },
+  "interactive_window_check": {
+    "ui_path": "works",
+    "loop_outcome": "failed: revision budget 3/3 exhausted (timeout, RGB>1, uppercase ref); evaluation caught real defects",
+    "seconds": 809.63
+  },
+  "authority": {
+    "published": false,
+    "world_effects": 0,
+    "push": false,
+    "merge": false,
+    "deploy": false
+  }
+}

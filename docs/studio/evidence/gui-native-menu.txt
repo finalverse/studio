@@ -1,0 +1,9 @@
+Window: "* Untitled — Finalverse Studio 5.4.0 Alpha", App: Finalverse Studio.
+0 Finalverse Studio, Secondary Actions: Cancel, Pick
+	1 menu Secondary Actions: Cancel
+		2 About Finalverse Studio, ID: orderFrontStandardAboutPanel:
+		3 Hide Finalverse Studio, ID: hide:
+		4 Hide Others, ID: hideOtherApplications:
+		5 (disabled) Show All, ID: unhideAllApplications:
+		6 Quit Finalverse Studio, ID: terminate:
+		7 Quit and Keep Windows
