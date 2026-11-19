@@ -140,6 +140,12 @@ V2_ONLY = {
         "location": POS}, ["ref", "name", "height"]),
     "character.humanoid": op("character.humanoid", {"ref": ALIAS, "name": NAME, "height": number(.5, 3.5),
         "build": {"enum": ["human", "synthetic"]}, "location": POS}, ["ref", "name", "height", "build"]),
+    "character.founder": op("character.founder", {"ref": ALIAS, "name": NAME,
+        "founder": {"enum": ["elara", "auren", "kai", "lumi", "terra", "ignis", "melody"]},
+        "height": number(.2, 3.5), "location": POS, "seed": number(0, 100000, True),
+        "palette": {"type": "array", "minItems": 0, "maxItems": 8,
+                    "items": obj({"zone": string(r"^[a-z][a-z ]{0,23}$", 24), "color": RGB})}},
+        ["ref", "name", "founder", "height"]),
     "material.preset": op("material.preset", {"ref": ALIAS, "name": NAME, "color": COLOR,
         "roughness": number(.04, 1), "metallic": number(0, 1), "emission": RGB,
         "emission_strength": number(0, 20), "alpha": number(.05, 1)}, ["ref", "name", "color"]),
@@ -149,7 +155,7 @@ V2_ONLY = {
         "template": {"enum": ["humanoid_basic", "synthetic_basic", "tree_basic", "fire_basic"]},
         "height": number(.3, 3.5), "location": POS}, ["ref", "name", "template", "height"]),
     "armature.skin": op("armature.skin", {"target": REF, "armature": REF,
-        "method": {"enum": ["automatic", "envelope"]}}),
+        "method": {"enum": ["automatic", "envelope", "rigid"]}}),
     "action.create": op("action.create", {"ref": ALIAS, "name": NAME, "target": REF,
         "kind": {"enum": ["idle", "greet", "observe", "interact", "speak", "locomote"]},
         "locomotion": {"enum": ["none", "walk", "run", "hover", "fly", "drift", "climb", "rooted"]},
@@ -164,7 +170,7 @@ V2_ONLY = {
         "target": POS, "distance": number(1, 200), "energy": number(10, 20000), "color": RGB}),
     "render.configure": op("render.configure", {"engine": {"enum": ["EEVEE"]}, "frame_start": number(1, 480, True),
         "frame_end": number(1, 480, True), "fps": number(12, 60, True), "transparent": {"type": "boolean"},
-        "world_color": RGB, "world_strength": number(0, 10), "view_transform": {"enum": ["Standard", "AgX", "Filmic"]}},
+        "world_color": RGB, "world_strength": number(0, 10), "view_transform": {"enum": ["Standard", "AgX", "Filmic", "Khronos PBR Neutral"]}},
         ["engine", "frame_start", "frame_end", "fps", "transparent"]),
     "preview.render": op("preview.render", {"path": PATH_PNG, "width": number(64, 1024, True),
         "height": number(64, 1024, True), "samples": number(1, 64, True), "frame": number(1, 480, True)},
@@ -182,7 +188,7 @@ PLAN_SCHEMA_V2 = obj({"schema_version": {"const": SCHEMA_V2}, "summary": string(
 RENDER_OPS = {"scene.render", "preview.render"}
 CREATES = {"object.create": "MESH", "camera.configure": "CAMERA", "light.configure": "LIGHT",
            "mesh.primitive": "MESH", "geonodes.scatter": "MESH", "procedural.building": "MESH",
-           "procedural.tree": "MESH", "character.spirit": "MESH", "character.humanoid": "MESH",
+           "procedural.tree": "MESH", "character.spirit": "MESH", "character.humanoid": "MESH", "character.founder": "MESH",
            "armature.create": "ARMATURE", "light.rig": "LIGHT"}
 MATERIAL_CREATES = {"material.create", "material.preset"}
 ACTION_CREATES = {"action.create", "action.retarget"}
@@ -282,6 +288,8 @@ def validate(plan):
 
 
 SPIRITS = {"floating_spirit", "botanical_sprite"}
+FOUNDER_ARCHETYPES = {"elara": "humanoid", "auren": "humanoid", "kai": "synthetic_humanoid", "lumi": "floating_spirit",
+                      "terra": "nature_elemental", "ignis": "fire_elemental", "melody": "botanical_sprite"}
 LOCOMOTION = {"humanoid": {"walk", "run", "climb", "none"}, "synthetic_humanoid": {"walk", "run", "climb", "none"},
               "floating_spirit": {"hover", "fly", "drift", "none"}, "botanical_sprite": {"fly", "hover", "drift", "none"},
               "nature_elemental": {"rooted", "walk", "climb", "none"}, "fire_elemental": {"walk", "run", "hover", "none"},
@@ -298,6 +306,9 @@ def archetype_rules(plan, kinds):
     archetype = packages[0]['archetype']
     clips = set(packages[0]['clips'])
     for item in plan['operations']:
+        if item['op'] == 'character.founder' and item['ref'] == packages[0]['subject'] and \
+                FOUNDER_ARCHETYPES[item['founder']] != archetype:
+            raise CreationError(f"{item['founder']} is a {FOUNDER_ARCHETYPES[item['founder']]}, not {archetype}")
         if archetype in SPIRITS:
             if item['op'] in {'armature.create', 'armature.skin', 'action.retarget', 'character.humanoid'}:
                 raise CreationError(archetype + " has no skeleton or humanoid body")

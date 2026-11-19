@@ -1,0 +1,96 @@
+{
+ "all_visible": false,
+ "animation_ms": {
+  "max": 3.5547920000000004,
+  "p50": 1.238416,
+  "p95": 1.9194170000000002
+ },
+ "bodies": true,
+ "experience": "Finalverse V1 \u2014 The Founding Characters Renewed",
+ "flat_body_material": false,
+ "focus": 2,
+ "frame_wall_ms": {
+  "max": 11.233583,
+  "p50": 6.249833,
+  "p95": 10.840875
+ },
+ "frames": 120,
+ "gpu_ms": {
+  "max": 4.986791,
+  "p50": 2.530208,
+  "p95": 4.560875
+ },
+ "hardware": {
+  "backend": "Metal",
+  "name": "Apple M1"
+ },
+ "identity_count": 7,
+ "limitations": "Recorded authoritative scene playback; bounded CPU anatomy posing; procedural clips, no baked Blender animation; caption/chime events, no audible voice; shader cost estimated by paired GPU controls; sampled RSS and requested assets do not include all driver allocations",
+ "measurement_wall_ms": 861.732375,
+ "model_calls": 0,
+ "particle_prepare_ms": {
+  "max": 0.009125,
+  "p50": 0.0035,
+  "p95": 0.006584
+ },
+ "particles": true,
+ "peak_draw_calls": 70,
+ "peak_particles": 28,
+ "peak_requested_gpu_asset_bytes": 6753844,
+ "peak_triangles": 31336,
+ "projection_playback_sha256": "55c4c9a1cf496fb1a561be2a577b877cf0c76a10a600c6a02bbee1974f11fa0c",
+ "publication_manifest_sha256": "9e15b5b9d53a266ac43450f2a3ff199a1533b22fb42c1381dc7be858ffa1a563",
+ "render_cpu_ms": {
+  "max": 5.883666,
+  "p50": 3.4584170000000003,
+  "p95": 4.259583
+ },
+ "sampled_peak_rss_bytes": 72908800,
+ "schema_version": "finalverse.v1-native/v1",
+ "studio_admissions": [
+  {
+   "body": "6e85107cef4cfbe7b649774af4922b37c1a0b970e3d59f88316b7ff30061f03b",
+   "generator": "finalverse-studio-s2/1",
+   "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+   "manifest_sha256": "da41c2cc16706d453e089f9064a71bd0563c956719cc484c792374c1e82d5ae4"
+  },
+  {
+   "body": "d2691894c8a2bc13a195be9a4e1545844f777a7b14f720f65c11388d51cb8dff",
+   "generator": "finalverse-studio-s2/1",
+   "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+   "manifest_sha256": "9adb793af328aff4198b373c65de148d7905a3e62b28c72f6966cc92162e2734"
+  },
+  {
+   "body": "323d9969cbf547563bb0b14fe7739cad9d58df7893667232c11c800b8bc6b404",
+   "generator": "finalverse-studio-s2/1",
+   "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+   "manifest_sha256": "952022733cb0380f7887b3176568a260bfbc7ef5c819c5d19d773dcbaedad1b6"
+  },
+  {
+   "body": "bff51caacb3c6f4553ff09f6bc0d07b94e398ac551b5bb2b11ed6c19ccec5b0d",
+   "generator": "finalverse-studio-s2/1",
+   "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+   "manifest_sha256": "0e0a461320de0c030c52c44dfd2fcd2ffec00f67cdbce701a974468dd9415146"
+  },
+  {
+   "body": "0ff7555789311de0b470dae34bfeccdae6dfc433e919ca178f45d1113718a4bc",
+   "generator": "finalverse-studio-s2/1",
+   "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+   "manifest_sha256": "3d42e491afdad76d7c50f816017649b898bb67bc464918f592710c5137477574"
+  },
+  {
+   "body": "4c7623cdb53b263439a98cca02959f85585000e8321480384ec7c1b3a62ec54d",
+   "generator": "finalverse-studio-s2/1",
+   "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+   "manifest_sha256": "9b362e629e85d48d8a89dac36d6accad058fb600974acf314ed42bd1cfe03b51"
+  },
+  {
+   "body": "5a16d5e53b961bab792cafb38e0e1d44b93459e5dcfe2bba94965be20d2b7d2b",
+   "generator": "finalverse-studio-s2/1",
+   "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+   "manifest_sha256": "9b20aa370b5844a2aa776e0563161402a75614a9ec3c6ca0b283ffb3638fed07"
+  }
+ ],
+ "warmup_frames": 100,
+ "within_budget_p95": true
+}

@@ -1,0 +1,82 @@
+{
+ "schema_version": "finalverse.studio-v1-reviews/v1",
+ "packages": [
+  {
+   "name": "Elara",
+   "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+   "package": "/Users/wenyan/Finalverse/dev/v1-20261104/mac-packages/elara/elara.fvpkg",
+   "review": {
+    "reviewed_generator": "finalverse-studio-s2/1",
+    "manifest_sha256": "da41c2cc16706d453e089f9064a71bd0563c956719cc484c792374c1e82d5ae4",
+    "reviewer": "Albert (owner) via V1 brief; reviewed founder template",
+    "note": "V1 Elara founder package built on Mac with upstream Blender 5.2.2 LTS"
+   }
+  },
+  {
+   "name": "Auren",
+   "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+   "package": "/Users/wenyan/Finalverse/dev/v1-20261104/mac-packages/auren/auren.fvpkg",
+   "review": {
+    "reviewed_generator": "finalverse-studio-s2/1",
+    "manifest_sha256": "9adb793af328aff4198b373c65de148d7905a3e62b28c72f6966cc92162e2734",
+    "reviewer": "Albert (owner) via V1 brief; reviewed founder template",
+    "note": "V1 Auren founder package built on Mac with upstream Blender 5.2.2 LTS"
+   }
+  },
+  {
+   "name": "Kai",
+   "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+   "package": "/Users/wenyan/Finalverse/dev/v1-20261104/mac-packages/kai/kai.fvpkg",
+   "review": {
+    "reviewed_generator": "finalverse-studio-s2/1",
+    "manifest_sha256": "952022733cb0380f7887b3176568a260bfbc7ef5c819c5d19d773dcbaedad1b6",
+    "reviewer": "Albert (owner) via V1 brief; reviewed founder template",
+    "note": "V1 Kai founder package built on Mac with upstream Blender 5.2.2 LTS"
+   }
+  },
+  {
+   "name": "Lumi",
+   "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+   "package": "/Users/wenyan/Finalverse/dev/v1-20261104/mac-packages/lumi/lumi.fvpkg",
+   "review": {
+    "reviewed_generator": "finalverse-studio-s2/1",
+    "manifest_sha256": "0e0a461320de0c030c52c44dfd2fcd2ffec00f67cdbce701a974468dd9415146",
+    "reviewer": "Albert (owner) via V1 brief; reviewed founder template",
+    "note": "V1 Lumi founder package built on Mac with upstream Blender 5.2.2 LTS"
+   }
+  },
+  {
+   "name": "Terra",
+   "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+   "package": "/Users/wenyan/Finalverse/dev/v1-20261104/mac-packages/terra/terra.fvpkg",
+   "review": {
+    "reviewed_generator": "finalverse-studio-s2/1",
+    "manifest_sha256": "3d42e491afdad76d7c50f816017649b898bb67bc464918f592710c5137477574",
+    "reviewer": "Albert (owner) via V1 brief; reviewed founder template",
+    "note": "V1 Terra founder package built on Mac with upstream Blender 5.2.2 LTS"
+   }
+  },
+  {
+   "name": "Ignis",
+   "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+   "package": "/Users/wenyan/Finalverse/dev/v1-20261104/mac-packages/ignis/ignis.fvpkg",
+   "review": {
+    "reviewed_generator": "finalverse-studio-s2/1",
+    "manifest_sha256": "9b362e629e85d48d8a89dac36d6accad058fb600974acf314ed42bd1cfe03b51",
+    "reviewer": "Albert (owner) via V1 brief; reviewed founder template",
+    "note": "V1 Ignis founder package built on Mac with upstream Blender 5.2.2 LTS"
+   }
+  },
+  {
+   "name": "Elara's Melody Sprite",
+   "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+   "package": "/Users/wenyan/Finalverse/dev/v1-20261104/mac-packages/melody/melody.fvpkg",
+   "review": {
+    "reviewed_generator": "finalverse-studio-s2/1",
+    "manifest_sha256": "9b20aa370b5844a2aa776e0563161402a75614a9ec3c6ca0b283ffb3638fed07",
+    "reviewer": "Albert (owner) via V1 brief; reviewed founder template",
+    "note": "V1 Elara's Melody Sprite founder package built on Mac with upstream Blender 5.2.2 LTS"
+   }
+  }
+ ]
+}

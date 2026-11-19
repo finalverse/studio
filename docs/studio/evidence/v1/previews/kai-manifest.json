@@ -1,0 +1,191 @@
+{
+  "archetype": "synthetic_humanoid",
+  "clips": [
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        60
+      ],
+      "glb": "clips/Kai_Idle.glb",
+      "id": "f7babeb9-7293-4005-833c-f5ea4a9ba7d0",
+      "kind": "idle",
+      "locomotion": "none",
+      "loop": true,
+      "name": "Kai Idle",
+      "samples": "clips/Kai_Idle.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        25
+      ],
+      "glb": "clips/Kai_Walk.glb",
+      "id": "b1e90b24-5547-465b-8d5a-9093a608d2fd",
+      "kind": "locomote",
+      "locomotion": "walk",
+      "loop": true,
+      "name": "Kai Walk",
+      "samples": "clips/Kai_Walk.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        36
+      ],
+      "glb": "clips/Kai_Greet.glb",
+      "id": "b637dff8-3142-458a-9eef-789982cede78",
+      "kind": "greet",
+      "locomotion": "none",
+      "loop": false,
+      "name": "Kai Greet",
+      "samples": "clips/Kai_Greet.json"
+    },
+    {
+      "fps": 24,
+      "frames": [
+        1,
+        44
+      ],
+      "glb": "clips/Kai_Inspect.glb",
+      "id": "6d95d1c8-fb11-48d5-a148-c83547872c57",
+      "kind": "observe",
+      "locomotion": "none",
+      "loop": false,
+      "name": "Kai Inspect",
+      "samples": "clips/Kai_Inspect.json"
+    }
+  ],
+  "evaluation": {
+    "advisories": [],
+    "digest": "d8ca95829ce43faab71f2ab203af98c5da71aeae0c7f0b0d08525a0b0f2ce06d",
+    "passed": true
+  },
+  "files": {
+    "asset.glb": {
+      "byte_length": 405796,
+      "media_type": "model/gltf-binary",
+      "sha256": "c3db57ab4618993be4b6b78cc714240717af417f46fe2469f5402dc934fc06f6"
+    },
+    "body.json": {
+      "byte_length": 769761,
+      "media_type": "application/json",
+      "sha256": "51e89a726ad36802111620c557daef6f5160a67713d41af945f40ea0fb3ad17e"
+    },
+    "clips/Kai_Greet.glb": {
+      "byte_length": 394352,
+      "media_type": "model/gltf-binary",
+      "sha256": "8d373c8df83915857758ec40840ebdb7243d39ed92961bb4340cc1fbb5bf8f18"
+    },
+    "clips/Kai_Greet.json": {
+      "byte_length": 1325,
+      "media_type": "application/json",
+      "sha256": "33dc5cd4e4045bd516359224e546227b3f360a5194916aff83279411c44c0927"
+    },
+    "clips/Kai_Idle.glb": {
+      "byte_length": 395760,
+      "media_type": "model/gltf-binary",
+      "sha256": "60611ddfc859d1d2106761002737c9319fc872efbd6cc657743c9ff9057e69a8"
+    },
+    "clips/Kai_Idle.json": {
+      "byte_length": 3478,
+      "media_type": "application/json",
+      "sha256": "46dc987fc61c6299773ec94ec0e3ed4e5cb3dca9ff80831550b8c55aa34bd500"
+    },
+    "clips/Kai_Inspect.glb": {
+      "byte_length": 394688,
+      "media_type": "model/gltf-binary",
+      "sha256": "62989ae154b4f8983951ee97208b132b6ac557dc49ff5c4cfa662c436092f6a7"
+    },
+    "clips/Kai_Inspect.json": {
+      "byte_length": 1571,
+      "media_type": "application/json",
+      "sha256": "a1d0f6cb47e2569d290dfca8fe7e8bdeb66ec6b501020ecfc74a41a636fb275b"
+    },
+    "clips/Kai_Walk.glb": {
+      "byte_length": 395280,
+      "media_type": "model/gltf-binary",
+      "sha256": "6bb267807d1348fa15038772908e3b3ba7d103657a0a4b81264333261761780a"
+    },
+    "clips/Kai_Walk.json": {
+      "byte_length": 2631,
+      "media_type": "application/json",
+      "sha256": "30fa7f188e9564bee4e1876743601d3358a44bf905bbe807038c7bea6128ada4"
+    },
+    "contract-check.json": {
+      "byte_length": 311,
+      "media_type": "application/json",
+      "sha256": "25d3a68ca046bb42ba6d9e286efaf9212cb5b05d2d059b6054c07b8e5bc46d6f"
+    },
+    "definition.draft.json": {
+      "byte_length": 1543,
+      "media_type": "application/json",
+      "sha256": "ee12a2d92dcd7fb7a3f2ef9bf906c1cefb43d6d2a84d5d0bb9067467c99af350"
+    },
+    "evaluation.json": {
+      "byte_length": 7191,
+      "media_type": "application/json",
+      "sha256": "0f1eaa07f0e6927ffa2eef3a2a63caff15acacc4c19e464e07c4f671ddf092df"
+    },
+    "glb-check.json": {
+      "byte_length": 3378,
+      "media_type": "application/json",
+      "sha256": "769d470868877df22ec7c09dd80e3dc34a6728aecf6b409a29b1e6f0b72668e7"
+    },
+    "previews/step-011-kai-front.png": {
+      "byte_length": 148674,
+      "media_type": "image/png",
+      "sha256": "c73a32b606bfce9d0dfbb8de314707006479702ff91745895eca34bf4b6bac93"
+    },
+    "provenance.json": {
+      "byte_length": 809,
+      "media_type": "application/json",
+      "sha256": "e8a57f45f529ae47138ce6927c02bce63c0ce5090077ccd015ff69915f254e99"
+    },
+    "proxy.glb": {
+      "byte_length": 149000,
+      "media_type": "model/gltf-binary",
+      "sha256": "4d21abc137bd48b3cc6c00362c3ff1024847ebc0cf483659c2fb2ebc5883a56b"
+    },
+    "source.blend": {
+      "byte_length": 346775,
+      "media_type": "application/x-blender",
+      "sha256": "a35cbdc52021ea7ccdb87bf3e0818938ab549618808873702537dbf008da9d31"
+    },
+    "specification.json": {
+      "byte_length": 252,
+      "media_type": "application/json",
+      "sha256": "277b6ea38b4d42eebf6842a61fd0c4320780d0bf4f8bc39cc91d1deb79a84c62"
+    }
+  },
+  "frame": {
+    "axes": "glTF right-handed Y-up",
+    "unit": "metre"
+  },
+  "genesis": {
+    "admission": "required",
+    "candidate_manifest": "candidate.json",
+    "definition_draft": "definition.draft.json",
+    "embodiment_body": "body.json",
+    "publication_authorized": false
+  },
+  "height_m": 1.8631,
+  "identity_reference": "af14d037-099a-5db0-9712-6c8a25742930",
+  "lods": [
+    {
+      "distance_m": 0.0
+    },
+    {
+      "distance_m": 18.0,
+      "triangle_ratio": 0.38
+    }
+  ],
+  "name": "Kai",
+  "published": false,
+  "schema_version": "finalverse.studio-asset-package/v1",
+  "state": "candidate",
+  "subject": "b0b8b14f-2ffb-4267-a18b-cc39ffa0ef96",
+  "world_effects": 0
+}

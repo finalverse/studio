@@ -1,0 +1,678 @@
+{
+ "schema_version": "finalverse.v0-founder-audit/v1",
+ "source": "/Users/wenyan/Finalverse/dev/civilization-os2-20261103/e1/generated",
+ "characters": [
+  {
+   "name": "Elara Vayne",
+   "identity": "904d952a-aca7-51da-aa01-20aab7dd9893",
+   "archetype": "humanoid",
+   "revision": 2,
+   "canon_appearance": "Auburn hair and braid, nature-inspired green adventuring clothing, blue cloak, leather belt, satchel and practical boots.",
+   "generator": "blender-universal/1",
+   "blender": "5.2.2 LTS",
+   "body_bytes": 801424,
+   "height_m": 1.705,
+   "skeleton_joints": 6,
+   "joint_names": [
+    "root",
+    "head",
+    "arm_l",
+    "arm_r",
+    "leg_l",
+    "leg_r"
+   ],
+   "lods": [
+    {
+     "distance_m": 0,
+     "parts": 14,
+     "triangles": 3332,
+     "vertices": 9996,
+     "unique_materials": 8,
+     "emissive_parts": 2,
+     "pulsing_parts": 0,
+     "metallic_parts": 0
+    },
+    {
+     "distance_m": 18,
+     "parts": 14,
+     "triangles": 1412,
+     "vertices": 4236,
+     "unique_materials": 8,
+     "emissive_parts": 2,
+     "pulsing_parts": 0,
+     "metallic_parts": 0
+    }
+   ],
+   "part_names_lod0": [
+    "arm_l:green:solid",
+    "arm_l:skin:solid",
+    "arm_r:green:solid",
+    "arm_r:skin:solid",
+    "head:auburn:solid",
+    "head:eye:solid",
+    "head:skin:solid",
+    "head:teal:solid",
+    "head:white:solid",
+    "leg_l:brown:solid",
+    "leg_r:brown:solid",
+    "root:blue:solid",
+    "root:brown:solid",
+    "root:green:solid"
+   ],
+   "locomotion": [
+    "walk",
+    "run",
+    "climb"
+   ],
+   "expressions": [
+    "idle",
+    "greet",
+    "observe",
+    "interact",
+    "speak",
+    "locomote"
+   ],
+   "animation_procedure": "bounded-archetype-expression/1",
+   "deformation": {
+    "max_displacement_m": 0.20000000298023224,
+    "max_scale_delta": 0.05999999865889549,
+    "procedure": "Humanoid-expression/1"
+   },
+   "particles": 6,
+   "collision": {
+    "height_m": 1.7000000476837158,
+    "radius_m": 0.3499999940395355,
+    "shape": "capsule"
+   },
+   "job_artifacts": [
+    "body.json",
+    "generation.json",
+    "proxy.glb",
+    "source.blend",
+    "spec.json"
+   ],
+   "glb_proxies": {
+    "proxy.glb": {
+     "bytes": 360896,
+     "meshes": 1,
+     "skins": 0,
+     "animations": 0,
+     "images": 0,
+     "textures": 0,
+     "materials": 1
+    }
+   },
+   "baked_clips": 0,
+   "textures": 0
+  },
+  {
+   "name": "Auren",
+   "identity": "b9d8a3dd-6dbe-5aa6-aa0e-24bf7ecba447",
+   "archetype": "humanoid",
+   "revision": 2,
+   "canon_appearance": "Male-presenting human-form AI, apparent age 32\u201338, 185 cm, dark brown slightly wavy hair, amber-gray eyes, natural expressions, understated athletic build; charcoal tailored jacket, layered dark clothing and discreet luminous details. No armor, robotic plating or exaggerated cyberpunk features.",
+   "generator": "blender-universal/1",
+   "blender": "5.2.2 LTS",
+   "body_bytes": 699067,
+   "height_m": 1.856,
+   "skeleton_joints": 6,
+   "joint_names": [
+    "root",
+    "head",
+    "arm_l",
+    "arm_r",
+    "leg_l",
+    "leg_r"
+   ],
+   "lods": [
+    {
+     "distance_m": 0,
+     "parts": 13,
+     "triangles": 2828,
+     "vertices": 8484,
+     "unique_materials": 7,
+     "emissive_parts": 2,
+     "pulsing_parts": 0,
+     "metallic_parts": 0
+    },
+    {
+     "distance_m": 18,
+     "parts": 13,
+     "triangles": 1204,
+     "vertices": 3612,
+     "unique_materials": 7,
+     "emissive_parts": 2,
+     "pulsing_parts": 0,
+     "metallic_parts": 0
+    }
+   ],
+   "part_names_lod0": [
+    "arm_l:dark:solid",
+    "arm_l:skin:solid",
+    "arm_r:dark:solid",
+    "arm_r:skin:solid",
+    "head:eye:solid",
+    "head:hairdark:solid",
+    "head:skin:solid",
+    "head:teal:solid",
+    "head:white:solid",
+    "leg_l:brown:solid",
+    "leg_r:brown:solid",
+    "root:brown:solid",
+    "root:dark:solid"
+   ],
+   "locomotion": [
+    "walk",
+    "run",
+    "climb"
+   ],
+   "expressions": [
+    "idle",
+    "greet",
+    "observe",
+    "interact",
+    "speak",
+    "locomote"
+   ],
+   "animation_procedure": "bounded-archetype-expression/1",
+   "deformation": {
+    "max_displacement_m": 0.20000000298023224,
+    "max_scale_delta": 0.05999999865889549,
+    "procedure": "Humanoid-expression/1"
+   },
+   "particles": 6,
+   "collision": {
+    "height_m": 1.850000023841858,
+    "radius_m": 0.3499999940395355,
+    "shape": "capsule"
+   },
+   "job_artifacts": [
+    "body.json",
+    "generation.json",
+    "proxy.glb",
+    "source.blend",
+    "spec.json"
+   ],
+   "glb_proxies": {
+    "proxy.glb": {
+     "bytes": 306468,
+     "meshes": 1,
+     "skins": 0,
+     "animations": 0,
+     "images": 0,
+     "textures": 0,
+     "materials": 1
+    }
+   },
+   "baked_clips": 0,
+   "textures": 0
+  },
+  {
+   "name": "Kai",
+   "identity": "af14d037-099a-5db0-9712-6c8a25742930",
+   "archetype": "synthetic_humanoid",
+   "revision": 2,
+   "canon_appearance": "Luminous golden synthetic humanoid, mechanical anatomy, internal energy structures and modular embodiment.",
+   "generator": "blender-universal/1",
+   "blender": "5.2.2 LTS",
+   "body_bytes": 755232,
+   "height_m": 1.874,
+   "skeleton_joints": 6,
+   "joint_names": [
+    "root",
+    "head",
+    "arm_l",
+    "arm_r",
+    "leg_l",
+    "leg_r"
+   ],
+   "lods": [
+    {
+     "distance_m": 0,
+     "parts": 11,
+     "triangles": 3144,
+     "vertices": 9432,
+     "unique_materials": 5,
+     "emissive_parts": 10,
+     "pulsing_parts": 2,
+     "metallic_parts": 8
+    },
+    {
+     "distance_m": 18,
+     "parts": 11,
+     "triangles": 1320,
+     "vertices": 3960,
+     "unique_materials": 5,
+     "emissive_parts": 10,
+     "pulsing_parts": 2,
+     "metallic_parts": 8
+    }
+   ],
+   "part_names_lod0": [
+    "arm_l:gold:solid",
+    "arm_r:gold:solid",
+    "head:eye:solid",
+    "head:gold:solid",
+    "head:goldlight:solid",
+    "head:teal:solid",
+    "head:white:solid",
+    "leg_l:gold:solid",
+    "leg_r:gold:solid",
+    "root:gold:solid",
+    "root:goldlight:solid"
+   ],
+   "locomotion": [
+    "walk",
+    "run",
+    "climb"
+   ],
+   "expressions": [
+    "idle",
+    "greet",
+    "observe",
+    "interact",
+    "speak",
+    "locomote"
+   ],
+   "animation_procedure": "bounded-archetype-expression/1",
+   "deformation": {
+    "max_displacement_m": 0.20000000298023224,
+    "max_scale_delta": 0.05999999865889549,
+    "procedure": "SyntheticHumanoid-expression/1"
+   },
+   "particles": 6,
+   "collision": {
+    "height_m": 1.899999976158142,
+    "radius_m": 0.3499999940395355,
+    "shape": "capsule"
+   },
+   "job_artifacts": [
+    "body.json",
+    "generation.json",
+    "proxy.glb",
+    "source.blend",
+    "spec.json"
+   ],
+   "glb_proxies": {
+    "proxy.glb": {
+     "bytes": 340600,
+     "meshes": 1,
+     "skins": 0,
+     "animations": 0,
+     "images": 0,
+     "textures": 0,
+     "materials": 1
+    }
+   },
+   "baked_clips": 0,
+   "textures": 0
+  },
+  {
+   "name": "Lumi",
+   "identity": "2c92f74c-3643-5dac-95c6-e20af424767d",
+   "archetype": "floating_spirit",
+   "revision": 2,
+   "canon_appearance": "Soft rounded ethereal luminous body, large expressive eyes, subtle side fins, continuous floating silhouette; no obvious legs, conventional humanoid skeleton or walk cycle.",
+   "generator": "blender-universal/1",
+   "blender": "5.2.2 LTS",
+   "body_bytes": 380860,
+   "height_m": 0.884,
+   "skeleton_joints": 0,
+   "joint_names": [],
+   "lods": [
+    {
+     "distance_m": 0,
+     "parts": 4,
+     "triangles": 1604,
+     "vertices": 4812,
+     "unique_materials": 4,
+     "emissive_parts": 3,
+     "pulsing_parts": 1,
+     "metallic_parts": 0
+    },
+    {
+     "distance_m": 18,
+     "parts": 4,
+     "triangles": 652,
+     "vertices": 1956,
+     "unique_materials": 4,
+     "emissive_parts": 3,
+     "pulsing_parts": 1,
+     "metallic_parts": 0
+    }
+   ],
+   "part_names_lod0": [
+    "spirit:eye:solid",
+    "spirit:spirit:solid",
+    "spirit:teal:solid",
+    "spirit:white:solid"
+   ],
+   "locomotion": [
+    "hover",
+    "fly",
+    "drift"
+   ],
+   "expressions": [
+    "idle",
+    "greet",
+    "observe",
+    "interact",
+    "speak",
+    "locomote"
+   ],
+   "animation_procedure": "bounded-archetype-expression/1",
+   "deformation": {
+    "max_displacement_m": 0.20000000298023224,
+    "max_scale_delta": 0.05999999865889549,
+    "procedure": "FloatingSpirit-expression/1"
+   },
+   "particles": 6,
+   "collision": {
+    "radius_m": 0.3569999933242798,
+    "shape": "sphere"
+   },
+   "job_artifacts": [
+    "body.json",
+    "generation.json",
+    "proxy.glb",
+    "source.blend",
+    "spec.json"
+   ],
+   "glb_proxies": {
+    "proxy.glb": {
+     "bytes": 174272,
+     "meshes": 1,
+     "skins": 0,
+     "animations": 0,
+     "images": 0,
+     "textures": 0,
+     "materials": 1
+    }
+   },
+   "baked_clips": 0,
+   "textures": 0
+  },
+  {
+   "name": "Terra",
+   "identity": "a7c374b9-d7d9-5a68-9bcb-68e9ea8ecd4d",
+   "archetype": "nature_elemental",
+   "revision": 2,
+   "canon_appearance": "Distinct trunk, bark, root and articulated branch anatomy, moss and living foliage canopy; luminous amber eyes and heart.",
+   "generator": "blender-universal/1",
+   "blender": "5.2.2 LTS",
+   "body_bytes": 947243,
+   "height_m": 2.904,
+   "skeleton_joints": 4,
+   "joint_names": [
+    "trunk",
+    "branch_l",
+    "branch_r",
+    "canopy"
+   ],
+   "lods": [
+    {
+     "distance_m": 0,
+     "parts": 8,
+     "triangles": 3612,
+     "vertices": 10836,
+     "unique_materials": 4,
+     "emissive_parts": 3,
+     "pulsing_parts": 2,
+     "metallic_parts": 2
+    },
+    {
+     "distance_m": 18,
+     "parts": 8,
+     "triangles": 1788,
+     "vertices": 5364,
+     "unique_materials": 4,
+     "emissive_parts": 3,
+     "pulsing_parts": 2,
+     "metallic_parts": 2
+    }
+   ],
+   "part_names_lod0": [
+    "branch_l:bark:solid",
+    "branch_r:bark:solid",
+    "canopy:bark:solid",
+    "canopy:goldlight:solid",
+    "canopy:leaf:petal",
+    "canopy:moss:petal",
+    "trunk:bark:solid",
+    "trunk:goldlight:solid"
+   ],
+   "locomotion": [
+    "rooted",
+    "walk",
+    "climb"
+   ],
+   "expressions": [
+    "idle",
+    "greet",
+    "observe",
+    "interact",
+    "speak",
+    "locomote"
+   ],
+   "animation_procedure": "bounded-archetype-expression/1",
+   "deformation": {
+    "max_displacement_m": 0.20000000298023224,
+    "max_scale_delta": 0.05999999865889549,
+    "procedure": "NatureElemental-expression/1"
+   },
+   "particles": 6,
+   "collision": {
+    "height_m": 2.5999999046325684,
+    "radius_m": 0.8500000238418579,
+    "shape": "capsule"
+   },
+   "job_artifacts": [
+    "body.json",
+    "generation.json",
+    "proxy.glb",
+    "source.blend",
+    "spec.json"
+   ],
+   "glb_proxies": {
+    "proxy.glb": {
+     "bytes": 391148,
+     "meshes": 1,
+     "skins": 0,
+     "animations": 0,
+     "images": 0,
+     "textures": 0,
+     "materials": 1
+    }
+   },
+   "baked_clips": 0,
+   "textures": 0
+  },
+  {
+   "name": "Ignis",
+   "identity": "1b347812-86f7-576a-bbb8-f44d7bd00643",
+   "archetype": "fire_elemental",
+   "revision": 2,
+   "canon_appearance": "Molten core, dark forged armor-like structure, controlled emissive flame plumes, luminous seams and bounded sparks; visual effects grant no world-fire authority.",
+   "generator": "blender-universal/1",
+   "blender": "5.2.2 LTS",
+   "body_bytes": 355506,
+   "height_m": 2.288,
+   "skeleton_joints": 6,
+   "joint_names": [
+    "root",
+    "head",
+    "arm_l",
+    "arm_r",
+    "leg_l",
+    "leg_r"
+   ],
+   "lods": [
+    {
+     "distance_m": 0,
+     "parts": 14,
+     "triangles": 1336,
+     "vertices": 4008,
+     "unique_materials": 3,
+     "emissive_parts": 14,
+     "pulsing_parts": 6,
+     "metallic_parts": 5
+    },
+    {
+     "distance_m": 18,
+     "parts": 14,
+     "triangles": 680,
+     "vertices": 2040,
+     "unique_materials": 3,
+     "emissive_parts": 14,
+     "pulsing_parts": 6,
+     "metallic_parts": 5
+    }
+   ],
+   "part_names_lod0": [
+    "arm_l:armor:solid",
+    "arm_l:flame:flame",
+    "arm_r:armor:solid",
+    "arm_r:flame:flame",
+    "head:flame:flame",
+    "head:flame:solid",
+    "leg_l:armor:solid",
+    "leg_l:lava:solid",
+    "leg_r:armor:solid",
+    "leg_r:lava:solid",
+    "root:armor:solid",
+    "root:flame:flame",
+    "root:flame:solid",
+    "root:lava:solid"
+   ],
+   "locomotion": [
+    "walk",
+    "run",
+    "hover"
+   ],
+   "expressions": [
+    "idle",
+    "greet",
+    "observe",
+    "interact",
+    "speak",
+    "locomote"
+   ],
+   "animation_procedure": "bounded-archetype-expression/1",
+   "deformation": {
+    "max_displacement_m": 0.20000000298023224,
+    "max_scale_delta": 0.05999999865889549,
+    "procedure": "FireElemental-expression/1"
+   },
+   "particles": 16,
+   "collision": {
+    "height_m": 2.200000047683716,
+    "radius_m": 0.3499999940395355,
+    "shape": "capsule"
+   },
+   "job_artifacts": [
+    "body.json",
+    "generation.json",
+    "proxy.glb",
+    "source.blend",
+    "spec.json"
+   ],
+   "glb_proxies": {
+    "proxy.glb": {
+     "bytes": 145332,
+     "meshes": 1,
+     "skins": 0,
+     "animations": 0,
+     "images": 0,
+     "textures": 0,
+     "materials": 1
+    }
+   },
+   "baked_clips": 0,
+   "textures": 0
+  },
+  {
+   "name": "Elara's Melody Sprite",
+   "identity": "8a801b9c-bf8b-5ca0-a0a7-a41c3a6231a9",
+   "archetype": "botanical_sprite",
+   "revision": 2,
+   "canon_appearance": "Small flying flower with leaf wings and petal anatomy, bioluminescent patterns and bloom-color expression",
+   "generator": "blender-universal/1",
+   "blender": "5.2.2 LTS",
+   "body_bytes": 398716,
+   "height_m": 0.211,
+   "skeleton_joints": 0,
+   "joint_names": [],
+   "lods": [
+    {
+     "distance_m": 0,
+     "parts": 4,
+     "triangles": 1680,
+     "vertices": 5040,
+     "unique_materials": 3,
+     "emissive_parts": 3,
+     "pulsing_parts": 1,
+     "metallic_parts": 0
+    },
+    {
+     "distance_m": 18,
+     "parts": 4,
+     "triangles": 672,
+     "vertices": 2016,
+     "unique_materials": 3,
+     "emissive_parts": 3,
+     "pulsing_parts": 1,
+     "metallic_parts": 0
+    }
+   ],
+   "part_names_lod0": [
+    "spirit:eye:solid",
+    "spirit:leaf:petal",
+    "spirit:leaf:solid",
+    "spirit:petal:petal"
+   ],
+   "locomotion": [
+    "fly",
+    "hover"
+   ],
+   "expressions": [
+    "idle",
+    "greet",
+    "observe",
+    "interact",
+    "speak",
+    "locomote"
+   ],
+   "animation_procedure": "bounded-archetype-expression/1",
+   "deformation": {
+    "max_displacement_m": 0.20000000298023224,
+    "max_scale_delta": 0.05999999865889549,
+    "procedure": "BotanicalSprite-expression/1"
+   },
+   "particles": 6,
+   "collision": {
+    "radius_m": 0.11759999394416809,
+    "shape": "sphere"
+   },
+   "job_artifacts": [
+    "body.json",
+    "generation.json",
+    "proxy.glb",
+    "source.blend",
+    "spec.json"
+   ],
+   "glb_proxies": {
+    "proxy.glb": {
+     "bytes": 182484,
+     "meshes": 1,
+     "skins": 0,
+     "animations": 0,
+     "images": 0,
+     "textures": 0,
+     "materials": 1
+    }
+   },
+   "baked_clips": 0,
+   "textures": 0
+  }
+ ]
+}
